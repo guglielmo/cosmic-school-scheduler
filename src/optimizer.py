@@ -471,7 +471,7 @@ class Optimizer:
 
         self.solver.parameters.max_time_in_seconds = time_limit_seconds
         self.solver.parameters.log_search_progress = self.verbose
-        self.solver.parameters.num_search_workers = 12
+        self.solver.parameters.num_search_workers = 16  # Use all available cores
 
         status = self.solver.Solve(self.model)
 
