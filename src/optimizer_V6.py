@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """
-Optimizer V6 - Scheduling laboratori con domini pre-calcolati
+Optimizer V6 - Scheduling laboratori con domini pre-calcolati e H9 pre-filtrato
 
 Migliorie rispetto a V5:
 1. Usa DomainPreprocessor per ridurre lo spazio di ricerca
 2. Crea variabili solo per slot validi (non tutto il dominio)
 3. Filtra coppie accorpamento incompatibili a priori
-4. Statistiche dettagliate sulla riduzione
+4. Pre-filtra coppie per vincolo H9 (no overlap formatrici)
+5. Aggiunge H9 direttamente nel modello (niente iterazioni)
+6. Statistiche dettagliate sulla riduzione
 
 Variabili per ogni incontro (classe, lab, k):
 - settimana[c,l,k] = IntVar con dominio ridotto
@@ -16,6 +18,11 @@ Variabili per ogni incontro (classe, lab, k):
 
 Per accorpamenti (solo coppie compatibili):
 - accorpa[c1,c2,lab] = BoolVar
+
+Vincolo H9 (no overlap formatrici):
+- Pre-filtra coppie usando intersezione domini
+- Aggiunge vincoli solo per coppie potenzialmente sovrapposti
+- Riduzione da O(N²) a O(k×N) con k << N
 """
 
 import argparse
@@ -24,6 +31,7 @@ from ortools.sat.python import cp_model
 from pathlib import Path
 from collections import defaultdict
 from datetime import date, timedelta
+from typing import List, Tuple
 import sys
 
 from date_parser import DateParser
@@ -479,7 +487,13 @@ class OptimizerV6:
                 self.model.Add(self.formatrice[key] != f_id).OnlyEnforceIf(is_f.Not())
                 self.is_formatrice[(f_id, key)] = is_f
 
-        n_h9 = 0  # H9 disabilitato nel modello
+        # H9: Pre-filtraggio e aggiunta vincoli no overlap
+        print("\n  Pre-filtraggio coppie per H9 (no overlap formatrici)...")
+        overlapping_pairs = self._precompute_potentially_overlapping_pairs()
+        print(f"    Coppie potenzialmente sovrapposti: {len(overlapping_pairs)}")
+
+        n_h9 = self._add_h9_constraints_prefiltered(overlapping_pairs, tutte_formatrici)
+        print(f"    Vincoli H9 aggiunti: {n_h9}")
 
         # H12: Date escluse (già gestite nel preprocessor, ma aggiungiamo per sicurezza)
         n_h12 = 0
@@ -814,6 +828,125 @@ class OptimizerV6:
 
         return n_added
 
+    def _precompute_potentially_overlapping_pairs(self) -> List[Tuple]:
+        """
+        Pre-filtra coppie di incontri che possono potenzialmente sovrapporsi.
+
+        Due incontri possono sovrapporsi solo se:
+        1. I loro domini (settimana, giorno) hanno intersezione non vuota
+        2. Le fasce orarie si sovrappongono temporalmente
+        3. Non sono lo stesso incontro
+        4. Il secondo incontro non è già accorpato (sarà gestito separatamente)
+
+        Returns:
+            Lista di tuple (key1, key2) potenzialmente sovrapposti
+        """
+        # Identifica incontri "secondi" da escludere
+        incontri_secondi = set()
+        for (c1, c2, lab_id), acc_var in self.accorpa.items():
+            for k in range(self.num_incontri_lab.get(lab_id, 1)):
+                incontri_secondi.add((c2, lab_id, k))
+
+        # Incontri primari (esclusi i secondi)
+        incontri_primari = [key for key in self.tutti_incontri if key not in incontri_secondi]
+
+        # Pre-calcola quali fasce si sovrappongono
+        fasce_overlap = {}
+        for f1 in [1, 2, 3]:
+            for f2 in [1, 2, 3]:
+                s1, e1 = self.fascia_orari.get(f1, (480, 720))
+                s2, e2 = self.fascia_orari.get(f2, (480, 720))
+                # Due fasce si sovrappongono se s1 < e2 AND s2 < e1
+                fasce_overlap[(f1, f2)] = (s1 < e2 and s2 < e1)
+
+        # Raggruppa incontri per (settimana, giorno) possibili
+        incontri_per_day_slot = defaultdict(lambda: defaultdict(list))
+
+        for key in incontri_primari:
+            classe_id, lab_id, k = key
+            domain = self.preprocessor.get_domain_for_meeting(classe_id, lab_id, k)
+
+            # Per ogni slot valido nel dominio
+            for (week, day, fascia) in domain.get_valid_slots():
+                incontri_per_day_slot[(week, day)][fascia].append(key)
+
+        # Trova coppie che condividono almeno un (week, day) con fasce sovrapposte
+        pairs = set()
+
+        for (week, day), fasce_dict in incontri_per_day_slot.items():
+            # Controlla tutte le coppie di fasce che si sovrappongono
+            for f1, keys1 in fasce_dict.items():
+                for f2, keys2 in fasce_dict.items():
+                    if not fasce_overlap.get((f1, f2), False):
+                        continue
+
+                    # Tutte le coppie di incontri in queste fasce possono sovrapporsi
+                    for key1 in keys1:
+                        for key2 in keys2:
+                            if key1 < key2:  # Evita duplicati e stesso incontro
+                                pairs.add((key1, key2))
+
+        return list(pairs)
+
+    def _add_h9_constraints_prefiltered(self, overlapping_pairs: List[Tuple],
+                                       tutte_formatrici: List[int]) -> int:
+        """
+        Aggiunge vincoli H9 solo per le coppie pre-filtrate.
+
+        Per ogni coppia potenzialmente sovrapposta, aggiungi vincolo:
+        Se stessa formatrice E stesso giorno => fasce non sovrapposte
+
+        Args:
+            overlapping_pairs: Lista di (key1, key2) potenzialmente sovrapposti
+            tutte_formatrici: Lista di ID formatrici
+
+        Returns:
+            Numero di vincoli aggiunti
+        """
+        if not overlapping_pairs:
+            return 0
+
+        # Pre-calcola coppie di fasce che si sovrappongono
+        fasce_sovrapposte_set = set()
+        for f1 in self.fascia_orari:
+            for f2 in self.fascia_orari:
+                s1, e1 = self.fascia_orari[f1]
+                s2, e2 = self.fascia_orari[f2]
+                if s1 < e2 and s2 < e1:
+                    fasce_sovrapposte_set.add((f1, f2))
+
+        fasce_sovrapposte_list = [[f1, f2] for (f1, f2) in fasce_sovrapposte_set]
+
+        n_added = 0
+
+        for key1, key2 in overlapping_pairs:
+            # Variabile: stesso giorno (settimana + giorno)?
+            same_day = self.model.NewBoolVar(f"sd_h9_{n_added}")
+            day_slot_1 = self.settimana[key1] * 6 + self.giorno[key1]
+            day_slot_2 = self.settimana[key2] * 6 + self.giorno[key2]
+            self.model.Add(day_slot_1 == day_slot_2).OnlyEnforceIf(same_day)
+            self.model.Add(day_slot_1 != day_slot_2).OnlyEnforceIf(same_day.Not())
+
+            # Variabile: stessa formatrice?
+            same_form = self.model.NewBoolVar(f"sf_h9_{n_added}")
+            self.model.Add(self.formatrice[key1] == self.formatrice[key2]).OnlyEnforceIf(same_form)
+            self.model.Add(self.formatrice[key1] != self.formatrice[key2]).OnlyEnforceIf(same_form.Not())
+
+            # Se entrambe vere => conflitto
+            conflict = self.model.NewBoolVar(f"cf_h9_{n_added}")
+            self.model.AddBoolAnd([same_day, same_form]).OnlyEnforceIf(conflict)
+            self.model.AddBoolOr([same_day.Not(), same_form.Not()]).OnlyEnforceIf(conflict.Not())
+
+            # In caso di conflitto, vieta fasce sovrapposte
+            self.model.AddForbiddenAssignments(
+                [self.fascia[key1], self.fascia[key2]],
+                fasce_sovrapposte_list
+            ).OnlyEnforceIf(conflict)
+
+            n_added += 1
+
+        return n_added
+
     def verify_constraints(self):
         """Verifica vincoli sulla soluzione"""
         print("\n" + "=" * 60)
@@ -947,12 +1080,11 @@ class OptimizerV6:
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Optimizer V6 - Con domini pre-calcolati')
+    parser = argparse.ArgumentParser(description='Optimizer V6 - Con domini pre-calcolati e pre-filtering H9')
     parser.add_argument('--verbose', '-v', action='store_true', help='Log dettagliato solver')
     parser.add_argument('--timeout', '-t', type=int, default=300, help='Timeout solver (default: 300s)')
     parser.add_argument('--output', '-o', type=str, default='data/output/calendario_V6.csv', help='File output')
     parser.add_argument('--no-soft', action='store_true', help='Disabilita vincoli soft')
-    parser.add_argument('--max-iterations', type=int, default=10, help='Max iterazioni H9')
     args = parser.parse_args()
 
     enable_soft = not args.no_soft
@@ -970,35 +1102,22 @@ def main():
     # 2. Carica dati
     data = DataLoader("data/input").load_all()
 
-    # 3. Costruisci e risolvi modello
+    # 3. Costruisci modello (con H9 pre-filtrato)
     optimizer = OptimizerV6(data, preprocessor, verbose=args.verbose, enable_soft=enable_soft)
     optimizer.build_model()
 
-    # 4. Risolvi iterativamente
-    for iteration in range(args.max_iterations):
-        print(f"\n{'='*60}")
-        print(f"  ITERAZIONE {iteration + 1}")
-        print(f"{'='*60}")
+    # 4. Risolvi una volta (H9 già nel modello)
+    print(f"\n{'='*60}")
+    print(f"  RISOLUZIONE MODELLO")
+    print(f"{'='*60}")
 
-        if not optimizer.solve(time_limit_seconds=args.timeout):
-            print("\nNessuna soluzione trovata.")
-            sys.exit(1)
+    if not optimizer.solve(time_limit_seconds=args.timeout):
+        print("\nNessuna soluzione trovata.")
+        sys.exit(1)
 
-        overlaps = optimizer.find_h9_overlaps()
+    print(f"\n  Soluzione trovata!")
 
-        if not overlaps:
-            print(f"\n  Nessuna sovrapposizione H9! Soluzione valida.")
-            break
-
-        print(f"\n  Trovate {len(overlaps)} sovrapposizioni H9.")
-
-        if iteration == args.max_iterations - 1:
-            print(f"  Max iterazioni raggiunte. Esporto comunque.")
-            break
-
-        n_added = optimizer.add_h9_constraints_for_overlaps(overlaps)
-        print(f"  Aggiunti {n_added} vincoli. Ri-eseguo...")
-
+    # 5. Verifica e esporta
     optimizer.verify_constraints()
     optimizer.export_results(args.output)
     print("\nCompletato!")

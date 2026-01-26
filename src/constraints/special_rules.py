@@ -35,16 +35,16 @@ class CitizenScienceGapConstraint(HardConstraint):
         "Potenza", "Vasto", "Bafile", "Lanciano", "Peano Rosa"
     ])
 
-    id: str = "SP01"
-    name: str = "Citizen Science Gap"
-    category: ConstraintCategory = ConstraintCategory.SEQUENCING
-    description: str = "Citizen Science needs 1 week gap between meeting 2 and 4 (autonomous meeting)"
+    id: str = field(default="SP01", init=False)
+    name: str = field(default="Citizen Science Gap", init=False)
+    category: ConstraintCategory = field(default=ConstraintCategory.SEQUENCING, init=False)
+    description: str = field(default="Citizen Science needs 1 week gap between meeting 2 and 4 (autonomous meeting)", init=False)
 
     def validate(self, solution: Any) -> bool:
         """Check that there's a 1-week gap between meetings 2 and 4."""
         pass
 
-    def add_to_model(self, model: Any, variables: Any) -> None:
+    def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
         """Add constraint: week[meeting4] >= week[meeting2] + 2."""
         pass
 
@@ -68,16 +68,16 @@ class PartialLabMeetingsConstraint(HardConstraint):
     standard_meetings: int  # From laboratori.csv: num_incontri
     actual_meetings: int    # Reduced number for this class
 
-    id: str = "SP02"
-    name: str = "Partial Lab Meetings"
-    category: ConstraintCategory = ConstraintCategory.ASSIGNMENT
-    description: str = "Class does fewer meetings than standard for this lab"
+    id: str = field(default="SP02", init=False)
+    name: str = field(default="Partial Lab Meetings", init=False)
+    category: ConstraintCategory = field(default=ConstraintCategory.ASSIGNMENT, init=False)
+    description: str = field(default="Class does fewer meetings than standard for this lab", init=False)
 
     def validate(self, solution: Any) -> bool:
         """Check that class has exactly actual_meetings scheduled."""
         pass
 
-    def add_to_model(self, model: Any, variables: Any) -> None:
+    def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
         """Constrain number of meetings to actual_meetings."""
         pass
 
@@ -103,16 +103,16 @@ class MultiMeetingAfternoonConstraint(HardConstraint):
     num_afternoon_required: int  # How many must be afternoon
     avoid_consecutive: bool = True
 
-    id: str = "SP03"
-    name: str = "Multi Meeting Afternoon Non-Consecutive"
-    category: ConstraintCategory = ConstraintCategory.TEMPORAL
-    description: str = "Multiple afternoon meetings but not in consecutive weeks"
+    id: str = field(default="SP03", init=False)
+    name: str = field(default="Multi Meeting Afternoon Non-Consecutive", init=False)
+    category: ConstraintCategory = field(default=ConstraintCategory.TEMPORAL, init=False)
+    description: str = field(default="Multiple afternoon meetings but not in consecutive weeks", init=False)
 
     def validate(self, solution: Any) -> bool:
         """Check afternoon count and non-consecutiveness."""
         pass
 
-    def add_to_model(self, model: Any, variables: Any) -> None:
+    def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
         """Add constraints for afternoon count and spacing."""
         pass
 
@@ -136,16 +136,16 @@ class OneMeetingTimeConstraint(HardConstraint):
     time_of_day: str  # "mattina" or "pomeriggio"
     min_meetings_required: int = 1
 
-    id: str = "SP04"
-    name: str = "One Meeting Time Constraint"
-    category: ConstraintCategory = ConstraintCategory.TEMPORAL
-    description: str = "At least one meeting must be in specified time of day"
+    id: str = field(default="SP04", init=False)
+    name: str = field(default="One Meeting Time Constraint", init=False)
+    category: ConstraintCategory = field(default=ConstraintCategory.TEMPORAL, init=False)
+    description: str = field(default="At least one meeting must be in specified time of day", init=False)
 
     def validate(self, solution: Any) -> bool:
         """Check that at least one meeting is in specified time."""
         pass
 
-    def add_to_model(self, model: Any, variables: Any) -> None:
+    def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
         """Add constraint: sum(meetings_in_time) >= 1."""
         pass
 
@@ -167,16 +167,16 @@ class WeekdayTimeSpecificConstraint(HardConstraint):
     class_name: str
     weekday_constraints: dict  # {"mercoledì": "pomeriggio", "giovedì": "pomeriggio"}
 
-    id: str = "SP05"
-    name: str = "Weekday Time Specific"
-    category: ConstraintCategory = ConstraintCategory.TEMPORAL
-    description: str = "Specific weekdays only available at certain times"
+    id: str = field(default="SP05", init=False)
+    name: str = field(default="Weekday Time Specific", init=False)
+    category: ConstraintCategory = field(default=ConstraintCategory.TEMPORAL, init=False)
+    description: str = field(default="Specific weekdays only available at certain times", init=False)
 
     def validate(self, solution: Any) -> bool:
         """Check that weekday-time combinations are respected."""
         pass
 
-    def add_to_model(self, model: Any, variables: Any) -> None:
+    def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
         """Add constraints for weekday-time combinations."""
         pass
 
@@ -195,16 +195,16 @@ class IgnoreExternalLabsConstraint(HardConstraint):
     fop_labs: List[int] = field(default_factory=lambda: [4, 5, 7, 8, 9])
     external_labs: List[int] = field(default_factory=lambda: [1, 2, 3, 6, 11])  # 11 = 1.1
 
-    id: str = "SP06"
-    name: str = "Ignore External Labs"
-    category: ConstraintCategory = ConstraintCategory.ASSIGNMENT
-    description: str = "Only schedule FOP trainer labs (4, 5, 7, 8, 9), ignore external labs"
+    id: str = field(default="SP06", init=False)
+    name: str = field(default="Ignore External Labs", init=False)
+    category: ConstraintCategory = field(default=ConstraintCategory.ASSIGNMENT, init=False)
+    description: str = field(default="Only schedule FOP trainer labs (4, 5, 7, 8, 9), ignore external labs", init=False)
 
     def validate(self, solution: Any) -> bool:
         """Check that no external labs are scheduled."""
         pass
 
-    def add_to_model(self, model: Any, variables: Any) -> None:
+    def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
         """Filter out external labs from decision variables."""
         pass
 
@@ -222,15 +222,15 @@ class SaturdayOnlyMargheritaConstraint(HardConstraint):
     trainer_id: int = 4  # Margherita
     trainer_name: str = "Margherita"
 
-    id: str = "SP07"
-    name: str = "Saturday Only Margherita"
-    category: ConstraintCategory = ConstraintCategory.TEMPORAL
-    description: str = "Only Margherita can work on Saturday"
+    id: str = field(default="SP07", init=False)
+    name: str = field(default="Saturday Only Margherita", init=False)
+    category: ConstraintCategory = field(default=ConstraintCategory.TEMPORAL, init=False)
+    description: str = field(default="Only Margherita can work on Saturday", init=False)
 
     def validate(self, solution: Any) -> bool:
         """Check that only Margherita has Saturday assignments."""
         pass
 
-    def add_to_model(self, model: Any, variables: Any) -> None:
+    def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
         """Constrain Saturday assignments to Margherita only."""
         pass

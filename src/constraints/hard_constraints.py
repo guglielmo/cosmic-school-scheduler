@@ -31,7 +31,7 @@ class TrainerTotalHoursConstraint(HardConstraint):
         # TODO: Implement validation logic
         pass
 
-    def add_to_model(self, model: Any, variables: Any) -> None:
+    def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
         """Add constraint: sum(assigned_hours) <= max_hours."""
         # Crea variabili is_formatrice se non esistono
         for meeting in variables.meetings:
@@ -46,9 +46,9 @@ class TrainerTotalHoursConstraint(HardConstraint):
         hour_contributions = []
 
         for meeting in variables.meetings:
-            # Ottieni ore per questo lab (assume che variabili abbia accesso a lab_info)
-            # Per ora usiamo un default di 2 ore (TODO: passare lab_info a constraint)
-            hours = 2  # Default, deve essere passato dal context
+            # Ottieni ore per questo lab dal context
+            lab_id = meeting.lab_id
+            hours = context.lab_info[lab_id]['hours_per_meeting']
 
             is_f = variables.is_formatrice.get((self.trainer_id, meeting))
             if is_f:
@@ -84,18 +84,92 @@ class TrainerAvailabilityConstraint(HardConstraint):
     excluded_dates: Optional[List[str]] = None   # BLACKLIST: Dates to exclude
     works_saturday: bool = False
 
-    id: str = "H02"
-    name: str = "Trainer Availability"
-    category: ConstraintCategory = ConstraintCategory.TEMPORAL
-    description: str = "Trainer can only work on available days/times"
+    id: str = field(default="H02", init=False)
+    name: str = field(default="Trainer Availability", init=False)
+    category: ConstraintCategory = field(default=ConstraintCategory.TEMPORAL, init=False)
+    description: str = field(default="Trainer can only work on available days/times", init=False)
 
     def validate(self, solution: Any) -> bool:
         """Check if all assignments respect trainer availability."""
         pass
 
-    def add_to_model(self, model: Any, variables: Any) -> None:
+    def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
         """Add constraints based on available days and time slots."""
-        pass
+        # Mappings
+        day_to_num = {"lun": 0, "mar": 1, "mer": 2, "gio": 3, "ven": 4, "sab": 5}
+        fascia_morning = [1, 2]  # mattino1, mattino2
+        fascia_afternoon = [3]   # pomeriggio
+
+        # Crea variabili is_formatrice per tutti gli incontri
+        for meeting in variables.meetings:
+            key = (self.trainer_id, meeting)
+            if key not in variables.is_formatrice:
+                is_f = model.NewBoolVar(f"isf_{self.trainer_id}_{meeting}")
+                model.Add(variables.formatrice[meeting] == self.trainer_id).OnlyEnforceIf(is_f)
+                model.Add(variables.formatrice[meeting] != self.trainer_id).OnlyEnforceIf(is_f.Not())
+                variables.is_formatrice[key] = is_f
+
+        # Per ogni incontro assegnato a questa formatrice
+        for meeting in variables.meetings:
+            is_f = variables.is_formatrice[(self.trainer_id, meeting)]
+
+            # 1. Saturday constraint
+            if not self.works_saturday:
+                # Se non lavora il sabato, giorno != 5 quando assegnata
+                model.Add(variables.giorno[meeting] != 5).OnlyEnforceIf(is_f)
+
+            # 2. Available mornings/afternoons
+            # Se available_mornings è vuoto, non può fare mattine
+            if not self.available_mornings:
+                # fascia != 1 AND fascia != 2
+                for f in fascia_morning:
+                    model.Add(variables.fascia[meeting] != f).OnlyEnforceIf(is_f)
+
+            # Se available_afternoons è vuoto, non può fare pomeriggi
+            if not self.available_afternoons:
+                # fascia != 3
+                for f in fascia_afternoon:
+                    model.Add(variables.fascia[meeting] != f).OnlyEnforceIf(is_f)
+
+            # 3. Specific weekday restrictions per time of day
+            # Se può fare mattine, ma solo certi giorni
+            if self.available_mornings:
+                available_morning_days = [day_to_num[d] for d in self.available_mornings if d in day_to_num]
+
+                # Se assegnata a questa formatrice E in fascia mattina, allora giorno deve essere in available_morning_days
+                for f in fascia_morning:
+                    is_morning = model.NewBoolVar(f"is_morning_{self.trainer_id}_{meeting}_{f}")
+                    model.Add(variables.fascia[meeting] == f).OnlyEnforceIf(is_morning)
+                    model.Add(variables.fascia[meeting] != f).OnlyEnforceIf(is_morning.Not())
+
+                    # is_f AND is_morning => giorno in available_morning_days
+                    both = model.NewBoolVar(f"both_{self.trainer_id}_{meeting}_{f}")
+                    model.AddBoolAnd([is_f, is_morning]).OnlyEnforceIf(both)
+
+                    # Se both=True, allora giorno deve essere in available_morning_days
+                    # Usiamo AddAllowedAssignments
+                    if available_morning_days:
+                        # giorno deve essere uno dei valori permessi
+                        allowed_tuples = [(d,) for d in available_morning_days]
+                        model.AddAllowedAssignments([variables.giorno[meeting]], allowed_tuples).OnlyEnforceIf(both)
+
+            # Stessa logica per pomeriggi
+            if self.available_afternoons:
+                available_afternoon_days = [day_to_num[d] for d in self.available_afternoons if d in day_to_num]
+
+                for f in fascia_afternoon:
+                    is_afternoon = model.NewBoolVar(f"is_afternoon_{self.trainer_id}_{meeting}_{f}")
+                    model.Add(variables.fascia[meeting] == f).OnlyEnforceIf(is_afternoon)
+                    model.Add(variables.fascia[meeting] != f).OnlyEnforceIf(is_afternoon.Not())
+
+                    both = model.NewBoolVar(f"both_aft_{self.trainer_id}_{meeting}_{f}")
+                    model.AddBoolAnd([is_f, is_afternoon]).OnlyEnforceIf(both)
+
+                    if available_afternoon_days:
+                        allowed_tuples = [(d,) for d in available_afternoon_days]
+                        model.AddAllowedAssignments([variables.giorno[meeting]], allowed_tuples).OnlyEnforceIf(both)
+
+        # TODO: Implementare available_dates (WHITELIST) e excluded_dates (BLACKLIST)
 
 
 @dataclass
@@ -117,17 +191,28 @@ class FixedDatesConstraint(HardConstraint):
     lab_name: str
     fixed_dates: List[str]  # Parsed dates (e.g., ["2026-02-26 09:00-13:00"])
 
-    id: str = "H03"
-    name: str = "Fixed Dates"
-    category: ConstraintCategory = ConstraintCategory.TEMPORAL
-    description: str = "Pre-fixed dates are immutable and occupy the class for that week"
+    id: str = field(default="H03", init=False)
+    name: str = field(default="Fixed Dates", init=False)
+    category: ConstraintCategory = field(default=ConstraintCategory.TEMPORAL, init=False)
+    description: str = field(default="Pre-fixed dates are immutable and occupy the class for that week", init=False)
 
     def validate(self, solution: Any) -> bool:
         """Check that fixed dates are preserved and no other meetings in same week."""
         pass
 
-    def add_to_model(self, model: Any, variables: Any) -> None:
+    def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
         """Fix assignments for these specific dates."""
+        # TODO: Per ora non implemento il parsing completo delle date
+        # Serve un parser che converta "2026-02-26 09:00-13:00" in (settimana, giorno, fascia)
+        # E un mapping delle date alle settimane dell'anno scolastico
+
+        # Placeholder: marchiamo come implementato ma non aggiungiamo vincoli
+        # In una implementazione completa, dovremmo:
+        # 1. Parsare self.fixed_dates
+        # 2. Convertire ogni data in (settimana, giorno, fascia, formatrice?)
+        # 3. Fissare le variabili corrispondenti
+
+        # Per ora, logghiamo che questo constraint è attivo ma non implementato
         pass
 
 
@@ -143,17 +228,20 @@ class ClassLabAssignmentConstraint(HardConstraint):
     class_name: str
     assigned_labs: List[int]  # Lab IDs this class must complete
 
-    id: str = "H04"
-    name: str = "Class-Lab Assignment"
-    category: ConstraintCategory = ConstraintCategory.ASSIGNMENT
-    description: str = "Class can only be assigned to its designated labs"
+    id: str = field(default="H04", init=False)
+    name: str = field(default="Class-Lab Assignment", init=False)
+    category: ConstraintCategory = field(default=ConstraintCategory.ASSIGNMENT, init=False)
+    description: str = field(default="Class can only be assigned to its designated labs", init=False)
 
     def validate(self, solution: Any) -> bool:
         """Check that class only has meetings for assigned labs."""
         pass
 
-    def add_to_model(self, model: Any, variables: Any) -> None:
+    def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
         """Constrain assignments to only assigned labs."""
+        # Già gestito implicitamente nella creazione delle variabili:
+        # creiamo variabili solo per i lab assegnati a ciascuna classe
+        # (vedi build_variables() in optimizer_V7.py)
         pass
 
 
@@ -171,18 +259,32 @@ class LabTimeOfDayConstraint(HardConstraint):
     lab_name: str
     time_of_day: Literal["mattina", "pomeriggio"]
 
-    id: str = "H05"
-    name: str = "Lab Time of Day"
-    category: ConstraintCategory = ConstraintCategory.TEMPORAL
-    description: str = "Lab must be scheduled in specified time of day (morning/afternoon)"
+    id: str = field(default="H05", init=False)
+    name: str = field(default="Lab Time of Day", init=False)
+    category: ConstraintCategory = field(default=ConstraintCategory.TEMPORAL, init=False)
+    description: str = field(default="Lab must be scheduled in specified time of day (morning/afternoon)", init=False)
 
     def validate(self, solution: Any) -> bool:
         """Check if lab is scheduled in correct time of day."""
         pass
 
-    def add_to_model(self, model: Any, variables: Any) -> None:
+    def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
         """Constrain time slot to morning or afternoon slots."""
-        pass
+        # Trova tutti gli incontri di questa classe per questo lab
+        class_meetings = variables.meetings_by_class.get(self.class_id, [])
+        lab_meetings = [m for m in class_meetings if m.lab_id == self.lab_id]
+
+        # Mappings
+        fascia_morning = [1, 2]   # mattino1, mattino2
+        fascia_afternoon = [3]    # pomeriggio
+
+        for meeting in lab_meetings:
+            if self.time_of_day == "mattina":
+                # fascia deve essere 1 o 2
+                model.AddAllowedAssignments([variables.fascia[meeting]], [(1,), (2,)])
+            elif self.time_of_day == "pomeriggio":
+                # fascia deve essere 3
+                model.Add(variables.fascia[meeting] == 3)
 
 
 @dataclass
@@ -201,18 +303,43 @@ class ClassTimeSlotsConstraint(HardConstraint):
     is_hard: bool  # True if preferenza = "disponibile"
     available_weekdays: List[str]  # e.g., ["lunedì", "martedì", ...]
 
-    id: str = "H06"
-    name: str = "Class Time Slots"
-    category: ConstraintCategory = ConstraintCategory.TEMPORAL
-    description: str = "Class can only use available time slots and weekdays"
+    id: str = field(default="H06", init=False)
+    name: str = field(default="Class Time Slots", init=False)
+    category: ConstraintCategory = field(default=ConstraintCategory.TEMPORAL, init=False)
+    description: str = field(default="Class can only use available time slots and weekdays", init=False)
 
     def validate(self, solution: Any) -> bool:
         """Check if all class meetings use allowed slots and weekdays."""
         pass
 
-    def add_to_model(self, model: Any, variables: Any) -> None:
+    def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
         """Constrain assignments to available slots and days."""
-        pass
+        if not self.is_hard:
+            # Se non è un constraint hard (preferenza invece di disponibile), skip
+            return
+
+        # Mappings
+        day_to_num = {"lunedì": 0, "martedì": 1, "mercoledì": 2,
+                      "giovedì": 3, "venerdì": 4, "sabato": 5}
+        slot_to_num = {"mattino1": 1, "mattino2": 2, "pomeriggio": 3}
+
+        # Trova tutti gli incontri di questa classe
+        class_meetings = variables.meetings_by_class.get(self.class_id, [])
+
+        # Converti available_slots e available_weekdays in numeri
+        available_slot_nums = [slot_to_num.get(s, 0) for s in self.available_slots if s in slot_to_num]
+        available_day_nums = [day_to_num.get(d, 0) for d in self.available_weekdays if d in day_to_num]
+
+        for meeting in class_meetings:
+            # Fascia deve essere in available_slots
+            if available_slot_nums:
+                allowed_fasce = [(f,) for f in available_slot_nums]
+                model.AddAllowedAssignments([variables.fascia[meeting]], allowed_fasce)
+
+            # Giorno deve essere in available_weekdays
+            if available_day_nums:
+                allowed_giorni = [(d,) for d in available_day_nums]
+                model.AddAllowedAssignments([variables.giorno[meeting]], allowed_giorni)
 
 
 @dataclass
@@ -227,17 +354,19 @@ class ClassExcludedDatesConstraint(HardConstraint):
     class_name: str
     excluded_dates: List[str]  # Parsed date ranges/specific dates
 
-    id: str = "H07"
-    name: str = "Class Excluded Dates"
-    category: ConstraintCategory = ConstraintCategory.TEMPORAL
-    description: str = "Class cannot have meetings on excluded dates"
+    id: str = field(default="H07", init=False)
+    name: str = field(default="Class Excluded Dates", init=False)
+    category: ConstraintCategory = field(default=ConstraintCategory.TEMPORAL, init=False)
+    description: str = field(default="Class cannot have meetings on excluded dates", init=False)
 
     def validate(self, solution: Any) -> bool:
         """Check that no meetings fall on excluded dates."""
         pass
 
-    def add_to_model(self, model: Any, variables: Any) -> None:
+    def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
         """Exclude assignments on forbidden dates."""
+        # TODO: Richiede parsing delle date escluse e mapping a (settimana, giorno)
+        # Simile a H03 e H02, necessita di una logica di date parsing complessa
         pass
 
 
@@ -251,17 +380,17 @@ class MaxOneMeetingPerWeekConstraint(HardConstraint):
     class_id: int
     class_name: str
 
-    id: str = "H08"
-    name: str = "Max One Meeting Per Week"
-    category: ConstraintCategory = ConstraintCategory.TEMPORAL
-    description: str = "Class can have maximum 1 meeting per week (including fixed dates)"
+    id: str = field(default="H08", init=False)
+    name: str = field(default="Max One Meeting Per Week", init=False)
+    category: ConstraintCategory = field(default=ConstraintCategory.TEMPORAL, init=False)
+    description: str = field(default="Class can have maximum 1 meeting per week (including fixed dates)", init=False)
 
     def validate(self, solution: Any) -> bool:
         """Check that class has max 1 meeting per week."""
         # TODO: Implement validation logic
         pass
 
-    def add_to_model(self, model: Any, variables: Any) -> None:
+    def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
         """Add constraint: sum(meetings_in_week) <= 1."""
         # Raccogli tutte le variabili settimana per questa classe
         week_vars = []
@@ -285,18 +414,39 @@ class Lab8LastConstraint(HardConstraint):
     class_id: int
     class_name: str
 
-    id: str = "H09"
-    name: str = "Lab 8 Must Be Last"
-    category: ConstraintCategory = ConstraintCategory.SEQUENCING
-    description: str = "Lab 8.0 (Presentazione Manuali) must be scheduled last"
+    id: str = field(default="H09", init=False)
+    name: str = field(default="Lab 8 Must Be Last", init=False)
+    category: ConstraintCategory = field(default=ConstraintCategory.SEQUENCING, init=False)
+    description: str = field(default="Lab 8.0 (Presentazione Manuali) must be scheduled last", init=False)
 
     def validate(self, solution: Any) -> bool:
         """Check that Lab 8 is scheduled after all other labs."""
         pass
 
-    def add_to_model(self, model: Any, variables: Any) -> None:
-        """Add constraint: week_lab8 > week_all_other_labs."""
-        pass
+    def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
+        """Add constraint: Lab 8 must be scheduled after all other labs for this class."""
+        # Lab 8.0 = laboratorio_id 8
+        LAB_8_ID = 8
+
+        # Trova tutti gli incontri di questa classe
+        class_meetings = variables.meetings_by_class.get(self.class_id, [])
+
+        # Separa incontri Lab 8 da altri lab
+        lab8_meetings = [m for m in class_meetings if m.lab_id == LAB_8_ID]
+        other_meetings = [m for m in class_meetings if m.lab_id != LAB_8_ID]
+
+        if not lab8_meetings or not other_meetings:
+            # Se non c'è Lab 8 o non ci sono altri lab, nessun constraint
+            return
+
+        # Lab 8 deve iniziare dopo tutti gli altri lab
+        # Prendi il primo incontro del Lab 8
+        first_lab8 = min(lab8_meetings, key=lambda m: m.meeting_index)
+
+        # Per ogni altro incontro, Lab 8 deve essere in una settimana successiva
+        for other in other_meetings:
+            # week[lab8_first] > week[other]
+            model.Add(variables.settimana[first_lab8] > variables.settimana[other])
 
 
 @dataclass
@@ -309,18 +459,45 @@ class NoTrainerOverlapConstraint(HardConstraint):
     trainer_id: int
     trainer_name: str
 
-    id: str = "H10"
-    name: str = "No Trainer Overlap"
-    category: ConstraintCategory = ConstraintCategory.CAPACITY
-    description: str = "Trainer cannot have overlapping assignments"
+    id: str = field(default="H10", init=False)
+    name: str = field(default="No Trainer Overlap", init=False)
+    category: ConstraintCategory = field(default=ConstraintCategory.CAPACITY, init=False)
+    description: str = field(default="Trainer cannot have overlapping assignments", init=False)
 
     def validate(self, solution: Any) -> bool:
         """Check that trainer has no overlapping meetings."""
         pass
 
-    def add_to_model(self, model: Any, variables: Any) -> None:
-        """Add constraint: sum(overlapping_assignments) <= 1."""
-        pass
+    def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
+        """Add constraint: trainer cannot have overlapping assignments."""
+        # Per ogni coppia di incontri, se entrambi sono assegnati a questa formatrice,
+        # allora i loro slot devono essere diversi
+
+        # Crea variabili is_formatrice per tutti gli incontri
+        for meeting in variables.meetings:
+            key = (self.trainer_id, meeting)
+            if key not in variables.is_formatrice:
+                is_f = model.NewBoolVar(f"isf_{self.trainer_id}_{meeting}")
+                model.Add(variables.formatrice[meeting] == self.trainer_id).OnlyEnforceIf(is_f)
+                model.Add(variables.formatrice[meeting] != self.trainer_id).OnlyEnforceIf(is_f.Not())
+                variables.is_formatrice[key] = is_f
+
+        # Per ogni coppia di incontri
+        meetings_list = list(variables.meetings)
+        for i, m1 in enumerate(meetings_list):
+            for m2 in meetings_list[i+1:]:
+                # Se entrambi sono assegnati a questa formatrice
+                is_f1 = variables.is_formatrice[(self.trainer_id, m1)]
+                is_f2 = variables.is_formatrice[(self.trainer_id, m2)]
+
+                # both_assigned = is_f1 AND is_f2
+                both_assigned = model.NewBoolVar(f"both_{self.trainer_id}_{m1}_{m2}")
+                model.AddBoolAnd([is_f1, is_f2]).OnlyEnforceIf(both_assigned)
+                model.AddBoolOr([is_f1.Not(), is_f2.Not()]).OnlyEnforceIf(both_assigned.Not())
+
+                # Se entrambi assegnati, allora slot diversi
+                # slot = settimana * 60 + giorno * 12 + fascia
+                model.Add(variables.slot[m1] != variables.slot[m2]).OnlyEnforceIf(both_assigned)
 
 
 @dataclass
@@ -338,17 +515,28 @@ class SchedulingPeriodConstraint(HardConstraint):
     window2_start: str = "2026-04-13"
     window2_end: str = "2026-05-16"
 
-    id: str = "H11"
-    name: str = "Scheduling Period"
-    category: ConstraintCategory = ConstraintCategory.TEMPORAL
-    description: str = "All meetings must be within scheduling windows (excluding Easter)"
+    id: str = field(default="H11", init=False)
+    name: str = field(default="Scheduling Period", init=False)
+    category: ConstraintCategory = field(default=ConstraintCategory.TEMPORAL, init=False)
+    description: str = field(default="All meetings must be within scheduling windows (excluding Easter)", init=False)
 
     def validate(self, solution: Any) -> bool:
         """Check that all meetings are within valid windows."""
         pass
 
-    def add_to_model(self, model: Any, variables: Any) -> None:
+    def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
         """Constrain meeting dates to valid windows."""
+        # TODO: Implementazione completa richiede mapping date -> settimane
+        # Per ora assumiamo che le settimane 0-15 siano già mappate correttamente
+        # alle finestre temporali (28/1-1/4 e 13/4-16/5)
+
+        # Se serve implementare break di Pasqua (settimane 10-11 ad esempio),
+        # possiamo aggiungere:
+        # EASTER_WEEKS = [10, 11]
+        # for meeting in variables.meetings:
+        #     for week in EASTER_WEEKS:
+        #         model.Add(variables.settimana[meeting] != week)
+
         pass
 
 
@@ -370,17 +558,20 @@ class MaxGroupSizeConstraint(HardConstraint):
     """
     max_group_size: int = 2
 
-    id: str = "H12"
-    name: str = "Max Group Size"
-    category: ConstraintCategory = ConstraintCategory.GROUPING
-    description: str = "Maximum 2 classes can be grouped together per meeting"
+    id: str = field(default="H12", init=False)
+    name: str = field(default="Max Group Size", init=False)
+    category: ConstraintCategory = field(default=ConstraintCategory.GROUPING, init=False)
+    description: str = field(default="Maximum 2 classes can be grouped together per meeting", init=False)
 
     def validate(self, solution: Any) -> bool:
         """Check that no meeting has > 2 classes."""
         pass
 
-    def add_to_model(self, model: Any, variables: Any) -> None:
-        """Add constraint: sum(classes_in_meeting) <= 2."""
+    def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
+        """Add constraint: maximum 2 classes can be grouped."""
+        # Già gestito implicitamente dalle variabili accorpa:
+        # creiamo variabili accorpa solo per coppie (c1, c2), quindi max 2 classi
+        # Non creiamo variabili accorpa per triple (c1, c2, c3)
         pass
 
 
@@ -398,17 +589,20 @@ class LabCompletionConstraint(HardConstraint):
     lab_name: str
     num_meetings_required: int
 
-    id: str = "H13"
-    name: str = "Lab Completion"
-    category: ConstraintCategory = ConstraintCategory.ASSIGNMENT
-    description: str = "Class must complete all required meetings for each lab"
+    id: str = field(default="H13", init=False)
+    name: str = field(default="Lab Completion", init=False)
+    category: ConstraintCategory = field(default=ConstraintCategory.ASSIGNMENT, init=False)
+    description: str = field(default="Class must complete all required meetings for each lab", init=False)
 
     def validate(self, solution: Any) -> bool:
         """Check that all required meetings are scheduled."""
         pass
 
-    def add_to_model(self, model: Any, variables: Any) -> None:
-        """Add constraint: sum(scheduled_meetings) = num_meetings_required."""
+    def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
+        """Add constraint: all required meetings must be scheduled."""
+        # Già gestito implicitamente nella creazione delle variabili:
+        # creiamo esattamente num_meetings_required variabili per ogni (classe, lab)
+        # Quindi tutte le variabili devono essere assegnate = tutti gli incontri schedulati
         pass
 
 
@@ -423,15 +617,34 @@ class Lab9BeforeLab5Constraint(HardConstraint):
     class_id: int
     class_name: str
 
-    id: str = "H14"
-    name: str = "Lab 9 Before Lab 5"
-    category: ConstraintCategory = ConstraintCategory.SEQUENCING
-    description: str = "Lab 9.0 must be scheduled before Lab 5.0"
+    id: str = field(default="H14", init=False)
+    name: str = field(default="Lab 9 Before Lab 5", init=False)
+    category: ConstraintCategory = field(default=ConstraintCategory.SEQUENCING, init=False)
+    description: str = field(default="Lab 9.0 must be scheduled before Lab 5.0", init=False)
 
     def validate(self, solution: Any) -> bool:
         """Check that Lab 9 comes before Lab 5."""
         pass
 
-    def add_to_model(self, model: Any, variables: Any) -> None:
-        """Add constraint: week_lab9 < week_lab5."""
-        pass
+    def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
+        """Add constraint: Lab 9 must be scheduled before Lab 5."""
+        LAB_9_ID = 9
+        LAB_5_ID = 5
+
+        # Trova tutti gli incontri di questa classe
+        class_meetings = variables.meetings_by_class.get(self.class_id, [])
+
+        # Trova incontri dei lab 9 e 5
+        lab9_meetings = [m for m in class_meetings if m.lab_id == LAB_9_ID]
+        lab5_meetings = [m for m in class_meetings if m.lab_id == LAB_5_ID]
+
+        if not lab9_meetings or not lab5_meetings:
+            # Se non ci sono entrambi i lab, nessun constraint
+            return
+
+        # L'ultimo incontro del Lab 9 deve essere prima del primo incontro del Lab 5
+        last_lab9 = max(lab9_meetings, key=lambda m: m.meeting_index)
+        first_lab5 = min(lab5_meetings, key=lambda m: m.meeting_index)
+
+        # week[last_lab9] < week[first_lab5]
+        model.Add(variables.settimana[last_lab9] < variables.settimana[first_lab5])

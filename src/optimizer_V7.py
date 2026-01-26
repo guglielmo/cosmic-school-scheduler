@@ -86,6 +86,39 @@ class ModelVariables:
         self.meetings_by_trainer: Dict[int, List[MeetingKey]] = defaultdict(list)
 
 
+@dataclass
+class ConstraintContext:
+    """
+    Context object che fornisce ai constraints l'accesso ai dati globali.
+
+    Passato a add_to_model() e add_to_objective() per evitare
+    di passare 10+ parametri separati.
+    """
+    # Info sui laboratori
+    lab_info: Dict[int, Dict]  # lab_id -> {name, num_meetings, hours_per_meeting}
+
+    # Info sulle classi
+    class_info: Dict[int, Dict]  # class_id -> {name, school_id, year, priority}
+
+    # Info sulle formatrici
+    trainer_info: Dict[int, Dict]  # trainer_id -> {name, max_hours}
+
+    # Info sulle scuole
+    school_info: Dict[int, Dict]  # school_id -> {name, city}
+
+    # Lab assignments
+    labs_per_class: Dict[int, List[int]]  # class_id -> [lab_ids]
+
+    # Dataframes originali (per accesso a colonne complesse)
+    data: Dict[str, pd.DataFrame]
+
+    # Costanti temporali
+    num_settimane: int = 16
+    num_giorni: int = 6
+    num_fasce: int = 3
+    num_formatrici: int = 4
+
+
 class OptimizerV7:
     """
     Optimizer basato su constraints formali.
@@ -146,6 +179,9 @@ class OptimizerV7:
         self.labs_per_class: Dict[int, List[int]] = defaultdict(list)
         self.num_meetings_per_lab: Dict[int, int] = {}
 
+        # Context per constraints (creato dopo load_data)
+        self.context: ConstraintContext = None
+
         self._log("=" * 80)
         self._log("  OPTIMIZER V7 - Constraint-Based Scheduler")
         self._log("=" * 80)
@@ -178,6 +214,20 @@ class OptimizerV7:
 
         # Costruisci mappings
         self._build_mappings()
+
+        # Crea context per constraints
+        self.context = ConstraintContext(
+            lab_info=self.lab_info,
+            class_info=self.class_info,
+            trainer_info=self.trainer_info,
+            school_info=self.school_info,
+            labs_per_class=self.labs_per_class,
+            data=self.data,
+            num_settimane=self.NUM_SETTIMANE,
+            num_giorni=self.NUM_GIORNI,
+            num_fasce=self.NUM_FASCE,
+            num_formatrici=self.NUM_FORMATRICI
+        )
 
         self._log(f"\n  Riepilogo:")
         self._log(f"    {len(self.class_info)} classi")
@@ -304,8 +354,64 @@ class OptimizerV7:
 
                     num_vars += 5  # 5 variabili per incontro
 
+        # Crea variabili accorpamento per coppie compatibili
+        self._log(f"\n  Creazione variabili accorpamento...")
+        num_accorpa = 0
+
+        # Trova coppie compatibili
+        compatible_pairs = []
+        classes = list(self.class_info.keys())
+
+        for i, c1 in enumerate(classes):
+            for c2 in classes[i+1:]:  # c1 < c2 per evitare duplicati
+                # Verifica compatibilità: stessa scuola
+                if self.class_info[c1]['school_id'] == self.class_info[c2]['school_id']:
+                    # Trova lab comuni
+                    labs_c1 = set(self.labs_per_class[c1])
+                    labs_c2 = set(self.labs_per_class[c2])
+                    common_labs = labs_c1 & labs_c2
+
+                    for lab in common_labs:
+                        compatible_pairs.append((c1, c2, lab))
+
+        # Crea variabili accorpa e vincoli di sincronizzazione
+        for c1, c2, lab in compatible_pairs:
+            # Crea variabile BoolVar per questa coppia/lab
+            accorpa_var = self.model.NewBoolVar(f"acc_{c1}_{c2}_{lab}")
+            self.variables.accorpa[(c1, c2, lab)] = accorpa_var
+            num_accorpa += 1
+
+            # Vincoli di sincronizzazione: se accorpa=1, devono avere stesso slot
+            # Per ogni coppia di incontri (k-esimo incontro di c1 e c2 per questo lab)
+            num_meetings = self.num_meetings_per_lab.get(lab, 1)
+
+            for k in range(num_meetings):
+                key_c1 = MeetingKey(c1, lab, k)
+                key_c2 = MeetingKey(c2, lab, k)
+
+                # Se entrambi gli incontri esistono
+                if key_c1 in self.variables.settimana and key_c2 in self.variables.settimana:
+                    # Se accorpa=1, allora settimana, giorno, fascia devono essere uguali
+                    self.model.Add(
+                        self.variables.settimana[key_c1] == self.variables.settimana[key_c2]
+                    ).OnlyEnforceIf(accorpa_var)
+
+                    self.model.Add(
+                        self.variables.giorno[key_c1] == self.variables.giorno[key_c2]
+                    ).OnlyEnforceIf(accorpa_var)
+
+                    self.model.Add(
+                        self.variables.fascia[key_c1] == self.variables.fascia[key_c2]
+                    ).OnlyEnforceIf(accorpa_var)
+
+                    # Anche la formatrice deve essere la stessa
+                    self.model.Add(
+                        self.variables.formatrice[key_c1] == self.variables.formatrice[key_c2]
+                    ).OnlyEnforceIf(accorpa_var)
+
+        self._log(f"  ✓ {num_accorpa} variabili accorpamento create")
         self._log(f"  ✓ {len(self.variables.meetings)} incontri")
-        self._log(f"  ✓ {num_vars} variabili create")
+        self._log(f"  ✓ {num_vars + num_accorpa} variabili totali")
 
         # TODO: Variabili accorpamento (da implementare)
         self._log(f"  ⏸ Variabili accorpamento: da implementare")
@@ -320,7 +426,7 @@ class OptimizerV7:
 
             try:
                 # Chiama add_to_model() del constraint
-                constraint.add_to_model(self.model, self.variables)
+                constraint.add_to_model(self.model, self.variables, self.context)
                 self._log(f"    ✓ Applicato")
             except NotImplementedError:
                 self._log(f"    ⏸ Non ancora implementato")
@@ -340,7 +446,7 @@ class OptimizerV7:
 
             try:
                 # Chiama add_to_objective() del constraint
-                term = constraint.add_to_objective(self.model, self.variables)
+                term = constraint.add_to_objective(self.model, self.variables, self.context)
                 if term is not None:
                     objective_terms.append(weight * term)
                     self._log(f"    ✓ Aggiunto (peso={weight})")

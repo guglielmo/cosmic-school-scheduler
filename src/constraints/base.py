@@ -98,13 +98,14 @@ class HardConstraint(Constraint):
         pass
 
     @abstractmethod
-    def add_to_model(self, model: Any, variables: Any) -> None:
+    def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
         """
         Add this constraint to the CP-SAT model.
 
         Args:
             model: OR-Tools CP-SAT model
             variables: Dictionary of decision variables
+            context: ConstraintContext with global data access
         """
         pass
 
@@ -134,13 +135,14 @@ class SoftConstraint(Constraint):
         pass
 
     @abstractmethod
-    def add_to_objective(self, model: Any, variables: Any) -> Any:
+    def add_to_objective(self, model: Any, variables: Any, context: Any) -> Any:
         """
         Add this constraint's contribution to the objective function.
 
         Args:
             model: OR-Tools CP-SAT model
             variables: Dictionary of decision variables
+            context: ConstraintContext with global data access
 
         Returns:
             Objective term (expression to be minimized/maximized)
