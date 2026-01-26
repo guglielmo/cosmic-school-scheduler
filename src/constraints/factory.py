@@ -73,6 +73,31 @@ class ConstraintFactory:
                 return yaml.safe_load(f)
         return {}
 
+    def is_constraint_enabled(self, constraint_id: str) -> bool:
+        """
+        Check if a constraint is enabled in configuration.
+
+        Args:
+            constraint_id: Constraint ID (e.g., "H10", "S01", "SP01")
+
+        Returns:
+            True if enabled, False if disabled
+        """
+        enabled_config = self.config.get('enabled_constraints', {})
+
+        # Map constraint ID to config key
+        # H10 -> H10_no_trainer_overlap
+        # S01 -> S01_maximize_grouping
+        # SP01 -> SP01_citizen_science_gap
+
+        # Find matching key in config
+        for key, value in enabled_config.items():
+            if key.startswith(constraint_id + '_') or key == constraint_id:
+                return bool(value)
+
+        # Default to enabled if not specified
+        return True
+
     def _load_csv(self, filename: str) -> List[Dict[str, str]]:
         """Load CSV file and return list of dictionaries."""
         filepath = self.data_dir / filename
@@ -175,7 +200,21 @@ class ConstraintFactory:
         constraints.extend(self._build_global_constraints())
         constraints.extend(self._build_special_constraints())
 
-        return constraints
+        # Filter out disabled constraints
+        enabled_constraints = []
+        disabled_count = 0
+
+        for constraint in constraints:
+            if self.is_constraint_enabled(constraint.id):
+                enabled_constraints.append(constraint)
+            else:
+                disabled_count += 1
+                print(f"  ⏸  Constraint {constraint.id} ({constraint.name}) is DISABLED")
+
+        if disabled_count > 0:
+            print(f"  ⚠  {disabled_count} constraints disabled via configuration")
+
+        return enabled_constraints
 
     def _build_trainer_constraints(self) -> List[Constraint]:
         """Build constraints related to trainers."""

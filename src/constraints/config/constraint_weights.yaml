@@ -6,6 +6,46 @@
 # Positive weight = penalty (minimize violations)
 # Negative weight = bonus (maximize occurrences)
 
+# CONSTRAINT ENABLE/DISABLE
+# Set to false to disable a constraint (useful for debugging)
+enabled_constraints:
+  # Hard Constraints
+  H01_trainer_total_hours: true
+  H02_trainer_availability: true
+  H03_fixed_dates: true
+  H04_class_lab_assignment: true
+  H05_lab_time_of_day: true
+  H06_class_time_slots: true
+  H07_class_excluded_dates: true
+  H08_max_one_meeting_per_week: true
+  H09_lab8_must_be_last: true
+  H10_no_trainer_overlap: true  # <-- Can disable to test if this is causing slowness
+  H11_scheduling_period: true
+  H12_max_group_size: true
+  H13_lab_completion: true
+  H14_lab9_before_lab5: true
+
+  # Soft Constraints
+  S01_maximize_grouping: true
+  S02_trainer_continuity: true
+  S03_trainer_weekly_hours: true
+  S04_trainer_time_preference: true
+  S05_preferred_grouping: true
+  S06_lab_sequence: true
+  S07_fifth_year_priority: true
+  S08_time_slot_variation: true
+  S09_balance_trainer_load: true
+  S10_minimize_late_may: true
+
+  # Special Rules
+  SP01_citizen_science_gap: true
+  SP02_partial_lab_meetings: true
+  SP03_multi_meeting_afternoon: true
+  SP04_one_meeting_time: true
+  SP05_weekday_time_specific: true
+  SP06_ignore_external_labs: true
+  SP07_saturday_only_margherita: true
+
 objective_function:
   # S01: Maximize grouping (CRITICAL for budget)
   # Negative = bonus for each grouping
