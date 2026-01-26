@@ -1,0 +1,17 @@
+# Requirements for constraint system
+# Install with: pip install -r requirements-constraints.txt
+
+# Required for constraint modeling
+pyyaml>=6.0
+
+# For type hints and validation (optional but recommended)
+pydantic>=2.0  # Alternative to dataclasses with validation
+
+# For testing constraints
+pytest>=7.0
+pytest-cov>=4.0
+
+# Already in main requirements (from optimizer)
+# pandas>=2.0
+# openpyxl>=3.1
+# ortools>=9.7

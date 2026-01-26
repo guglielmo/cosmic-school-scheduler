@@ -1,0 +1,39 @@
+#!/bin/bash
+#
+# Analyze constraints for Cosmic School scheduler
+#
+# Usage: ./analyze-constraints [options]
+#
+# Options:
+#   --export     Export constraints to JSON
+#   --summary    Show summary only
+#   --help       Show this help
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
+
+# Check if virtualenv exists, create if not
+if [ ! -d "venv" ]; then
+    echo "Creating virtual environment..."
+    python3 -m venv venv
+fi
+
+# Activate virtualenv
+source venv/bin/activate
+
+# Install/update dependencies
+echo "Installing dependencies..."
+pip install -q --upgrade pip
+pip install -q -r requirements-constraints.txt
+
+# Run the example script
+echo ""
+echo "Running constraint analysis..."
+echo ""
+
+python3 examples/constraint_example.py "$@"
+
+echo ""
+echo "Done!"

@@ -1,0 +1,156 @@
+# Constraint Weights Configuration for Cosmic School Scheduler
+#
+# This file defines weights for the objective function.
+# The optimizer will MINIMIZE the total penalty.
+#
+# Positive weight = penalty (minimize violations)
+# Negative weight = bonus (maximize occurrences)
+
+objective_function:
+  # S01: Maximize grouping (CRITICAL for budget)
+  # Negative = bonus for each grouping
+  # With grouping: 664h needed vs 708h budget (+44h margin)
+  # Without: 926h needed (exceeds budget)
+  maximize_grouping: 20  # High bonus per grouped meeting
+
+  # S02: Trainer continuity per class
+  # Penalty for each trainer change
+  trainer_continuity: 10  # High penalty
+
+  # S03: Weekly hours target for trainers
+  # Penalty for deviation from target weekly hours
+  trainer_weekly_hours: 3  # Medium penalty
+
+  # S04: Trainer time preference (morning/afternoon/mixed)
+  # Penalty for assignments not matching preference
+  trainer_time_preference: 1  # Low penalty
+
+  # S05: Preferred class groupings
+  # Bonus when preferred partners are grouped together
+  preferred_grouping: 5  # Medium bonus
+
+  # S06: Lab sequence preference
+  # Bonus for respecting ideal sequence: 7 → 4 → 5
+  lab_sequence: 2  # Small bonus
+
+  # S07: Fifth year priority
+  # Penalty for late scheduling of 5th year classes
+  # Increases for May scheduling
+  fifth_year_priority: 3  # Medium penalty
+
+  # S08: Time slot variation
+  # Penalty for same time slot in consecutive weeks
+  time_slot_variation: 2  # Small penalty
+
+  # S09: Balance trainer load
+  # Penalty for high variance in weekly hours
+  balance_trainer_load: 2  # Small penalty
+
+  # S10: Minimize late May scheduling
+  # General preference for earlier scheduling
+  minimize_late_may: 1  # Very small penalty
+
+# Special rules configuration
+special_rules:
+  # Citizen Science (Lab 4.0) special handling
+  citizen_science:
+    gap_weeks: 1  # Weeks between meeting 2 and 4 (autonomous meeting)
+    applicable_schools:
+      - "Potenza"
+      - "Vasto"
+      - "Bafile"
+      - "Lanciano"
+      - "Peano Rosa"
+
+  # Lab 8.0 (Presentazione Manuali) must be last
+  lab_8_position: "last"
+
+  # Lab 9.0 must come before Lab 5.0
+  lab_9_before_5: true
+
+  # Only FOP trainer labs (4, 5, 7, 8, 9)
+  # Ignore external partner labs (1, 2, 3, 6, 11)
+  fop_labs: [4, 5, 7, 8, 9]
+  external_labs: [1, 2, 3, 6, 11]
+
+  # Saturday work
+  saturday_trainer: "Margherita"  # Only Margherita can work Saturday
+
+# Scheduling windows
+scheduling_windows:
+  - start: "2026-01-28"
+    end: "2026-04-01"
+    description: "Pre-Easter period"
+
+  - start: "2026-04-13"
+    end: "2026-05-16"
+    description: "Post-Easter period"
+
+# Grouping configuration
+grouping:
+  max_classes_per_meeting: 2
+
+  # Conditions for grouping two classes
+  grouping_conditions:
+    - same_school
+    - same_lab
+    - same_trainer  # If pre-assigned
+    - same_time_slot  # week + day + time
+    - compatible_time_slots  # Both classes can use the slot
+    - compatible_dates  # Both classes available
+
+# Budget information (for reference and validation)
+budget:
+  total_hours: 708
+
+  trainers:
+    - name: "Anita"
+      hours: 292
+    - name: "Andreea"
+      hours: 128
+    - name: "Ida"
+      hours: 160
+    - name: "Margherita"
+      hours: 128
+
+  estimated_requirements:
+    with_max_grouping: 664  # 129 groups of 2 + 46 single = 664h
+    without_grouping: 926   # All single classes
+    margin: 44              # 708 - 664 = +44h safety margin
+
+# Penalty scaling factors (optional, for fine-tuning)
+scaling:
+  # Multiply all soft constraint penalties by this factor
+  global_soft_multiplier: 1.0
+
+  # Scale penalties based on constraint category
+  category_multipliers:
+    grouping: 1.5      # Grouping is extra important
+    temporal: 1.0
+    capacity: 1.0
+    sequencing: 0.8
+    assignment: 1.0
+
+# Validation thresholds
+validation:
+  # Maximum allowed violation of soft constraints
+  # (as percentage of total possible penalty)
+  max_soft_violation_percent: 30
+
+  # Minimum grouping percentage to stay within budget
+  min_grouping_percent: 70  # At least 70% of opportunities grouped
+
+# Output preferences
+output:
+  # Sort solutions by these criteria (in order)
+  solution_ranking:
+    - feasibility  # Hard constraints satisfied
+    - grouping_count  # Number of grouped meetings
+    - total_penalty  # Overall objective value
+    - fifth_year_completion  # How early 5th years finish
+
+  # Export constraint violations in solution report
+  export_violations: true
+
+  # Include constraint satisfaction statistics
+  include_statistics: true
