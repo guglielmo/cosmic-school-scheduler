@@ -1,0 +1,152 @@
+#!/bin/bash
+# Analizza i domini preprocessati
+
+cd "$(dirname "$0")"
+
+if [ ! -d ".venv" ]; then
+    echo "Creazione virtualenv..."
+    uv venv
+    .venv/bin/pip install pandas openpyxl ortools pyyaml
+fi
+
+.venv/bin/python - << 'EOF'
+import sys
+sys.path.insert(0, 'src')
+
+from domain_preprocessor import DomainPreprocessor
+from collections import defaultdict
+
+print("=" * 70)
+print("ANALISI DETTAGLIATA DOMINI")
+print("=" * 70)
+
+pp = DomainPreprocessor()
+pp.load_data()
+pp.compute_class_domains()
+pp.compute_grouping_pairs()
+
+# 1. Analisi capacità temporale
+print("\n1. CAPACITÀ TEMPORALE")
+print("-" * 50)
+
+total_meetings = 0
+for class_id, labs in pp.labs_per_classe.items():
+    for lab_id in labs:
+        total_meetings += pp.num_incontri_lab.get(lab_id, 1)
+
+print(f"   Incontri totali da schedulare: {total_meetings}")
+
+# Calcola settimane disponibili medie
+avg_weeks = sum(len(cd.effective_domain.weeks) for cd in pp.class_domains.values()) / len(pp.class_domains)
+print(f"   Settimane disponibili medie per classe: {avg_weeks:.1f}")
+
+# Incontri per classe media
+avg_meetings = total_meetings / len(pp.class_domains)
+print(f"   Incontri medi per classe: {avg_meetings:.1f}")
+
+if avg_meetings > avg_weeks:
+    print(f"   ⚠️  ATTENZIONE: Incontri > settimane disponibili (margin stretto)")
+else:
+    margin = avg_weeks - avg_meetings
+    print(f"   ✓ Margine medio: {margin:.1f} settimane extra per classe")
+
+# 2. Analisi accorpamenti
+print("\n2. ANALISI ACCORPAMENTI")
+print("-" * 50)
+
+# Per scuola
+pairs_per_school = defaultdict(list)
+for p in pp.grouping_pairs:
+    cd = pp.class_domains[p.class1_id]
+    pairs_per_school[cd.school_id].append(p)
+
+print("   Coppie per scuola:")
+for school_id in sorted(pairs_per_school.keys()):
+    pairs = pairs_per_school[school_id]
+    avg_score = sum(p.compatibility_score for p in pairs) / len(pairs)
+    school_name = pp.scuole[pp.scuole['scuola_id'] == school_id]['nome'].iloc[0][:30]
+    print(f"     {school_name}: {len(pairs)} coppie, compat. media {avg_score:.0%}")
+
+# Potenziale risparmio con accorpamenti
+print("\n   Potenziale risparmio ore con accorpamenti:")
+ore_per_lab = {}
+for _, lab in pp.laboratori.iterrows():
+    ore_per_lab[lab['laboratorio_id']] = int(lab['ore_per_incontro']) * int(lab['num_incontri'])
+
+# Stima: se ogni coppia compatibile viene accorpata
+max_savings = 0
+for p in pp.grouping_pairs:
+    max_savings += ore_per_lab.get(p.lab_id, 4)  # Risparmio = ore della seconda classe
+
+print(f"     Massimo risparmio teorico: {max_savings}h")
+print(f"     (richiede che TUTTE le coppie siano accorpate)")
+
+# Budget
+budget = 292 + 128 + 160 + 128  # Da formatrici.csv
+ore_totali = sum(ore_per_lab.get(lab_id, 4) for labs in pp.labs_per_classe.values() for lab_id in labs)
+print(f"     Ore totali senza accorpamento: {ore_totali}h")
+print(f"     Budget disponibile: {budget}h")
+print(f"     Ore con max accorpamento: ~{ore_totali - max_savings}h")
+
+# 3. Classi problematiche
+print("\n3. CLASSI PROBLEMATICHE")
+print("-" * 50)
+
+problematic = []
+for cd in pp.class_domains.values():
+    num_meetings = sum(pp.num_incontri_lab.get(lab_id, 1) for lab_id in pp.labs_per_classe[cd.class_id])
+    available_weeks = len(cd.effective_domain.weeks)
+    margin = available_weeks - num_meetings
+
+    if margin <= 2:
+        problematic.append((cd.class_name, cd.school_id, num_meetings, available_weeks, margin))
+
+problematic.sort(key=lambda x: x[4])
+
+if problematic:
+    print("   Classi con margine <= 2 settimane:")
+    for name, school_id, meetings, weeks, margin in problematic[:15]:
+        school_name = pp.scuole[pp.scuole['scuola_id'] == school_id]['nome'].iloc[0][:20]
+        print(f"     {name} ({school_name}): {meetings} inc, {weeks} sett, margine={margin}")
+else:
+    print("   ✓ Tutte le classi hanno margine > 2 settimane")
+
+# 4. Distribuzione fasce orarie
+print("\n4. DISTRIBUZIONE FASCE ORARIE")
+print("-" * 50)
+
+fasce_count = defaultdict(int)
+for cd in pp.class_domains.values():
+    for (week, day), fasce in cd.effective_domain.slots_per_day.items():
+        for f in fasce:
+            fasce_count[f] += 1
+
+total_slots = sum(fasce_count.values())
+print("   Disponibilità per fascia:")
+fascia_names = {1: 'mattino1', 2: 'mattino2', 3: 'pomeriggio'}
+for f_id in sorted(fasce_count.keys()):
+    pct = 100 * fasce_count[f_id] / total_slots
+    print(f"     {fascia_names.get(f_id, f_id)}: {fasce_count[f_id]} slot ({pct:.1f}%)")
+
+# 5. Suggerimenti
+print("\n5. SUGGERIMENTI OTTIMIZZAZIONE")
+print("-" * 50)
+
+if len(problematic) > 5:
+    print("   - Molte classi hanno margini stretti: considera di rilassare vincoli")
+
+if max_savings < ore_totali - budget:
+    print(f"   - ⚠️  Anche con max accorpamenti, ore ({ore_totali - max_savings}) > budget ({budget})")
+    print("     Verifica fattibilità del problema!")
+
+if sum(1 for p in pp.grouping_pairs if p.compatibility_score < 0.5) > len(pp.grouping_pairs) * 0.2:
+    print("   - Molte coppie hanno bassa compatibilità: accorpamenti difficili")
+
+print("\n   Raccomandazioni per il solver:")
+print("   1. Usa i domini pre-calcolati per ridurre variabili")
+print("   2. Filtra coppie accorpamento con compatibilità < 50%")
+print("   3. Prioritizza classi con margine stretto")
+print("   4. Considera decomposizione: prima settimane, poi slot")
+
+print("\n" + "=" * 70)
+EOF
