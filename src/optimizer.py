@@ -43,14 +43,6 @@ from constraints import (
 )
 from date_utils import DateMapper
 
-    def __eq__(self, other):
-        return (self.class_id == other.class_id and
-                self.lab_id == other.lab_id and
-                self.meeting_index == other.meeting_index)
-
-    def __repr__(self):
-        return f"M({self.class_id},{self.lab_id},{self.meeting_index})"
-
 
 class ModelVariables:
     """Container per tutte le variabili del modello"""
