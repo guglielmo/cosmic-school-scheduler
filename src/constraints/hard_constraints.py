@@ -560,18 +560,15 @@ class NoTrainerOverlapConstraint(HardConstraint):
         meetings_list = list(variables.meetings)
         for i, m1 in enumerate(meetings_list):
             for m2 in meetings_list[i+1:]:
-                # Se entrambi sono assegnati a questa formatrice
+                # Se entrambi sono assegnati a questa formatrice → slot diversi
+                # OTTIMIZZAZIONE: usa OnlyEnforceIf([is_f1, is_f2]) direttamente
+                # invece di creare variabile intermedia both_assigned
                 is_f1 = variables.is_formatrice[(self.trainer_id, m1)]
                 is_f2 = variables.is_formatrice[(self.trainer_id, m2)]
 
-                # both_assigned = is_f1 AND is_f2
-                both_assigned = model.NewBoolVar(f"both_{self.trainer_id}_{m1}_{m2}")
-                model.AddBoolAnd([is_f1, is_f2]).OnlyEnforceIf(both_assigned)
-                model.AddBoolOr([is_f1.Not(), is_f2.Not()]).OnlyEnforceIf(both_assigned.Not())
-
-                # Se entrambi assegnati, allora slot diversi
+                # Se is_f1 AND is_f2 sono entrambi true, allora slot diversi
                 # slot = settimana * 60 + giorno * 12 + fascia
-                model.Add(variables.slot[m1] != variables.slot[m2]).OnlyEnforceIf(both_assigned)
+                model.Add(variables.slot[m1] != variables.slot[m2]).OnlyEnforceIf([is_f1, is_f2])
 
 
 @dataclass(kw_only=True)

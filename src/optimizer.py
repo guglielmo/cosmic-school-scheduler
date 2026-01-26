@@ -392,17 +392,11 @@ class Optimizer:
 
                 # Se entrambi gli incontri esistono
                 if key_c1 in self.variables.settimana and key_c2 in self.variables.settimana:
-                    # Se accorpa=1, allora settimana, giorno, fascia devono essere uguali
+                    # Se accorpa=1, allora slot e formatrice devono essere uguali
+                    # OTTIMIZZAZIONE: usa variabile slot invece di 3 constraints separati
+                    # slot = settimana * 60 + giorno * 12 + fascia (già calcolato)
                     self.model.Add(
-                        self.variables.settimana[key_c1] == self.variables.settimana[key_c2]
-                    ).OnlyEnforceIf(accorpa_var)
-
-                    self.model.Add(
-                        self.variables.giorno[key_c1] == self.variables.giorno[key_c2]
-                    ).OnlyEnforceIf(accorpa_var)
-
-                    self.model.Add(
-                        self.variables.fascia[key_c1] == self.variables.fascia[key_c2]
+                        self.variables.slot[key_c1] == self.variables.slot[key_c2]
                     ).OnlyEnforceIf(accorpa_var)
 
                     # Anche la formatrice deve essere la stessa
