@@ -1,0 +1,23 @@
+#!/bin/bash
+# Optimizer V6 - Con domini pre-calcolati
+#
+# Uso: ./optimize-v6 [opzioni]
+#   -v, --verbose    Log dettagliato solver
+#   -t, --timeout N  Timeout in secondi (default: 300)
+#   --no-soft        Disabilita vincoli soft
+#
+
+cd "$(dirname "$0")"
+
+# Crea virtualenv se non esiste
+if [ ! -d ".venv" ]; then
+    echo "Creazione virtualenv con uv..."
+    uv venv
+    .venv/bin/pip install pandas openpyxl ortools pyyaml
+fi
+
+# Crea directory output se non esiste
+mkdir -p data/output
+
+# Esegui optimizer
+exec .venv/bin/python src/optimizer_V6.py "$@"
