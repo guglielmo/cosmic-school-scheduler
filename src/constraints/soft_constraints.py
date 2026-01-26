@@ -9,7 +9,7 @@ from typing import List, Optional, Literal, Any
 from .base import SoftConstraint, ConstraintCategory
 
 
-@dataclass
+@dataclass(kw_only=True)
 class MaximizeGroupingConstraint(SoftConstraint):
     """
     S01: Maximize grouping of classes (HIGHEST PRIORITY).
@@ -49,7 +49,7 @@ class MaximizeGroupingConstraint(SoftConstraint):
         return sum(variables.accorpa.values())
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TrainerContinuityConstraint(SoftConstraint):
     """
     S02: Prefer same trainer for all labs of a class.
@@ -100,7 +100,7 @@ class TrainerContinuityConstraint(SoftConstraint):
         return -sum(penalty_terms) if penalty_terms else 0
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TrainerWeeklyHoursConstraint(SoftConstraint):
     """
     S03: Try to match average weekly hours target.
@@ -133,7 +133,7 @@ class TrainerWeeklyHoursConstraint(SoftConstraint):
         pass
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TrainerTimePreferenceConstraint(SoftConstraint):
     """
     S04: Respect trainer's time preference (morning/afternoon/mixed).
@@ -207,7 +207,7 @@ class TrainerTimePreferenceConstraint(SoftConstraint):
         return -sum(penalty_terms) if penalty_terms else 0
 
 
-@dataclass
+@dataclass(kw_only=True)
 class PreferredGroupingConstraint(SoftConstraint):
     """
     S05: Prefer grouping of classes with preferred partners.
@@ -250,7 +250,7 @@ class PreferredGroupingConstraint(SoftConstraint):
         return sum(bonus_terms) if bonus_terms else 0
 
 
-@dataclass
+@dataclass(kw_only=True)
 class LabSequenceConstraint(SoftConstraint):
     """
     S06: Prefer ideal sequence of labs.
@@ -315,7 +315,7 @@ class LabSequenceConstraint(SoftConstraint):
         return -sum(penalty_terms) if penalty_terms else 0
 
 
-@dataclass
+@dataclass(kw_only=True)
 class FifthYearPriorityConstraint(SoftConstraint):
     """
     S07: Fifth-year classes should finish earlier.
@@ -378,7 +378,7 @@ class FifthYearPriorityConstraint(SoftConstraint):
         return -sum(penalty_terms) if penalty_terms else 0
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TimeSlotVariationConstraint(SoftConstraint):
     """
     S08: Avoid same time slot in consecutive weeks.
@@ -451,7 +451,7 @@ class TimeSlotVariationConstraint(SoftConstraint):
         return -sum(penalty_terms) if penalty_terms else 0
 
 
-@dataclass
+@dataclass(kw_only=True)
 class BalanceTrainerLoadConstraint(SoftConstraint):
     """
     S09: Balance trainer workload across weeks.
@@ -482,7 +482,7 @@ class BalanceTrainerLoadConstraint(SoftConstraint):
         pass
 
 
-@dataclass
+@dataclass(kw_only=True)
 class MinimizeLateMaySchedulingConstraint(SoftConstraint):
     """
     S10: Generally prefer earlier scheduling over later.

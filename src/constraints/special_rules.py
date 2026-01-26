@@ -9,7 +9,7 @@ from typing import List, Any
 from .base import HardConstraint, ConstraintCategory
 
 
-@dataclass
+@dataclass(kw_only=True)
 class CitizenScienceGapConstraint(HardConstraint):
     """
     SP01: Citizen Science Lab 4.0 has 5 meetings, but 3rd is autonomous.
@@ -49,7 +49,7 @@ class CitizenScienceGapConstraint(HardConstraint):
         pass
 
 
-@dataclass
+@dataclass(kw_only=True)
 class PartialLabMeetingsConstraint(HardConstraint):
     """
     SP02: Some classes do only partial meetings for a lab.
@@ -82,7 +82,7 @@ class PartialLabMeetingsConstraint(HardConstraint):
         pass
 
 
-@dataclass
+@dataclass(kw_only=True)
 class MultiMeetingAfternoonConstraint(HardConstraint):
     """
     SP03: Multiple meetings must be in afternoon but not consecutive weeks.
@@ -117,7 +117,7 @@ class MultiMeetingAfternoonConstraint(HardConstraint):
         pass
 
 
-@dataclass
+@dataclass(kw_only=True)
 class OneMeetingTimeConstraint(HardConstraint):
     """
     SP04: One meeting of a lab must be at specific time of day.
@@ -150,7 +150,7 @@ class OneMeetingTimeConstraint(HardConstraint):
         pass
 
 
-@dataclass
+@dataclass(kw_only=True)
 class WeekdayTimeSpecificConstraint(HardConstraint):
     """
     SP05: Some weekdays only allow specific times (morning/afternoon).
@@ -181,7 +181,7 @@ class WeekdayTimeSpecificConstraint(HardConstraint):
         pass
 
 
-@dataclass
+@dataclass(kw_only=True)
 class IgnoreExternalLabsConstraint(HardConstraint):
     """
     SP06: Ignore labs managed by external partners (GSSI/GST/LNGS).
@@ -209,7 +209,7 @@ class IgnoreExternalLabsConstraint(HardConstraint):
         pass
 
 
-@dataclass
+@dataclass(kw_only=True)
 class SaturdayOnlyMargheritaConstraint(HardConstraint):
     """
     SP07: Only Margherita can work on Saturday.

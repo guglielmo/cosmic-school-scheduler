@@ -9,7 +9,7 @@ from typing import List, Optional, Literal, Any
 from .base import HardConstraint, ConstraintCategory
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TrainerTotalHoursConstraint(HardConstraint):
     """
     H01: Total hours budget for each trainer must be respected.
@@ -61,7 +61,7 @@ class TrainerTotalHoursConstraint(HardConstraint):
             model.Add(total_hours <= self.max_hours)
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TrainerAvailabilityConstraint(HardConstraint):
     """
     H02: Trainer temporal availability must be respected.
@@ -172,7 +172,7 @@ class TrainerAvailabilityConstraint(HardConstraint):
         # TODO: Implementare available_dates (WHITELIST) e excluded_dates (BLACKLIST)
 
 
-@dataclass
+@dataclass(kw_only=True)
 class FixedDatesConstraint(HardConstraint):
     """
     H03: Pre-fixed dates are immutable (SUPER HARD).
@@ -216,7 +216,7 @@ class FixedDatesConstraint(HardConstraint):
         pass
 
 
-@dataclass
+@dataclass(kw_only=True)
 class ClassLabAssignmentConstraint(HardConstraint):
     """
     H04: Each class only does specific labs assigned to it.
@@ -245,7 +245,7 @@ class ClassLabAssignmentConstraint(HardConstraint):
         pass
 
 
-@dataclass
+@dataclass(kw_only=True)
 class LabTimeOfDayConstraint(HardConstraint):
     """
     H05: Lab must be scheduled at specific time of day (morning/afternoon).
@@ -287,7 +287,7 @@ class LabTimeOfDayConstraint(HardConstraint):
                 model.Add(variables.fascia[meeting] == 3)
 
 
-@dataclass
+@dataclass(kw_only=True)
 class ClassTimeSlotsConstraint(HardConstraint):
     """
     H06: Class can only use specific time slots.
@@ -342,7 +342,7 @@ class ClassTimeSlotsConstraint(HardConstraint):
                 model.AddAllowedAssignments([variables.giorno[meeting]], allowed_giorni)
 
 
-@dataclass
+@dataclass(kw_only=True)
 class ClassExcludedDatesConstraint(HardConstraint):
     """
     H07: Class cannot have meetings on excluded dates.
@@ -370,7 +370,7 @@ class ClassExcludedDatesConstraint(HardConstraint):
         pass
 
 
-@dataclass
+@dataclass(kw_only=True)
 class MaxOneMeetingPerWeekConstraint(HardConstraint):
     """
     H08: Each class can have at most 1 meeting per week.
@@ -404,7 +404,7 @@ class MaxOneMeetingPerWeekConstraint(HardConstraint):
             model.AddAllDifferent(week_vars)
 
 
-@dataclass
+@dataclass(kw_only=True)
 class Lab8LastConstraint(HardConstraint):
     """
     H09: Lab 8.0 (Presentazione Manuali) must always be the last lab for each class.
@@ -449,7 +449,7 @@ class Lab8LastConstraint(HardConstraint):
             model.Add(variables.settimana[first_lab8] > variables.settimana[other])
 
 
-@dataclass
+@dataclass(kw_only=True)
 class NoTrainerOverlapConstraint(HardConstraint):
     """
     H10: A trainer cannot be in two places at the same time.
@@ -500,7 +500,7 @@ class NoTrainerOverlapConstraint(HardConstraint):
                 model.Add(variables.slot[m1] != variables.slot[m2]).OnlyEnforceIf(both_assigned)
 
 
-@dataclass
+@dataclass(kw_only=True)
 class SchedulingPeriodConstraint(HardConstraint):
     """
     H11: All meetings must fall within scheduling windows.
@@ -540,7 +540,7 @@ class SchedulingPeriodConstraint(HardConstraint):
         pass
 
 
-@dataclass
+@dataclass(kw_only=True)
 class MaxGroupSizeConstraint(HardConstraint):
     """
     H12: Maximum 2 classes can be grouped together for a meeting.
@@ -575,7 +575,7 @@ class MaxGroupSizeConstraint(HardConstraint):
         pass
 
 
-@dataclass
+@dataclass(kw_only=True)
 class LabCompletionConstraint(HardConstraint):
     """
     H13: Each class must complete all its assigned labs.
@@ -606,7 +606,7 @@ class LabCompletionConstraint(HardConstraint):
         pass
 
 
-@dataclass
+@dataclass(kw_only=True)
 class Lab9BeforeLab5Constraint(HardConstraint):
     """
     H14: Lab 9.0 must be scheduled before Lab 5.0.
