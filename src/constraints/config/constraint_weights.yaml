@@ -19,7 +19,7 @@ enabled_constraints:
   H07_class_excluded_dates: true
   H08_max_one_meeting_per_week: true
   H09_lab8_must_be_last: true
-  H10_no_trainer_overlap: true  # <-- Can disable to test if this is causing slowness
+  H10_no_trainer_overlap: true  # Now uses efficient interval variables + NoOverlap
   H11_scheduling_period: true
   H12_max_group_size: true
   H13_lab_completion: true
