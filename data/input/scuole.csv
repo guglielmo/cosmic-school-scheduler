@@ -1,0 +1,14 @@
+scuola_id,nome,citta,preferenza_orario,sabato_disponibile
+1,IIS. E. Mattei,Vasto,misto,no
+2,Lic. Scientifico Bafile,L'Aquila,misto,no
+3,IIS Amedeo D'Aosta,L'Aquila,misto,no
+4,IIS L.Da Vinci-De Giorgio,Lanciano,misto,no
+5,IIS PeanoRosa,Nereto,misto,no
+6,Liceo Pascal,Pompei,misto,no
+7,Liceo Scientifico Einstein,Teramo,misto,no
+8,Liceo Scientifico G. Galilei,Pescara,misto,no
+9,Liceo Scientifico Leonardo da Vinci,Pescara,misto,no
+10,Liceo Scientifico Vitruvio Pollione,Avezzano,misto,no
+11,Liceo Scientifico e Linguistico M.Curie,Giulianova,misto,no
+12,Liceo Scientifico P. P. Pasolini,Potenza,misto,no
+13,IIS Fermi,Sulmona,misto,no

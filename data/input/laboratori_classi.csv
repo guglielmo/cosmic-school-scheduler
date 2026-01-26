@@ -1,0 +1,348 @@
+classe_id,nome_classe,scuola_id,laboratorio_id,dettagli,date_fissate
+1,3A,1,1,,26 febbraio 9-13
+1,3A,1,4,,
+1,3A,1,5,,
+1,3A,1,8,,
+2,3C,1,1,,26 febbraio 9-13
+2,3C,1,4,,
+2,3C,1,8,,
+2,3C,1,5,,
+3,4B,1,1,,26 febbraio 9-13
+3,4B,1,4,,
+3,4B,1,8,,
+3,4B,1,5,,
+3,4B,1,2,,"9 marzo 9-13, 10 marzo 9-13"
+3,4B,1,3,,20 marzo 8-13
+4,4C,1,1,,26 febbraio 9-13
+4,4C,1,4,,
+4,4C,1,8,,
+4,4C,1,5,,
+4,4C,1,2,,"9 marzo 9-13, 10 marzo 9-13"
+4,4C,1,3,,20 marzo 8-13
+5,5B,1,1,,26 febbraio 9-13
+5,5B,1,7,,
+5,5B,1,5,,
+5,5B,1,8,,
+6,5C,1,1,,26 febbraio 9-13
+6,5C,1,7,,
+6,5C,1,5,,
+6,5C,1,8,,
+7,4BNO,2,5,,
+7,4BNO,2,2,,"19 gennaio 14-18, 20 gennaio 14-18"
+7,4BNO,2,3,,29 gennaio 14-18
+7,4BNO,2,7,solo 1 incontro,
+7,4BNO,2,8,,
+8,5DNO,2,4,,
+8,5DNO,2,2,,"19 gennaio 14-18, 20 gennaio 14-18"
+8,5DNO,2,3,,29 gennaio 14-18
+8,5DNO,2,5,,
+8,5DNO,2,8,,
+9,3BLSA,3,4,,
+9,3BLSA,3,8,,
+10,3CI,3,4,,
+10,3CI,3,8,,
+11,4ALSA,3,4,,
+11,4ALSA,3,2,,"2 febbraio 14-18, 3 febbraio 14-18"
+11,4ALSA,3,3,,13 febbraio 8-13
+11,4ALSA,3,8,,
+12,4CI,3,4,,
+12,4CI,3,2,,"2 febbraio 14-18, 3 febbraio 14-18"
+12,4CI,3,3,,13 febbraio 8-13
+12,4CI,3,8,,
+13,5DI,3,5,,
+13,5DI,3,8,,
+14,5ALSA,3,5,,
+14,5ALSA,3,8,,
+14,5ALSA,3,4,solo 1 incontro,
+15,3AtMb,4,4,,
+15,3AtMb,4,6,,
+15,3AtMb,4,8,,
+16,3InA,4,4,,
+16,3InA,4,6,,
+16,3InA,4,8,,
+17,4AtA,4,6,,
+17,4AtA,4,2,,"2 marzo 8-13, 3 marzo 8-13"
+17,4AtA,4,3,,13 marzo 8-13
+17,4AtA,4,8,,
+18,4MA,4,6,,
+18,4MA,4,2,,"2 marzo 8-13, 3 marzo 8-13"
+18,4MA,4,3,,13 marzo 8-13
+18,4MA,4,8,,
+18,4MA,4,5,solo 1 incontro,
+19,5AtIB,4,6,,
+19,5AtIB,4,5,,
+19,5AtIB,4,7,,
+19,5AtIB,4,8,,
+20,5MBCH,4,6,,
+20,5MBCH,4,8,,
+21,3GL,5,4,,
+21,3GL,5,2,,"9 febbraio 8-13, 10 febbraio 8-13"
+21,3GL,5,3,,20 febbraio 8-13
+21,3GL,5,8,,
+22,3CL,5,4,,
+22,3CL,5,2,,"9 febbraio 8-13, 10 febbraio 8-13"
+22,3CL,5,3,,20 febbraio 8-13
+22,3CL,5,8,,
+23,4GL,5,4,solo 1 incontro,
+23,4GL,5,5,,
+23,4GL,5,8,,
+24,5AL,5,4,solo 1 incontro,
+24,5AL,5,5,,
+24,5AL,5,8,,
+25,3AS,6,6,,
+25,3AS,6,5,,
+25,3AS,6,8,,
+26,3ESA,6,6,,
+26,3ESA,6,5,,
+26,3ESA,6,8,,
+27,4AS-SAA,6,4,,
+27,4AS-SAA,6,6,,
+27,4AS-SAA,6,2,,"13 aprile, 14 aprile"
+27,4AS-SAA,6,3,,14 aprile
+27,4AS-SAA,6,8,,
+28,4BS,6,4,,
+28,4BS,6,5,,
+28,4BS,6,6,,
+28,4BS,6,2,,"13 aprile, 14 aprile"
+28,4BS,6,3,,14 aprile
+28,4BS,6,8,,
+29,4AS,6,4,,
+29,4AS,6,5,,
+29,4AS,6,6,,
+29,4AS,6,2,,"13 aprile, 14 aprile"
+29,4AS,6,3,,14 aprile
+29,4AS,6,8,,
+30,4BU,6,4,,
+30,4BU,6,5,,
+30,4BU,6,6,,
+30,4BU,6,2,,"13 aprile, 14 aprile"
+30,4BU,6,3,,14 aprile
+30,4BU,6,8,,
+31,4CU,6,4,,
+31,4CU,6,5,,
+31,4CU,6,6,,
+31,4CU,6,2,,"13 aprile, 14 aprile"
+31,4CU,6,3,,14 aprile
+31,4CU,6,8,,
+32,4DS,6,4,,
+32,4DS,6,6,,
+32,4DS,6,2,,"13 aprile, 14 aprile"
+32,4DS,6,3,,14 aprile
+32,4DS,6,8,,
+33,5BS,6,4,,
+33,5BS,6,6,,
+33,5BS,6,8,,
+34,5AS,6,4,,
+34,5AS,6,6,,
+34,5AS,6,8,,
+35,3D,7,5,,
+35,3D,7,6,,
+35,3D,7,8,,
+36,3F,7,4,,
+36,3F,7,6,,
+36,3F,7,8,,
+37,3G,7,4,,
+37,3G,7,6,,
+37,3G,7,8,,
+38,4B,7,5,,
+38,4B,7,6,,
+38,4B,7,3,,30 marzo 8-13
+39,4D,7,3,,30 marzo 8-13
+38,4B,7,8,,
+39,4D,7,5,,
+39,4D,7,6,,
+40,4G,7,3,,30 marzo 8-13
+38,4B,7,2,,"23 marzo 8-13, 24 marzo 8-13"
+39,4D,7,8,,
+40,4G,7,5,,
+40,4G,7,6,,
+39,4D,7,2,,"23 marzo 8-13, 24 marzo 8-13"
+40,4G,7,2,,"23 marzo 8-13, 24 marzo 8-13"
+40,4G,7,8,,
+41,5A,7,5,,
+41,5A,7,6,,
+41,5A,7,8,,
+42,5G,7,5,,
+42,5G,7,6,,
+42,5G,7,8,,
+43,3DSA,8,7,un incontro deve essere di pomeriggio,
+43,3DSA,8,5,un incontro deve essere di pomeriggio,
+43,3DSA,8,6,,
+43,3DSA,8,8,,
+44,3I,8,7,un incontro deve essere di pomeriggio,
+44,3I,8,5,pomeriggio,
+44,3I,8,6,,
+44,3I,8,8,,
+45,4ASA,8,6,,
+45,4ASA,8,4,2 incontri devono essere di pomeriggio ma non in settimane consecutive,
+45,4ASA,8,2,,"16 febbraio 8-13, 17 febbraio 8-13"
+45,4ASA,8,3,,27 febbraio 8-13
+45,4ASA,8,8,,
+46,4B,8,6,un incontro deve essere di pomeriggio,
+46,4B,8,4,2 incontri devono essere di pomeriggio ma non in settimane consecutive,
+46,4B,8,2,,"16 febbraio 8-13, 17 febbraio 8-13"
+46,4B,8,3,,27 febbraio 8-13
+46,4B,8,8,un incontro deve essere di pomeriggio,
+47,4BSA,8,6,un incontro deve essere di pomeriggio,
+47,4BSA,8,4,un incontro deve essere di pomeriggio,
+47,4BSA,8,2,,"16 febbraio 8-13, 17 febbraio 8-13"
+47,4BSA,8,3,,27 febbraio 8-13
+47,4BSA,8,8,un incontro deve essere di pomeriggio,
+48,4C,8,5,un incontro deve essere di pomeriggio,
+48,4C,8,7,2 incontri devono essere di pomeriggio ma non in settimane consecutive,
+48,4C,8,2,,"16 febbraio 8-13, 17 febbraio 8-13"
+48,4C,8,3,,27 febbraio 8-13
+48,4C,8,8,un incontro deve essere di pomeriggio,
+49,4CSA,8,6,,
+49,4CSA,8,7,2 incontri devono essere di pomeriggio ma non in settimane consecutive,
+49,4CSA,8,2,,"16 febbraio 8-13, 17 febbraio 8-13"
+49,4CSA,8,3,,27 febbraio 8-13
+49,4CSA,8,8,un incontro deve essere di pomeriggio,
+49,4CSA,8,5,un incontro deve essere di pomeriggio,
+50,4H,8,4,3 incontri devono essere di pomeriggio ma non in settimane consecutive,
+50,4H,8,2,,"16 febbraio 8-13, 17 febbraio 8-13"
+50,4H,8,3,,27 febbraio 8-13
+50,4H,8,8,un incontro deve essere di pomeriggio,
+51,5C,8,5,un incontro deve essere di pomeriggio,
+51,5C,8,7,,
+51,5C,8,8,un incontro deve essere di pomeriggio,
+52,3O,9,11,,5 febbraio 9-11
+52,3O,9,7,,
+52,3O,9,4,,
+52,3O,9,8,,
+53,4C,9,11,,5 febbraio 9-11
+53,4C,9,2,,23 febbraio 8-13. 24 febbraio 8-13
+53,4C,9,3,,6 marzo 8-13
+53,4C,9,4,,
+53,4C,9,8,,
+54,4D,9,11,,5 febbraio 9-11
+54,4D,9,2,,23 febbraio 8-13. 24 febbraio 8-13
+54,4D,9,3,,6 marzo 8-13
+54,4D,9,4,,
+54,4D,9,8,,
+55,4F,9,11,,5 febbraio 9-11
+55,4F,9,2,,23 febbraio 8-13. 24 febbraio 8-13
+55,4F,9,3,,6 marzo 8-13
+55,4F,9,4,,
+55,4F,9,8,,
+55,4F,9,7,,
+56,4G,9,11,,5 febbraio 9-11
+56,4G,9,2,,23 febbraio 8-13. 24 febbraio 8-13
+56,4G,9,3,,6 marzo 8-13
+56,4G,9,4,,
+56,4G,9,8,,
+57,4H,9,11,,5 febbraio 9-11
+57,4H,9,2,,23 febbraio 8-13. 24 febbraio 8-13
+57,4H,9,3,,6 marzo 8-13
+57,4H,9,4,,
+57,4H,9,8,,
+58,4O,9,11,,5 febbraio 9-11
+58,4O,9,6,,
+58,4O,9,5,,
+58,4O,9,7,,
+58,4O,9,2,,23 febbraio 8-13. 24 febbraio 8-13
+58,4O,9,3,,6 marzo 8-13
+58,4O,9,8,,
+59,5D,9,11,,5 febbraio 9-11
+59,5D,9,6,,
+59,5D,9,5,,
+59,5D,9,8,,
+60,5F,9,11,,5 febbraio 9-11
+60,5F,9,4,,
+60,5F,9,6,,
+60,5F,9,8,,
+60,5F,9,9,,
+61,5G,9,11,,5 febbraio 9-11
+61,5G,9,4,,
+61,5G,9,8,,
+62,5H,9,11,,5 febbraio 9-11
+62,5H,9,5,,
+62,5H,9,7,,
+62,5H,9,8,,
+63,5I,9,11,,5 febbraio 9-11
+63,5I,9,5,,
+63,5I,9,7,,
+63,5I,9,8,,
+64,5O,9,11,,5 febbraio 9-11
+64,5O,9,5,,
+64,5O,9,7,,
+64,5O,9,8,,
+65,5P,9,11,,5 febbraio 9-11
+65,5P,9,5,,
+65,5P,9,7,,
+65,5P,9,8,,
+66,3B,10,5,,
+66,3B,10,6,,
+66,3B,10,2,,"27 gennaio 8-13, 28 gennaio 8-13"
+66,3B,10,3,,6 febraio 8-13
+66,3B,10,8,,
+67,3M,10,5,,
+67,3M,10,6,,
+67,3M,10,2,,"27 gennaio 8-13, 28 gennaio 8-13"
+67,3M,10,3,,6 febraio 8-13
+67,3M,10,8,,
+68,3A,11,6,mattina,
+68,3A,11,5,pomeriggio,
+68,3A,11,2,,"16 marzo 14-18, 17 marzo 14-18"
+68,3A,11,3,,27 marzo 14-18
+68,3A,11,8,pomeriggio,
+69,3C,11,4,pomeriggio,
+69,3C,11,6,mattina,
+69,3C,11,2,,"16 marzo 14-18, 17 marzo 14-18"
+69,3C,11,3,,27 marzo 14-18
+69,3C,11,8,pomeriggio,
+70,3D,11,6,mattina,
+70,3D,11,2,,"16 marzo 14-18, 17 marzo 14-18"
+70,3D,11,3,,27 marzo 14-18
+70,3D,11,4,pomeriggio,
+70,3D,11,8,pomeriggio,
+71,5E,11,6,mattina,
+71,5E,11,4,pomeriggio,
+71,5E,11,8,pomeriggio,
+72,5C,11,6,mattina,
+72,5C,11,4,pomeriggio,
+72,5C,11,8,pomeriggio,
+73,3A,12,5,,
+73,3A,12,7,,
+73,3A,12,8,,
+73,3A,12,4,solo 1 incontro,
+74,3C,12,5,,
+74,3C,12,7,,
+74,3C,12,8,,
+75,3E,12,5,,
+75,3E,12,7,,
+75,3E,12,8,,
+76,4A,12,4,,
+76,4A,12,2,,"4 maggio, 5 maggio"
+76,4A,12,3,,5 maggio
+76,4A,12,8,,
+77,4C,12,4,,
+77,4C,12,2,,"4 maggio, 5 maggio"
+77,4C,12,8,,
+78,5AM,12,4,,
+78,5AM,12,8,,
+78,5AM,12,5,solo 1 incontro,
+79,5C,12,5,,
+79,5C,12,7,,
+79,5C,12,8,,
+79,5C,12,4,solo 2 incontri,
+80,5D,12,4,solo 2 incontri,
+80,5D,12,5,,
+80,5D,12,7,,
+80,5D,12,8,,
+81,5E,12,4,,
+81,5E,12,5,,
+81,5E,12,8,,
+82,3C,13,9,,
+82,3C,13,5,,
+83,3F,13,9,,
+83,3F,13,5,,
+84,4A,13,9,,
+84,4A,13,5,,
+85,4B,13,9,,
+85,4B,13,5,,
+86,5A,13,9,,
+86,5A,13,5,,
+87,5F,13,9,,
+87,5F,13,5,,
+77,4C,12,3,,5 maggio

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Script per eseguire Optimizer V5_pp con post-processing repair
+# Usage: ./optimize-v5-pp [options]
+
+# Activate virtual environment if needed
+if [ ! -d ".venv" ]; then
+    echo "Creating virtual environment..."
+    uv venv
+fi
+
+source .venv/bin/activate
+
+# Install dependencies if needed
+if ! python -c "import pandas, openpyxl, ortools" 2>/dev/null; then
+    echo "Installing dependencies..."
+    uv pip install pandas openpyxl ortools
+fi
+
+# Run optimizer
+cd src
+python optimizer_V5_pp.py "$@"

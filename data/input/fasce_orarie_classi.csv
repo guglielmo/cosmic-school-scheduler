@@ -1,0 +1,88 @@
+classe_id,nome_classe,fasce_disponibili,preferenza,giorni_settimana
+1,3A,"mattino1, mattino2",,
+2,3C,"mattino1, mattino2",,
+3,4B,"mattino1, mattino2",,
+4,4C,"mattino1, mattino2",,
+5,5B,"mattino1, mattino2",,
+6,5C,"mattino1, mattino2",,
+7,4BNO,pomeriggio,disponibile,"lunedì, martedì, mercoledì, giovedì"
+8,5DNO,pomeriggio,disponibile,"lunedì, martedì, mercoledì, giovedì"
+9,3BLSA,"mattino1, mattino2",,
+10,3CI,"mattino1, mattino2, pomeriggio",,
+11,4ALSA,"mattino1, mattino2, pomeriggio",,"lunedì, martedì, mercoledì pomeriggio, giovedì pomeriggio, venerdì"
+12,4CI,"mattino1, mattino2, pomeriggio",,"lunedì, martedì, mercoledì pomeriggio, giovedì pomeriggio, venerdì"
+13,5DI,"mattino1, mattino2, pomeriggio",disponibile,"lunedi, martedi, mercoledi pomeriggio, giovedi pomeriggio, venerdi"
+14,5ALSA,"mattino1, mattino2, pomeriggio",disponibile,"lunedi, martedi, mercoledi pomeriggio, giovedi pomeriggio, venerdi"
+15,3AtMb,"mattino1, mattino2, pomeriggio",disponibile,"lunedi mattina, martedì, mercoledì, giovedì, venerdì"
+16,3InA,"mattino1, mattino2, pomeriggio",,
+17,4AtA,"mattino1, mattino2, pomeriggio",,
+18,4MA,"mattino1, mattino2, pomeriggio",,
+19,5AtIB,"mattino1, mattino2, pomeriggio",,
+20,5MBCH,"mattino1, mattino2, pomeriggio",,
+21,3GL,"mattino1, mattino2",,
+22,3CL,"mattino1, mattino2",,
+23,4GL,"mattino1, mattino2",,
+24,5AL,"mattino1, mattino2",,
+25,3AS,pomeriggio,disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+26,3ESA,pomeriggio,disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+27,4AS-SAA,pomeriggio,disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+28,4BS,pomeriggio,disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+29,4AS,pomeriggio,disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+30,4BU,pomeriggio,disponibile,"lunedì, martedì, mercoledì, giovedì"
+31,4CU,pomeriggio,disponibile,"lunedì, martedì, mercoledì, giovedì"
+32,4DS,pomeriggio,disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+33,5BS,pomeriggio,disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+34,5AS,pomeriggio,disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+35,3D,"mattino1, mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+36,3F,"mattino1, mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+37,3G,"mattino1, mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+38,4B,"mattino1, mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+39,4D,"mattino1, mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+40,4G,"mattino1, mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+41,5A,"mattino1, mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+42,5G,"mattino1, mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+43,3DSA,"mattino1, mattino2, pomeriggio",disponibile,"lunedi, martedì, mercoledi mattina, giovedì mattina, venerdì mattina"
+44,3I,"mattino1, mattino2, pomeriggio",disponibile,"lunedi, martedì, mercoledi mattina, giovedì mattina, venerdì mattina"
+45,4ASA,"mattino1, mattino2, pomeriggio",disponibile,"lunedi, martedì, mercoledi mattina, giovedì mattina, venerdì mattina"
+46,4B,"mattino1, mattino2, pomeriggio",disponibile,"lunedi, martedì, mercoledi mattina, giovedì mattina, venerdì mattina"
+47,4BSA,"mattino1, mattino2, pomeriggio",disponibile,"lunedi, martedì, mercoledi mattina, giovedì mattina, venerdì mattina"
+48,4C,"mattino1, mattino2, pomeriggio",disponibile,"lunedi, martedì, mercoledi mattina, giovedì mattina, venerdì mattina"
+49,4CSA,"mattino1, mattino2, pomeriggio",disponibile,"lunedi, martedì, mercoledi mattina, giovedì mattina, venerdì mattina"
+50,4H,"mattino1, mattino2, pomeriggio",disponibile,"lunedi, martedì, mercoledi mattina, giovedì mattina, venerdì mattina"
+51,5C,"mattino1, mattino2, pomeriggio",disponibile,"lunedi, martedì, mercoledi mattina, giovedì mattina, venerdì mattina"
+52,3O,"mattino1,mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+53,4C,"mattino1,mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+54,4D,"mattino1,mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+55,4F,"mattino1,mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+56,4G,"mattino1,mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+57,4H,"mattino1,mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+58,4O,"mattino1,mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+59,5D,"mattino1,mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+60,5F,"mattino1,mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+61,5G,"mattino1,mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+62,5H,"mattino1,mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+63,5I,"mattino1,mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+64,5O,"mattino1,mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+65,5P,"mattino1,mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+66,3B,"mattino1,mattino2",disponibile,"martedi, mercoledi, venerdi, sabato"
+67,3M,"mattino1,mattino2",disponibile,"martedi, mercoledi, venerdi, sabato"
+68,3A,"mattino1, mattino2, pomeriggio",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+69,3C,"mattino1, mattino2, pomeriggio",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+70,3D,"mattino1, mattino2, pomeriggio",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+71,5E,"mattino1, mattino2, pomeriggio",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+72,5C,"mattino1, mattino2, pomeriggio",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+73,3A,pomeriggio,disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+74,3C,pomeriggio,disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+75,3E,pomeriggio,disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+76,4A,pomeriggio,disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+77,4C,pomeriggio,disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+78,5AM,pomeriggio,disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+79,5C,pomeriggio,disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+80,5D,pomeriggio,disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+81,5E,pomeriggio,disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì"
+82,3C,"mattino1, mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì, sabato"
+83,3F,"mattino1, mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì, sabato"
+84,4A,"mattino1, mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì, sabato"
+85,4B,"mattino1, mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì, sabato"
+86,5A,"mattino1, mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì, sabato"
+87,5F,"mattino1, mattino2",disponibile,"lunedì, martedì, mercoledì, giovedì, venerdì, sabato"

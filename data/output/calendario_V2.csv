@@ -1,0 +1,262 @@
+settimana,giorno,fascia,fascia_generica,tipo,classe,classe2,scuola,laboratorio,formatrice,ore
+1,gio,14-16,pomeriggio,insieme,3A,3C,Liceo Scientifico P. P. Pasolini,presentazione manuali,Ida,2
+1,gio,8-10,mattino1,insieme,5H,5P,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere,Anita,2
+1,gio,8-10,mattino1,insieme,3O,4H,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,2
+1,gio,9-11,mattino2,insieme,3GL,3CL,IIS PeanoRosa,citizen science,Margherita,2
+1,gio,9-11,mattino2,insieme,4ASA,4BSA,Liceo Scientifico G. Galilei,citizen science,Anita,2
+1,gio,9-11,mattino2,insieme,5G,5O,Liceo Scientifico Leonardo da Vinci,presentazione manuali,Andreea,2
+1,lun,14-16,pomeriggio,insieme,4BS,4BU,Liceo Pascal,orientamento e competenze,Anita,2
+1,lun,14-16,pomeriggio,insieme,3ESA,4CU,Liceo Pascal,orientamento e competenze,Margherita,2
+1,lun,8-10,mattino1,solo,3BLSA,,IIS Amedeo D'Aosta,citizen science,Margherita,2
+1,lun,9-11,mattino2,insieme,3CI,4ALSA,IIS Amedeo D'Aosta,citizen science,Margherita,2
+1,lun,9-11,mattino2,solo,3C,,IIS. E. Mattei,citizen science,Andreea,2
+1,mar,8-10,mattino1,insieme,3D,5G,Liceo Scientifico Einstein,orientamento e competenze,Andreea,2
+1,mer,14-16,pomeriggio,insieme,4AS-SAA,5BS,Liceo Pascal,citizen science,Andreea,2
+1,mer,14-16,pomeriggio,insieme,4A,5D,Liceo Scientifico P. P. Pasolini,citizen science,Anita,2
+1,ven,14-16,pomeriggio,insieme,3D,5C,Liceo Scientifico e Linguistico M.Curie,citizen science,Margherita,2
+1,ven,8-10,mattino1,insieme,4MA,5AtIB,IIS L.Da Vinci-De Giorgio,orientamento e competenze,Margherita,2
+1,ven,8-10,mattino1,insieme,5B,5C,IIS. E. Mattei,orientamento e competenze,Ida,2
+1,ven,8-10,mattino1,insieme,3C,5E,Liceo Scientifico e Linguistico M.Curie,citizen science,Andreea,2
+2,gio,14-16,pomeriggio,insieme,5AM,5E,Liceo Scientifico P. P. Pasolini,citizen science,Margherita,2
+2,gio,8-10,mattino1,solo,3BLSA,,IIS Amedeo D'Aosta,citizen science,Andreea,2
+2,gio,8-10,mattino1,insieme,3GL,3CL,IIS PeanoRosa,citizen science,Margherita,2
+2,gio,9-11,mattino2,insieme,5D,5H,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Anita,2
+2,gio,9-11,mattino2,insieme,3C,5E,Liceo Scientifico e Linguistico M.Curie,citizen science,Margherita,2
+2,lun,14-16,pomeriggio,insieme,3AtMb,3InA,IIS L.Da Vinci-De Giorgio,citizen science,Ida,2
+2,lun,8-10,mattino1,insieme,3CI,4ALSA,IIS Amedeo D'Aosta,citizen science,Anita,2
+2,lun,9-11,mattino2,insieme,4B,5A,Liceo Scientifico Einstein,orientamento e competenze,Ida,2
+2,mar,14-16,pomeriggio,solo,5DNO,,Lic. Scientifico Bafile,citizen science,Ida,2
+2,mar,8-10,mattino1,solo,5AtIB,,IIS L.Da Vinci-De Giorgio,sensibilizzazione discriminazioni di genere,Andreea,2
+2,mer,14-16,pomeriggio,insieme,3ESA,4BU,Liceo Pascal,presentazione manuali,Ida,2
+2,mer,14-16,pomeriggio,insieme,4AS-SAA,4BS,Liceo Pascal,presentazione manuali,Anita,2
+2,mer,9-11,mattino2,solo,3A,,IIS. E. Mattei,citizen science,Andreea,2
+2,mer,9-11,mattino2,insieme,3O,4F,Liceo Scientifico Leonardo da Vinci,citizen science,Anita,2
+2,ven,14-16,pomeriggio,insieme,3A,5C,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Andreea,2
+2,ven,8-10,mattino1,insieme,4B,5B,IIS. E. Mattei,presentazione manuali,Ida,2
+2,ven,9-11,mattino2,insieme,3D,4G,Liceo Scientifico Einstein,orientamento e competenze,Anita,2
+2,ven,9-11,mattino2,insieme,4BSA,5C,Liceo Scientifico G. Galilei,presentazione manuali,Andreea,2
+3,gio,14-16,pomeriggio,insieme,3E,5D,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Ida,2
+3,gio,8-10,mattino1,solo,4F,,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,2
+3,gio,9-11,mattino2,insieme,3BLSA,3CI,IIS Amedeo D'Aosta,presentazione manuali,Andreea,2
+3,lun,14-16,pomeriggio,insieme,4BNO,5DNO,Lic. Scientifico Bafile,presentazione manuali,Margherita,2
+3,lun,14-16,pomeriggio,insieme,3A,5AM,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Anita,2
+3,lun,9-11,mattino2,insieme,4GL,5AL,IIS PeanoRosa,citizen science,Ida,2
+3,lun,9-11,mattino2,insieme,4G,5A,Liceo Scientifico Einstein,orientamento e competenze,Anita,2
+3,mar,14-16,pomeriggio,insieme,4BS,5AS,Liceo Pascal,citizen science,Margherita,2
+3,mar,14-16,pomeriggio,insieme,4B,4H,Liceo Scientifico G. Galilei,citizen science,Ida,2
+3,mar,8-10,mattino1,solo,4O,,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Andreea,2
+3,mer,14-16,pomeriggio,insieme,3AtMb,3InA,IIS L.Da Vinci-De Giorgio,citizen science,Andreea,2
+3,mer,14-16,pomeriggio,insieme,4C,5C,Liceo Scientifico P. P. Pasolini,citizen science,Ida,2
+3,mer,8-10,mattino1,insieme,3F,3G,Liceo Scientifico Einstein,citizen science,Andreea,2
+3,mer,8-10,mattino1,insieme,4D,5D,Liceo Scientifico Leonardo da Vinci,presentazione manuali,Anita,2
+3,mer,9-11,mattino2,insieme,4D,5G,Liceo Scientifico Einstein,orientamento e competenze,Ida,2
+3,mer,9-11,mattino2,solo,4H,,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,2
+3,ven,14-16,pomeriggio,insieme,4AS,4DS,Liceo Pascal,presentazione manuali,Andreea,2
+3,ven,14-16,pomeriggio,insieme,3DSA,4CSA,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,Anita,2
+3,ven,8-10,mattino1,insieme,5F,5G,Liceo Scientifico Leonardo da Vinci,citizen science,Anita,2
+3,ven,8-10,mattino1,insieme,3B,3M,Liceo Scientifico Vitruvio Pollione,orientamento e competenze,Ida,2
+3,ven,9-11,mattino2,insieme,3GL,3CL,IIS PeanoRosa,citizen science,Anita,2
+3,ven,9-11,mattino2,insieme,3D,5C,Liceo Scientifico e Linguistico M.Curie,citizen science,Ida,2
+4,gio,14-16,pomeriggio,insieme,5DI,5ALSA,IIS Amedeo D'Aosta,orientamento e competenze,Andreea,2
+4,gio,14-16,pomeriggio,insieme,4C,5D,Liceo Scientifico P. P. Pasolini,citizen science,Ida,2
+4,gio,8-10,mattino1,insieme,3I,4CSA,Liceo Scientifico G. Galilei,orientamento e competenze,Ida,2
+4,gio,9-11,mattino2,insieme,5A,5F,IIS Fermi,sensibilizzazione discriminazioni di genere pt.2,Ida,2
+4,gio,9-11,mattino2,solo,3C,,IIS. E. Mattei,orientamento e competenze,Anita,2
+4,lun,14-16,pomeriggio,insieme,4BNO,5DNO,Lic. Scientifico Bafile,orientamento e competenze,Margherita,2
+4,lun,14-16,pomeriggio,insieme,3AS,4AS,Liceo Pascal,orientamento e competenze,Anita,2
+4,lun,14-16,pomeriggio,insieme,3DSA,4C,Liceo Scientifico G. Galilei,orientamento e competenze,Ida,2
+4,lun,8-10,mattino1,insieme,3F,3G,Liceo Scientifico Einstein,citizen science,Anita,2
+4,lun,9-11,mattino2,insieme,5F,5G,Liceo Scientifico Leonardo da Vinci,citizen science,Margherita,2
+4,mar,14-16,pomeriggio,insieme,4AS-SAA,4DS,Liceo Pascal,citizen science,Anita,2
+4,mar,14-16,pomeriggio,solo,3A,,Liceo Scientifico e Linguistico M.Curie,orientamento e competenze,Ida,2
+4,mar,8-10,mattino1,insieme,4B,4C,IIS. E. Mattei,citizen science,Anita,2
+4,mer,14-16,pomeriggio,insieme,4B,4H,Liceo Scientifico G. Galilei,citizen science,Margherita,2
+4,mer,8-10,mattino1,insieme,3CI,4ALSA,IIS Amedeo D'Aosta,citizen science,Ida,2
+4,mer,8-10,mattino1,insieme,4F,5I,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere,Margherita,2
+4,ven,14-16,pomeriggio,insieme,4BU,5BS,Liceo Pascal,citizen science,Andreea,2
+4,ven,9-11,mattino2,insieme,5B,5C,IIS. E. Mattei,orientamento e competenze,Ida,2
+4,ven,9-11,mattino2,insieme,5D,5O,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Margherita,2
+5,gio,8-10,mattino1,solo,3BLSA,,IIS Amedeo D'Aosta,citizen science,Anita,2
+5,gio,8-10,mattino1,insieme,3AtMb,4MA,IIS L.Da Vinci-De Giorgio,presentazione manuali,Margherita,2
+5,gio,9-11,mattino2,insieme,4CI,5ALSA,IIS Amedeo D'Aosta,citizen science,Ida,2
+5,lun,8-10,mattino1,insieme,4D,4G,Liceo Scientifico Einstein,presentazione manuali,Ida,2
+5,lun,9-11,mattino2,insieme,4GL,5AL,IIS PeanoRosa,orientamento e competenze,Ida,2
+5,lun,9-11,mattino2,insieme,4B,4C,IIS. E. Mattei,citizen science,Margherita,2
+5,mar,14-16,pomeriggio,insieme,4AS,4CU,Liceo Pascal,citizen science,Anita,2
+5,mar,8-10,mattino1,insieme,3DSA,4CSA,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,Margherita,2
+5,mar,9-11,mattino2,insieme,4ASA,4BSA,Liceo Scientifico G. Galilei,citizen science,Anita,2
+5,mar,9-11,mattino2,insieme,4C,4F,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,2
+5,mer,14-16,pomeriggio,insieme,3C,5E,Liceo Scientifico e Linguistico M.Curie,citizen science,Margherita,2
+5,mer,8-10,mattino1,solo,3A,,IIS. E. Mattei,citizen science,Anita,2
+5,ven,14-16,pomeriggio,insieme,4AS-SAA,5BS,Liceo Pascal,citizen science,Margherita,2
+5,ven,14-16,pomeriggio,insieme,3A,5C,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,Ida,2
+5,ven,8-10,mattino1,solo,3C,,IIS. E. Mattei,citizen science,Anita,2
+5,ven,8-10,mattino1,insieme,4D,4H,Liceo Scientifico Leonardo da Vinci,citizen science,Ida,2
+5,ven,9-11,mattino2,insieme,3F,5A,IIS Fermi,orientamento e competenze,Andreea,2
+6,gio,14-16,pomeriggio,insieme,4CI,5ALSA,IIS Amedeo D'Aosta,citizen science,Margherita,2
+6,gio,14-16,pomeriggio,insieme,5AM,5E,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Ida,2
+6,gio,14-16,pomeriggio,insieme,3A,5C,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,2
+6,gio,8-10,mattino1,insieme,3F,3G,Liceo Scientifico Einstein,presentazione manuali,Margherita,2
+6,lun,8-10,mattino1,solo,3BLSA,,IIS Amedeo D'Aosta,citizen science,Andreea,2
+6,lun,9-11,mattino2,insieme,3O,4G,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,2
+6,mar,14-16,pomeriggio,insieme,3I,4C,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,Anita,2
+6,mar,8-10,mattino1,insieme,3GL,3CL,IIS PeanoRosa,citizen science,Ida,2
+6,mar,8-10,mattino1,solo,4F,,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,2
+6,mar,8-10,mattino1,insieme,3B,3M,Liceo Scientifico Vitruvio Pollione,presentazione manuali,Anita,2
+6,mer,14-16,pomeriggio,insieme,4ASA,4B,Liceo Scientifico G. Galilei,presentazione manuali,Anita,2
+6,mer,9-11,mattino2,insieme,4A,5A,IIS Fermi,orientamento e competenze,Anita,2
+6,mer,9-11,mattino2,insieme,4D,4H,Liceo Scientifico Leonardo da Vinci,citizen science,Ida,2
+6,ven,14-16,pomeriggio,solo,4BNO,,Lic. Scientifico Bafile,sensibilizzazione discriminazioni di genere,Andreea,2
+6,ven,14-16,pomeriggio,insieme,3C,3E,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,Anita,2
+6,ven,9-11,mattino2,insieme,4GL,5AL,IIS PeanoRosa,orientamento e competenze,Anita,2
+7,gio,14-16,pomeriggio,insieme,4ALSA,4CI,IIS Amedeo D'Aosta,presentazione manuali,Ida,2
+7,gio,8-10,mattino1,insieme,4C,5C,IIS. E. Mattei,presentazione manuali,Margherita,2
+7,gio,8-10,mattino1,insieme,4C,5F,Liceo Scientifico Leonardo da Vinci,citizen science,Ida,2
+7,lun,14-16,pomeriggio,insieme,4AS,4CU,Liceo Pascal,citizen science,Andreea,2
+7,lun,14-16,pomeriggio,solo,4A,,Liceo Scientifico P. P. Pasolini,citizen science,Ida,2
+7,lun,9-11,mattino2,insieme,4ASA,4BSA,Liceo Scientifico G. Galilei,citizen science,Anita,2
+7,lun,9-11,mattino2,insieme,3D,5C,Liceo Scientifico e Linguistico M.Curie,citizen science,Ida,2
+7,mar,14-16,pomeriggio,insieme,3A,5C,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,Margherita,2
+7,mer,14-16,pomeriggio,insieme,4BU,4DS,Liceo Pascal,citizen science,Andreea,2
+7,mer,14-16,pomeriggio,insieme,4C,5D,Liceo Scientifico P. P. Pasolini,citizen science,Ida,2
+7,mer,8-10,mattino1,solo,3BLSA,,IIS Amedeo D'Aosta,citizen science,Andreea,2
+7,mer,8-10,mattino1,insieme,3O,5P,Liceo Scientifico Leonardo da Vinci,presentazione manuali,Margherita,2
+7,mer,9-11,mattino2,insieme,3C,4A,IIS Fermi,sensibilizzazione discriminazioni di genere pt.2,Anita,2
+7,ven,9-11,mattino2,insieme,4H,4O,Liceo Scientifico Leonardo da Vinci,presentazione manuali,Andreea,2
+8,gio,8-10,mattino1,solo,3A,,IIS. E. Mattei,orientamento e competenze,Ida,2
+8,gio,8-10,mattino1,solo,3C,,IIS. E. Mattei,citizen science,Anita,2
+8,gio,9-11,mattino2,insieme,3AtMb,3InA,IIS L.Da Vinci-De Giorgio,citizen science,Ida,2
+8,lun,14-16,pomeriggio,solo,5DNO,,Lic. Scientifico Bafile,citizen science,Anita,2
+8,lun,14-16,pomeriggio,insieme,4A,5D,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,2
+8,lun,14-16,pomeriggio,insieme,5C,5E,Liceo Scientifico P. P. Pasolini,citizen science,Ida,2
+8,lun,9-11,mattino2,insieme,3A,3D,Liceo Scientifico e Linguistico M.Curie,presentazione manuali,Anita,2
+8,mar,14-16,pomeriggio,insieme,4AS,4DS,Liceo Pascal,citizen science,Andreea,2
+8,mar,14-16,pomeriggio,insieme,3ESA,4BS,Liceo Pascal,orientamento e competenze,Anita,2
+8,mar,8-10,mattino1,insieme,4B,4C,IIS. E. Mattei,orientamento e competenze,Andreea,2
+8,mar,9-11,mattino2,insieme,3O,5I,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere,Ida,2
+8,mar,9-11,mattino2,insieme,5H,5P,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Margherita,2
+8,mer,14-16,pomeriggio,insieme,4BU,5AS,Liceo Pascal,citizen science,Anita,2
+8,mer,8-10,mattino1,insieme,4O,5O,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere,Andreea,2
+8,mer,9-11,mattino2,insieme,3F,4A,IIS Fermi,orientamento e competenze,Anita,2
+8,ven,8-10,mattino1,insieme,3F,3G,Liceo Scientifico Einstein,citizen science,Anita,2
+9,gio,14-16,pomeriggio,solo,5E,,Liceo Scientifico e Linguistico M.Curie,presentazione manuali,Andreea,2
+9,gio,8-10,mattino1,solo,4F,,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,2
+9,gio,8-10,mattino1,solo,4O,,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Ida,2
+9,gio,9-11,mattino2,insieme,3CI,4ALSA,IIS Amedeo D'Aosta,citizen science,Margherita,2
+9,gio,9-11,mattino2,insieme,4B,4H,Liceo Scientifico G. Galilei,citizen science,Anita,2
+9,gio,9-11,mattino2,insieme,5F,5G,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,2
+9,lun,14-16,pomeriggio,solo,3I,,Liceo Scientifico G. Galilei,presentazione manuali,Ida,2
+9,lun,14-16,pomeriggio,insieme,4A,5E,Liceo Scientifico P. P. Pasolini,citizen science,Anita,2
+9,lun,8-10,mattino1,insieme,5H,5O,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere,Ida,2
+9,mar,14-16,pomeriggio,insieme,3E,5D,Liceo Scientifico P. P. Pasolini,presentazione manuali,Ida,2
+9,mar,8-10,mattino1,insieme,5DI,5ALSA,IIS Amedeo D'Aosta,presentazione manuali,Anita,2
+9,mar,9-11,mattino2,insieme,3F,3G,Liceo Scientifico Einstein,citizen science,Anita,2
+9,mer,14-16,pomeriggio,solo,5DNO,,Lic. Scientifico Bafile,citizen science,Anita,2
+9,mer,14-16,pomeriggio,insieme,3AS,5AS,Liceo Pascal,presentazione manuali,Margherita,2
+9,mer,8-10,mattino1,insieme,4GL,5AL,IIS PeanoRosa,citizen science,Andreea,2
+9,ven,14-16,pomeriggio,solo,4BNO,,Lic. Scientifico Bafile,sensibilizzazione discriminazioni di genere,Andreea,2
+9,ven,14-16,pomeriggio,insieme,4CU,5BS,Liceo Pascal,presentazione manuali,Anita,2
+9,ven,14-16,pomeriggio,insieme,4BS,4DS,Liceo Pascal,citizen science,Margherita,2
+9,ven,8-10,mattino1,insieme,3O,4G,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,2
+10,gio,14-16,pomeriggio,solo,5AtIB,,IIS L.Da Vinci-De Giorgio,sensibilizzazione discriminazioni di genere,Ida,2
+10,gio,14-16,pomeriggio,insieme,3A,5AM,Liceo Scientifico P. P. Pasolini,citizen science,Margherita,2
+10,gio,8-10,mattino1,insieme,3D,5G,Liceo Scientifico Einstein,presentazione manuali,Ida,2
+10,lun,8-10,mattino1,insieme,5B,5C,IIS. E. Mattei,sensibilizzazione discriminazioni di genere,Andreea,2
+10,lun,9-11,mattino2,solo,4B,,IIS Fermi,orientamento e competenze,Anita,2
+10,lun,9-11,mattino2,solo,3A,,IIS. E. Mattei,orientamento e competenze,Margherita,2
+10,lun,9-11,mattino2,insieme,3D,5C,Liceo Scientifico e Linguistico M.Curie,citizen science,Andreea,2
+10,mar,14-16,pomeriggio,insieme,3C,5D,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Margherita,2
+10,mar,8-10,mattino1,insieme,4AtA,5MBCH,IIS L.Da Vinci-De Giorgio,presentazione manuali,Anita,2
+10,mer,14-16,pomeriggio,insieme,4C,5E,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,2
+10,mer,14-16,pomeriggio,insieme,3C,5E,Liceo Scientifico e Linguistico M.Curie,citizen science,Anita,2
+10,mer,8-10,mattino1,insieme,4GL,5AL,IIS PeanoRosa,citizen science,Margherita,2
+10,mer,9-11,mattino2,insieme,4B,4C,IIS. E. Mattei,orientamento e competenze,Andreea,2
+10,mer,9-11,mattino2,insieme,5F,5G,Liceo Scientifico Leonardo da Vinci,citizen science,Anita,2
+10,ven,14-16,pomeriggio,insieme,4AS-SAA,4CU,Liceo Pascal,citizen science,Margherita,2
+10,ven,14-16,pomeriggio,insieme,4BU,5AS,Liceo Pascal,citizen science,Ida,2
+10,ven,8-10,mattino1,insieme,4D,4G,Liceo Scientifico Leonardo da Vinci,citizen science,Margherita,2
+11,gio,14-16,pomeriggio,solo,5DNO,,Lic. Scientifico Bafile,citizen science,Margherita,2
+11,gio,14-16,pomeriggio,insieme,3E,5E,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Ida,2
+11,gio,8-10,mattino1,insieme,3A,3C,IIS. E. Mattei,presentazione manuali,Anita,2
+11,gio,9-11,mattino2,insieme,4MA,5AtIB,IIS L.Da Vinci-De Giorgio,orientamento e competenze,Andreea,2
+11,gio,9-11,mattino2,insieme,3F,3G,Liceo Scientifico Einstein,citizen science,Ida,2
+11,lun,14-16,pomeriggio,insieme,3A,5AM,Liceo Scientifico P. P. Pasolini,citizen science,Anita,2
+11,lun,8-10,mattino1,insieme,4ASA,4BSA,Liceo Scientifico G. Galilei,citizen science,Ida,2
+11,mar,14-16,pomeriggio,insieme,3I,4CSA,Liceo Scientifico G. Galilei,orientamento e competenze,Ida,2
+11,mar,8-10,mattino1,insieme,3F,4B,IIS Fermi,sensibilizzazione discriminazioni di genere pt.2,Margherita,2
+11,mar,8-10,mattino1,insieme,4B,4C,IIS. E. Mattei,citizen science,Ida,2
+11,mar,8-10,mattino1,insieme,3O,4O,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere,Anita,2
+11,mar,9-11,mattino2,insieme,5DI,5ALSA,IIS Amedeo D'Aosta,orientamento e competenze,Ida,2
+11,mar,9-11,mattino2,insieme,3C,5F,IIS Fermi,orientamento e competenze,Margherita,2
+11,mer,14-16,pomeriggio,insieme,3DSA,5C,Liceo Scientifico G. Galilei,orientamento e competenze,Ida,2
+11,ven,14-16,pomeriggio,insieme,4BS,4CU,Liceo Pascal,citizen science,Margherita,2
+11,ven,14-16,pomeriggio,insieme,4BU,5AS,Liceo Pascal,citizen science,Ida,2
+11,ven,8-10,mattino1,insieme,3AtMb,3InA,IIS L.Da Vinci-De Giorgio,citizen science,Andreea,2
+11,ven,8-10,mattino1,insieme,4C,4G,Liceo Scientifico Leonardo da Vinci,presentazione manuali,Margherita,2
+11,ven,8-10,mattino1,solo,3A,,Liceo Scientifico e Linguistico M.Curie,orientamento e competenze,Ida,2
+12,gio,14-16,pomeriggio,insieme,3E,5D,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,Andreea,2
+12,gio,8-10,mattino1,insieme,3I,5C,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,Andreea,2
+12,gio,8-10,mattino1,insieme,5I,5P,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Anita,2
+12,gio,9-11,mattino2,solo,3A,,IIS. E. Mattei,citizen science,Ida,2
+12,gio,9-11,mattino2,insieme,5F,5H,Liceo Scientifico Leonardo da Vinci,presentazione manuali,Margherita,2
+12,lun,14-16,pomeriggio,insieme,4AS,5BS,Liceo Pascal,citizen science,Ida,2
+12,lun,14-16,pomeriggio,insieme,3A,5AM,Liceo Scientifico P. P. Pasolini,citizen science,Anita,2
+12,lun,8-10,mattino1,insieme,4B,4H,Liceo Scientifico G. Galilei,citizen science,Anita,2
+12,lun,9-11,mattino2,insieme,3O,4G,Liceo Scientifico Leonardo da Vinci,citizen science,Ida,2
+12,mar,8-10,mattino1,solo,4B,,IIS Fermi,orientamento e competenze,Andreea,2
+12,mar,8-10,mattino1,insieme,3GL,3CL,IIS PeanoRosa,presentazione manuali,Margherita,2
+12,mar,9-11,mattino2,solo,3C,,IIS. E. Mattei,citizen science,Anita,2
+12,mer,8-10,mattino1,insieme,4CI,5ALSA,IIS Amedeo D'Aosta,citizen science,Anita,2
+12,ven,14-16,pomeriggio,insieme,3C,5C,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Anita,2
+12,ven,14-16,pomeriggio,insieme,3D,5C,Liceo Scientifico e Linguistico M.Curie,citizen science,Andreea,2
+12,ven,8-10,mattino1,insieme,5B,5C,IIS. E. Mattei,sensibilizzazione discriminazioni di genere,Margherita,2
+13,gio,14-16,pomeriggio,insieme,4BNO,5DNO,Lic. Scientifico Bafile,orientamento e competenze,Anita,2
+13,gio,14-16,pomeriggio,insieme,4AS-SAA,5AS,Liceo Pascal,citizen science,Margherita,2
+13,gio,14-16,pomeriggio,insieme,5C,5E,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,2
+13,gio,8-10,mattino1,insieme,4GL,5AL,IIS PeanoRosa,citizen science,Ida,2
+13,lun,8-10,mattino1,solo,5F,,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere pt.2,Margherita,2
+13,lun,8-10,mattino1,insieme,4C,4H,Liceo Scientifico Leonardo da Vinci,citizen science,Ida,2
+13,lun,8-10,mattino1,insieme,3C,5E,Liceo Scientifico e Linguistico M.Curie,citizen science,Andreea,2
+13,lun,9-11,mattino2,insieme,3CI,4ALSA,IIS Amedeo D'Aosta,citizen science,Ida,2
+13,lun,9-11,mattino2,insieme,4C,5C,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,Anita,2
+13,mar,8-10,mattino1,insieme,4B,4D,Liceo Scientifico Einstein,orientamento e competenze,Ida,2
+13,mar,9-11,mattino2,insieme,5I,5O,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Andreea,2
+13,mer,14-16,pomeriggio,insieme,4AS,4CU,Liceo Pascal,citizen science,Margherita,2
+13,mer,14-16,pomeriggio,insieme,4BS,4DS,Liceo Pascal,citizen science,Ida,2
+13,mer,14-16,pomeriggio,insieme,4A,5AM,Liceo Scientifico P. P. Pasolini,presentazione manuali,Andreea,2
+13,mer,9-11,mattino2,insieme,4B,4C,IIS. E. Mattei,citizen science,Andreea,2
+13,ven,9-11,mattino2,solo,3A,,IIS. E. Mattei,citizen science,Anita,2
+13,ven,9-11,mattino2,insieme,4F,5P,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere,Margherita,2
+14,gio,14-16,pomeriggio,solo,5E,,Liceo Scientifico P. P. Pasolini,presentazione manuali,Margherita,2
+14,gio,9-11,mattino2,insieme,4C,4H,Liceo Scientifico G. Galilei,presentazione manuali,Ida,2
+14,lun,14-16,pomeriggio,insieme,4CI,5ALSA,IIS Amedeo D'Aosta,citizen science,Ida,2
+14,lun,14-16,pomeriggio,insieme,4BS,5BS,Liceo Pascal,citizen science,Anita,2
+14,lun,8-10,mattino1,insieme,3A,3C,IIS. E. Mattei,citizen science,Anita,2
+14,mar,8-10,mattino1,insieme,3InA,5AtIB,IIS L.Da Vinci-De Giorgio,presentazione manuali,Anita,2
+14,mar,9-11,mattino2,insieme,4GL,5AL,IIS PeanoRosa,citizen science,Anita,2
+14,mar,9-11,mattino2,insieme,4F,5I,Liceo Scientifico Leonardo da Vinci,presentazione manuali,Margherita,2
+14,mer,14-16,pomeriggio,insieme,3A,5AM,Liceo Scientifico P. P. Pasolini,citizen science,Margherita,2
+14,mer,14-16,pomeriggio,insieme,4C,5C,Liceo Scientifico P. P. Pasolini,presentazione manuali,Andreea,2
+14,mer,8-10,mattino1,insieme,3C,5F,IIS Fermi,orientamento e competenze,Ida,2
+14,ven,14-16,pomeriggio,solo,5DNO,,Lic. Scientifico Bafile,citizen science,Andreea,2
+14,ven,14-16,pomeriggio,insieme,3C,5D,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,Margherita,2
+14,ven,9-11,mattino2,insieme,4B,4C,IIS. E. Mattei,citizen science,Ida,2
+14,ven,9-11,mattino2,insieme,4C,4D,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,2
+15,gio,8-10,mattino1,insieme,3DSA,4CSA,Liceo Scientifico G. Galilei,presentazione manuali,Ida,2
+15,gio,9-11,mattino2,insieme,4B,5A,Liceo Scientifico Einstein,presentazione manuali,Andreea,2
+15,lun,14-16,pomeriggio,insieme,4C,5D,Liceo Scientifico P. P. Pasolini,citizen science,Margherita,2
+15,lun,14-16,pomeriggio,insieme,4A,5C,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,2
+15,lun,8-10,mattino1,solo,3C,,IIS. E. Mattei,orientamento e competenze,Margherita,2
+15,lun,9-11,mattino2,insieme,4B,4H,Liceo Scientifico G. Galilei,citizen science,Margherita,2
+15,mar,14-16,pomeriggio,insieme,4CI,5ALSA,IIS Amedeo D'Aosta,citizen science,Ida,2
+15,mar,14-16,pomeriggio,insieme,3AS,4CU,Liceo Pascal,orientamento e competenze,Andreea,2
+15,mar,14-16,pomeriggio,insieme,4C,5C,Liceo Scientifico G. Galilei,orientamento e competenze,Anita,2
+15,mar,8-10,mattino1,insieme,4GL,5AL,IIS PeanoRosa,presentazione manuali,Ida,2
+15,mar,9-11,mattino2,insieme,3AtMb,3InA,IIS L.Da Vinci-De Giorgio,citizen science,Anita,2
+15,mar,9-11,mattino2,insieme,3GL,3CL,IIS PeanoRosa,citizen science,Margherita,2
+15,mer,14-16,pomeriggio,insieme,4AS,4BU,Liceo Pascal,orientamento e competenze,Andreea,2
+15,ven,14-16,pomeriggio,insieme,4ASA,4BSA,Liceo Scientifico G. Galilei,citizen science,Margherita,2
+15,ven,8-10,mattino1,insieme,4C,4D,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,2
+15,ven,8-10,mattino1,insieme,3B,3M,Liceo Scientifico Vitruvio Pollione,orientamento e competenze,Margherita,2
+15,ven,8-10,mattino1,insieme,3C,5C,Liceo Scientifico e Linguistico M.Curie,presentazione manuali,Ida,2
+15,ven,9-11,mattino2,insieme,4G,5G,Liceo Scientifico Leonardo da Vinci,citizen science,Anita,2

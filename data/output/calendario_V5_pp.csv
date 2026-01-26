@@ -1,0 +1,355 @@
+settimana,giorno,data,fascia,classi,scuola,citta,laboratorio,incontro,formatrice
+1,04-gio,29/01/2026,8-10,"3F,4A",IIS Fermi,Sulmona,sensibilizzazione discriminazioni di genere pt.2,1,Anita
+1,04-gio,29/01/2026,8-10,4C,Liceo Scientifico G. Galilei,Pescara,orientamento e competenze,1,Ida
+1,04-gio,29/01/2026,8-10,4O,Liceo Scientifico Leonardo da Vinci,Pescara,orientamento e competenze,1,Margherita
+1,04-gio,29/01/2026,10-12,"3C,4C",IIS. E. Mattei,Vasto,orientamento e competenze,1,Margherita
+1,04-gio,29/01/2026,10-12,"4F,5O",Liceo Scientifico Leonardo da Vinci,Pescara,sensibilizzazione discriminazioni di genere,1,Margherita
+1,04-gio,29/01/2026,10-12,5H,Liceo Scientifico Leonardo da Vinci,Pescara,sensibilizzazione discriminazioni di genere,1,Margherita
+1,04-gio,29/01/2026,11-13,3A,IIS. E. Mattei,Vasto,citizen science,1,Anita
+1,04-gio,29/01/2026,9-13,5D,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,1,Ida
+1,04-gio,29/01/2026,14.30-16.30,3C,Liceo Scientifico e Linguistico M.Curie,Giulianova,citizen science,1,Ida
+1,04-gio,29/01/2026,15-19,4BSA,Liceo Scientifico G. Galilei,Pescara,citizen science,1,Anita
+1,04-gio,29/01/2026,15.30-17.30,"3A,3C",Liceo Scientifico P. P. Pasolini,Potenza,sensibilizzazione discriminazioni di genere,1,Anita
+1,05-ven,30/01/2026,8-10,3G,Liceo Scientifico Einstein,Teramo,citizen science,1,Andreea
+1,05-ven,30/01/2026,8-10,3DSA,Liceo Scientifico G. Galilei,Pescara,orientamento e competenze,1,Margherita
+1,05-ven,30/01/2026,9-11,4D,Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,1,Anita
+1,05-ven,30/01/2026,10-12,"4GL,5AL",IIS PeanoRosa,Nereto,orientamento e competenze,1,Andreea
+1,05-ven,30/01/2026,9-13,"4AS,4BS",Liceo Pascal,Pompei,orientamento e competenze,1,Ida
+1,05-ven,30/01/2026,15-17,4BU,Liceo Pascal,Pompei,orientamento e competenze,1,Anita
+1,05-ven,30/01/2026,15-17,4ASA,Liceo Scientifico G. Galilei,Pescara,citizen science,1,Margherita
+2,01-lun,02/02/2026,8-10,"3BLSA,4CI",IIS Amedeo D'Aosta,L'Aquila,citizen science,1,Anita
+2,01-lun,02/02/2026,8-10,"4ALSA,5ALSA",IIS Amedeo D'Aosta,L'Aquila,citizen science,1,Ida
+2,01-lun,02/02/2026,8-10,"3C,5F",IIS Fermi,Sulmona,orientamento e competenze,1,Anita
+2,01-lun,02/02/2026,8-10,"3F,4A",IIS Fermi,Sulmona,orientamento e competenze,1,Ida
+2,01-lun,02/02/2026,8-10,3AtMb,IIS L.Da Vinci-De Giorgio,Lanciano,citizen science,1,Andreea
+2,01-lun,02/02/2026,8-10,3InA,IIS L.Da Vinci-De Giorgio,Lanciano,citizen science,1,Anita
+2,01-lun,02/02/2026,8-10,5AtIB,IIS L.Da Vinci-De Giorgio,Lanciano,sensibilizzazione discriminazioni di genere,1,Anita
+2,01-lun,02/02/2026,8-10,3DSA,Liceo Scientifico G. Galilei,Pescara,orientamento e competenze,2,Ida
+2,01-lun,02/02/2026,10-12,"4B,5A",IIS Fermi,Sulmona,sensibilizzazione discriminazioni di genere pt.2,1,Ida
+2,01-lun,02/02/2026,10-12,3G,Liceo Scientifico Einstein,Teramo,citizen science,2,Anita
+2,01-lun,02/02/2026,10-12,3I,Liceo Scientifico G. Galilei,Pescara,orientamento e competenze,1,Anita
+2,01-lun,02/02/2026,9-13,"3AS,3ESA",Liceo Pascal,Pompei,orientamento e competenze,1,Anita
+2,01-lun,02/02/2026,9-13,"4AS,4BS",Liceo Pascal,Pompei,orientamento e competenze,2,Andreea
+2,01-lun,02/02/2026,9-13,4CU,Liceo Pascal,Pompei,orientamento e competenze,1,Margherita
+2,01-lun,02/02/2026,9-13,"3A,3C",Liceo Scientifico P. P. Pasolini,Potenza,sensibilizzazione discriminazioni di genere,2,Ida
+2,01-lun,02/02/2026,9-13,5AM,Liceo Scientifico P. P. Pasolini,Potenza,orientamento e competenze,1,Andreea
+2,01-lun,02/02/2026,14-16,3CI,IIS Amedeo D'Aosta,L'Aquila,citizen science,1,Margherita
+2,01-lun,02/02/2026,14-16,"3D,4B",Liceo Scientifico Einstein,Teramo,orientamento e competenze,1,Andreea
+2,01-lun,02/02/2026,15-17,4BU,Liceo Pascal,Pompei,orientamento e competenze,2,Margherita
+2,01-lun,02/02/2026,15-17,"4DS,5BS",Liceo Pascal,Pompei,citizen science,1,Anita
+2,01-lun,02/02/2026,15-17,4B,Liceo Scientifico G. Galilei,Pescara,citizen science,1,Margherita
+2,01-lun,02/02/2026,15-19,4C,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,1,Ida
+2,02-mar,03/02/2026,8-10,3F,Liceo Scientifico Einstein,Teramo,citizen science,1,Anita
+2,02-mar,03/02/2026,8-10,4H,Liceo Scientifico G. Galilei,Pescara,citizen science,1,Ida
+2,02-mar,03/02/2026,9-11,3C,Liceo Scientifico e Linguistico M.Curie,Giulianova,citizen science,2,Anita
+2,02-mar,03/02/2026,10-12,"3C,4C",IIS. E. Mattei,Vasto,orientamento e competenze,2,Ida
+2,02-mar,03/02/2026,10-12,5B,IIS. E. Mattei,Vasto,orientamento e competenze,1,Andreea
+2,02-mar,03/02/2026,11-13,3A,IIS. E. Mattei,Vasto,citizen science,2,Anita
+2,02-mar,03/02/2026,11-13,"4B,5C",IIS. E. Mattei,Vasto,orientamento e competenze,1,Anita
+2,02-mar,03/02/2026,11-13,"3B,3M",Liceo Scientifico Vitruvio Pollione,Avezzano,orientamento e competenze,1,Anita
+2,02-mar,03/02/2026,14-18,"4BNO,5DNO",Lic. Scientifico Bafile,L'Aquila,orientamento e competenze,1,Andreea
+2,02-mar,03/02/2026,15-17,4ASA,Liceo Scientifico G. Galilei,Pescara,citizen science,2,Anita
+2,03-mer,04/02/2026,8-10,5DI,IIS Amedeo D'Aosta,L'Aquila,orientamento e competenze,1,Anita
+2,03-mer,04/02/2026,8-10,4CSA,Liceo Scientifico G. Galilei,Pescara,sensibilizzazione discriminazioni di genere,1,Anita
+2,03-mer,04/02/2026,8-10,3A,Liceo Scientifico e Linguistico M.Curie,Giulianova,orientamento e competenze,1,Ida
+2,03-mer,04/02/2026,10-12,"4GL,5AL",IIS PeanoRosa,Nereto,orientamento e competenze,2,Anita
+2,03-mer,04/02/2026,9-13,"5C,5E",Liceo Scientifico P. P. Pasolini,Potenza,orientamento e competenze,1,Andreea
+2,03-mer,04/02/2026,15-17,5AS,Liceo Pascal,Pompei,citizen science,1,Ida
+2,03-mer,04/02/2026,15-19,4BSA,Liceo Scientifico G. Galilei,Pescara,citizen science,2,Anita
+2,03-mer,04/02/2026,15-19,4C,Liceo Scientifico G. Galilei,Pescara,orientamento e competenze,2,Ida
+2,03-mer,04/02/2026,15-19,5C,Liceo Scientifico G. Galilei,Pescara,sensibilizzazione discriminazioni di genere,1,Ida
+2,03-mer,04/02/2026,15-19,4A,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,1,Anita
+2,03-mer,04/02/2026,15-19,5D,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,2,Andreea
+2,03-mer,04/02/2026,15.30-17.30,3E,Liceo Scientifico P. P. Pasolini,Potenza,sensibilizzazione discriminazioni di genere,1,Ida
+2,04-gio,05/02/2026,9-11,5E,Liceo Scientifico e Linguistico M.Curie,Giulianova,citizen science,1,Anita
+2,04-gio,05/02/2026,14.30-16.30,"3D,5C",Liceo Scientifico e Linguistico M.Curie,Giulianova,citizen science,1,Anita
+2,05-ven,06/02/2026,8-10,"4D,5G",Liceo Scientifico Einstein,Teramo,orientamento e competenze,1,Margherita
+2,05-ven,06/02/2026,14-16,"4G,5A",Liceo Scientifico Einstein,Teramo,orientamento e competenze,1,Margherita
+3,01-lun,09/02/2026,8-10,3CI,IIS Amedeo D'Aosta,L'Aquila,citizen science,2,Margherita
+3,01-lun,09/02/2026,8-10,5DI,IIS Amedeo D'Aosta,L'Aquila,orientamento e competenze,2,Margherita
+3,01-lun,09/02/2026,8-10,"3C,5F",IIS Fermi,Sulmona,orientamento e competenze,2,Ida
+3,01-lun,09/02/2026,8-10,"4B,5A",IIS Fermi,Sulmona,orientamento e competenze,1,Margherita
+3,01-lun,09/02/2026,8-10,3AtMb,IIS L.Da Vinci-De Giorgio,Lanciano,citizen science,2,Margherita
+3,01-lun,09/02/2026,8-10,3InA,IIS L.Da Vinci-De Giorgio,Lanciano,citizen science,2,Andreea
+3,01-lun,09/02/2026,8-10,5AtIB,IIS L.Da Vinci-De Giorgio,Lanciano,sensibilizzazione discriminazioni di genere,2,Margherita
+3,01-lun,09/02/2026,8-10,5B,IIS. E. Mattei,Vasto,orientamento e competenze,2,Margherita
+3,01-lun,09/02/2026,8-10,"3D,4B",Liceo Scientifico Einstein,Teramo,orientamento e competenze,2,Andreea
+3,01-lun,09/02/2026,8-10,3F,Liceo Scientifico Einstein,Teramo,citizen science,2,Anita
+3,01-lun,09/02/2026,8-10,3G,Liceo Scientifico Einstein,Teramo,citizen science,3,Margherita
+3,01-lun,09/02/2026,8-10,"4D,5G",Liceo Scientifico Einstein,Teramo,orientamento e competenze,2,Anita
+3,01-lun,09/02/2026,8-10,"4G,5A",Liceo Scientifico Einstein,Teramo,orientamento e competenze,2,Anita
+3,01-lun,09/02/2026,8-10,3I,Liceo Scientifico G. Galilei,Pescara,orientamento e competenze,2,Margherita
+3,01-lun,09/02/2026,8-10,5C,Liceo Scientifico G. Galilei,Pescara,sensibilizzazione discriminazioni di genere,2,Anita
+3,01-lun,09/02/2026,8-10,"3O,5F",Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,1,Margherita
+3,01-lun,09/02/2026,8-10,"4C,4H",Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,1,Margherita
+3,01-lun,09/02/2026,8-10,"4F,5O",Liceo Scientifico Leonardo da Vinci,Pescara,sensibilizzazione discriminazioni di genere,2,Margherita
+3,01-lun,09/02/2026,8-10,4G,Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,1,Anita
+3,01-lun,09/02/2026,8-10,4O,Liceo Scientifico Leonardo da Vinci,Pescara,orientamento e competenze,2,Margherita
+3,01-lun,09/02/2026,8-10,5G,Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,1,Margherita
+3,01-lun,09/02/2026,8-10,"5I,5P",Liceo Scientifico Leonardo da Vinci,Pescara,sensibilizzazione discriminazioni di genere,1,Margherita
+3,01-lun,09/02/2026,8-10,"3B,3M",Liceo Scientifico Vitruvio Pollione,Avezzano,orientamento e competenze,2,Margherita
+3,01-lun,09/02/2026,10-12,"3F,4A",IIS Fermi,Sulmona,orientamento e competenze,2,Margherita
+3,01-lun,09/02/2026,10-12,4D,Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,2,Anita
+3,01-lun,09/02/2026,9-13,"3AS,3ESA",Liceo Pascal,Pompei,orientamento e competenze,2,Ida
+3,01-lun,09/02/2026,9-13,"4AS,4BU",Liceo Pascal,Pompei,citizen science,1,Anita
+3,01-lun,09/02/2026,9-13,4AS-SAA,Liceo Pascal,Pompei,citizen science,1,Anita
+3,01-lun,09/02/2026,9-13,4CU,Liceo Pascal,Pompei,orientamento e competenze,2,Andreea
+3,01-lun,09/02/2026,9-13,5AS,Liceo Pascal,Pompei,citizen science,2,Anita
+3,01-lun,09/02/2026,9-13,3A,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,1,Andreea
+3,01-lun,09/02/2026,9-13,5AM,Liceo Scientifico P. P. Pasolini,Potenza,orientamento e competenze,2,Andreea
+3,01-lun,09/02/2026,14.30-16.30,3C,Liceo Scientifico e Linguistico M.Curie,Giulianova,citizen science,3,Margherita
+3,01-lun,09/02/2026,15-17,4BS,Liceo Pascal,Pompei,citizen science,1,Anita
+3,01-lun,09/02/2026,15-17,"4DS,5BS",Liceo Pascal,Pompei,citizen science,2,Anita
+3,01-lun,09/02/2026,15-19,3E,Liceo Scientifico P. P. Pasolini,Potenza,sensibilizzazione discriminazioni di genere,2,Ida
+3,01-lun,09/02/2026,15.30-17.30,4A,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,2,Anita
+3,01-lun,09/02/2026,15.30-17.30,5D,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,3,Andreea
+3,02-mar,10/02/2026,8-10,4MA,IIS L.Da Vinci-De Giorgio,Lanciano,orientamento e competenze,1,Ida
+3,02-mar,10/02/2026,8-10,3GL,IIS PeanoRosa,Nereto,citizen science,1,Andreea
+3,02-mar,10/02/2026,8-10,3C,IIS. E. Mattei,Vasto,citizen science,1,Andreea
+3,02-mar,10/02/2026,8-10,"3D,5C",Liceo Scientifico e Linguistico M.Curie,Giulianova,citizen science,2,Ida
+3,02-mar,10/02/2026,9-11,5E,Liceo Scientifico e Linguistico M.Curie,Giulianova,citizen science,2,Anita
+3,02-mar,10/02/2026,10-12,"3CL,5AL",IIS PeanoRosa,Nereto,citizen science,1,Andreea
+3,02-mar,10/02/2026,10-12,5H,Liceo Scientifico Leonardo da Vinci,Pescara,sensibilizzazione discriminazioni di genere,2,Ida
+3,02-mar,10/02/2026,11-13,4GL,IIS PeanoRosa,Nereto,citizen science,1,Anita
+3,02-mar,10/02/2026,11-13,3A,IIS. E. Mattei,Vasto,citizen science,3,Anita
+3,02-mar,10/02/2026,11-13,"4B,5C",IIS. E. Mattei,Vasto,orientamento e competenze,2,Anita
+3,02-mar,10/02/2026,11-13,4C,IIS. E. Mattei,Vasto,citizen science,1,Anita
+3,02-mar,10/02/2026,14.30-16.30,3A,Liceo Scientifico e Linguistico M.Curie,Giulianova,orientamento e competenze,2,Ida
+3,02-mar,10/02/2026,15.30-17.30,"5C,5E",Liceo Scientifico P. P. Pasolini,Potenza,orientamento e competenze,2,Ida
+3,03-mer,11/02/2026,9-13,3C,Liceo Scientifico P. P. Pasolini,Potenza,orientamento e competenze,1,Andreea
+3,03-mer,11/02/2026,15-19,4C,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,2,Andreea
+3,05-ven,13/02/2026,14-18,"4BNO,5DNO",Lic. Scientifico Bafile,L'Aquila,orientamento e competenze,2,Anita
+4,01-lun,16/02/2026,8-10,"4ALSA,5ALSA",IIS Amedeo D'Aosta,L'Aquila,citizen science,2,Anita
+4,01-lun,16/02/2026,8-10,3InA,IIS L.Da Vinci-De Giorgio,Lanciano,citizen science,3,Ida
+4,01-lun,16/02/2026,8-10,3G,Liceo Scientifico Einstein,Teramo,citizen science,4,Ida
+4,01-lun,16/02/2026,8-10,"4B,4D",Liceo Scientifico Einstein,Teramo,presentazione manuali,1,Anita
+4,01-lun,16/02/2026,8-10,5G,Liceo Scientifico Einstein,Teramo,presentazione manuali,1,Ida
+4,01-lun,16/02/2026,8-10,4B,Liceo Scientifico G. Galilei,Pescara,citizen science,2,Anita
+4,01-lun,16/02/2026,8-10,4BSA,Liceo Scientifico G. Galilei,Pescara,citizen science,3,Margherita
+4,01-lun,16/02/2026,8-10,"3D,5C",Liceo Scientifico e Linguistico M.Curie,Giulianova,citizen science,3,Anita
+4,01-lun,16/02/2026,9-11,5F,IIS Fermi,Sulmona,sensibilizzazione discriminazioni di genere pt.2,1,Andreea
+4,01-lun,16/02/2026,9-13,"4AS,4BU",Liceo Pascal,Pompei,citizen science,2,Anita
+4,01-lun,16/02/2026,9-13,4AS-SAA,Liceo Pascal,Pompei,citizen science,2,Ida
+4,01-lun,16/02/2026,9-13,3A,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,2,Anita
+4,01-lun,16/02/2026,9-13,4A,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,3,Ida
+4,01-lun,16/02/2026,14-18,4BNO,Lic. Scientifico Bafile,L'Aquila,sensibilizzazione discriminazioni di genere,1,Ida
+4,01-lun,16/02/2026,14-18,5DNO,Lic. Scientifico Bafile,L'Aquila,citizen science,1,Anita
+4,01-lun,16/02/2026,14.30-16.30,5E,Liceo Scientifico e Linguistico M.Curie,Giulianova,citizen science,3,Ida
+4,01-lun,16/02/2026,15-17,4CU,Liceo Pascal,Pompei,citizen science,1,Margherita
+4,01-lun,16/02/2026,15-17,4ASA,Liceo Scientifico G. Galilei,Pescara,citizen science,3,Andreea
+4,01-lun,16/02/2026,15-17,4CSA,Liceo Scientifico G. Galilei,Pescara,sensibilizzazione discriminazioni di genere,2,Margherita
+4,01-lun,16/02/2026,15-19,3C,Liceo Scientifico P. P. Pasolini,Potenza,orientamento e competenze,2,Andreea
+4,01-lun,16/02/2026,15.30-17.30,4C,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,3,Anita
+4,01-lun,16/02/2026,15.30-17.30,5C,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,1,Andreea
+4,02-mar,17/02/2026,8-10,"3BLSA,4CI",IIS Amedeo D'Aosta,L'Aquila,citizen science,2,Ida
+4,02-mar,17/02/2026,8-10,"4B,5A",IIS Fermi,Sulmona,orientamento e competenze,2,Andreea
+4,02-mar,17/02/2026,8-10,3AtMb,IIS L.Da Vinci-De Giorgio,Lanciano,citizen science,3,Anita
+4,02-mar,17/02/2026,8-10,4MA,IIS L.Da Vinci-De Giorgio,Lanciano,orientamento e competenze,2,Ida
+4,02-mar,17/02/2026,8-10,3A,IIS. E. Mattei,Vasto,citizen science,4,Anita
+4,02-mar,17/02/2026,8-10,4B,IIS. E. Mattei,Vasto,citizen science,1,Anita
+4,02-mar,17/02/2026,8-10,"3O,5F",Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,2,Anita
+4,02-mar,17/02/2026,8-10,5G,Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,2,Ida
+4,02-mar,17/02/2026,10-12,4GL,IIS PeanoRosa,Nereto,citizen science,2,Ida
+4,02-mar,17/02/2026,10-12,3C,IIS. E. Mattei,Vasto,citizen science,2,Ida
+4,02-mar,17/02/2026,10-12,4C,IIS. E. Mattei,Vasto,citizen science,2,Anita
+4,02-mar,17/02/2026,10-12,3F,Liceo Scientifico Einstein,Teramo,citizen science,3,Ida
+4,02-mar,17/02/2026,10-12,"3B,3M",Liceo Scientifico Vitruvio Pollione,Avezzano,presentazione manuali,1,Anita
+4,02-mar,17/02/2026,15-17,5C,Liceo Scientifico G. Galilei,Pescara,orientamento e competenze,1,Anita
+4,02-mar,17/02/2026,15-19,4H,Liceo Scientifico G. Galilei,Pescara,citizen science,2,Ida
+4,03-mer,18/02/2026,8-10,"5I,5P",Liceo Scientifico Leonardo da Vinci,Pescara,sensibilizzazione discriminazioni di genere,2,Ida
+4,03-mer,18/02/2026,8-10,3C,Liceo Scientifico e Linguistico M.Curie,Giulianova,citizen science,4,Anita
+4,03-mer,18/02/2026,10-12,5AtIB,IIS L.Da Vinci-De Giorgio,Lanciano,orientamento e competenze,1,Anita
+4,03-mer,18/02/2026,14-16,3CI,IIS Amedeo D'Aosta,L'Aquila,citizen science,3,Anita
+4,03-mer,18/02/2026,14-18,5AS,Liceo Pascal,Pompei,citizen science,3,Ida
+4,03-mer,18/02/2026,15-17,4BS,Liceo Pascal,Pompei,citizen science,2,Anita
+4,03-mer,18/02/2026,15-17,"4DS,5BS",Liceo Pascal,Pompei,citizen science,3,Ida
+4,03-mer,18/02/2026,15-19,"5AM,5E",Liceo Scientifico P. P. Pasolini,Potenza,citizen science,1,Andreea
+4,03-mer,18/02/2026,15.30-17.30,5D,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,4,Anita
+4,04-gio,19/02/2026,9-13,4C,Liceo Scientifico G. Galilei,Pescara,sensibilizzazione discriminazioni di genere,1,Ida
+4,05-ven,20/02/2026,9-13,"3DSA,3I",Liceo Scientifico G. Galilei,Pescara,sensibilizzazione discriminazioni di genere,1,Ida
+5,01-lun,23/02/2026,8-10,"3BLSA,4CI",IIS Amedeo D'Aosta,L'Aquila,citizen science,3,Andreea
+5,01-lun,23/02/2026,8-10,"4ALSA,5ALSA",IIS Amedeo D'Aosta,L'Aquila,citizen science,3,Anita
+5,01-lun,23/02/2026,8-10,5AtIB,IIS L.Da Vinci-De Giorgio,Lanciano,orientamento e competenze,2,Ida
+5,01-lun,23/02/2026,8-10,3GL,IIS PeanoRosa,Nereto,citizen science,2,Anita
+5,01-lun,23/02/2026,8-10,3F,Liceo Scientifico Einstein,Teramo,citizen science,4,Ida
+5,01-lun,23/02/2026,8-10,4D,Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,3,Andreea
+5,01-lun,23/02/2026,8-10,"5D,5O",Liceo Scientifico Leonardo da Vinci,Pescara,orientamento e competenze,1,Ida
+5,01-lun,23/02/2026,8-10,"3D,5C",Liceo Scientifico e Linguistico M.Curie,Giulianova,citizen science,4,Anita
+5,01-lun,23/02/2026,10-12,3InA,IIS L.Da Vinci-De Giorgio,Lanciano,citizen science,4,Andreea
+5,01-lun,23/02/2026,10-12,"3CL,5AL",IIS PeanoRosa,Nereto,citizen science,2,Anita
+5,01-lun,23/02/2026,10-12,3G,Liceo Scientifico Einstein,Teramo,citizen science,5,Ida
+5,01-lun,23/02/2026,9-13,4AS-SAA,Liceo Pascal,Pompei,citizen science,3,Ida
+5,01-lun,23/02/2026,9-13,4CU,Liceo Pascal,Pompei,citizen science,2,Anita
+5,01-lun,23/02/2026,9-13,5AS,Liceo Pascal,Pompei,citizen science,4,Ida
+5,01-lun,23/02/2026,9-13,4C,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,4,Anita
+5,01-lun,23/02/2026,14-16,4BNO,Lic. Scientifico Bafile,L'Aquila,sensibilizzazione discriminazioni di genere,2,Anita
+5,01-lun,23/02/2026,15-17,"4AS,4BU",Liceo Pascal,Pompei,citizen science,3,Margherita
+5,01-lun,23/02/2026,15-17,4BS,Liceo Pascal,Pompei,citizen science,3,Anita
+5,01-lun,23/02/2026,15-17,"4DS,5BS",Liceo Pascal,Pompei,citizen science,4,Anita
+5,01-lun,23/02/2026,15-19,5C,Liceo Scientifico G. Galilei,Pescara,orientamento e competenze,2,Ida
+5,01-lun,23/02/2026,15-19,4A,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,4,Anita
+5,01-lun,23/02/2026,15.30-17.30,5C,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,2,Anita
+5,02-mar,24/02/2026,8-10,4F,Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,1,Anita
+5,02-mar,24/02/2026,8-10,4G,Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,2,Andreea
+5,02-mar,24/02/2026,8-10,5G,Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,3,Anita
+5,02-mar,24/02/2026,8-10,3C,Liceo Scientifico e Linguistico M.Curie,Giulianova,citizen science,5,Anita
+5,02-mar,24/02/2026,10-12,3CI,IIS Amedeo D'Aosta,L'Aquila,citizen science,4,Ida
+5,02-mar,24/02/2026,10-12,"3O,5F",Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,3,Anita
+5,02-mar,24/02/2026,10-12,"4C,4H",Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,2,Andreea
+5,02-mar,24/02/2026,10-12,"5H,5P",Liceo Scientifico Leonardo da Vinci,Pescara,orientamento e competenze,1,Anita
+5,02-mar,24/02/2026,14-16,5DNO,Lic. Scientifico Bafile,L'Aquila,citizen science,2,Ida
+5,03-mer,25/02/2026,9-13,3A,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,3,Anita
+5,03-mer,25/02/2026,14-16,5DI,IIS Amedeo D'Aosta,L'Aquila,presentazione manuali,1,Anita
+5,03-mer,25/02/2026,14-16,"3D,5A",Liceo Scientifico Einstein,Teramo,presentazione manuali,1,Anita
+5,03-mer,25/02/2026,14.30-16.30,5E,Liceo Scientifico e Linguistico M.Curie,Giulianova,citizen science,4,Anita
+5,03-mer,25/02/2026,15-19,5D,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,5,Ida
+5,03-mer,25/02/2026,15.30-17.30,"5AM,5E",Liceo Scientifico P. P. Pasolini,Potenza,citizen science,2,Anita
+5,04-gio,26/02/2026,8-10,4GL,IIS PeanoRosa,Nereto,citizen science,3,Anita
+5,04-gio,26/02/2026,8-10,5I,Liceo Scientifico Leonardo da Vinci,Pescara,orientamento e competenze,1,Margherita
+5,04-gio,26/02/2026,10-12,3AtMb,IIS L.Da Vinci-De Giorgio,Lanciano,citizen science,4,Margherita
+6,01-lun,02/03/2026,8-10,"3BLSA,4CI",IIS Amedeo D'Aosta,L'Aquila,citizen science,4,Anita
+6,01-lun,02/03/2026,8-10,3CI,IIS Amedeo D'Aosta,L'Aquila,citizen science,5,Anita
+6,01-lun,02/03/2026,8-10,"4ALSA,5ALSA",IIS Amedeo D'Aosta,L'Aquila,citizen science,4,Anita
+6,01-lun,02/03/2026,8-10,"4MA,5AtIB",IIS L.Da Vinci-De Giorgio,Lanciano,presentazione manuali,1,Anita
+6,01-lun,02/03/2026,8-10,5MBCH,IIS L.Da Vinci-De Giorgio,Lanciano,presentazione manuali,1,Andreea
+6,01-lun,02/03/2026,8-10,3F,Liceo Scientifico Einstein,Teramo,citizen science,5,Ida
+6,01-lun,02/03/2026,8-10,4B,Liceo Scientifico G. Galilei,Pescara,citizen science,3,Andreea
+6,01-lun,02/03/2026,8-10,4CSA,Liceo Scientifico G. Galilei,Pescara,orientamento e competenze,1,Andreea
+6,01-lun,02/03/2026,8-10,4H,Liceo Scientifico G. Galilei,Pescara,citizen science,3,Andreea
+6,01-lun,02/03/2026,8-10,"3D,5C",Liceo Scientifico e Linguistico M.Curie,Giulianova,citizen science,5,Anita
+6,01-lun,02/03/2026,10-12,"3O,5F",Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,4,Anita
+6,01-lun,02/03/2026,9-13,"4AS,4BU",Liceo Pascal,Pompei,citizen science,4,Andreea
+6,01-lun,02/03/2026,9-13,4AS-SAA,Liceo Pascal,Pompei,citizen science,4,Anita
+6,01-lun,02/03/2026,9-13,4BS,Liceo Pascal,Pompei,citizen science,4,Anita
+6,01-lun,02/03/2026,9-13,5AS,Liceo Pascal,Pompei,citizen science,5,Andreea
+6,01-lun,02/03/2026,9-13,4A,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,5,Andreea
+6,01-lun,02/03/2026,9-13,"5AM,5E",Liceo Scientifico P. P. Pasolini,Potenza,citizen science,3,Ida
+6,01-lun,02/03/2026,15-17,4CU,Liceo Pascal,Pompei,citizen science,3,Margherita
+6,01-lun,02/03/2026,15-17,"4DS,5BS",Liceo Pascal,Pompei,citizen science,5,Anita
+6,01-lun,02/03/2026,15-19,3A,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,4,Ida
+6,01-lun,02/03/2026,15.30-17.30,4C,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,5,Andreea
+6,02-mar,03/03/2026,8-10,3GL,IIS PeanoRosa,Nereto,citizen science,3,Anita
+6,02-mar,03/03/2026,8-10,4GL,IIS PeanoRosa,Nereto,citizen science,4,Anita
+6,02-mar,03/03/2026,8-10,3A,IIS. E. Mattei,Vasto,citizen science,5,Andreea
+6,02-mar,03/03/2026,8-10,"5B,5C",IIS. E. Mattei,Vasto,sensibilizzazione discriminazioni di genere,1,Ida
+6,02-mar,03/03/2026,8-10,4ASA,Liceo Scientifico G. Galilei,Pescara,citizen science,4,Ida
+6,02-mar,03/03/2026,8-10,"5D,5O",Liceo Scientifico Leonardo da Vinci,Pescara,orientamento e competenze,2,Andreea
+6,02-mar,03/03/2026,8-10,5E,Liceo Scientifico e Linguistico M.Curie,Giulianova,citizen science,5,Anita
+6,02-mar,03/03/2026,10-12,3AtMb,IIS L.Da Vinci-De Giorgio,Lanciano,citizen science,5,Ida
+6,02-mar,03/03/2026,10-12,"3CL,5AL",IIS PeanoRosa,Nereto,citizen science,3,Andreea
+6,02-mar,03/03/2026,10-12,5G,Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,4,Anita
+6,02-mar,03/03/2026,14-16,5DNO,Lic. Scientifico Bafile,L'Aquila,citizen science,3,Ida
+6,02-mar,03/03/2026,15-19,"3DSA,3I",Liceo Scientifico G. Galilei,Pescara,sensibilizzazione discriminazioni di genere,2,Andreea
+6,03-mer,04/03/2026,8-10,3InA,IIS L.Da Vinci-De Giorgio,Lanciano,citizen science,5,Anita
+6,03-mer,04/03/2026,8-10,3C,IIS. E. Mattei,Vasto,citizen science,3,Anita
+6,03-mer,04/03/2026,10-12,4BSA,Liceo Scientifico G. Galilei,Pescara,citizen science,4,Anita
+6,03-mer,04/03/2026,15-19,"3E,5D",Liceo Scientifico P. P. Pasolini,Potenza,orientamento e competenze,1,Anita
+6,03-mer,04/03/2026,15.30-17.30,5C,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,3,Ida
+6,04-gio,05/03/2026,8-10,5I,Liceo Scientifico Leonardo da Vinci,Pescara,orientamento e competenze,2,Margherita
+6,04-gio,05/03/2026,10-12,"5H,5P",Liceo Scientifico Leonardo da Vinci,Pescara,orientamento e competenze,2,Margherita
+7,01-lun,09/03/2026,8-10,"3BLSA,4CI",IIS Amedeo D'Aosta,L'Aquila,citizen science,5,Andreea
+7,01-lun,09/03/2026,8-10,"4ALSA,5ALSA",IIS Amedeo D'Aosta,L'Aquila,citizen science,5,Andreea
+7,01-lun,09/03/2026,8-10,4ASA,Liceo Scientifico G. Galilei,Pescara,citizen science,5,Anita
+7,01-lun,09/03/2026,8-10,5P,Liceo Scientifico Leonardo da Vinci,Pescara,presentazione manuali,1,Ida
+7,01-lun,09/03/2026,8-10,"5C,5E",Liceo Scientifico e Linguistico M.Curie,Giulianova,presentazione manuali,1,Andreea
+7,01-lun,09/03/2026,10-12,"3O,5F",Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,5,Ida
+7,01-lun,09/03/2026,9-13,"4AS,4BU",Liceo Pascal,Pompei,citizen science,5,Anita
+7,01-lun,09/03/2026,9-13,4AS-SAA,Liceo Pascal,Pompei,citizen science,5,Margherita
+7,01-lun,09/03/2026,9-13,3A,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,5,Andreea
+7,01-lun,09/03/2026,9-13,"3C,4A",Liceo Scientifico P. P. Pasolini,Potenza,presentazione manuali,1,Andreea
+7,01-lun,09/03/2026,9-13,"3E,5D",Liceo Scientifico P. P. Pasolini,Potenza,orientamento e competenze,2,Anita
+7,01-lun,09/03/2026,15-17,4BS,Liceo Pascal,Pompei,citizen science,5,Anita
+7,01-lun,09/03/2026,15-17,4CU,Liceo Pascal,Pompei,citizen science,4,Ida
+7,01-lun,09/03/2026,15-17,4CSA,Liceo Scientifico G. Galilei,Pescara,orientamento e competenze,2,Margherita
+7,01-lun,09/03/2026,15.30-17.30,"5AM,5E",Liceo Scientifico P. P. Pasolini,Potenza,citizen science,4,Anita
+7,01-lun,09/03/2026,15.30-17.30,5C,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,4,Andreea
+7,02-mar,10/03/2026,8-10,3C,IIS. E. Mattei,Vasto,citizen science,4,Andreea
+7,02-mar,10/03/2026,8-10,4C,IIS. E. Mattei,Vasto,citizen science,3,Andreea
+7,02-mar,10/03/2026,8-10,4D,Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,4,Anita
+7,02-mar,10/03/2026,9-11,5G,Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,5,Anita
+7,02-mar,10/03/2026,10-12,3A,IIS. E. Mattei,Vasto,orientamento e competenze,1,Ida
+7,02-mar,10/03/2026,10-12,4G,Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,3,Andreea
+7,02-mar,10/03/2026,11-13,"5B,5C",IIS. E. Mattei,Vasto,sensibilizzazione discriminazioni di genere,2,Anita
+7,02-mar,10/03/2026,11-13,"5D,5I",Liceo Scientifico Leonardo da Vinci,Pescara,presentazione manuali,1,Anita
+7,02-mar,10/03/2026,14-16,5DNO,Lic. Scientifico Bafile,L'Aquila,citizen science,4,Anita
+7,03-mer,11/03/2026,8-10,4B,IIS. E. Mattei,Vasto,citizen science,2,Anita
+7,03-mer,11/03/2026,8-10,4B,Liceo Scientifico G. Galilei,Pescara,citizen science,4,Anita
+7,03-mer,11/03/2026,10-12,4F,Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,2,Anita
+7,03-mer,11/03/2026,15-17,4H,Liceo Scientifico G. Galilei,Pescara,citizen science,4,Anita
+7,04-gio,12/03/2026,8-10,"3CL,5AL",IIS PeanoRosa,Nereto,citizen science,4,Margherita
+7,04-gio,12/03/2026,10-12,3GL,IIS PeanoRosa,Nereto,citizen science,4,Margherita
+7,05-ven,13/03/2026,8-10,4GL,IIS PeanoRosa,Nereto,citizen science,5,Margherita
+7,05-ven,13/03/2026,8-10,4C,Liceo Scientifico G. Galilei,Pescara,sensibilizzazione discriminazioni di genere,2,Margherita
+7,05-ven,13/03/2026,8-10,"4C,4H",Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,3,Anita
+7,05-ven,13/03/2026,10-12,4G,Liceo Scientifico Einstein,Teramo,presentazione manuali,1,Margherita
+8,01-lun,16/03/2026,8-10,"3BLSA,3CI",IIS Amedeo D'Aosta,L'Aquila,presentazione manuali,1,Anita
+8,01-lun,16/03/2026,8-10,3GL,IIS PeanoRosa,Nereto,citizen science,5,Ida
+8,01-lun,16/03/2026,10-12,3A,IIS. E. Mattei,Vasto,orientamento e competenze,2,Ida
+8,01-lun,16/03/2026,9-13,3AS,Liceo Pascal,Pompei,presentazione manuali,1,Andreea
+8,01-lun,16/03/2026,9-13,"3ESA,4AS-SAA",Liceo Pascal,Pompei,presentazione manuali,1,Andreea
+8,01-lun,16/03/2026,9-13,"4AS,5BS",Liceo Pascal,Pompei,presentazione manuali,1,Andreea
+8,01-lun,16/03/2026,9-13,"4BS,4BU",Liceo Pascal,Pompei,presentazione manuali,1,Anita
+8,01-lun,16/03/2026,9-13,"4DS,5AS",Liceo Pascal,Pompei,presentazione manuali,1,Anita
+8,01-lun,16/03/2026,9-13,5C,Liceo Scientifico P. P. Pasolini,Potenza,citizen science,5,Anita
+8,01-lun,16/03/2026,14-16,5DNO,Lic. Scientifico Bafile,L'Aquila,citizen science,5,Anita
+8,01-lun,16/03/2026,15-17,4CU,Liceo Pascal,Pompei,citizen science,5,Andreea
+8,01-lun,16/03/2026,15-17,3I,Liceo Scientifico G. Galilei,Pescara,presentazione manuali,1,Anita
+8,01-lun,16/03/2026,15-17,4BSA,Liceo Scientifico G. Galilei,Pescara,citizen science,5,Margherita
+8,02-mar,17/03/2026,8-10,"3CL,5AL",IIS PeanoRosa,Nereto,citizen science,5,Anita
+8,02-mar,17/03/2026,8-10,"3O,4O",Liceo Scientifico Leonardo da Vinci,Pescara,sensibilizzazione discriminazioni di genere,1,Anita
+8,02-mar,17/03/2026,8-10,3C,Liceo Scientifico e Linguistico M.Curie,Giulianova,presentazione manuali,1,Ida
+8,02-mar,17/03/2026,9-11,3C,IIS. E. Mattei,Vasto,citizen science,5,Andreea
+8,02-mar,17/03/2026,9-11,4F,Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,3,Anita
+8,02-mar,17/03/2026,10-12,4D,Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,5,Ida
+8,02-mar,17/03/2026,11-13,"4C,4H",Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,4,Anita
+8,02-mar,17/03/2026,9-13,5F,Liceo Scientifico Leonardo da Vinci,Pescara,sensibilizzazione discriminazioni di genere pt.2,1,Anita
+8,02-mar,17/03/2026,15-19,4B,Liceo Scientifico G. Galilei,Pescara,citizen science,5,Ida
+8,02-mar,17/03/2026,15-19,4H,Liceo Scientifico G. Galilei,Pescara,citizen science,5,Anita
+8,03-mer,18/03/2026,9-13,3A,Liceo Scientifico P. P. Pasolini,Potenza,orientamento e competenze,1,Anita
+8,03-mer,18/03/2026,15.30-17.30,"5AM,5E",Liceo Scientifico P. P. Pasolini,Potenza,citizen science,5,Anita
+8,04-gio,19/03/2026,8-10,"4ASA,4CSA",Liceo Scientifico G. Galilei,Pescara,presentazione manuali,1,Margherita
+8,04-gio,19/03/2026,8-10,4G,Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,4,Ida
+8,04-gio,19/03/2026,10-12,5ALSA,IIS Amedeo D'Aosta,L'Aquila,orientamento e competenze,1,Margherita
+8,04-gio,19/03/2026,15-19,"3DSA,5C",Liceo Scientifico G. Galilei,Pescara,presentazione manuali,1,Margherita
+9,01-lun,23/03/2026,8-10,"4ALSA,4CI",IIS Amedeo D'Aosta,L'Aquila,presentazione manuali,1,Margherita
+9,01-lun,23/03/2026,8-10,5ALSA,IIS Amedeo D'Aosta,L'Aquila,orientamento e competenze,2,Margherita
+9,01-lun,23/03/2026,8-10,3C,IIS Fermi,Sulmona,sensibilizzazione discriminazioni di genere pt.2,1,Margherita
+9,01-lun,23/03/2026,8-10,"3AtMb,4AtA",IIS L.Da Vinci-De Giorgio,Lanciano,presentazione manuali,1,Margherita
+9,01-lun,23/03/2026,8-10,"3A,5C",IIS. E. Mattei,Vasto,presentazione manuali,1,Ida
+9,01-lun,23/03/2026,8-10,"3F,3G",Liceo Scientifico Einstein,Teramo,presentazione manuali,1,Margherita
+9,01-lun,23/03/2026,8-10,"4B,4H",Liceo Scientifico G. Galilei,Pescara,presentazione manuali,1,Margherita
+9,01-lun,23/03/2026,8-10,"4C,4H",Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,5,Margherita
+9,01-lun,23/03/2026,10-12,"5G,5O",Liceo Scientifico Leonardo da Vinci,Pescara,presentazione manuali,1,Margherita
+9,01-lun,23/03/2026,9-13,4CU,Liceo Pascal,Pompei,presentazione manuali,1,Margherita
+9,01-lun,23/03/2026,9-13,3A,Liceo Scientifico P. P. Pasolini,Potenza,orientamento e competenze,2,Anita
+9,01-lun,23/03/2026,9-13,3E,Liceo Scientifico P. P. Pasolini,Potenza,presentazione manuali,1,Andreea
+9,01-lun,23/03/2026,15-19,"4BSA,4C",Liceo Scientifico G. Galilei,Pescara,presentazione manuali,1,Margherita
+9,01-lun,23/03/2026,15.30-17.30,"4C,5AM",Liceo Scientifico P. P. Pasolini,Potenza,presentazione manuali,1,Andreea
+9,01-lun,23/03/2026,15.30-17.30,"5C,5D",Liceo Scientifico P. P. Pasolini,Potenza,sensibilizzazione discriminazioni di genere,1,Anita
+9,02-mar,24/03/2026,8-10,4B,IIS. E. Mattei,Vasto,citizen science,3,Margherita
+9,02-mar,24/03/2026,8-10,4C,IIS. E. Mattei,Vasto,citizen science,4,Margherita
+9,02-mar,24/03/2026,8-10,"4D,5F",Liceo Scientifico Leonardo da Vinci,Pescara,presentazione manuali,1,Anita
+9,02-mar,24/03/2026,8-10,4G,Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,5,Anita
+9,02-mar,24/03/2026,10-12,"3GL,5AL",IIS PeanoRosa,Nereto,presentazione manuali,1,Margherita
+9,02-mar,24/03/2026,10-12,4F,Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,4,Anita
+9,02-mar,24/03/2026,14-18,4BNO,Lic. Scientifico Bafile,L'Aquila,presentazione manuali,1,Anita
+9,03-mer,25/03/2026,14-16,5DNO,Lic. Scientifico Bafile,L'Aquila,presentazione manuali,1,Ida
+9,05-ven,27/03/2026,8-10,"3O,4O",Liceo Scientifico Leonardo da Vinci,Pescara,sensibilizzazione discriminazioni di genere,2,Anita
+10,01-lun,30/03/2026,8-10,"4C,4G",Liceo Scientifico Leonardo da Vinci,Pescara,presentazione manuali,1,Ida
+10,01-lun,30/03/2026,9-13,"5C,5D",Liceo Scientifico P. P. Pasolini,Potenza,sensibilizzazione discriminazioni di genere,2,Andreea
+10,02-mar,31/03/2026,8-10,4B,IIS. E. Mattei,Vasto,citizen science,4,Andreea
+10,02-mar,31/03/2026,8-10,4F,Liceo Scientifico Leonardo da Vinci,Pescara,citizen science,5,Andreea
+10,02-mar,31/03/2026,10-12,"3CL,4GL",IIS PeanoRosa,Nereto,presentazione manuali,1,Andreea
+10,02-mar,31/03/2026,10-12,"4O,5H",Liceo Scientifico Leonardo da Vinci,Pescara,presentazione manuali,1,Anita
+10,03-mer,01/04/2026,8-10,5ALSA,IIS Amedeo D'Aosta,L'Aquila,presentazione manuali,1,Anita
+10,03-mer,01/04/2026,10-12,4C,IIS. E. Mattei,Vasto,citizen science,5,Anita
+11,01-lun,13/04/2026,9-13,"3A,5C",Liceo Scientifico P. P. Pasolini,Potenza,presentazione manuali,1,Ida
+11,01-lun,13/04/2026,9-13,"5D,5E",Liceo Scientifico P. P. Pasolini,Potenza,presentazione manuali,1,Anita
+11,02-mar,14/04/2026,8-10,4C,IIS. E. Mattei,Vasto,presentazione manuali,1,Ida
+11,02-mar,14/04/2026,8-10,"3O,4F",Liceo Scientifico Leonardo da Vinci,Pescara,presentazione manuali,1,Anita
+11,02-mar,14/04/2026,10-12,"3C,5B",IIS. E. Mattei,Vasto,presentazione manuali,1,Ida
+11,04-gio,16/04/2026,8-10,4B,IIS. E. Mattei,Vasto,citizen science,5,Margherita
+11,05-ven,17/04/2026,11-13,4H,Liceo Scientifico Leonardo da Vinci,Pescara,presentazione manuali,1,Anita
+12,04-gio,23/04/2026,11-13,3InA,IIS L.Da Vinci-De Giorgio,Lanciano,presentazione manuali,1,Margherita
+13,01-lun,27/04/2026,8-10,4B,IIS. E. Mattei,Vasto,presentazione manuali,1,Ida
+15,01-lun,11/05/2026,8-10,"3A,3D",Liceo Scientifico e Linguistico M.Curie,Giulianova,presentazione manuali,1,Ida

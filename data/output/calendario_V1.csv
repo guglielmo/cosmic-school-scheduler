@@ -1,0 +1,270 @@
+settimana,tipo,classe_id,classe,classe2_id,classe2,scuola,lab_id,laboratorio,formatrice_id,formatrice,ore
+1,insieme,10,3CI,14.0,5ALSA,IIS Amedeo D'Aosta,4,citizen science,2,Andreea,2
+1,solo,8,5DNO,,,Lic. Scientifico Bafile,4,citizen science,2,Andreea,2
+1,solo,44,3I,,,Liceo Scientifico G. Galilei,7,sensibilizzazione discriminazioni di genere,2,Andreea,2
+1,insieme,45,4ASA,46.0,4B,Liceo Scientifico G. Galilei,4,citizen science,2,Andreea,2
+1,solo,61,5G,,,Liceo Scientifico Leonardo da Vinci,8,presentazione manuali,2,Andreea,2
+1,insieme,75,3E,80.0,5D,Liceo Scientifico P. P. Pasolini,5,orientamento e competenze,2,Andreea,2
+2,solo,35,3D,,,Liceo Scientifico Einstein,5,orientamento e competenze,2,Andreea,2
+2,solo,60,5F,,,Liceo Scientifico Leonardo da Vinci,9,sensibilizzazione discriminazioni di genere pt.2,2,Andreea,2
+2,solo,73,3A,,,Liceo Scientifico P. P. Pasolini,8,presentazione manuali,2,Andreea,2
+3,insieme,10,3CI,14.0,5ALSA,IIS Amedeo D'Aosta,4,citizen science,2,Andreea,2
+3,insieme,18,4MA,19.0,5AtIB,IIS L.Da Vinci-De Giorgio,5,orientamento e competenze,2,Andreea,2
+3,insieme,21,3GL,23.0,4GL,IIS PeanoRosa,4,citizen science,2,Andreea,2
+3,insieme,2,3C,4.0,4C,IIS. E. Mattei,4,citizen science,2,Andreea,2
+3,insieme,74,3C,75.0,3E,Liceo Scientifico P. P. Pasolini,8,presentazione manuali,2,Andreea,2
+3,solo,68,3A,,,Liceo Scientifico e Linguistico M.Curie,8,presentazione manuali,2,Andreea,2
+3,insieme,69,3C,72.0,5C,Liceo Scientifico e Linguistico M.Curie,4,citizen science,2,Andreea,2
+4,insieme,2,3C,3.0,4B,IIS. E. Mattei,4,citizen science,2,Andreea,2
+4,insieme,25,3AS,26.0,3ESA,Liceo Pascal,5,orientamento e competenze,2,Andreea,2
+4,insieme,27,4AS-SAA,33.0,5BS,Liceo Pascal,4,citizen science,2,Andreea,2
+4,insieme,54,4D,61.0,5G,Liceo Scientifico Leonardo da Vinci,4,citizen science,2,Andreea,2
+4,insieme,73,3A,79.0,5C,Liceo Scientifico P. P. Pasolini,4,citizen science,2,Andreea,2
+4,insieme,78,5AM,80.0,5D,Liceo Scientifico P. P. Pasolini,4,citizen science,2,Andreea,2
+5,insieme,15,3AtMb,16.0,3InA,IIS L.Da Vinci-De Giorgio,4,citizen science,2,Andreea,2
+5,solo,48,4C,,,Liceo Scientifico G. Galilei,5,orientamento e competenze,2,Andreea,2
+5,insieme,73,3A,76.0,4A,Liceo Scientifico P. P. Pasolini,4,citizen science,2,Andreea,2
+6,insieme,13,5DI,14.0,5ALSA,IIS Amedeo D'Aosta,5,orientamento e competenze,2,Andreea,2
+6,insieme,15,3AtMb,17.0,4AtA,IIS L.Da Vinci-De Giorgio,8,presentazione manuali,2,Andreea,2
+6,solo,19,5AtIB,,,IIS L.Da Vinci-De Giorgio,7,sensibilizzazione discriminazioni di genere,2,Andreea,2
+6,solo,7,4BNO,,,Lic. Scientifico Bafile,5,orientamento e competenze,2,Andreea,2
+6,insieme,70,3D,72.0,5C,Liceo Scientifico e Linguistico M.Curie,4,citizen science,2,Andreea,2
+7,solo,1,3A,,,IIS. E. Mattei,4,citizen science,2,Andreea,2
+7,insieme,28,4BS,31.0,4CU,Liceo Pascal,5,orientamento e competenze,2,Andreea,2
+7,insieme,73,3A,80.0,5D,Liceo Scientifico P. P. Pasolini,7,sensibilizzazione discriminazioni di genere,2,Andreea,2
+7,insieme,78,5AM,79.0,5C,Liceo Scientifico P. P. Pasolini,4,citizen science,2,Andreea,2
+7,insieme,69,3C,72.0,5C,Liceo Scientifico e Linguistico M.Curie,4,citizen science,2,Andreea,2
+8,insieme,9,3BLSA,10.0,3CI,IIS Amedeo D'Aosta,8,presentazione manuali,2,Andreea,2
+8,insieme,11,4ALSA,14.0,5ALSA,IIS Amedeo D'Aosta,4,citizen science,2,Andreea,2
+8,insieme,3,4B,4.0,4C,IIS. E. Mattei,8,presentazione manuali,2,Andreea,2
+8,insieme,29,4AS,30.0,4BU,Liceo Pascal,4,citizen science,2,Andreea,2
+9,insieme,31,4CU,33.0,5BS,Liceo Pascal,4,citizen science,2,Andreea,2
+9,insieme,39,4D,42.0,5G,Liceo Scientifico Einstein,8,presentazione manuali,2,Andreea,2
+9,solo,43,3DSA,,,Liceo Scientifico G. Galilei,8,presentazione manuali,2,Andreea,2
+9,insieme,47,4BSA,50.0,4H,Liceo Scientifico G. Galilei,4,citizen science,2,Andreea,2
+10,insieme,1,3A,2.0,3C,IIS. E. Mattei,5,orientamento e competenze,2,Andreea,2
+11,solo,15,3AtMb,,,IIS L.Da Vinci-De Giorgio,4,citizen science,2,Andreea,2
+11,insieme,16,3InA,19.0,5AtIB,IIS L.Da Vinci-De Giorgio,8,presentazione manuali,2,Andreea,2
+11,insieme,22,3CL,24.0,5AL,IIS PeanoRosa,8,presentazione manuali,2,Andreea,2
+11,insieme,29,4AS,30.0,4BU,Liceo Pascal,4,citizen science,2,Andreea,2
+11,insieme,47,4BSA,48.0,4C,Liceo Scientifico G. Galilei,8,presentazione manuali,2,Andreea,2
+11,insieme,55,4F,57.0,4H,Liceo Scientifico Leonardo da Vinci,4,citizen science,2,Andreea,2
+11,insieme,73,3A,80.0,5D,Liceo Scientifico P. P. Pasolini,5,orientamento e competenze,2,Andreea,2
+11,insieme,74,3C,79.0,5C,Liceo Scientifico P. P. Pasolini,5,orientamento e competenze,2,Andreea,2
+12,insieme,38,4B,42.0,5G,Liceo Scientifico Einstein,5,orientamento e competenze,2,Andreea,2
+12,solo,63,5I,,,Liceo Scientifico Leonardo da Vinci,8,presentazione manuali,2,Andreea,2
+12,insieme,76,4A,80.0,5D,Liceo Scientifico P. P. Pasolini,8,presentazione manuali,2,Andreea,2
+13,solo,82,3C,,,IIS Fermi,5,orientamento e competenze,2,Andreea,2
+13,insieme,55,4F,58.0,4O,Liceo Scientifico Leonardo da Vinci,7,sensibilizzazione discriminazioni di genere,2,Andreea,2
+13,insieme,77,4C,78.0,5AM,Liceo Scientifico P. P. Pasolini,8,presentazione manuali,2,Andreea,2
+13,insieme,71,5E,72.0,5C,Liceo Scientifico e Linguistico M.Curie,8,presentazione manuali,2,Andreea,2
+14,insieme,27,4AS-SAA,29.0,4AS,Liceo Pascal,4,citizen science,2,Andreea,2
+14,solo,36,3F,,,Liceo Scientifico Einstein,4,citizen science,2,Andreea,2
+15,insieme,35,3D,36.0,3F,Liceo Scientifico Einstein,8,presentazione manuali,2,Andreea,2
+15,insieme,52,3O,62.0,5H,Liceo Scientifico Leonardo da Vinci,7,sensibilizzazione discriminazioni di genere,2,Andreea,2
+15,insieme,79,5C,81.0,5E,Liceo Scientifico P. P. Pasolini,8,presentazione manuali,2,Andreea,2
+1,insieme,25,3AS,30.0,4BU,Liceo Pascal,5,orientamento e competenze,1,Anita,2
+1,solo,29,4AS,,,Liceo Pascal,8,presentazione manuali,1,Anita,2
+1,insieme,49,4CSA,51.0,5C,Liceo Scientifico G. Galilei,5,orientamento e competenze,1,Anita,2
+1,solo,53,4C,,,Liceo Scientifico Leonardo da Vinci,4,citizen science,1,Anita,2
+1,solo,59,5D,,,Liceo Scientifico Leonardo da Vinci,8,presentazione manuali,1,Anita,2
+1,insieme,60,5F,64.0,5O,Liceo Scientifico Leonardo da Vinci,8,presentazione manuali,1,Anita,2
+2,insieme,9,3BLSA,12.0,4CI,IIS Amedeo D'Aosta,4,citizen science,1,Anita,2
+2,insieme,15,3AtMb,16.0,3InA,IIS L.Da Vinci-De Giorgio,4,citizen science,1,Anita,2
+2,insieme,22,3CL,23.0,4GL,IIS PeanoRosa,4,citizen science,1,Anita,2
+2,insieme,1,3A,2.0,3C,IIS. E. Mattei,8,presentazione manuali,1,Anita,2
+3,insieme,11,4ALSA,12.0,4CI,IIS Amedeo D'Aosta,4,citizen science,1,Anita,2
+3,insieme,5,5B,6.0,5C,IIS. E. Mattei,8,presentazione manuali,1,Anita,2
+3,insieme,43,3DSA,51.0,5C,Liceo Scientifico G. Galilei,5,orientamento e competenze,1,Anita,2
+3,insieme,59,5D,65.0,5P,Liceo Scientifico Leonardo da Vinci,5,orientamento e competenze,1,Anita,2
+3,insieme,60,5F,61.0,5G,Liceo Scientifico Leonardo da Vinci,4,citizen science,1,Anita,2
+3,insieme,73,3A,79.0,5C,Liceo Scientifico P. P. Pasolini,7,sensibilizzazione discriminazioni di genere,1,Anita,2
+4,solo,11,4ALSA,,,IIS Amedeo D'Aosta,4,citizen science,1,Anita,2
+4,insieme,1,3A,5.0,5B,IIS. E. Mattei,5,orientamento e competenze,1,Anita,2
+4,insieme,30,4BU,32.0,4DS,Liceo Pascal,4,citizen science,1,Anita,2
+4,insieme,44,3I,48.0,4C,Liceo Scientifico G. Galilei,7,sensibilizzazione discriminazioni di genere,1,Anita,2
+4,solo,53,4C,,,Liceo Scientifico Leonardo da Vinci,4,citizen science,1,Anita,2
+5,insieme,13,5DI,14.0,5ALSA,IIS Amedeo D'Aosta,5,orientamento e competenze,1,Anita,2
+5,insieme,22,3CL,23.0,4GL,IIS PeanoRosa,4,citizen science,1,Anita,2
+5,solo,7,4BNO,,,Lic. Scientifico Bafile,7,sensibilizzazione discriminazioni di genere,1,Anita,2
+5,solo,8,5DNO,,,Lic. Scientifico Bafile,5,orientamento e competenze,1,Anita,2
+5,insieme,28,4BS,34.0,5AS,Liceo Pascal,4,citizen science,1,Anita,2
+5,insieme,45,4ASA,46.0,4B,Liceo Scientifico G. Galilei,4,citizen science,1,Anita,2
+5,insieme,55,4F,56.0,4G,Liceo Scientifico Leonardo da Vinci,4,citizen science,1,Anita,2
+5,insieme,77,4C,80.0,5D,Liceo Scientifico P. P. Pasolini,4,citizen science,1,Anita,2
+6,insieme,22,3CL,24.0,5AL,IIS PeanoRosa,4,citizen science,1,Anita,2
+6,insieme,28,4BS,29.0,4AS,Liceo Pascal,4,citizen science,1,Anita,2
+6,solo,53,4C,,,Liceo Scientifico Leonardo da Vinci,8,presentazione manuali,1,Anita,2
+6,insieme,54,4D,57.0,4H,Liceo Scientifico Leonardo da Vinci,4,citizen science,1,Anita,2
+7,insieme,21,3GL,24.0,5AL,IIS PeanoRosa,4,citizen science,1,Anita,2
+7,insieme,2,3C,3.0,4B,IIS. E. Mattei,4,citizen science,1,Anita,2
+7,insieme,62,5H,64.0,5O,Liceo Scientifico Leonardo da Vinci,5,orientamento e competenze,1,Anita,2
+7,insieme,74,3C,75.0,3E,Liceo Scientifico P. P. Pasolini,7,sensibilizzazione discriminazioni di genere,1,Anita,2
+7,solo,68,3A,,,Liceo Scientifico e Linguistico M.Curie,5,orientamento e competenze,1,Anita,2
+8,solo,34,5AS,,,Liceo Pascal,4,citizen science,1,Anita,2
+8,insieme,39,4D,40.0,4G,Liceo Scientifico Einstein,5,orientamento e competenze,1,Anita,2
+8,insieme,55,4F,60.0,5F,Liceo Scientifico Leonardo da Vinci,4,citizen science,1,Anita,2
+9,insieme,9,3BLSA,10.0,3CI,IIS Amedeo D'Aosta,4,citizen science,1,Anita,2
+9,insieme,11,4ALSA,13.0,5DI,IIS Amedeo D'Aosta,8,presentazione manuali,1,Anita,2
+9,insieme,23,4GL,24.0,5AL,IIS PeanoRosa,5,orientamento e competenze,1,Anita,2
+9,insieme,1,3A,4.0,4C,IIS. E. Mattei,4,citizen science,1,Anita,2
+9,insieme,7,4BNO,8.0,5DNO,Lic. Scientifico Bafile,5,orientamento e competenze,1,Anita,2
+9,insieme,27,4AS-SAA,28.0,4BS,Liceo Pascal,8,presentazione manuali,1,Anita,2
+9,insieme,48,4C,51.0,5C,Liceo Scientifico G. Galilei,7,sensibilizzazione discriminazioni di genere,1,Anita,2
+9,insieme,54,4D,61.0,5G,Liceo Scientifico Leonardo da Vinci,4,citizen science,1,Anita,2
+9,insieme,58,4O,65.0,5P,Liceo Scientifico Leonardo da Vinci,7,sensibilizzazione discriminazioni di genere,1,Anita,2
+9,insieme,63,5I,64.0,5O,Liceo Scientifico Leonardo da Vinci,7,sensibilizzazione discriminazioni di genere,1,Anita,2
+9,insieme,78,5AM,81.0,5E,Liceo Scientifico P. P. Pasolini,4,citizen science,1,Anita,2
+9,solo,79,5C,,,Liceo Scientifico P. P. Pasolini,4,citizen science,1,Anita,2
+10,insieme,11,4ALSA,12.0,4CI,IIS Amedeo D'Aosta,4,citizen science,1,Anita,2
+10,insieme,36,3F,37.0,3G,Liceo Scientifico Einstein,4,citizen science,1,Anita,2
+10,insieme,38,4B,40.0,4G,Liceo Scientifico Einstein,5,orientamento e competenze,1,Anita,2
+10,insieme,44,3I,45.0,4ASA,Liceo Scientifico G. Galilei,8,presentazione manuali,1,Anita,2
+10,insieme,75,3E,80.0,5D,Liceo Scientifico P. P. Pasolini,7,sensibilizzazione discriminazioni di genere,1,Anita,2
+10,solo,68,3A,,,Liceo Scientifico e Linguistico M.Curie,5,orientamento e competenze,1,Anita,2
+10,insieme,69,3C,72.0,5C,Liceo Scientifico e Linguistico M.Curie,4,citizen science,1,Anita,2
+11,insieme,86,5A,87.0,5F,IIS Fermi,5,orientamento e competenze,1,Anita,2
+11,solo,8,5DNO,,,Lic. Scientifico Bafile,4,citizen science,1,Anita,2
+11,insieme,46,4B,50.0,4H,Liceo Scientifico G. Galilei,4,citizen science,1,Anita,2
+11,insieme,58,4O,65.0,5P,Liceo Scientifico Leonardo da Vinci,5,orientamento e competenze,1,Anita,2
+12,insieme,21,3GL,23.0,4GL,IIS PeanoRosa,4,citizen science,1,Anita,2
+12,insieme,26,3ESA,29.0,4AS,Liceo Pascal,5,orientamento e competenze,1,Anita,2
+12,insieme,36,3F,37.0,3G,Liceo Scientifico Einstein,4,citizen science,1,Anita,2
+12,insieme,49,4CSA,51.0,5C,Liceo Scientifico G. Galilei,8,presentazione manuali,1,Anita,2
+13,insieme,28,4BS,29.0,4AS,Liceo Pascal,4,citizen science,1,Anita,2
+13,insieme,66,3B,67.0,3M,Liceo Scientifico Vitruvio Pollione,5,orientamento e competenze,1,Anita,2
+14,insieme,12,4CI,14.0,5ALSA,IIS Amedeo D'Aosta,8,presentazione manuali,1,Anita,2
+14,insieme,22,3CL,23.0,4GL,IIS PeanoRosa,4,citizen science,1,Anita,2
+14,solo,7,4BNO,,,Lic. Scientifico Bafile,8,presentazione manuali,1,Anita,2
+14,solo,26,3ESA,,,Liceo Pascal,8,presentazione manuali,1,Anita,2
+14,insieme,30,4BU,34.0,5AS,Liceo Pascal,4,citizen science,1,Anita,2
+14,insieme,43,3DSA,49.0,4CSA,Liceo Scientifico G. Galilei,7,sensibilizzazione discriminazioni di genere,1,Anita,2
+14,insieme,47,4BSA,50.0,4H,Liceo Scientifico G. Galilei,4,citizen science,1,Anita,2
+14,solo,56,4G,,,Liceo Scientifico Leonardo da Vinci,4,citizen science,1,Anita,2
+15,solo,19,5AtIB,,,IIS L.Da Vinci-De Giorgio,7,sensibilizzazione discriminazioni di genere,1,Anita,2
+15,solo,1,3A,,,IIS. E. Mattei,4,citizen science,1,Anita,2
+15,solo,8,5DNO,,,Lic. Scientifico Bafile,4,citizen science,1,Anita,2
+15,insieme,39,4D,42.0,5G,Liceo Scientifico Einstein,5,orientamento e competenze,1,Anita,2
+15,insieme,40,4G,41.0,5A,Liceo Scientifico Einstein,8,presentazione manuali,1,Anita,2
+15,insieme,63,5I,64.0,5O,Liceo Scientifico Leonardo da Vinci,7,sensibilizzazione discriminazioni di genere,1,Anita,2
+1,insieme,9,3BLSA,12.0,4CI,IIS Amedeo D'Aosta,4,citizen science,3,Ida,2
+1,insieme,84,4A,85.0,4B,IIS Fermi,5,orientamento e competenze,3,Ida,2
+1,insieme,22,3CL,24.0,5AL,IIS PeanoRosa,4,citizen science,3,Ida,2
+1,insieme,2,3C,4.0,4C,IIS. E. Mattei,5,orientamento e competenze,3,Ida,2
+1,insieme,32,4DS,34.0,5AS,Liceo Pascal,4,citizen science,3,Ida,2
+1,insieme,62,5H,65.0,5P,Liceo Scientifico Leonardo da Vinci,8,presentazione manuali,3,Ida,2
+2,insieme,4,4C,6.0,5C,IIS. E. Mattei,5,orientamento e competenze,3,Ida,2
+2,solo,8,5DNO,,,Lic. Scientifico Bafile,8,presentazione manuali,3,Ida,2
+2,insieme,28,4BS,31.0,4CU,Liceo Pascal,4,citizen science,3,Ida,2
+3,insieme,83,3F,85.0,4B,IIS Fermi,9,sensibilizzazione discriminazioni di genere pt.2,3,Ida,2
+3,insieme,27,4AS-SAA,32.0,4DS,Liceo Pascal,4,citizen science,3,Ida,2
+3,solo,30,4BU,,,Liceo Pascal,4,citizen science,3,Ida,2
+3,insieme,55,4F,57.0,4H,Liceo Scientifico Leonardo da Vinci,8,presentazione manuali,3,Ida,2
+4,insieme,82,3C,86.0,5A,IIS Fermi,5,orientamento e competenze,3,Ida,2
+4,insieme,83,3F,85.0,4B,IIS Fermi,5,orientamento e competenze,3,Ida,2
+4,insieme,23,4GL,24.0,5AL,IIS PeanoRosa,5,orientamento e competenze,3,Ida,2
+4,solo,81,5E,,,Liceo Scientifico P. P. Pasolini,4,citizen science,3,Ida,2
+4,insieme,66,3B,67.0,3M,Liceo Scientifico Vitruvio Pollione,8,presentazione manuali,3,Ida,2
+5,insieme,31,4CU,32.0,4DS,Liceo Pascal,8,presentazione manuali,3,Ida,2
+5,insieme,54,4D,58.0,4O,Liceo Scientifico Leonardo da Vinci,8,presentazione manuali,3,Ida,2
+5,insieme,69,3C,70.0,3D,Liceo Scientifico e Linguistico M.Curie,4,citizen science,3,Ida,2
+6,insieme,76,4A,79.0,5C,Liceo Scientifico P. P. Pasolini,4,citizen science,3,Ida,2
+7,solo,25,3AS,,,Liceo Pascal,8,presentazione manuali,3,Ida,2
+7,insieme,36,3F,37.0,3G,Liceo Scientifico Einstein,4,citizen science,3,Ida,2
+8,insieme,18,4MA,20.0,5MBCH,IIS L.Da Vinci-De Giorgio,8,presentazione manuali,3,Ida,2
+8,insieme,43,3DSA,51.0,5C,Liceo Scientifico G. Galilei,7,sensibilizzazione discriminazioni di genere,3,Ida,2
+8,insieme,79,5C,81.0,5E,Liceo Scientifico P. P. Pasolini,5,orientamento e competenze,3,Ida,2
+9,solo,84,4A,,,IIS Fermi,5,orientamento e competenze,3,Ida,2
+9,insieme,15,3AtMb,16.0,3InA,IIS L.Da Vinci-De Giorgio,4,citizen science,3,Ida,2
+9,insieme,52,3O,55.0,4F,Liceo Scientifico Leonardo da Vinci,4,citizen science,3,Ida,2
+9,insieme,66,3B,67.0,3M,Liceo Scientifico Vitruvio Pollione,5,orientamento e competenze,3,Ida,2
+10,insieme,21,3GL,23.0,4GL,IIS PeanoRosa,8,presentazione manuali,3,Ida,2
+10,solo,8,5DNO,,,Lic. Scientifico Bafile,4,citizen science,3,Ida,2
+10,insieme,28,4BS,31.0,4CU,Liceo Pascal,5,orientamento e competenze,3,Ida,2
+10,insieme,78,5AM,81.0,5E,Liceo Scientifico P. P. Pasolini,4,citizen science,3,Ida,2
+10,insieme,70,3D,71.0,5E,Liceo Scientifico e Linguistico M.Curie,4,citizen science,3,Ida,2
+11,insieme,9,3BLSA,10.0,3CI,IIS Amedeo D'Aosta,4,citizen science,3,Ida,2
+11,solo,18,4MA,,,IIS L.Da Vinci-De Giorgio,5,orientamento e competenze,3,Ida,2
+11,insieme,31,4CU,32.0,4DS,Liceo Pascal,4,citizen science,3,Ida,2
+11,insieme,71,5E,72.0,5C,Liceo Scientifico e Linguistico M.Curie,4,citizen science,3,Ida,2
+12,insieme,1,3A,3.0,4B,IIS. E. Mattei,4,citizen science,3,Ida,2
+12,insieme,28,4BS,34.0,5AS,Liceo Pascal,4,citizen science,3,Ida,2
+12,insieme,45,4ASA,47.0,4BSA,Liceo Scientifico G. Galilei,4,citizen science,3,Ida,2
+12,insieme,57,4H,60.0,5F,Liceo Scientifico Leonardo da Vinci,4,citizen science,3,Ida,2
+12,solo,77,4C,,,Liceo Scientifico P. P. Pasolini,4,citizen science,3,Ida,2
+13,insieme,21,3GL,24.0,5AL,IIS PeanoRosa,4,citizen science,3,Ida,2
+13,solo,8,5DNO,,,Lic. Scientifico Bafile,4,citizen science,3,Ida,2
+13,solo,52,3O,,,Liceo Scientifico Leonardo da Vinci,4,citizen science,3,Ida,2
+14,insieme,1,3A,4.0,4C,IIS. E. Mattei,4,citizen science,3,Ida,2
+14,insieme,35,3D,41.0,5A,Liceo Scientifico Einstein,5,orientamento e competenze,3,Ida,2
+14,solo,44,3I,,,Liceo Scientifico G. Galilei,5,orientamento e competenze,3,Ida,2
+15,solo,7,4BNO,,,Lic. Scientifico Bafile,7,sensibilizzazione discriminazioni di genere,3,Ida,2
+15,insieme,37,3G,38.0,4B,Liceo Scientifico Einstein,8,presentazione manuali,3,Ida,2
+15,insieme,45,4ASA,47.0,4BSA,Liceo Scientifico G. Galilei,4,citizen science,3,Ida,2
+15,insieme,46,4B,50.0,4H,Liceo Scientifico G. Galilei,4,citizen science,3,Ida,2
+15,insieme,55,4F,61.0,5G,Liceo Scientifico Leonardo da Vinci,4,citizen science,3,Ida,2
+15,insieme,73,3A,80.0,5D,Liceo Scientifico P. P. Pasolini,4,citizen science,3,Ida,2
+15,insieme,70,3D,71.0,5E,Liceo Scientifico e Linguistico M.Curie,4,citizen science,3,Ida,2
+1,insieme,83,3F,87.0,5F,IIS Fermi,5,orientamento e competenze,4,Margherita,2
+1,solo,3,4B,,,IIS. E. Mattei,5,orientamento e competenze,4,Margherita,2
+1,solo,41,5A,,,Liceo Scientifico Einstein,5,orientamento e competenze,4,Margherita,2
+1,insieme,73,3A,74.0,3C,Liceo Scientifico P. P. Pasolini,5,orientamento e competenze,4,Margherita,2
+2,insieme,82,3C,84.0,4A,IIS Fermi,9,sensibilizzazione discriminazioni di genere pt.2,4,Margherita,2
+2,insieme,21,3GL,24.0,5AL,IIS PeanoRosa,4,citizen science,4,Margherita,2
+2,insieme,27,4AS-SAA,33.0,5BS,Liceo Pascal,4,citizen science,4,Margherita,2
+2,insieme,44,3I,48.0,4C,Liceo Scientifico G. Galilei,5,orientamento e competenze,4,Margherita,2
+2,insieme,46,4B,50.0,4H,Liceo Scientifico G. Galilei,8,presentazione manuali,4,Margherita,2
+2,insieme,52,3O,57.0,4H,Liceo Scientifico Leonardo da Vinci,4,citizen science,4,Margherita,2
+2,insieme,53,4C,56.0,4G,Liceo Scientifico Leonardo da Vinci,4,citizen science,4,Margherita,2
+2,insieme,74,3C,79.0,5C,Liceo Scientifico P. P. Pasolini,7,sensibilizzazione discriminazioni di genere,4,Margherita,2
+3,insieme,31,4CU,33.0,5BS,Liceo Pascal,4,citizen science,4,Margherita,2
+3,solo,77,4C,,,Liceo Scientifico P. P. Pasolini,4,citizen science,4,Margherita,2
+3,insieme,78,5AM,80.0,5D,Liceo Scientifico P. P. Pasolini,4,citizen science,4,Margherita,2
+4,solo,16,3InA,,,IIS L.Da Vinci-De Giorgio,4,citizen science,4,Margherita,2
+4,insieme,36,3F,37.0,3G,Liceo Scientifico Einstein,4,citizen science,4,Margherita,2
+4,insieme,76,4A,77.0,4C,Liceo Scientifico P. P. Pasolini,4,citizen science,4,Margherita,2
+5,insieme,11,4ALSA,12.0,4CI,IIS Amedeo D'Aosta,4,citizen science,4,Margherita,2
+5,insieme,43,3DSA,49.0,4CSA,Liceo Scientifico G. Galilei,5,orientamento e competenze,4,Margherita,2
+5,insieme,62,5H,65.0,5P,Liceo Scientifico Leonardo da Vinci,7,sensibilizzazione discriminazioni di genere,4,Margherita,2
+6,insieme,47,4BSA,50.0,4H,Liceo Scientifico G. Galilei,4,citizen science,4,Margherita,2
+6,insieme,52,3O,56.0,4G,Liceo Scientifico Leonardo da Vinci,8,presentazione manuali,4,Margherita,2
+6,insieme,58,4O,64.0,5O,Liceo Scientifico Leonardo da Vinci,5,orientamento e competenze,4,Margherita,2
+6,insieme,62,5H,63.0,5I,Liceo Scientifico Leonardo da Vinci,5,orientamento e competenze,4,Margherita,2
+6,insieme,80,5D,81.0,5E,Liceo Scientifico P. P. Pasolini,4,citizen science,4,Margherita,2
+7,solo,19,5AtIB,,,IIS L.Da Vinci-De Giorgio,5,orientamento e competenze,4,Margherita,2
+7,insieme,52,3O,55.0,4F,Liceo Scientifico Leonardo da Vinci,7,sensibilizzazione discriminazioni di genere,4,Margherita,2
+7,insieme,70,3D,71.0,5E,Liceo Scientifico e Linguistico M.Curie,4,citizen science,4,Margherita,2
+8,insieme,15,3AtMb,16.0,3InA,IIS L.Da Vinci-De Giorgio,4,citizen science,4,Margherita,2
+8,insieme,5,5B,6.0,5C,IIS. E. Mattei,7,sensibilizzazione discriminazioni di genere,4,Margherita,2
+8,insieme,27,4AS-SAA,33.0,5BS,Liceo Pascal,4,citizen science,4,Margherita,2
+8,insieme,53,4C,56.0,4G,Liceo Scientifico Leonardo da Vinci,4,citizen science,4,Margherita,2
+8,insieme,59,5D,63.0,5I,Liceo Scientifico Leonardo da Vinci,5,orientamento e competenze,4,Margherita,2
+9,solo,3,4B,,,IIS. E. Mattei,5,orientamento e competenze,4,Margherita,2
+9,insieme,5,5B,6.0,5C,IIS. E. Mattei,5,orientamento e competenze,4,Margherita,2
+9,insieme,29,4AS,30.0,4BU,Liceo Pascal,5,orientamento e competenze,4,Margherita,2
+9,insieme,73,3A,76.0,4A,Liceo Scientifico P. P. Pasolini,4,citizen science,4,Margherita,2
+10,insieme,86,5A,87.0,5F,IIS Fermi,9,sensibilizzazione discriminazioni di genere pt.2,4,Margherita,2
+10,insieme,3,4B,4.0,4C,IIS. E. Mattei,4,citizen science,4,Margherita,2
+10,insieme,33,5BS,34.0,5AS,Liceo Pascal,8,presentazione manuali,4,Margherita,2
+10,solo,49,4CSA,,,Liceo Scientifico G. Galilei,7,sensibilizzazione discriminazioni di genere,4,Margherita,2
+10,insieme,54,4D,60.0,5F,Liceo Scientifico Leonardo da Vinci,4,citizen science,4,Margherita,2
+11,insieme,52,3O,60.0,5F,Liceo Scientifico Leonardo da Vinci,4,citizen science,4,Margherita,2
+11,insieme,75,3E,78.0,5AM,Liceo Scientifico P. P. Pasolini,5,orientamento e competenze,4,Margherita,2
+12,insieme,10,3CI,14.0,5ALSA,IIS Amedeo D'Aosta,4,citizen science,4,Margherita,2
+12,insieme,79,5C,81.0,5E,Liceo Scientifico P. P. Pasolini,4,citizen science,4,Margherita,2
+12,insieme,69,3C,71.0,5E,Liceo Scientifico e Linguistico M.Curie,4,citizen science,4,Margherita,2
+13,insieme,2,3C,3.0,4B,IIS. E. Mattei,4,citizen science,4,Margherita,2
+13,insieme,5,5B,6.0,5C,IIS. E. Mattei,7,sensibilizzazione discriminazioni di genere,4,Margherita,2
+13,insieme,45,4ASA,46.0,4B,Liceo Scientifico G. Galilei,4,citizen science,4,Margherita,2
+13,insieme,54,4D,56.0,4G,Liceo Scientifico Leonardo da Vinci,4,citizen science,4,Margherita,2
+13,insieme,57,4H,61.0,5G,Liceo Scientifico Leonardo da Vinci,4,citizen science,4,Margherita,2
+13,insieme,73,3A,76.0,4A,Liceo Scientifico P. P. Pasolini,4,citizen science,4,Margherita,2
+13,insieme,69,3C,70.0,3D,Liceo Scientifico e Linguistico M.Curie,8,presentazione manuali,4,Margherita,2
+14,insieme,31,4CU,32.0,4DS,Liceo Pascal,4,citizen science,4,Margherita,2
+14,solo,37,3G,,,Liceo Scientifico Einstein,4,citizen science,4,Margherita,2
+14,insieme,52,3O,53.0,4C,Liceo Scientifico Leonardo da Vinci,4,citizen science,4,Margherita,2
+14,insieme,78,5AM,81.0,5E,Liceo Scientifico P. P. Pasolini,5,orientamento e competenze,4,Margherita,2
+15,insieme,9,3BLSA,14.0,5ALSA,IIS Amedeo D'Aosta,4,citizen science,4,Margherita,2
+15,insieme,2,3C,4.0,4C,IIS. E. Mattei,4,citizen science,4,Margherita,2
+15,solo,30,4BU,,,Liceo Pascal,8,presentazione manuali,4,Margherita,2
+15,solo,77,4C,,,Liceo Scientifico P. P. Pasolini,4,citizen science,4,Margherita,2
