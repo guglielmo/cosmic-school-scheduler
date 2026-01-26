@@ -21,19 +21,44 @@ class TrainerTotalHoursConstraint(HardConstraint):
     trainer_name: str
     max_hours: int
 
-    id: str = "H01"
-    name: str = "Trainer Total Hours"
-    category: ConstraintCategory = ConstraintCategory.CAPACITY
-    description: str = "Total hours budget per trainer must not be exceeded"
+    id: str = field(default="H01", init=False)
+    name: str = field(default="Trainer Total Hours", init=False)
+    category: ConstraintCategory = field(default=ConstraintCategory.CAPACITY, init=False)
+    description: str = field(default="Total hours budget per trainer must not be exceeded", init=False)
 
     def validate(self, solution: Any) -> bool:
         """Check if trainer's total hours <= max_hours."""
-        # Implementation will depend on solution structure
+        # TODO: Implement validation logic
         pass
 
     def add_to_model(self, model: Any, variables: Any) -> None:
         """Add constraint: sum(assigned_hours) <= max_hours."""
-        pass
+        # Crea variabili is_formatrice se non esistono
+        for meeting in variables.meetings:
+            key = (self.trainer_id, meeting)
+            if key not in variables.is_formatrice:
+                is_f = model.NewBoolVar(f"isf_{self.trainer_id}_{meeting}")
+                model.Add(variables.formatrice[meeting] == self.trainer_id).OnlyEnforceIf(is_f)
+                model.Add(variables.formatrice[meeting] != self.trainer_id).OnlyEnforceIf(is_f.Not())
+                variables.is_formatrice[key] = is_f
+
+        # Raccogli contributi ore per questa formatrice
+        hour_contributions = []
+
+        for meeting in variables.meetings:
+            # Ottieni ore per questo lab (assume che variabili abbia accesso a lab_info)
+            # Per ora usiamo un default di 2 ore (TODO: passare lab_info a constraint)
+            hours = 2  # Default, deve essere passato dal context
+
+            is_f = variables.is_formatrice.get((self.trainer_id, meeting))
+            if is_f:
+                hour_contributions.append(hours * is_f)
+
+        # TODO: Sottrarre ore duplicate per accorpamenti quando implementati
+
+        if hour_contributions:
+            total_hours = sum(hour_contributions)
+            model.Add(total_hours <= self.max_hours)
 
 
 @dataclass
@@ -42,18 +67,21 @@ class TrainerAvailabilityConstraint(HardConstraint):
     H02: Trainer temporal availability must be respected.
 
     Source: formatrici.csv -> mattine_disponibili, pomeriggi_disponibili,
-            date_disponibili, lavora_sabato
+            date_disponibili, date_escluse_formatrici, lavora_sabato
 
     Logic:
-    - If date_disponibili is set: ONLY those dates/times are available
+    - If date_disponibili is set: ONLY those dates/times are available (WHITELIST)
+    - If excluded_dates is set: all dates OK EXCEPT those (BLACKLIST)
     - Otherwise: use mattine_disponibili + pomeriggi_disponibili
+    - If both empty: all dates available
     - works_saturday: only Margherita can work on Saturday
     """
     trainer_id: int
     trainer_name: str
     available_mornings: List[str]  # ["lun", "mar", ...]
     available_afternoons: List[str]  # ["lun", "mer", ...]
-    available_dates: Optional[List[str]] = None  # Specific date-time slots
+    available_dates: Optional[List[str]] = None  # WHITELIST: Specific date-time slots
+    excluded_dates: Optional[List[str]] = None   # BLACKLIST: Dates to exclude
     works_saturday: bool = False
 
     id: str = "H02"
@@ -230,11 +258,21 @@ class MaxOneMeetingPerWeekConstraint(HardConstraint):
 
     def validate(self, solution: Any) -> bool:
         """Check that class has max 1 meeting per week."""
+        # TODO: Implement validation logic
         pass
 
     def add_to_model(self, model: Any, variables: Any) -> None:
         """Add constraint: sum(meetings_in_week) <= 1."""
-        pass
+        # Raccogli tutte le variabili settimana per questa classe
+        week_vars = []
+
+        for meeting in variables.meetings_by_class.get(self.class_id, []):
+            if meeting in variables.settimana:
+                week_vars.append(variables.settimana[meeting])
+
+        # Se la classe ha più di un incontro, devono essere in settimane diverse
+        if len(week_vars) > 1:
+            model.AddAllDifferent(week_vars)
 
 
 @dataclass

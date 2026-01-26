@@ -31,11 +31,22 @@ class MaximizeGroupingConstraint(SoftConstraint):
 
     def penalty(self, solution: Any) -> float:
         """Calculate bonus (negative penalty) for each grouped meeting."""
+        # TODO: Implement validation logic
         pass
 
     def add_to_objective(self, model: Any, variables: Any) -> Any:
-        """Add negative term (bonus) for each grouping to objective."""
-        pass
+        """Add bonus term for each grouping to objective."""
+        # Per ogni variabile accorpa che è True, aggiungiamo un bonus
+        # Nota: il peso è positivo, quindi massimizzare accorpa[] massimizza l'obiettivo
+
+        if not variables.accorpa:
+            # Nessuna variabile accorpamento creata
+            return 0
+
+        # Somma di tutte le variabili accorpamento
+        # Ogni accorpa[c1,c2,lab] = 1 contribuisce +1 all'obiettivo
+        # Con peso 20, ogni accorpamento vale +20 nell'obiettivo
+        return sum(variables.accorpa.values())
 
 
 @dataclass
