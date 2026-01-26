@@ -39,19 +39,9 @@ from constraints import (
     ConstraintType,
     HardConstraint,
     SoftConstraint,
+    MeetingKey,
 )
 from date_utils import DateMapper
-
-
-@dataclass
-class MeetingKey:
-    """Chiave univoca per un incontro"""
-    class_id: int
-    lab_id: int
-    meeting_index: int  # k-esimo incontro (0-based)
-
-    def __hash__(self):
-        return hash((self.class_id, self.lab_id, self.meeting_index))
 
     def __eq__(self, other):
         return (self.class_id == other.class_id and

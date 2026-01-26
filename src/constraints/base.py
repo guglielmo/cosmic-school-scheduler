@@ -26,6 +26,17 @@ class ConstraintCategory(Enum):
     GROUPING = "grouping"          # Grouping constraints (class grouping, max size)
 
 
+@dataclass(frozen=True)
+class MeetingKey:
+    """Unique key for a meeting (class, lab, meeting_index).
+
+    Frozen dataclass is immutable and hashable, suitable for use as dict keys.
+    """
+    class_id: int
+    lab_id: int
+    meeting_index: int  # 0-based index (0, 1, 2, ...)
+
+
 @dataclass
 class Constraint(ABC):
     """

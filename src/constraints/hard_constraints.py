@@ -6,7 +6,7 @@ These constraints MUST be satisfied for any feasible solution.
 
 from dataclasses import dataclass, field
 from typing import List, Optional, Literal, Any
-from .base import HardConstraint, ConstraintCategory
+from .base import HardConstraint, ConstraintCategory, MeetingKey
 
 
 @dataclass(kw_only=True)
@@ -54,7 +54,29 @@ class TrainerTotalHoursConstraint(HardConstraint):
             if is_f:
                 hour_contributions.append(hours * is_f)
 
-        # TODO: Sottrarre ore duplicate per accorpamenti quando implementati
+        # Sottrai ore duplicate per accorpamenti
+        # Se due classi sono accorpate, la formatrice fa UN solo incontro per entrambe
+        # Quindi sottraiamo le ore del "secondo" meeting (c2) quando accorpa=1
+        for (c1, c2, lab), accorpa_var in variables.accorpa.items():
+            # Ottieni numero di meeting per questo lab
+            lab_info = context.lab_info[lab]
+            num_meetings = lab_info.get('num_meetings', 1)
+            hours_per_meeting = lab_info['hours_per_meeting']
+
+            for k in range(num_meetings):
+                # Crea chiave per il k-esimo meeting di c2
+                meeting_c2 = MeetingKey(c2, lab, k)
+
+                if meeting_c2 in variables.meetings:
+                    is_f_c2 = variables.is_formatrice.get((self.trainer_id, meeting_c2))
+                    if is_f_c2:
+                        # Crea variabile intermedia: both = accorpa AND is_assigned_to_this_trainer
+                        both = model.NewBoolVar(f"grp_hrs_{self.trainer_id}_{c2}_{lab}_{k}")
+                        model.AddBoolAnd([accorpa_var, is_f_c2]).OnlyEnforceIf(both)
+                        model.AddBoolOr([accorpa_var.Not(), is_f_c2.Not()]).OnlyEnforceIf(both.Not())
+
+                        # Sottrai le ore duplicate
+                        hour_contributions.append(-hours_per_meeting * both)
 
         if hour_contributions:
             total_hours = sum(hour_contributions)
@@ -562,14 +584,14 @@ class NoTrainerOverlapConstraint(HardConstraint):
                 variables.is_formatrice[key] = is_f
 
             # Create optional interval variable
-            # - start: slot (linear time encoding: week*60 + day*12 + timeslot*4)
-            # - size: 3 hours (all meetings have the same duration)
+            # - start: slot (linear time encoding: week*60 + day*12 + timeslot)
+            # - size: 1 (each meeting occupies exactly 1 discrete slot)
             # - is_present: True only if this trainer is assigned to this meeting
             is_assigned = variables.is_formatrice[key]
 
             interval = model.NewOptionalFixedSizeIntervalVar(
                 start=variables.slot[meeting],
-                size=3,
+                size=1,
                 is_present=is_assigned,
                 name=f"interval_t{self.trainer_id}_m{meeting}"
             )

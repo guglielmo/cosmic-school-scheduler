@@ -12,6 +12,7 @@ from .base import (
     ConstraintType,
     ConstraintCategory,
     ConstraintViolation,
+    MeetingKey,
 )
 
 from .hard_constraints import (
@@ -64,6 +65,7 @@ __all__ = [
     'ConstraintType',
     'ConstraintCategory',
     'ConstraintViolation',
+    'MeetingKey',
     # Factory
     'ConstraintFactory',
     # Hard constraints

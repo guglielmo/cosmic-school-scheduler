@@ -9,21 +9,21 @@
 # CONSTRAINT ENABLE/DISABLE
 # Set to false to disable a constraint (useful for debugging)
 enabled_constraints:
-  # Hard Constraints
-  H01_trainer_total_hours: true
-  H02_trainer_availability: true
-  H03_fixed_dates: true
-  H04_class_lab_assignment: true
-  H05_lab_time_of_day: true
-  H06_class_time_slots: true
-  H07_class_excluded_dates: true
-  H08_max_one_meeting_per_week: true
-  H09_lab8_must_be_last: true
-  H10_no_trainer_overlap: true  # Now uses efficient interval variables + NoOverlap
-  H11_scheduling_period: true
+  # Hard Constraints - MINIMAL SET FOR DEBUGGING
+  H01_trainer_total_hours: false
+  H02_trainer_availability: false
+  H03_fixed_dates: false
+  H04_class_lab_assignment: true  # Essential
+  H05_lab_time_of_day: false
+  H06_class_time_slots: false
+  H07_class_excluded_dates: false
+  H08_max_one_meeting_per_week: true  # Testing
+  H09_lab8_must_be_last: true  # Testing
+  H10_no_trainer_overlap: true
+  H11_scheduling_period: true  # Essential
   H12_max_group_size: true
-  H13_lab_completion: true
-  H14_lab9_before_lab5: true
+  H13_lab_completion: true  # Essential
+  H14_lab9_before_lab5: false
 
   # Soft Constraints
   S01_maximize_grouping: true
@@ -48,7 +48,7 @@ enabled_constraints:
 
 objective_function:
   # S01: Maximize grouping (CRITICAL for budget)
-  # Negative = bonus for each grouping
+  # Positive weight = bonus for each grouping (we maximize objective)
   # With grouping: 664h needed vs 708h budget (+44h margin)
   # Without: 926h needed (exceeds budget)
   maximize_grouping: 20  # High bonus per grouped meeting
