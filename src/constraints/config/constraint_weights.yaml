@@ -9,8 +9,8 @@
 # CONSTRAINT ENABLE/DISABLE
 # Set to false to disable a constraint (useful for debugging)
 enabled_constraints:
-  # Hard Constraints - MINIMAL SET FOR DEBUGGING
-  H01_trainer_total_hours: false
+  # Hard Constraints
+  H01_trainer_total_hours: true  # Now implemented with grouping support!
   H02_trainer_availability: false
   H03_fixed_dates: false
   H04_class_lab_assignment: true  # Essential

@@ -408,7 +408,10 @@ class Optimizer:
             except NotImplementedError:
                 self._log(f"    ⏸ Non ancora implementato")
             except Exception as e:
+                import traceback
                 self._log(f"    ✗ Errore: {e}")
+                if self.verbose:
+                    self._log(f"    Traceback: {traceback.format_exc()}")
 
     def build_objective(self):
         """Costruisce funzione obiettivo dai soft constraints"""

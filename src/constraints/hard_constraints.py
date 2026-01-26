@@ -51,7 +51,8 @@ class TrainerTotalHoursConstraint(HardConstraint):
             hours = context.lab_info[lab_id]['hours_per_meeting']
 
             is_f = variables.is_formatrice.get((self.trainer_id, meeting))
-            if is_f:
+            if is_f is not None:
+                # is_f è una BoolVar CP-SAT: se vale 1, contribuisce hours; se vale 0, contribuisce 0
                 hour_contributions.append(hours * is_f)
 
         # Sottrai ore duplicate per accorpamenti
@@ -69,7 +70,7 @@ class TrainerTotalHoursConstraint(HardConstraint):
 
                 if meeting_c2 in variables.meetings:
                     is_f_c2 = variables.is_formatrice.get((self.trainer_id, meeting_c2))
-                    if is_f_c2:
+                    if is_f_c2 is not None:
                         # Crea variabile intermedia: both = accorpa AND is_assigned_to_this_trainer
                         both = model.NewBoolVar(f"grp_hrs_{self.trainer_id}_{c2}_{lab}_{k}")
                         model.AddBoolAnd([accorpa_var, is_f_c2]).OnlyEnforceIf(both)
