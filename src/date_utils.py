@@ -22,10 +22,10 @@ class DateMapper:
     """
 
     # Inizio anno scolastico
-    YEAR_START = datetime(2026, 1, 28)  # Martedì 28 gennaio 2026
+    YEAR_START = datetime(2026, 1, 28)  # Mercoledì 28 gennaio 2026
 
     # Finestre temporali
-    WINDOW1_START = datetime(2026, 1, 28)
+    WINDOW1_START = datetime(2026, 1, 28)  # Mercoledì 28 gennaio 2026
     WINDOW1_END = datetime(2026, 4, 1)
 
     EASTER_START = datetime(2026, 4, 2)
@@ -56,21 +56,27 @@ class DateMapper:
 
     def _compute_week_starts(self) -> List[datetime]:
         """
-        Compute start date of each week.
+        Compute start date of each week (always Monday).
 
         Returns:
-            List of 16 datetime objects (start of each week)
+            List of 16 datetime objects (start of each week = Monday)
         """
         weeks = []
 
-        # Window 1: weeks 0-9 (10 settimane)
-        current = self.WINDOW1_START
+        # Find the Monday of the week containing WINDOW1_START
+        # 28/01/2026 is Wednesday (weekday=2), so Monday is 2 days before
+        first_monday = self.WINDOW1_START - timedelta(days=self.WINDOW1_START.weekday())
+
+        # Window 1: weeks 0-9 (10 settimane da lunedì)
+        current = first_monday
         for i in range(10):
             weeks.append(current)
             current += timedelta(weeks=1)
 
         # Window 2: weeks 10-15 (6 settimane, dopo Pasqua)
-        current = self.WINDOW2_START
+        # Find Monday of week containing WINDOW2_START
+        window2_monday = self.WINDOW2_START - timedelta(days=self.WINDOW2_START.weekday())
+        current = window2_monday
         for i in range(6):
             weeks.append(current)
             current += timedelta(weeks=1)

@@ -10,18 +10,18 @@
 # Set to false to disable a constraint (useful for debugging)
 enabled_constraints:
   # Hard Constraints
-  H01_trainer_total_hours: true  # Now implemented with grouping support!
-  H02_trainer_availability: false
+  H01_trainer_total_hours: true   # RE-ENABLED: forza accorpamenti per rispettare budget
+  H02_trainer_availability: true  # Disponibilità formatrici (giorni/fasce/date)
   H03_fixed_dates: false
   H04_class_lab_assignment: true  # Essential
   H05_lab_time_of_day: false
   H06_class_time_slots: false
   H07_class_excluded_dates: false
-  H08_max_one_meeting_per_week: true  # Testing
-  H09_lab8_must_be_last: true  # Testing
-  H10_no_trainer_overlap: true
+  H08_max_one_meeting_per_week: true   # Re-enabled after H10 fix
+  H09_lab8_must_be_last: false  # Temporarily disabled
+  H10_no_trainer_overlap: true   # Re-enabled with grouping fix
   H11_scheduling_period: true  # Essential
-  H12_max_group_size: true
+  H12_max_group_size: true   # Re-enabled with proper implementation
   H13_lab_completion: true  # Essential
   H14_lab9_before_lab5: false
 
@@ -49,9 +49,9 @@ enabled_constraints:
 objective_function:
   # S01: Maximize grouping (CRITICAL for budget)
   # Positive weight = bonus for each grouping (we maximize objective)
-  # With grouping: 664h needed vs 708h budget (+44h margin)
-  # Without: 926h needed (exceeds budget)
-  maximize_grouping: 20  # High bonus per grouped meeting
+  # With grouping: 516h needed vs 708h budget (+192h margin)
+  # Without: 962h needed (exceeds budget)
+  maximize_grouping: 80  # Very high bonus to force groupings
 
   # S02: Trainer continuity per class
   # Penalty for each trainer change

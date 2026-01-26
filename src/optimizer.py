@@ -500,9 +500,11 @@ class Optimizer:
         # Crea date mapper
         date_mapper = DateMapper()
 
-        # Mappa nomi giorni e fasce
-        day_names = ["Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"]
+        # Mappa fasce orarie
         fascia_names = {1: "Mattino1", 2: "Mattino2", 3: "Pomeriggio"}
+
+        # Nomi giorni italiani
+        italian_weekdays = ["Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"]
 
         # Raccogli risultati
         results = []
@@ -520,6 +522,10 @@ class Optimizer:
             lab_info = self.context.lab_info[meeting.lab_id]
             trainer_info = self.context.trainer_info[trainer_id]
             school_info = self.context.school_info[class_info['school_id']]
+
+            # Calcola la data effettiva per ottenere il giorno corretto
+            actual_date = date_mapper.week_day_to_date(week, day)
+            actual_weekday = italian_weekdays[actual_date.weekday()]
 
             # Formatta data e orario
             datetime_str = date_mapper.format_datetime(week, day, fascia)
@@ -548,7 +554,7 @@ class Optimizer:
                 'formatrice_nome': trainer_info['name'],
                 'settimana': week,
                 'giorno_num': day,
-                'giorno_nome': day_names[day],
+                'giorno_nome': actual_weekday,
                 'fascia_num': fascia,
                 'fascia_nome': fascia_names[fascia],
                 'slot': slot,

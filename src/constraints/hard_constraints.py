@@ -5,7 +5,7 @@ These constraints MUST be satisfied for any feasible solution.
 """
 
 from dataclasses import dataclass, field
-from typing import List, Optional, Literal, Any
+from typing import List, Optional, Literal, Any, Tuple
 from .base import HardConstraint, ConstraintCategory, MeetingKey
 
 
@@ -116,6 +116,81 @@ class TrainerAvailabilityConstraint(HardConstraint):
         """Check if all assignments respect trainer availability."""
         pass
 
+    def _parse_italian_datetime(self, date_str: str, date_mapper) -> List[Tuple[int, int, int]]:
+        """
+        Parse Italian date-time format like "13 Gennaio 10.00-14.00".
+
+        Returns:
+            List of (week, day, fascia) tuples. May return multiple tuples for time ranges.
+        """
+        import re
+        from datetime import datetime
+
+        # Italian month names
+        month_map = {
+            'gennaio': 1, 'febbraio': 2, 'marzo': 3, 'aprile': 4,
+            'maggio': 5, 'giugno': 6, 'luglio': 7, 'agosto': 8,
+            'settembre': 9, 'ottobre': 10, 'novembre': 11, 'dicembre': 12
+        }
+
+        # Parse format: "13 Gennaio 10.00-14.00"
+        match = re.match(r'(\d+)\s+(\w+)\s+([\d.]+)-([\d.]+)', date_str.strip(), re.IGNORECASE)
+        if not match:
+            return []
+
+        day_num = int(match.group(1))
+        month_name = match.group(2).lower()
+        start_time = match.group(3)
+        end_time = match.group(4)
+
+        month = month_map.get(month_name)
+        if not month:
+            return []
+
+        # Assume year 2026
+        try:
+            date = datetime(2026, month, day_num)
+        except ValueError:
+            return []
+
+        # Convert to (week, day)
+        try:
+            week, day = date_mapper.date_to_week_day(date)
+        except ValueError:
+            return []
+
+        # Parse time range to fascia
+        # 08:00-10:00, 09:00-11:00, 10:00-12:00, 11:00-13:00 -> fascia 1 or 2
+        # 14:00-16:00, 15:00-17:00 -> fascia 3
+        start_hour = int(start_time.split('.')[0])
+        end_hour = int(end_time.split('.')[0])
+
+        slots = []
+
+        # Determine which fasce have sufficient overlap (at least 1 hour)
+        # This allows Margherita's flexible time slots like 08:00-10:00 or 15:00-17:00
+
+        # Fascia 1: 09:00-11:00
+        # Check overlap: max(start, 9) to min(end, 11)
+        fascia1_start, fascia1_end = 9, 11
+        overlap1 = max(0, min(end_hour, fascia1_end) - max(start_hour, fascia1_start))
+        if overlap1 >= 1:  # At least 1 hour overlap
+            slots.append((week, day, 1))
+
+        # Fascia 2: 11:00-13:00
+        fascia2_start, fascia2_end = 11, 13
+        overlap2 = max(0, min(end_hour, fascia2_end) - max(start_hour, fascia2_start))
+        if overlap2 >= 1:
+            slots.append((week, day, 2))
+
+        # Fascia 3: 14:00-16:00
+        fascia3_start, fascia3_end = 14, 16
+        overlap3 = max(0, min(end_hour, fascia3_end) - max(start_hour, fascia3_start))
+        if overlap3 >= 1:
+            slots.append((week, day, 3))
+
+        return slots
+
     def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
         """Add constraints based on available days and time slots."""
         # Mappings
@@ -142,21 +217,24 @@ class TrainerAvailabilityConstraint(HardConstraint):
                 model.Add(variables.giorno[meeting] != 5).OnlyEnforceIf(is_f)
 
             # 2. Available mornings/afternoons
-            # Se available_mornings è vuoto, non può fare mattine
-            if not self.available_mornings:
-                # fascia != 1 AND fascia != 2
-                for f in fascia_morning:
-                    model.Add(variables.fascia[meeting] != f).OnlyEnforceIf(is_f)
+            # ONLY apply generic availability if NO whitelist is provided
+            # If whitelist (available_dates) exists, skip generic constraints
+            if not self.available_dates:
+                # Se available_mornings è vuoto, non può fare mattine
+                if not self.available_mornings:
+                    # fascia != 1 AND fascia != 2
+                    for f in fascia_morning:
+                        model.Add(variables.fascia[meeting] != f).OnlyEnforceIf(is_f)
 
-            # Se available_afternoons è vuoto, non può fare pomeriggi
-            if not self.available_afternoons:
-                # fascia != 3
-                for f in fascia_afternoon:
-                    model.Add(variables.fascia[meeting] != f).OnlyEnforceIf(is_f)
+                # Se available_afternoons è vuoto, non può fare pomeriggi
+                if not self.available_afternoons:
+                    # fascia != 3
+                    for f in fascia_afternoon:
+                        model.Add(variables.fascia[meeting] != f).OnlyEnforceIf(is_f)
 
             # 3. Specific weekday restrictions per time of day
-            # Se può fare mattine, ma solo certi giorni
-            if self.available_mornings:
+            # ONLY apply if NO whitelist (same as above)
+            if not self.available_dates and self.available_mornings:
                 available_morning_days = [day_to_num[d] for d in self.available_mornings if d in day_to_num]
 
                 # Se assegnata a questa formatrice E in fascia mattina, allora giorno deve essere in available_morning_days
@@ -177,7 +255,7 @@ class TrainerAvailabilityConstraint(HardConstraint):
                         model.AddAllowedAssignments([variables.giorno[meeting]], allowed_tuples).OnlyEnforceIf(both)
 
             # Stessa logica per pomeriggi
-            if self.available_afternoons:
+            if not self.available_dates and self.available_afternoons:
                 available_afternoon_days = [day_to_num[d] for d in self.available_afternoons if d in day_to_num]
 
                 for f in fascia_afternoon:
@@ -192,7 +270,34 @@ class TrainerAvailabilityConstraint(HardConstraint):
                         allowed_tuples = [(d,) for d in available_afternoon_days]
                         model.AddAllowedAssignments([variables.giorno[meeting]], allowed_tuples).OnlyEnforceIf(both)
 
-        # TODO: Implementare available_dates (WHITELIST) e excluded_dates (BLACKLIST)
+        # 4. WHITELIST: available_dates (specific date-time slots)
+        # TEMPORARILY DISABLED: Too many constraints (~500 per trainer)
+        # TODO: Optimize implementation using forbidden slots instead of allowed slots
+        if False and self.available_dates:
+            from ..date_utils import DateMapper
+            date_mapper = DateMapper()
+
+            allowed_slots = set()  # Set of (week, day, fascia) tuples
+
+            for date_str in self.available_dates:
+                # Parse format like "13 Gennaio 10.00-14.00"
+                parsed_slots = self._parse_italian_datetime(date_str, date_mapper)
+                for slot in parsed_slots:
+                    allowed_slots.add(slot)
+
+            if allowed_slots:
+                # For each meeting, if assigned to this trainer, (week, day, fascia) must be in allowed_slots
+                for meeting in variables.meetings:
+                    is_f = variables.is_formatrice[(self.trainer_id, meeting)]
+
+                    # Convert to list of tuples
+                    allowed_tuples = list(allowed_slots)
+
+                    # If assigned to this trainer, then (settimana, giorno, fascia) must be in allowed_tuples
+                    model.AddAllowedAssignments(
+                        [variables.settimana[meeting], variables.giorno[meeting], variables.fascia[meeting]],
+                        allowed_tuples
+                    ).OnlyEnforceIf(is_f)
 
 
 @dataclass(kw_only=True)
@@ -571,8 +676,24 @@ class NoTrainerOverlapConstraint(HardConstraint):
         This uses CP-SAT's NoOverlap constraint which is much more efficient than
         creating O(n²) pairwise constraints. We create optional interval variables
         for each meeting, active only when assigned to this trainer.
+
+        IMPORTANT: When two classes are grouped (accorpa=1), they share the same slot
+        and trainer. We must NOT count the "secondary" class's meeting as a separate
+        interval, otherwise NoOverlap will incorrectly flag it as overlapping.
         """
         intervals = []
+
+        # Build mapping: for each meeting, find if it's a "secondary" in any grouping
+        # Secondary = c2 in accorpa[c1, c2, lab] where c1 < c2
+        # We collect all accorpa variables where this meeting's class is c2
+        meeting_is_secondary = {}  # meeting -> list of accorpa BoolVars
+        for (c1, c2, lab), accorpa_var in variables.accorpa.items():
+            # Find all meetings of c2 for this lab
+            for meeting in variables.meetings:
+                if meeting.class_id == c2 and meeting.lab_id == lab:
+                    if meeting not in meeting_is_secondary:
+                        meeting_is_secondary[meeting] = []
+                    meeting_is_secondary[meeting].append(accorpa_var)
 
         for meeting in variables.meetings:
             key = (self.trainer_id, meeting)
@@ -584,16 +705,37 @@ class NoTrainerOverlapConstraint(HardConstraint):
                 model.Add(variables.formatrice[meeting] != self.trainer_id).OnlyEnforceIf(is_f.Not())
                 variables.is_formatrice[key] = is_f
 
+            is_assigned = variables.is_formatrice[key]
+
+            # Check if this meeting is secondary in any grouping
+            secondary_vars = meeting_is_secondary.get(meeting, [])
+
+            if secondary_vars:
+                # This meeting could be secondary (grouped with another class)
+                # is_present = is_assigned AND NOT(any secondary grouping is active)
+                # i.e., the interval is present only if assigned AND not grouped as secondary
+
+                # Create: is_secondary = OR(all accorpa vars for this meeting)
+                is_secondary = model.NewBoolVar(f"is_sec_{self.trainer_id}_{meeting}")
+                model.AddBoolOr(secondary_vars).OnlyEnforceIf(is_secondary)
+                model.AddBoolAnd([v.Not() for v in secondary_vars]).OnlyEnforceIf(is_secondary.Not())
+
+                # is_present = is_assigned AND NOT is_secondary
+                is_present = model.NewBoolVar(f"present_{self.trainer_id}_{meeting}")
+                model.AddBoolAnd([is_assigned, is_secondary.Not()]).OnlyEnforceIf(is_present)
+                model.AddBoolOr([is_assigned.Not(), is_secondary]).OnlyEnforceIf(is_present.Not())
+            else:
+                # Not a secondary in any grouping, just use is_assigned
+                is_present = is_assigned
+
             # Create optional interval variable
             # - start: slot (linear time encoding: week*60 + day*12 + timeslot)
             # - size: 1 (each meeting occupies exactly 1 discrete slot)
-            # - is_present: True only if this trainer is assigned to this meeting
-            is_assigned = variables.is_formatrice[key]
-
+            # - is_present: True only if this trainer is assigned AND not grouped as secondary
             interval = model.NewOptionalFixedSizeIntervalVar(
                 start=variables.slot[meeting],
                 size=1,
-                is_present=is_assigned,
+                is_present=is_present,
                 name=f"interval_t{self.trainer_id}_m{meeting}"
             )
             intervals.append(interval)
@@ -629,18 +771,27 @@ class SchedulingPeriodConstraint(HardConstraint):
 
     def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
         """Constrain meeting dates to valid windows."""
-        # TODO: Implementazione completa richiede mapping date -> settimane
-        # Per ora assumiamo che le settimane 0-15 siano già mappate correttamente
-        # alle finestre temporali (28/1-1/4 e 13/4-16/5)
+        from datetime import datetime
 
-        # Se serve implementare break di Pasqua (settimane 10-11 ad esempio),
-        # possiamo aggiungere:
-        # EASTER_WEEKS = [10, 11]
-        # for meeting in variables.meetings:
-        #     for week in EASTER_WEEKS:
-        #         model.Add(variables.settimana[meeting] != week)
+        # Week 0 is partial: starts Monday 26/01 but school starts Wednesday 28/01
+        # So days 0 (Mon 26/01) and 1 (Tue 27/01) are not valid
+        WINDOW1_START = datetime(2026, 1, 28)  # Wednesday
 
-        pass
+        for meeting in variables.meetings:
+            # For week 0, only days 2-5 are valid (Wed-Sat, starting from 28/01)
+            # Create constraint: week=0 => day >= 2
+            is_week0 = model.NewBoolVar(f"is_w0_{meeting}")
+            model.Add(variables.settimana[meeting] == 0).OnlyEnforceIf(is_week0)
+            model.Add(variables.settimana[meeting] != 0).OnlyEnforceIf(is_week0.Not())
+
+            # If week 0, then day must be >= 2 (Wednesday or later)
+            model.Add(variables.giorno[meeting] >= 2).OnlyEnforceIf(is_week0)
+
+        # Easter break: weeks 10-11 are not available
+        EASTER_WEEKS = [10, 11]
+        for meeting in variables.meetings:
+            for week in EASTER_WEEKS:
+                model.Add(variables.settimana[meeting] != week)
 
 
 @dataclass(kw_only=True)
@@ -671,11 +822,31 @@ class MaxGroupSizeConstraint(HardConstraint):
         pass
 
     def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
-        """Add constraint: maximum 2 classes can be grouped."""
-        # Già gestito implicitamente dalle variabili accorpa:
-        # creiamo variabili accorpa solo per coppie (c1, c2), quindi max 2 classi
-        # Non creiamo variabili accorpa per triple (c1, c2, c3)
-        pass
+        """Add constraint: maximum 2 classes can be grouped.
+
+        For each class, at most ONE accorpa variable involving that class can be true.
+        This prevents chains like: A-B grouped AND A-C grouped → A,B,C all together.
+
+        For each class X and each lab:
+            sum(accorpa[(X,Y,lab)] for all Y) + sum(accorpa[(Z,X,lab)] for all Z) <= 1
+        """
+        from collections import defaultdict
+
+        # Group accorpa variables by (class, lab)
+        # For each class, collect all accorpa vars where it participates
+        class_lab_accorpa = defaultdict(list)  # (class_id, lab_id) -> [accorpa_vars]
+
+        for (c1, c2, lab), accorpa_var in variables.accorpa.items():
+            # c1 participates in this grouping
+            class_lab_accorpa[(c1, lab)].append(accorpa_var)
+            # c2 participates in this grouping
+            class_lab_accorpa[(c2, lab)].append(accorpa_var)
+
+        # For each (class, lab), at most one accorpa can be true
+        for (class_id, lab_id), accorpa_vars in class_lab_accorpa.items():
+            if len(accorpa_vars) > 1:
+                # sum(accorpa_vars) <= 1
+                model.Add(sum(accorpa_vars) <= 1)
 
 
 @dataclass(kw_only=True)
