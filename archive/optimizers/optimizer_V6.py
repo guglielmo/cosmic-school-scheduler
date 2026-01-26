@@ -893,8 +893,11 @@ class OptimizerV6:
         """
         Aggiunge vincoli H9 solo per le coppie pre-filtrate.
 
-        Per ogni coppia potenzialmente sovrapposta, aggiungi vincolo:
-        Se stessa formatrice E stesso giorno => fasce non sovrapposte
+        Per ogni coppia potenzialmente sovrapposta, vieta tutte le combinazioni:
+        (week, day, formatrice_id, fascia1, week, day, formatrice_id, fascia2)
+        dove fascia1 e fascia2 si sovrappongono temporalmente.
+
+        Usa domini pre-calcolati per restringere le tuple forbidden.
 
         Args:
             overlapping_pairs: Lista di (key1, key2) potenzialmente sovrapposti
@@ -906,44 +909,63 @@ class OptimizerV6:
         if not overlapping_pairs:
             return 0
 
-        # Pre-calcola coppie di fasce che si sovrappongono
-        fasce_sovrapposte_set = set()
-        for f1 in self.fascia_orari:
-            for f2 in self.fascia_orari:
-                s1, e1 = self.fascia_orari[f1]
-                s2, e2 = self.fascia_orari[f2]
-                if s1 < e2 and s2 < e1:
-                    fasce_sovrapposte_set.add((f1, f2))
-
-        fasce_sovrapposte_list = [[f1, f2] for (f1, f2) in fasce_sovrapposte_set]
+        # Pre-calcola quali fasce si sovrappongono
+        fasce_overlap = {}
+        for f1 in [1, 2, 3]:
+            for f2 in [1, 2, 3]:
+                if f1 not in self.fascia_orari or f2 not in self.fascia_orari:
+                    # Fallback per fasce generiche
+                    s1, e1 = (480, 720) if f1 < 3 else (840, 960)
+                    s2, e2 = (480, 720) if f2 < 3 else (840, 960)
+                else:
+                    s1, e1 = self.fascia_orari[f1]
+                    s2, e2 = self.fascia_orari[f2]
+                fasce_overlap[(f1, f2)] = (s1 < e2 and s2 < e1)
 
         n_added = 0
+        total_forbidden = 0
+        pairs_with_constraints = 0
 
         for key1, key2 in overlapping_pairs:
-            # Variabile: stesso giorno (settimana + giorno)?
-            same_day = self.model.NewBoolVar(f"sd_h9_{n_added}")
-            day_slot_1 = self.settimana[key1] * 6 + self.giorno[key1]
-            day_slot_2 = self.settimana[key2] * 6 + self.giorno[key2]
-            self.model.Add(day_slot_1 == day_slot_2).OnlyEnforceIf(same_day)
-            self.model.Add(day_slot_1 != day_slot_2).OnlyEnforceIf(same_day.Not())
+            classe_id1, lab_id1, k1 = key1
+            classe_id2, lab_id2, k2 = key2
 
-            # Variabile: stessa formatrice?
-            same_form = self.model.NewBoolVar(f"sf_h9_{n_added}")
-            self.model.Add(self.formatrice[key1] == self.formatrice[key2]).OnlyEnforceIf(same_form)
-            self.model.Add(self.formatrice[key1] != self.formatrice[key2]).OnlyEnforceIf(same_form.Not())
+            # Ottieni domini per questa coppia
+            domain1 = self.preprocessor.get_domain_for_meeting(classe_id1, lab_id1, k1)
+            domain2 = self.preprocessor.get_domain_for_meeting(classe_id2, lab_id2, k2)
 
-            # Se entrambe vere => conflitto
-            conflict = self.model.NewBoolVar(f"cf_h9_{n_added}")
-            self.model.AddBoolAnd([same_day, same_form]).OnlyEnforceIf(conflict)
-            self.model.AddBoolOr([same_day.Not(), same_form.Not()]).OnlyEnforceIf(conflict.Not())
+            # Trova slot comuni (week, day, fascia1, fascia2) dove possono sovrapporsi
+            common_slots = []
+            for (w1, d1, f1) in domain1.get_valid_slots():
+                for (w2, d2, f2) in domain2.get_valid_slots():
+                    if w1 == w2 and d1 == d2:
+                        # Stesso giorno, controlla se fasce si sovrappongono
+                        if fasce_overlap.get((f1, f2), False):
+                            common_slots.append((w1, d1, f1, f2))
 
-            # In caso di conflitto, vieta fasce sovrapposte
-            self.model.AddForbiddenAssignments(
-                [self.fascia[key1], self.fascia[key2]],
-                fasce_sovrapposte_list
-            ).OnlyEnforceIf(conflict)
+            if not common_slots:
+                # Nessuna sovrapposizione possibile nei domini
+                continue
 
-            n_added += 1
+            # Crea tuple forbidden per ogni formatrice
+            forbidden_tuples = []
+            for (week, day, f1, f2) in common_slots:
+                for f_id in tutte_formatrici:
+                    # Vieta: (week, day, f_id, f1, week, day, f_id, f2)
+                    forbidden_tuples.append([week, day, f_id, f1, week, day, f_id, f2])
+
+            if forbidden_tuples:
+                self.model.AddForbiddenAssignments(
+                    [self.settimana[key1], self.giorno[key1], self.formatrice[key1], self.fascia[key1],
+                     self.settimana[key2], self.giorno[key2], self.formatrice[key2], self.fascia[key2]],
+                    forbidden_tuples
+                )
+                n_added += 1
+                pairs_with_constraints += 1
+                total_forbidden += len(forbidden_tuples)
+
+        if self.verbose:
+            print(f"    Debug H9: {pairs_with_constraints} coppie con vincoli, {total_forbidden} tuple forbidden totali")
 
         return n_added
 

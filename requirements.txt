@@ -1,0 +1,20 @@
+# Cosmic School - Scheduler Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core optimization and data processing
+pandas>=2.0.0
+ortools>=9.7.0
+
+# Excel file support (required by pandas for .xlsx)
+openpyxl>=3.1.0
+
+# YAML configuration (used by constraint system)
+pyyaml>=6.0.0
+
+# Development dependencies (optional)
+# Uncomment if you want to run tests
+# pytest>=7.4.0
+# pytest-cov>=4.1.0
+
+# Type validation (optional - not currently used)
+# pydantic>=2.0.0

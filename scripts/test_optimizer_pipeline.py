@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Test basico per OptimizerV7
+Test basico per Optimizer
 
 Verifica che il sistema di constraints formali funzioni correttamente.
 """
@@ -11,18 +11,18 @@ from pathlib import Path
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent / 'src'))
 
-from optimizer_V7 import OptimizerV7
+from optimizer import Optimizer
 
 
 def test_initialization():
-    """Test: OptimizerV7 si inizializza correttamente"""
+    """Test: Optimizer si inizializza correttamente"""
     print("\n" + "=" * 80)
-    print("TEST 1: Inizializzazione OptimizerV7")
+    print("TEST 1: Inizializzazione Optimizer")
     print("=" * 80)
 
     try:
-        optimizer = OptimizerV7(verbose=True)
-        print("✅ OptimizerV7 creato")
+        optimizer = Optimizer(verbose=True)
+        print("✅ Optimizer creato")
         return True
     except Exception as e:
         print(f"❌ Errore: {e}")
@@ -36,7 +36,7 @@ def test_load_data():
     print("=" * 80)
 
     try:
-        optimizer = OptimizerV7(verbose=True)
+        optimizer = Optimizer(verbose=True)
         optimizer.load_data()
         print(f"✅ Dati caricati: {len(optimizer.class_info)} classi, "
               f"{len(optimizer.lab_info)} lab, "
@@ -56,7 +56,7 @@ def test_load_constraints():
     print("=" * 80)
 
     try:
-        optimizer = OptimizerV7(verbose=True)
+        optimizer = Optimizer(verbose=True)
         optimizer.load_data()
         optimizer.load_constraints()
 
@@ -84,7 +84,7 @@ def test_build_variables():
     print("=" * 80)
 
     try:
-        optimizer = OptimizerV7(verbose=True)
+        optimizer = Optimizer(verbose=True)
         optimizer.load_data()
         optimizer.load_constraints()
         optimizer.build_variables()
@@ -110,7 +110,7 @@ def test_apply_constraints():
     print("=" * 80)
 
     try:
-        optimizer = OptimizerV7(verbose=True)
+        optimizer = Optimizer(verbose=True)
         optimizer.load_data()
         optimizer.load_constraints()
         optimizer.build_variables()
@@ -146,7 +146,7 @@ def test_build_objective():
     print("=" * 80)
 
     try:
-        optimizer = OptimizerV7(verbose=True)
+        optimizer = Optimizer(verbose=True)
         optimizer.load_data()
         optimizer.load_constraints()
         optimizer.build_variables()
@@ -166,7 +166,7 @@ def test_build_objective():
 def main():
     """Esegue tutti i test"""
     print("=" * 80)
-    print("  TEST SUITE - OptimizerV7")
+    print("  TEST SUITE - Optimizer")
     print("=" * 80)
 
     tests = [

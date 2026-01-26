@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Optimizer V7 - Basato su Sistema di Constraints Formali
+Cosmic School Optimizer - Basato su Sistema di Constraints Formali
 
 Questo optimizer usa il sistema di constraints formali definito in src/constraints/
 per garantire coerenza, tracciabilità e manutenibilità.
@@ -40,6 +40,7 @@ from constraints import (
     HardConstraint,
     SoftConstraint,
 )
+from date_utils import DateMapper
 
 
 @dataclass
@@ -119,7 +120,7 @@ class ConstraintContext:
     num_formatrici: int = 4
 
 
-class OptimizerV7:
+class Optimizer:
     """
     Optimizer basato su constraints formali.
 
@@ -139,7 +140,7 @@ class OptimizerV7:
     NUM_FORMATRICI = 4  # 1-4
 
     def __init__(self, input_dir: str = "data/input",
-                 config_path: str = "config/constraint_weights.yaml",
+                 config_path: str = "src/constraints/config/constraint_weights.yaml",
                  verbose: bool = False):
         """
         Inizializza optimizer con sistema di constraints formali.
@@ -183,7 +184,7 @@ class OptimizerV7:
         self.context: ConstraintContext = None
 
         self._log("=" * 80)
-        self._log("  OPTIMIZER V7 - Constraint-Based Scheduler")
+        self._log("  COSMIC SCHOOL OPTIMIZER - Constraint-Based Scheduler")
         self._log("=" * 80)
 
     def _log(self, message: str):
@@ -497,18 +498,106 @@ class OptimizerV7:
 
     def export_solution(self, output_path: str):
         """
-        Esporta la soluzione trovata.
+        Esporta la soluzione trovata in formato CSV.
 
         Args:
             output_path: Path del file CSV di output
+
+        Output columns:
+            - classe_id, classe_nome, scuola_nome
+            - laboratorio_id, laboratorio_nome
+            - incontro_num (1-based)
+            - formatrice_id, formatrice_nome
+            - settimana, giorno, fascia, slot
+            - data, orario (human-readable)
+            - accorpata_con (se accorpata)
         """
         self._log(f"\n7. Esportazione soluzione...")
 
-        # TODO: Implementare export
-        self._log(f"  ⏸ Export da implementare")
-        self._log(f"  Output: {output_path}")
+        if not hasattr(self, 'solver') or self.solver is None:
+            self._log(f"  ✗ Errore: solver non disponibile")
+            return
 
-    def run(self, output_path: str = "data/output/calendario_V7.csv",
+        # Crea date mapper
+        date_mapper = DateMapper()
+
+        # Mappa nomi giorni e fasce
+        day_names = ["Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"]
+        fascia_names = {1: "Mattino1", 2: "Mattino2", 3: "Pomeriggio"}
+
+        # Raccogli risultati
+        results = []
+
+        for meeting in self.variables.meetings:
+            # Leggi valori soluzione
+            week = self.solver.Value(self.variables.settimana[meeting])
+            day = self.solver.Value(self.variables.giorno[meeting])
+            fascia = self.solver.Value(self.variables.fascia[meeting])
+            trainer_id = self.solver.Value(self.variables.formatrice[meeting])
+            slot = self.solver.Value(self.variables.slot[meeting])
+
+            # Ottieni info da context
+            class_info = self.context.class_info[meeting.class_id]
+            lab_info = self.context.lab_info[meeting.lab_id]
+            trainer_info = self.context.trainer_info[trainer_id]
+            school_info = self.context.school_info[class_info['school_id']]
+
+            # Formatta data e orario
+            datetime_str = date_mapper.format_datetime(week, day, fascia)
+
+            # Verifica se accorpata
+            accorpata_con = []
+            for (c1, c2, lab), var in self.variables.accorpa.items():
+                if self.solver.Value(var) == 1:
+                    # Questa coppia è accorpata
+                    if meeting.class_id == c1 and meeting.lab_id == lab:
+                        accorpata_con.append(c2)
+                    elif meeting.class_id == c2 and meeting.lab_id == lab:
+                        accorpata_con.append(c1)
+
+            accorpata_str = ", ".join([self.context.class_info[cid]['name'] for cid in accorpata_con]) if accorpata_con else ""
+
+            # Aggiungi record
+            results.append({
+                'classe_id': meeting.class_id,
+                'classe_nome': class_info['name'],
+                'scuola_nome': school_info['name'],
+                'laboratorio_id': meeting.lab_id,
+                'laboratorio_nome': lab_info['name'],
+                'incontro_num': meeting.meeting_index + 1,  # 1-based
+                'formatrice_id': trainer_id,
+                'formatrice_nome': trainer_info['name'],
+                'settimana': week,
+                'giorno_num': day,
+                'giorno_nome': day_names[day],
+                'fascia_num': fascia,
+                'fascia_nome': fascia_names[fascia],
+                'slot': slot,
+                'data_ora': datetime_str,
+                'accorpata_con': accorpata_str
+            })
+
+        # Converti in DataFrame e ordina
+        df = pd.DataFrame(results)
+        df = df.sort_values(['settimana', 'giorno_num', 'fascia_num', 'classe_id', 'laboratorio_id', 'incontro_num'])
+
+        # Salva CSV
+        output_path = Path(output_path)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        df.to_csv(output_path, index=False)
+
+        self._log(f"  ✓ Esportati {len(df)} incontri")
+        self._log(f"  ✓ Output: {output_path}")
+
+        # Statistiche accorpamenti
+        num_accorpamenti = sum(
+            1 for var in self.variables.accorpa.values()
+            if self.solver.Value(var) == 1
+        )
+        if num_accorpamenti > 0:
+            self._log(f"  ✓ Accorpamenti: {num_accorpamenti}")
+
+    def run(self, output_path: str = "data/output/calendario.csv",
             time_limit: int = 300):
         """
         Esegue l'intero pipeline di ottimizzazione.
@@ -549,7 +638,7 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(
-        description='Optimizer V7 - Constraint-based scheduler'
+        description='Cosmic School Optimizer - Constraint-based scheduler'
     )
     parser.add_argument(
         '--input', '-i',
@@ -558,12 +647,12 @@ def main():
     )
     parser.add_argument(
         '--output', '-o',
-        default='data/output/calendario_V7.csv',
+        default='data/output/calendario.csv',
         help='File CSV di output'
     )
     parser.add_argument(
         '--config', '-c',
-        default='config/constraint_weights.yaml',
+        default='src/constraints/config/constraint_weights.yaml',
         help='File configurazione pesi'
     )
     parser.add_argument(
@@ -581,7 +670,7 @@ def main():
     args = parser.parse_args()
 
     # Crea e esegui optimizer
-    optimizer = OptimizerV7(
+    optimizer = Optimizer(
         input_dir=args.input,
         config_path=args.config,
         verbose=args.verbose

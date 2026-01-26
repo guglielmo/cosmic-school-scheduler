@@ -26,14 +26,14 @@ source venv/bin/activate
 # Install/update dependencies
 echo "Installing dependencies..."
 pip install -q --upgrade pip
-pip install -q -r requirements-constraints.txt
+pip install -q -r requirements.txt
 
 # Run the example script
 echo ""
 echo "Running constraint analysis..."
 echo ""
 
-python3 examples/constraint_example.py "$@"
+python3 src/constraints/examples/constraint_example.py "$@"
 
 echo ""
 echo "Done!"

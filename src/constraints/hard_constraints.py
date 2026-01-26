@@ -202,18 +202,49 @@ class FixedDatesConstraint(HardConstraint):
 
     def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
         """Fix assignments for these specific dates."""
-        # TODO: Per ora non implemento il parsing completo delle date
-        # Serve un parser che converta "2026-02-26 09:00-13:00" in (settimana, giorno, fascia)
-        # E un mapping delle date alle settimane dell'anno scolastico
+        from date_utils import DateMapper
 
-        # Placeholder: marchiamo come implementato ma non aggiungiamo vincoli
-        # In una implementazione completa, dovremmo:
-        # 1. Parsare self.fixed_dates
-        # 2. Convertire ogni data in (settimana, giorno, fascia, formatrice?)
-        # 3. Fissare le variabili corrispondenti
+        if not self.fixed_dates:
+            # Nessuna data fissata
+            return
 
-        # Per ora, logghiamo che questo constraint è attivo ma non implementato
-        pass
+        date_mapper = DateMapper()
+
+        # Trova gli incontri di questa classe per questo lab
+        class_meetings = variables.meetings_by_class.get(self.class_id, [])
+        lab_meetings = [m for m in class_meetings if m.lab_id == self.lab_id]
+
+        if not lab_meetings:
+            return
+
+        # Parse fixed dates
+        fixed_slots = []
+        for date_str in self.fixed_dates:
+            result = date_mapper.parse_datetime_range(date_str)
+            if result:
+                date, slot = result
+                try:
+                    week, day = date_mapper.date_to_week_day(date)
+                    fixed_slots.append((week, day, slot))
+                except ValueError as e:
+                    # Data fuori dalle finestre valide o in domenica
+                    continue
+
+        if not fixed_slots:
+            # Nessuna data valida parsata
+            return
+
+        # Assegna le prime N meetings alle date fissate
+        for i, (week, day, slot) in enumerate(fixed_slots):
+            if i >= len(lab_meetings):
+                break  # Più date fissate che incontri
+
+            meeting = lab_meetings[i]
+
+            # Fissa le variabili
+            model.Add(variables.settimana[meeting] == week)
+            model.Add(variables.giorno[meeting] == day)
+            model.Add(variables.fascia[meeting] == slot)
 
 
 @dataclass(kw_only=True)
@@ -241,7 +272,7 @@ class ClassLabAssignmentConstraint(HardConstraint):
         """Constrain assignments to only assigned labs."""
         # Già gestito implicitamente nella creazione delle variabili:
         # creiamo variabili solo per i lab assegnati a ciascuna classe
-        # (vedi build_variables() in optimizer_V7.py)
+        # (vedi build_variables() in optimizer.py)
         pass
 
 
@@ -365,9 +396,52 @@ class ClassExcludedDatesConstraint(HardConstraint):
 
     def add_to_model(self, model: Any, variables: Any, context: Any) -> None:
         """Exclude assignments on forbidden dates."""
-        # TODO: Richiede parsing delle date escluse e mapping a (settimana, giorno)
-        # Simile a H03 e H02, necessita di una logica di date parsing complessa
-        pass
+        from date_utils import DateMapper
+
+        if not self.excluded_dates:
+            return
+
+        date_mapper = DateMapper()
+
+        # Trova tutti gli incontri di questa classe
+        class_meetings = variables.meetings_by_class.get(self.class_id, [])
+
+        if not class_meetings:
+            return
+
+        # Parse excluded dates e converti in (settimana, giorno)
+        excluded_week_days = []
+
+        for date_str in self.excluded_dates:
+            # Prova a parsare come singola data
+            date = date_mapper.parse_date_string(date_str)
+            if date:
+                try:
+                    week, day = date_mapper.date_to_week_day(date)
+                    excluded_week_days.append((week, day))
+                except ValueError:
+                    # Data fuori range
+                    continue
+
+        if not excluded_week_days:
+            return
+
+        # Per ogni incontro, escludi le date proibite
+        for meeting in class_meetings:
+            for week, day in excluded_week_days:
+                # Se settimana = week AND giorno = day, allora False
+                # Usiamo AddBoolOr per negare la condizione
+                is_week = model.NewBoolVar(f"is_week_{meeting}_{week}")
+                is_day = model.NewBoolVar(f"is_day_{meeting}_{day}")
+
+                model.Add(variables.settimana[meeting] == week).OnlyEnforceIf(is_week)
+                model.Add(variables.settimana[meeting] != week).OnlyEnforceIf(is_week.Not())
+
+                model.Add(variables.giorno[meeting] == day).OnlyEnforceIf(is_day)
+                model.Add(variables.giorno[meeting] != day).OnlyEnforceIf(is_day.Not())
+
+                # Non può essere entrambi (week AND day)
+                model.AddBoolOr([is_week.Not(), is_day.Not()])
 
 
 @dataclass(kw_only=True)
