@@ -152,16 +152,21 @@ def schedule_lab(
     lab_classes: Dict[int, Dict],
     classes_info: Dict[int, Dict],
     max_weeks: int = 8
-) -> Dict[str, List[Tuple[int, str]]]:
+) -> Tuple[Dict[str, List[Tuple[int, str]]], Dict[str, Dict[int, List[int]]]]:
     """
     Schedula gli incontri del laboratorio.
-    Returns: dict mapping slot_id -> list of (classe_id, lab_label)
+    Returns:
+        - dict mapping slot_id -> list of (classe_id, lab_label)
+        - dict mapping slot_id -> dict mapping classe_id -> list of grouped classe_ids
     """
     # Traccia i progressi di ogni classe
     progress = {cid: 0 for cid in lab_classes.keys()}
 
     # Calendario risultante
     schedule = {slot_id: [] for slot_id in slot_ids}
+
+    # Traccia gli accorpamenti: slot_id -> {classe_id -> [other_classe_ids]}
+    groupings = {slot_id: {} for slot_id in slot_ids}
 
     # Limita alle prime N settimane
     relevant_slots = []
@@ -216,6 +221,12 @@ def schedule_lab(
                 for cid in group:
                     schedule[slot_id].append((cid, label))
                     progress[cid] += 1
+
+                # Registra l'accorpamento (solo se il gruppo ha più di 1 classe)
+                if len(group) > 1:
+                    for cid in group:
+                        # Per ogni classe, salva le altre classi del gruppo
+                        groupings[slot_id][cid] = [other_cid for other_cid in group if other_cid != cid]
 
                 meetings_in_slot += 1
 
@@ -276,16 +287,24 @@ def schedule_lab(
     else:
         print(f"\n⚠️  {len(incomplete)} classi non hanno completato tutti gli incontri")
 
-    return schedule
+    return schedule, groupings
 
 
 def write_calendar(
     slot_ids: List[str],
     availability: Dict[str, Set[int]],
     schedule: Dict[str, List[Tuple[int, str]]],
-    class_columns: List[str]
+    groupings: Dict[str, Dict[int, List[int]]],
+    class_columns: List[str],
+    classes_info: Dict[int, Dict]
 ):
-    """Scrive il calendario risultante in formato CSV."""
+    """Scrive il calendario risultante in formato CSV con indicazione degli accorpamenti."""
+    # Crea mapping: classe_id -> colonna (formato "classe_id-scuola_id-nome")
+    cid_to_col = {}
+    for col in class_columns:
+        classe_id = int(col.split('-')[0])
+        cid_to_col[classe_id] = col
+
     with open('data/output/calendario_laboratori.csv', 'w', newline='') as f:
         writer = csv.writer(f)
 
@@ -308,7 +327,16 @@ def write_calendar(
 
                 if classe_id in scheduled_map:
                     # C'è un laboratorio schedulato
-                    row.append(scheduled_map[classe_id])
+                    label = scheduled_map[classe_id]
+
+                    # Verifica se è accorpata con altre classi
+                    if classe_id in groupings.get(slot_id, {}):
+                        grouped_with = groupings[slot_id][classe_id]
+                        # Aggiungi le colonne delle classi accorpate
+                        grouped_cols = [cid_to_col[other_cid] for other_cid in grouped_with]
+                        label = f"{label}/{'/'.join(grouped_cols)}"
+
+                    row.append(label)
                 elif classe_id in availability[slot_id]:
                     # Disponibile ma non schedulato
                     row.append('-')
@@ -336,10 +364,10 @@ def main():
 
     # Schedula
     print("\nScheduling...\n")
-    schedule = schedule_lab(slot_ids, availability, lab_classes, classes_info, max_weeks=12)
+    schedule, groupings = schedule_lab(slot_ids, availability, lab_classes, classes_info, max_weeks=12)
 
     # Scrivi il calendario
-    write_calendar(slot_ids, availability, schedule, class_columns)
+    write_calendar(slot_ids, availability, schedule, groupings, class_columns, classes_info)
 
 
 if __name__ == '__main__':
