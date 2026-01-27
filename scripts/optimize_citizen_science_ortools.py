@@ -146,9 +146,13 @@ def build_ortools_model(
     existing_schedule: Dict,
     overbooking_slots: Set[str]
 ):
-    """Costruisce e risolve il modello OR-Tools."""
+    """Costruisce e risolve il modello OR-Tools con ottimizzazione accorpamenti."""
 
     model = cp_model.CpModel()
+
+    # Leggi info classi per accorpamenti
+    classes_info = read_classes_info()
+    grouping_preferences = read_grouping_preferences()
 
     # Lista di tutti gli slot (ordine cronologico)
     all_slots = sorted(set(
@@ -174,8 +178,34 @@ def build_ortools_model(
                     var_name = f"meeting_c{classe_id}_m{meeting_num}_s{slot_id}"
                     meeting[classe_id, meeting_num, slot_id] = model.NewBoolVar(var_name)
 
-    # grouped[c1, c2, slot_id] = 1 se le due classi sono accorpate in quello slot
+    # grouped[c1, c2, meeting_num, slot_id] = 1 se le due classi sono accorpate per questo incontro
     grouped = {}
+
+    # Crea variabili di accorpamento per coppie valide
+    for c1 in lab_classes.keys():
+        for c2 in lab_classes.keys():
+            if c1 >= c2:  # Solo coppie uniche
+                continue
+
+            # Verifica che siano della stessa scuola
+            if classes_info[c1]['scuola_id'] != classes_info[c2]['scuola_id']:
+                continue
+
+            # Trova slot comuni dove entrambe sono disponibili
+            common_slots = class_availability.get(c1, set()) & class_availability.get(c2, set())
+            common_relevant = common_slots & set(relevant_slots)
+
+            if not common_relevant:
+                continue
+
+            # Per ogni numero di incontro (1..5)
+            max_meetings = min(lab_classes[c1], lab_classes[c2])
+            for meeting_num in range(1, max_meetings + 1):
+                for slot_id in common_relevant:
+                    var_name = f"grouped_c{c1}_c{c2}_m{meeting_num}_s{slot_id}"
+                    grouped[c1, c2, meeting_num, slot_id] = model.NewBoolVar(var_name)
+
+    print(f"Variabili di accorpamento: {len(grouped)}")
 
     # === VINCOLI HARD ===
 
@@ -211,46 +241,116 @@ def build_ortools_model(
             if meetings_this_week:
                 model.Add(sum(meetings_this_week) <= 1)
 
-    # H3: Vincolo formatrici disponibili
+    # H3: Link accorpamenti a scheduling
+    # Se grouped[c1, c2, m, slot] = 1, allora entrambi meeting[c1, m, slot] e meeting[c2, m, slot] = 1
+    for (c1, c2, meeting_num, slot_id), group_var in grouped.items():
+        if (c1, meeting_num, slot_id) in meeting and (c2, meeting_num, slot_id) in meeting:
+            # grouped => both meetings scheduled in this slot
+            model.Add(meeting[c1, meeting_num, slot_id] == 1).OnlyEnforceIf(group_var)
+            model.Add(meeting[c2, meeting_num, slot_id] == 1).OnlyEnforceIf(group_var)
+
+            # If both meetings in slot, can optionally be grouped
+            # (not forced, but allowed)
+
+    # H4: Una classe può essere accorpata con al massimo 1 altra classe per meeting
+    for classe_id in lab_classes.keys():
+        for meeting_num in range(1, lab_classes[classe_id] + 1):
+            for slot_id in relevant_slots:
+                # Conta con quante altre classi è accorpata in questo slot per questo meeting
+                groupings_here = []
+                for (c1, c2, m, s), group_var in grouped.items():
+                    if m == meeting_num and s == slot_id:
+                        if c1 == classe_id or c2 == classe_id:
+                            groupings_here.append(group_var)
+
+                if groupings_here:
+                    # Può essere accorpata con al massimo 1 altra classe
+                    model.Add(sum(groupings_here) <= 1)
+
+    # H5: Vincolo formatrici disponibili (considerando accorpamenti)
     # Per ogni slot, il numero di formatrici utilizzate <= disponibili
-    # (assumendo che ogni incontro usi 1 formatrice, accorpamenti ridurranno dopo)
+    # Ogni incontro singolo = 1 formatrice, ogni coppia accorpata = 1 formatrice totale
     for slot_id in relevant_slots:
         num_available = formatrici_availability.get(slot_id, 0)
 
-        # Conta quante classi hanno un incontro in questo slot
-        meetings_in_slot = []
+        # Per ogni classe e meeting, conta:
+        # - 1 se ha incontro e NON è accorpata
+        # - 0.5 se ha incontro ed È accorpata (la coppia userà 1 formatrice totale)
+        # Ma in CP-SAT non possiamo usare frazioni, quindi moltiplichiamo per 2
+
+        # trainer_units[c, m] = 2 se meeting singolo, 1 se accorpato
+        trainer_units = []
+
+        classes_in_slot = []
         for classe_id, num_meetings in lab_classes.items():
             for meeting_num in range(1, num_meetings + 1):
                 if (classe_id, meeting_num, slot_id) in meeting:
-                    meetings_in_slot.append(meeting[classe_id, meeting_num, slot_id])
+                    meet_var = meeting[classe_id, meeting_num, slot_id]
 
-        if meetings_in_slot:
-            # Per ora vincolo conservativo: non più incontri che formatrici
-            # TODO: considerare accorpamenti
-            model.Add(sum(meetings_in_slot) <= num_available)
+                    # Trova se questa classe è accorpata
+                    is_grouped_vars = []
+                    for (c1, c2, m, s), group_var in grouped.items():
+                        if m == meeting_num and s == slot_id:
+                            if c1 == classe_id or c2 == classe_id:
+                                is_grouped_vars.append(group_var)
+
+                    if is_grouped_vars:
+                        # Se accorpata, contribuisce 1 unità (0.5 * 2), altrimenti 2 unità (1 * 2)
+                        # contribution = meet_var * (2 - sum(is_grouped))
+                        # Creiamo una variabile ausiliaria
+                        contribution = model.NewIntVar(0, 2, f"contrib_c{classe_id}_m{meeting_num}_s{slot_id}")
+                        # contribution = 2 * meet_var - sum(is_grouped_vars)
+                        model.Add(contribution == 2 * meet_var - sum(is_grouped_vars))
+                        trainer_units.append(contribution)
+                    else:
+                        # Nessun accorpamento possibile, contribuisce 2 unità se schedulato
+                        trainer_units.append(2 * meet_var)
+
+        if trainer_units:
+            # Somma totale / 2 <= formatrici disponibili
+            # Equivalente a: somma totale <= 2 * formatrici disponibili
+            model.Add(sum(trainer_units) <= 2 * num_available)
 
     # === OBIETTIVO ===
 
-    # Minimizza il cambiamento rispetto alla soluzione esistente
-    # per gli slot NON in overbooking
-    changes = []
+    objective_terms = []
 
+    # Obiettivo 1: MASSIMIZZA accorpamenti (peso alto)
+    # Accorpamenti preferenziali hanno peso maggiore
+    for (c1, c2, meeting_num, slot_id), group_var in grouped.items():
+        # Verifica se è un accorpamento preferenziale
+        is_preferential = False
+        c1_pref = grouping_preferences.get(c1, '')
+        c2_pref = grouping_preferences.get(c2, '')
+        c1_name = classes_info[c1]['nome']
+        c2_name = classes_info[c2]['nome']
+
+        if c1_pref == c2_name or c2_pref == c1_name:
+            is_preferential = True
+
+        # Peso: 200 per preferenziali, 100 per stessa scuola
+        if is_preferential:
+            objective_terms.append(200 * group_var)
+        else:
+            objective_terms.append(100 * group_var)
+
+    # Obiettivo 2: Minimizza modifiche dalla soluzione greedy (peso basso)
+    # Solo per slot NON in overbooking
     for classe_id, meetings in existing_schedule.items():
         for slot_id, meeting_num in meetings:
             if slot_id not in overbooking_slots:
-                # Se questo incontro era qui, premiamo mantenerlo
                 if (classe_id, meeting_num, slot_id) in meeting:
-                    # Penalizza il NON mantenerlo (inverso della variabile)
-                    changes.append(1 - meeting[classe_id, meeting_num, slot_id])
+                    # Premio per mantenere: +1 se manteniamo
+                    objective_terms.append(1 * meeting[classe_id, meeting_num, slot_id])
 
-    # Obiettivo: minimizza le modifiche
-    if changes:
-        model.Minimize(sum(changes))
+    # Massimizza obiettivo totale
+    if objective_terms:
+        model.Maximize(sum(objective_terms))
 
     # === SOLVE ===
 
     solver = cp_model.CpSolver()
-    solver.parameters.max_time_in_seconds = 60.0
+    solver.parameters.max_time_in_seconds = 120.0  # Più tempo per trovare buoni accorpamenti
     solver.parameters.num_search_workers = 4
 
     print("\n=== Risoluzione OR-Tools ===")
@@ -259,10 +359,12 @@ def build_ortools_model(
     if status == cp_model.OPTIMAL or status == cp_model.FEASIBLE:
         print(f"✅ Soluzione trovata (status: {solver.StatusName(status)})")
         print(f"   Tempo: {solver.WallTime():.2f}s")
-        print(f"   Modifiche dalla soluzione greedy: {solver.ObjectiveValue()}")
+        print(f"   Valore obiettivo: {solver.ObjectiveValue()}")
 
-        # Estrai soluzione
+        # Estrai soluzione - schedule e groupings
         new_schedule = {}
+        new_groupings = {}  # slot_id -> {classe_id -> [other_classe_ids]}
+
         for classe_id, num_meetings in lab_classes.items():
             new_schedule[classe_id] = []
             for meeting_num in range(1, num_meetings + 1):
@@ -271,11 +373,32 @@ def build_ortools_model(
                         if solver.Value(meeting[classe_id, meeting_num, slot_id]) == 1:
                             new_schedule[classe_id].append((slot_id, meeting_num))
 
-        return new_schedule
+        # Estrai accorpamenti
+        for (c1, c2, meeting_num, slot_id), group_var in grouped.items():
+            if solver.Value(group_var) == 1:
+                if slot_id not in new_groupings:
+                    new_groupings[slot_id] = {}
+
+                if c1 not in new_groupings[slot_id]:
+                    new_groupings[slot_id][c1] = []
+                if c2 not in new_groupings[slot_id]:
+                    new_groupings[slot_id][c2] = []
+
+                new_groupings[slot_id][c1].append(c2)
+                new_groupings[slot_id][c2].append(c1)
+
+        # Conta accorpamenti
+        total_grouped = sum(len(v) for v in new_groupings.values())
+        total_meetings = sum(len(v) for v in new_schedule.values())
+        if total_meetings > 0:
+            grouping_pct = (total_grouped / total_meetings) * 100
+            print(f"   Accorpamenti: {total_grouped}/{total_meetings} incontri ({grouping_pct:.1f}%)")
+
+        return new_schedule, new_groupings
 
     else:
         print(f"❌ Nessuna soluzione trovata (status: {solver.StatusName(status)})")
-        return None
+        return None, None
 
 
 def read_classes_info() -> Dict[int, Dict]:
@@ -294,10 +417,11 @@ def read_classes_info() -> Dict[int, Dict]:
 
 def write_optimized_calendar(
     new_schedule: Dict,
+    new_groupings: Dict,
     lab_classes: Dict[int, int],
     formatrici_availability: Dict[str, int]
 ):
-    """Scrive il calendario ottimizzato (semplificato, senza accorpamenti per ora)."""
+    """Scrive il calendario ottimizzato con indicatori di accorpamento."""
 
     # Leggi struttura del calendario originale
     with open('data/output/class_availability.csv', 'r') as f:
@@ -326,6 +450,12 @@ def write_optimized_calendar(
                 slot_meetings[slot_id] = []
             slot_meetings[slot_id].append((classe_id, meeting_num))
 
+    # Crea mapping classe_id -> colonna
+    cid_to_col = {}
+    for col in class_columns:
+        classe_id = int(col.split('-')[0])
+        cid_to_col[classe_id] = col
+
     # Scrivi calendario
     with open('data/output/calendario_lab4_ortools.csv', 'w', newline='') as f:
         writer = csv.writer(f)
@@ -350,15 +480,42 @@ def write_optimized_calendar(
                             break
 
                 if meeting_here:
-                    row.append(f"L4-{meeting_here}")
+                    label = f"L4-{meeting_here}"
+
+                    # Aggiungi indicatore accorpamento
+                    if classe_id in new_groupings.get(slot_id, {}):
+                        grouped_with = new_groupings[slot_id][classe_id]
+                        grouped_cols = [cid_to_col[other_cid] for other_cid in grouped_with]
+                        label = f"{label}/{'/'.join(grouped_cols)}"
+
+                    row.append(label)
                 elif availability[slot_id].get(classe_id, False):
                     row.append('-')
                 else:
                     row.append('X')
 
-            # Conta formatrici necessarie (senza accorpamenti per ora)
-            num_formatrici = len(slot_meetings.get(slot_id, []))
-            row.append(num_formatrici)
+            # Conta formatrici necessarie (considerando accorpamenti)
+            classes_in_slot = [cid for cid, _ in slot_meetings.get(slot_id, [])]
+            grouped_classes = set()
+
+            # Identifica classi accorpate
+            for cid in classes_in_slot:
+                if cid in new_groupings.get(slot_id, {}):
+                    grouped_classes.add(cid)
+
+            # Conta: accorpate = 0.5, singole = 1
+            num_formatrici = 0.0
+            for cid in classes_in_slot:
+                if cid in grouped_classes:
+                    num_formatrici += 0.5
+                else:
+                    num_formatrici += 1.0
+
+            # Scrivi come intero se possibile
+            if num_formatrici == int(num_formatrici):
+                row.append(int(num_formatrici))
+            else:
+                row.append(num_formatrici)
 
             # Formatrici disponibili
             row.append(formatrici_availability.get(slot_id, 0))
@@ -369,7 +526,7 @@ def write_optimized_calendar(
 
 
 def main():
-    print("=== Ottimizzazione Citizen Science con OR-Tools ===\n")
+    print("=== Ottimizzazione Citizen Science con OR-Tools + Accorpamenti ===\n")
 
     # Leggi dati
     print("Caricamento dati...")
@@ -383,7 +540,7 @@ def main():
     print(f"  - {len(overbooking_slots)} slot in overbooking")
 
     # Costruisci e risolvi modello
-    new_schedule = build_ortools_model(
+    new_schedule, new_groupings = build_ortools_model(
         lab_classes,
         class_availability,
         formatrici_availability,
@@ -400,22 +557,43 @@ def main():
         print(f"Classi complete: {complete}/{len(lab_classes)}")
 
         # Scrivi calendario
-        write_optimized_calendar(new_schedule, lab_classes, formatrici_availability)
+        write_optimized_calendar(new_schedule, new_groupings, lab_classes, formatrici_availability)
 
-        # Verifica overbooking
+        # Verifica overbooking e conta formatrici usate
         print("\n=== Verifica vincoli ===")
         overbooking_count = 0
-        for slot_id in formatrici_availability.keys():
-            if slot_id in new_schedule or any(slot_id in sched for sched in new_schedule.values()):
-                # Conta incontri in questo slot
-                num_meetings = sum(1 for meetings in new_schedule.values()
-                                  for s, _ in meetings if s == slot_id)
-                num_avail = formatrici_availability[slot_id]
+        total_trainer_meetings = 0.0
 
-                if num_meetings > num_avail:
-                    overbooking_count += 1
+        # Crea slot_meetings per verifica
+        slot_meetings = {}
+        for classe_id, meetings in new_schedule.items():
+            for slot_id, meeting_num in meetings:
+                if slot_id not in slot_meetings:
+                    slot_meetings[slot_id] = []
+                slot_meetings[slot_id].append(classe_id)
+
+        for slot_id, classes_in_slot in slot_meetings.items():
+            # Conta formatrici considerando accorpamenti
+            grouped_classes = set()
+            for cid in classes_in_slot:
+                if cid in new_groupings.get(slot_id, {}):
+                    grouped_classes.add(cid)
+
+            num_formatrici = 0.0
+            for cid in classes_in_slot:
+                if cid in grouped_classes:
+                    num_formatrici += 0.5
+                else:
+                    num_formatrici += 1.0
+
+            total_trainer_meetings += num_formatrici
+            num_avail = formatrici_availability.get(slot_id, 0)
+
+            if num_formatrici > num_avail:
+                overbooking_count += 1
 
         print(f"Slot in overbooking: {overbooking_count}")
+        print(f"Formatrici-incontri totali: {total_trainer_meetings:.1f}")
 
     else:
         print("\n⚠️  Impossibile trovare una soluzione fattibile")
