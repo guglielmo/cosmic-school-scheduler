@@ -308,8 +308,8 @@ def write_calendar(
     with open('data/output/calendario_laboratori.csv', 'w', newline='') as f:
         writer = csv.writer(f)
 
-        # Header (mantiene formato "classe_id-scuola_id-nome")
-        writer.writerow(['slot_id'] + class_columns)
+        # Header (mantiene formato "classe_id-scuola_id-nome") + colonna totale formatrici
+        writer.writerow(['slot_id'] + class_columns + ['num_formatrici'])
 
         # Per ogni slot
         for slot_id in slot_ids:
@@ -343,6 +343,30 @@ def write_calendar(
                 else:
                     # Non disponibile
                     row.append('X')
+
+            # Calcola numero formatrici: conta i gruppi unici
+            # Ogni classe schedulata conta 0.5 se accorpata, 1 se singola
+            classes_in_slot = [cid for cid, _ in schedule.get(slot_id, [])]
+            grouped_classes = set()
+
+            # Identifica tutte le classi accorpate
+            for cid in classes_in_slot:
+                if cid in groupings.get(slot_id, {}):
+                    grouped_classes.add(cid)
+
+            # Conta: classi accorpate contano 0.5, singole contano 1
+            num_formatrici = 0.0
+            for cid in classes_in_slot:
+                if cid in grouped_classes:
+                    num_formatrici += 0.5
+                else:
+                    num_formatrici += 1.0
+
+            # Aggiungi alla riga (come numero intero se è intero, altrimenti float)
+            if num_formatrici == int(num_formatrici):
+                row.append(int(num_formatrici))
+            else:
+                row.append(num_formatrici)
 
             writer.writerow(row)
 
