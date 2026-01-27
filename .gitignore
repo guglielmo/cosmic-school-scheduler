@@ -13,5 +13,4 @@ data/output/*.xlsx
 .idea/
 *.swp
 *.swo
-/archive
 data/output/domains_summary.csv

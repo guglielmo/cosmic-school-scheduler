@@ -1,65 +1,57 @@
 Classi,N. Classi,Scuola,Laboratorio,Settimana,Giorno,Fascia Oraria,Data e Ora,Accorpamento
-5E,1,Liceo Scientifico P. P. Pasolini,citizen science,0,Mercoledì,Mattino1,28/01/2026 09:00-11:00,No
-"3CI, 4CI",2,IIS Amedeo D'Aosta,citizen science,0,Mercoledì,Mattino2,28/01/2026 11:00-13:00,Sì
-"3C, 5C",2,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,0,Mercoledì,Pomeriggio,28/01/2026 14:00-16:00,Sì
-5D,1,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,0,Giovedì,Mattino1,29/01/2026 09:00-11:00,No
-"3C, 4C",2,IIS. E. Mattei,citizen science,0,Sabato,Pomeriggio,31/01/2026 14:00-16:00,Sì
-"3C, 5D",2,Liceo Scientifico P. P. Pasolini,presentazione manuali,1,Lunedì,Mattino1,02/02/2026 09:00-11:00,Sì
-"3C, 4B",2,IIS. E. Mattei,presentazione manuali,1,Lunedì,Mattino2,02/02/2026 11:00-13:00,Sì
-3A,1,Liceo Scientifico e Linguistico M.Curie,orientamento e competenze,1,Mercoledì,Mattino1,04/02/2026 09:00-11:00,No
-3A,1,Liceo Scientifico P. P. Pasolini,citizen science,1,Sabato,Mattino1,07/02/2026 09:00-11:00,No
-5D,1,Liceo Scientifico P. P. Pasolini,citizen science,2,Lunedì,Mattino1,09/02/2026 09:00-11:00,No
-"4BSA, 4H",2,Liceo Scientifico G. Galilei,citizen science,2,Lunedì,Mattino2,09/02/2026 11:00-13:00,Sì
-5AM,1,Liceo Scientifico P. P. Pasolini,orientamento e competenze,2,Lunedì,Pomeriggio,09/02/2026 14:00-16:00,No
-5E,1,Liceo Scientifico P. P. Pasolini,citizen science,2,Sabato,Pomeriggio,14/02/2026 14:00-16:00,No
-"3A, 3C",2,Liceo Scientifico P. P. Pasolini,orientamento e competenze,3,Lunedì,Mattino1,16/02/2026 09:00-11:00,Sì
-"3E, 5E",2,Liceo Scientifico P. P. Pasolini,orientamento e competenze,3,Lunedì,Mattino2,16/02/2026 11:00-13:00,Sì
-3I,1,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,3,Mercoledì,Mattino1,18/02/2026 09:00-11:00,No
-4C,1,Liceo Scientifico Leonardo da Vinci,citizen science,3,Sabato,Mattino1,21/02/2026 09:00-11:00,No
-4G,1,Liceo Scientifico Leonardo da Vinci,citizen science,4,Lunedì,Mattino1,23/02/2026 09:00-11:00,No
-"3C, 4C",2,IIS. E. Mattei,citizen science,4,Lunedì,Mattino2,23/02/2026 11:00-13:00,Sì
-"3A, 5D",2,Liceo Scientifico P. P. Pasolini,citizen science,4,Mercoledì,Mattino1,25/02/2026 09:00-11:00,Sì
-"4C, 4O",2,Liceo Scientifico Leonardo da Vinci,presentazione manuali,4,Mercoledì,Mattino2,25/02/2026 11:00-13:00,Sì
-5C,1,Liceo Scientifico P. P. Pasolini,orientamento e competenze,4,Sabato,Mattino1,28/02/2026 09:00-11:00,No
-3O,1,Liceo Scientifico Leonardo da Vinci,citizen science,4,Sabato,Mattino2,28/02/2026 11:00-13:00,No
-4BNO,1,Lic. Scientifico Bafile,sensibilizzazione discriminazioni di genere,4,Sabato,Pomeriggio,28/02/2026 14:00-16:00,No
-5D,1,Liceo Scientifico P. P. Pasolini,orientamento e competenze,5,Lunedì,Mattino1,02/03/2026 09:00-11:00,No
-4D,1,Liceo Scientifico Leonardo da Vinci,citizen science,5,Lunedì,Mattino2,02/03/2026 11:00-13:00,No
-5E,1,Liceo Scientifico P. P. Pasolini,citizen science,5,Martedì,Mattino1,03/03/2026 09:00-11:00,No
-5C,1,Liceo Scientifico P. P. Pasolini,citizen science,5,Mercoledì,Mattino1,04/03/2026 09:00-11:00,No
-"4C, 4G",2,Liceo Scientifico Leonardo da Vinci,citizen science,5,Sabato,Pomeriggio,07/03/2026 14:00-16:00,Sì
-"4C, 4G",2,Liceo Scientifico Leonardo da Vinci,citizen science,6,Lunedì,Mattino1,09/03/2026 09:00-11:00,Sì
-"3C, 4C",2,IIS. E. Mattei,citizen science,6,Lunedì,Mattino2,09/03/2026 11:00-13:00,Sì
-5E,1,Liceo Scientifico P. P. Pasolini,citizen science,6,Martedì,Mattino1,10/03/2026 09:00-11:00,No
-"3C, 5C",2,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,6,Sabato,Mattino2,14/03/2026 11:00-13:00,Sì
-"3A, 5D",2,Liceo Scientifico P. P. Pasolini,citizen science,6,Sabato,Pomeriggio,14/03/2026 14:00-16:00,Sì
-"5C, 5D",2,Liceo Scientifico P. P. Pasolini,orientamento e competenze,7,Lunedì,Mattino1,16/03/2026 09:00-11:00,Sì
-"3C, 4C",2,IIS. E. Mattei,citizen science,7,Martedì,Mattino1,17/03/2026 09:00-11:00,Sì
-"3O, 4D",2,Liceo Scientifico Leonardo da Vinci,citizen science,7,Mercoledì,Mattino1,18/03/2026 09:00-11:00,Sì
-4C,1,Liceo Scientifico P. P. Pasolini,presentazione manuali,7,Sabato,Mattino1,21/03/2026 09:00-11:00,No
-"3DSA, 4CSA",2,Liceo Scientifico G. Galilei,orientamento e competenze,7,Sabato,Pomeriggio,21/03/2026 14:00-16:00,Sì
-5C,1,Liceo Scientifico P. P. Pasolini,presentazione manuali,8,Lunedì,Mattino1,23/03/2026 09:00-11:00,No
-"3A, 5D",2,Liceo Scientifico P. P. Pasolini,citizen science,8,Mercoledì,Mattino1,25/03/2026 09:00-11:00,Sì
-3O,1,Liceo Scientifico Leonardo da Vinci,presentazione manuali,8,Sabato,Mattino1,28/03/2026 09:00-11:00,No
-4GL,1,IIS PeanoRosa,citizen science,8,Sabato,Mattino2,28/03/2026 11:00-13:00,No
-4D,1,Liceo Scientifico Leonardo da Vinci,citizen science,8,Sabato,Pomeriggio,28/03/2026 14:00-16:00,No
-4D,1,Liceo Scientifico Leonardo da Vinci,presentazione manuali,9,Lunedì,Mattino1,30/03/2026 09:00-11:00,No
-3CL,1,IIS PeanoRosa,citizen science,9,Lunedì,Mattino2,30/03/2026 11:00-13:00,No
-3O,1,Liceo Scientifico Leonardo da Vinci,citizen science,9,Lunedì,Pomeriggio,30/03/2026 14:00-16:00,No
-3A,1,Liceo Scientifico e Linguistico M.Curie,orientamento e competenze,9,Martedì,Mattino1,31/03/2026 09:00-11:00,No
-5E,1,Liceo Scientifico P. P. Pasolini,citizen science,9,Martedì,Mattino2,31/03/2026 11:00-13:00,No
-5C,1,Liceo Scientifico P. P. Pasolini,citizen science,9,Martedì,Pomeriggio,31/03/2026 14:00-16:00,No
-5AM,1,Liceo Scientifico P. P. Pasolini,citizen science,9,Mercoledì,Mattino1,01/04/2026 09:00-11:00,No
-5D,1,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,9,Mercoledì,Mattino2,01/04/2026 11:00-13:00,No
-3I,1,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,12,Mercoledì,Mattino1,29/04/2026 09:00-11:00,No
-"3O, 4D",2,Liceo Scientifico Leonardo da Vinci,citizen science,12,Mercoledì,Mattino2,29/04/2026 11:00-13:00,Sì
-"3A, 3D",2,Liceo Scientifico e Linguistico M.Curie,presentazione manuali,12,Mercoledì,Pomeriggio,29/04/2026 14:00-16:00,Sì
-5C,1,Liceo Scientifico P. P. Pasolini,citizen science,12,Giovedì,Mattino1,30/04/2026 09:00-11:00,No
-"3A, 5D",2,Liceo Scientifico P. P. Pasolini,citizen science,12,Giovedì,Mattino2,30/04/2026 11:00-13:00,Sì
-"4DS, 5AS",2,Liceo Pascal,presentazione manuali,12,Giovedì,Pomeriggio,30/04/2026 14:00-16:00,Sì
-5AM,1,Liceo Scientifico P. P. Pasolini,citizen science,13,Lunedì,Mattino1,04/05/2026 09:00-11:00,No
-"3O, 4D",2,Liceo Scientifico Leonardo da Vinci,citizen science,13,Lunedì,Mattino2,04/05/2026 11:00-13:00,Sì
-5AM,1,Liceo Scientifico P. P. Pasolini,citizen science,14,Lunedì,Mattino1,11/05/2026 09:00-11:00,No
-5C,1,Liceo Scientifico P. P. Pasolini,citizen science,14,Lunedì,Mattino2,11/05/2026 11:00-13:00,No
-5AM,1,Liceo Scientifico P. P. Pasolini,citizen science,15,Mercoledì,Mattino1,20/05/2026 09:00-11:00,No
-5C,1,Liceo Scientifico P. P. Pasolini,citizen science,15,Mercoledì,Mattino2,20/05/2026 11:00-13:00,No
+"3O, 5F",2,Liceo Scientifico Leonardo da Vinci,citizen science,0,Giovedì,Mattino1,29/01/2026 09:00-11:00,Sì
+"3BLSA, 3CI",2,IIS Amedeo D'Aosta,citizen science,0,Giovedì,Mattino2,29/01/2026 11:00-13:00,Sì
+4C,1,Liceo Scientifico Leonardo da Vinci,citizen science,0,Giovedì,Pomeriggio,29/01/2026 14:00-16:00,No
+"4ASA, 4H",2,Liceo Scientifico G. Galilei,citizen science,0,Venerdì,Mattino1,30/01/2026 09:00-11:00,Sì
+"4D, 4F, 4G, 4H",4,Liceo Scientifico Leonardo da Vinci,citizen science,0,Venerdì,Mattino2,30/01/2026 11:00-13:00,Sì
+"4B, 4H",2,Liceo Scientifico G. Galilei,citizen science,1,Lunedì,Mattino2,02/02/2026 11:00-13:00,Sì
+3A,1,Liceo Scientifico e Linguistico M.Curie,orientamento e competenze,1,Lunedì,Pomeriggio,02/02/2026 14:00-16:00,No
+"3C, 3D",2,Liceo Scientifico e Linguistico M.Curie,citizen science,1,Martedì,Mattino1,03/02/2026 09:00-11:00,Sì
+"3C, 4B",2,IIS Fermi,orientamento e competenze,1,Martedì,Mattino2,03/02/2026 11:00-13:00,Sì
+"4C, 5E",2,Liceo Scientifico P. P. Pasolini,citizen science,1,Mercoledì,Pomeriggio,04/02/2026 14:00-16:00,Sì
+3O,1,Liceo Scientifico Leonardo da Vinci,citizen science,1,Giovedì,Mattino1,05/02/2026 09:00-11:00,No
+"4G, 4H",2,Liceo Scientifico Leonardo da Vinci,citizen science,1,Giovedì,Mattino2,05/02/2026 11:00-13:00,Sì
+4CSA,1,Liceo Scientifico G. Galilei,orientamento e competenze,1,Venerdì,Mattino2,06/02/2026 11:00-13:00,No
+4C,1,Liceo Scientifico Leonardo da Vinci,citizen science,1,Venerdì,Pomeriggio,06/02/2026 14:00-16:00,No
+3C,1,Liceo Scientifico P. P. Pasolini,orientamento e competenze,2,Lunedì,Mattino1,09/02/2026 09:00-11:00,No
+4CSA,1,Liceo Scientifico G. Galilei,orientamento e competenze,2,Lunedì,Mattino2,09/02/2026 11:00-13:00,No
+4C,1,Liceo Scientifico Leonardo da Vinci,citizen science,2,Lunedì,Pomeriggio,09/02/2026 14:00-16:00,No
+"4D, 4F",2,Liceo Scientifico Leonardo da Vinci,citizen science,2,Martedì,Mattino1,10/02/2026 09:00-11:00,Sì
+"3C, 3D",2,Liceo Scientifico e Linguistico M.Curie,citizen science,2,Martedì,Mattino2,10/02/2026 11:00-13:00,Sì
+"4AS-SAA, 4DS",2,Liceo Pascal,citizen science,2,Mercoledì,Pomeriggio,11/02/2026 14:00-16:00,Sì
+"3DSA, 3I",2,Liceo Scientifico G. Galilei,orientamento e competenze,2,Giovedì,Mattino1,12/02/2026 09:00-11:00,Sì
+"3C, 4B",2,IIS Fermi,orientamento e competenze,2,Giovedì,Mattino2,12/02/2026 11:00-13:00,Sì
+"5C, 5D",2,Liceo Scientifico P. P. Pasolini,citizen science,2,Giovedì,Pomeriggio,12/02/2026 14:00-16:00,Sì
+"4H, 5F",2,Liceo Scientifico Leonardo da Vinci,citizen science,2,Venerdì,Mattino1,13/02/2026 09:00-11:00,Sì
+"5A, 5G",2,Liceo Scientifico Einstein,orientamento e competenze,2,Venerdì,Mattino2,13/02/2026 11:00-13:00,Sì
+"5AS, 5BS",2,Liceo Pascal,citizen science,2,Venerdì,Pomeriggio,13/02/2026 14:00-16:00,Sì
+"4D, 5F",2,Liceo Scientifico Leonardo da Vinci,citizen science,3,Lunedì,Mattino1,16/02/2026 09:00-11:00,Sì
+"4F, 4H",2,Liceo Scientifico Leonardo da Vinci,citizen science,3,Lunedì,Mattino2,16/02/2026 11:00-13:00,Sì
+4C,1,Liceo Scientifico Leonardo da Vinci,citizen science,3,Lunedì,Pomeriggio,16/02/2026 14:00-16:00,No
+"3A, 3E",2,Liceo Scientifico P. P. Pasolini,orientamento e competenze,3,Mercoledì,Pomeriggio,18/02/2026 14:00-16:00,Sì
+"3O, 4G",2,Liceo Scientifico Leonardo da Vinci,citizen science,3,Giovedì,Mattino1,19/02/2026 09:00-11:00,Sì
+"3C, 3D",2,Liceo Scientifico e Linguistico M.Curie,citizen science,3,Giovedì,Mattino2,19/02/2026 11:00-13:00,Sì
+5DNO,1,Lic. Scientifico Bafile,citizen science,3,Giovedì,Pomeriggio,19/02/2026 14:00-16:00,No
+5AM,1,Liceo Scientifico P. P. Pasolini,citizen science,3,Venerdì,Pomeriggio,20/02/2026 14:00-16:00,No
+"3CL, 3GL",2,IIS PeanoRosa,citizen science,4,Lunedì,Mattino2,23/02/2026 11:00-13:00,Sì
+"5C, 5D",2,Liceo Scientifico P. P. Pasolini,citizen science,4,Mercoledì,Pomeriggio,25/02/2026 14:00-16:00,Sì
+"5AS, 5BS",2,Liceo Pascal,citizen science,4,Giovedì,Pomeriggio,26/02/2026 14:00-16:00,Sì
+4C,1,Liceo Scientifico Leonardo da Vinci,citizen science,4,Venerdì,Pomeriggio,27/02/2026 14:00-16:00,No
+3C,1,Liceo Scientifico e Linguistico M.Curie,presentazione manuali,5,Martedì,Mattino1,03/03/2026 09:00-11:00,No
+"5C, 5D",2,Liceo Scientifico P. P. Pasolini,orientamento e competenze,5,Mercoledì,Pomeriggio,04/03/2026 14:00-16:00,Sì
+"5AM, 5E",2,Liceo Scientifico P. P. Pasolini,citizen science,5,Giovedì,Pomeriggio,05/03/2026 14:00-16:00,Sì
+5F,1,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere pt.2,6,Lunedì,Mattino1,09/03/2026 09:00-11:00,No
+"5C, 5D",2,Liceo Scientifico P. P. Pasolini,orientamento e competenze,6,Mercoledì,Pomeriggio,11/03/2026 14:00-16:00,Sì
+"5C, 5E",2,Liceo Scientifico e Linguistico M.Curie,citizen science,6,Giovedì,Pomeriggio,12/03/2026 14:00-16:00,Sì
+"4ALSA, 4CI",2,IIS Amedeo D'Aosta,presentazione manuali,7,Lunedì,Pomeriggio,16/03/2026 14:00-16:00,Sì
+"3A, 4C",2,IIS. E. Mattei,orientamento e competenze,7,Mercoledì,Pomeriggio,18/03/2026 14:00-16:00,Sì
+5E,1,Liceo Scientifico P. P. Pasolini,orientamento e competenze,8,Giovedì,Pomeriggio,26/03/2026 14:00-16:00,No
+3DSA,1,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,9,Lunedì,Mattino1,30/03/2026 09:00-11:00,No
+"3E, 5C",2,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,9,Lunedì,Pomeriggio,30/03/2026 14:00-16:00,Sì
+5E,1,Liceo Scientifico P. P. Pasolini,presentazione manuali,9,Mercoledì,Pomeriggio,01/04/2026 14:00-16:00,No
+"3E, 5C",2,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,10,Giovedì,Pomeriggio,16/04/2026 14:00-16:00,Sì
+5AtIB,1,IIS L.Da Vinci-De Giorgio,sensibilizzazione discriminazioni di genere,10,Venerdì,Pomeriggio,17/04/2026 14:00-16:00,No
+"3C, 5A",2,IIS Fermi,sensibilizzazione discriminazioni di genere pt.2,11,Lunedì,Mattino1,20/04/2026 09:00-11:00,Sì
+"3A, 5D",2,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,13,Lunedì,Pomeriggio,04/05/2026 14:00-16:00,Sì
+"3A, 5D",2,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,14,Mercoledì,Pomeriggio,13/05/2026 14:00-16:00,Sì
+"3A, 5D",2,Liceo Scientifico P. P. Pasolini,presentazione manuali,15,Lunedì,Pomeriggio,18/05/2026 14:00-16:00,Sì

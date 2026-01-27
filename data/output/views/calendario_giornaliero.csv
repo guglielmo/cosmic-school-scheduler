@@ -1,327 +1,248 @@
 Settimana,Giorno,Fascia Oraria,Data e Ora,Classi,N. Classi,Scuola,Laboratorio,Formatrice,Accorpamento
-0,Mercoledì,Mattino1,28/01/2026 09:00-11:00,"4A, 4C",2,Liceo Scientifico P. P. Pasolini,citizen science,Anita,Sì
-0,Mercoledì,Mattino1,28/01/2026 09:00-11:00,5E,1,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,No
-0,Mercoledì,Mattino1,28/01/2026 09:00-11:00,4ALSA,1,IIS Amedeo D'Aosta,citizen science,Ida,No
-0,Mercoledì,Mattino1,28/01/2026 09:00-11:00,"4C, 4G",2,Liceo Scientifico Leonardo da Vinci,citizen science,Margherita,Sì
-0,Mercoledì,Mattino2,28/01/2026 11:00-13:00,"4AS, 4AS-SAA",2,Liceo Pascal,citizen science,Anita,Sì
-0,Mercoledì,Mattino2,28/01/2026 11:00-13:00,"3CI, 4CI",2,IIS Amedeo D'Aosta,citizen science,Andreea,Sì
-0,Mercoledì,Mattino2,28/01/2026 11:00-13:00,"3GL, 5AL",2,IIS PeanoRosa,citizen science,Ida,Sì
-0,Mercoledì,Mattino2,28/01/2026 11:00-13:00,"3DSA, 4CSA",2,Liceo Scientifico G. Galilei,orientamento e competenze,Margherita,Sì
-0,Mercoledì,Pomeriggio,28/01/2026 14:00-16:00,"3F, 3G",2,Liceo Scientifico Einstein,citizen science,Ida,Sì
-0,Mercoledì,Pomeriggio,28/01/2026 14:00-16:00,"3C, 5C",2,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,Andreea,Sì
-0,Mercoledì,Pomeriggio,28/01/2026 14:00-16:00,"5B, 5C",2,IIS. E. Mattei,presentazione manuali,Anita,Sì
-0,Giovedì,Mattino1,29/01/2026 09:00-11:00,"3CL, 4GL",2,IIS PeanoRosa,citizen science,Anita,Sì
-0,Giovedì,Mattino1,29/01/2026 09:00-11:00,5D,1,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,Andreea,No
-0,Giovedì,Mattino1,29/01/2026 09:00-11:00,4BNO,1,Lic. Scientifico Bafile,sensibilizzazione discriminazioni di genere,Ida,No
-0,Giovedì,Mattino2,29/01/2026 11:00-13:00,"3A, 4B",2,IIS. E. Mattei,citizen science,Anita,Sì
-0,Giovedì,Pomeriggio,29/01/2026 14:00-16:00,"4BU, 4DS",2,Liceo Pascal,citizen science,Anita,Sì
-0,Sabato,Mattino1,31/01/2026 09:00-11:00,5H,1,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Anita,No
-0,Sabato,Mattino1,31/01/2026 09:00-11:00,5DI,1,IIS Amedeo D'Aosta,orientamento e competenze,Ida,No
-0,Sabato,Mattino2,31/01/2026 11:00-13:00,"3BLSA, 5ALSA",2,IIS Amedeo D'Aosta,citizen science,Ida,Sì
-0,Sabato,Mattino2,31/01/2026 11:00-13:00,5P,1,Liceo Scientifico Leonardo da Vinci,presentazione manuali,Anita,No
-0,Sabato,Mattino2,31/01/2026 11:00-13:00,3F,1,IIS Fermi,sensibilizzazione discriminazioni di genere pt.2,Margherita,No
-0,Sabato,Pomeriggio,31/01/2026 14:00-16:00,"3C, 4C",2,IIS. E. Mattei,citizen science,Andreea,Sì
-0,Sabato,Pomeriggio,31/01/2026 14:00-16:00,"4BS, 5AS",2,Liceo Pascal,citizen science,Ida,Sì
-0,Sabato,Pomeriggio,31/01/2026 14:00-16:00,3O,1,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere,Margherita,No
-1,Lunedì,Mattino1,02/02/2026 09:00-11:00,"3GL, 5AL",2,IIS PeanoRosa,citizen science,Margherita,Sì
-1,Lunedì,Mattino1,02/02/2026 09:00-11:00,5P,1,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Anita,No
-1,Lunedì,Mattino1,02/02/2026 09:00-11:00,5ALSA,1,IIS Amedeo D'Aosta,orientamento e competenze,Ida,No
-1,Lunedì,Mattino1,02/02/2026 09:00-11:00,"3C, 5D",2,Liceo Scientifico P. P. Pasolini,presentazione manuali,Andreea,Sì
-1,Lunedì,Mattino2,02/02/2026 11:00-13:00,4G,1,Liceo Scientifico Leonardo da Vinci,presentazione manuali,Anita,No
-1,Lunedì,Mattino2,02/02/2026 11:00-13:00,"3C, 4B",2,IIS. E. Mattei,presentazione manuali,Andreea,Sì
-1,Lunedì,Mattino2,02/02/2026 11:00-13:00,4A,1,IIS Fermi,sensibilizzazione discriminazioni di genere pt.2,Margherita,No
-1,Lunedì,Pomeriggio,02/02/2026 14:00-16:00,"4BS, 5AS",2,Liceo Pascal,citizen science,Anita,Sì
-1,Lunedì,Pomeriggio,02/02/2026 14:00-16:00,5O,1,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere,Margherita,No
-1,Martedì,Mattino1,03/02/2026 09:00-11:00,"4AS, 4AS-SAA",2,Liceo Pascal,citizen science,Anita,Sì
-1,Martedì,Mattino1,03/02/2026 09:00-11:00,4ALSA,1,IIS Amedeo D'Aosta,citizen science,Margherita,No
-1,Martedì,Mattino1,03/02/2026 09:00-11:00,"4B, 4D",2,Liceo Scientifico Einstein,orientamento e competenze,Ida,Sì
-1,Martedì,Mattino2,03/02/2026 11:00-13:00,"3CI, 4CI",2,IIS Amedeo D'Aosta,citizen science,Ida,Sì
-1,Martedì,Mattino2,03/02/2026 11:00-13:00,"3DSA, 5C",2,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,Margherita,Sì
-1,Martedì,Pomeriggio,03/02/2026 14:00-16:00,"4CU, 5BS",2,Liceo Pascal,citizen science,Ida,Sì
-1,Mercoledì,Mattino1,04/02/2026 09:00-11:00,3A,1,Liceo Scientifico e Linguistico M.Curie,orientamento e competenze,Andreea,No
-1,Mercoledì,Mattino1,04/02/2026 09:00-11:00,"5D, 5I",2,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Margherita,Sì
-1,Mercoledì,Mattino1,04/02/2026 09:00-11:00,4F,1,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere,Ida,No
-1,Mercoledì,Mattino1,04/02/2026 09:00-11:00,"5AM, 5E",2,Liceo Scientifico P. P. Pasolini,presentazione manuali,Anita,Sì
-1,Mercoledì,Mattino2,04/02/2026 11:00-13:00,5DNO,1,Lic. Scientifico Bafile,citizen science,Anita,No
-1,Mercoledì,Mattino2,04/02/2026 11:00-13:00,"3CL, 4GL",2,IIS PeanoRosa,citizen science,Margherita,Sì
-1,Mercoledì,Pomeriggio,04/02/2026 14:00-16:00,"4A, 4C",2,Liceo Scientifico P. P. Pasolini,citizen science,Anita,Sì
-1,Mercoledì,Pomeriggio,04/02/2026 14:00-16:00,"4H, 5F",2,Liceo Scientifico Leonardo da Vinci,citizen science,Margherita,Sì
-1,Giovedì,Mattino1,05/02/2026 09:00-11:00,"3ESA, 4BU",2,Liceo Pascal,presentazione manuali,Anita,Sì
-1,Sabato,Mattino1,07/02/2026 09:00-11:00,3A,1,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,No
-1,Sabato,Mattino1,07/02/2026 09:00-11:00,3BLSA,1,IIS Amedeo D'Aosta,citizen science,Ida,No
-1,Sabato,Mattino1,07/02/2026 09:00-11:00,4O,1,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Margherita,No
-1,Sabato,Mattino2,07/02/2026 11:00-13:00,"4BSA, 4H",2,Liceo Scientifico G. Galilei,citizen science,Anita,Sì
-1,Sabato,Mattino2,07/02/2026 11:00-13:00,"3F, 4G",2,Liceo Scientifico Einstein,presentazione manuali,Ida,Sì
-1,Sabato,Pomeriggio,07/02/2026 14:00-16:00,3A,1,IIS. E. Mattei,citizen science,Anita,No
-1,Sabato,Pomeriggio,07/02/2026 14:00-16:00,4C,1,IIS. E. Mattei,citizen science,Ida,No
-2,Lunedì,Mattino1,09/02/2026 09:00-11:00,5D,1,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,No
-2,Lunedì,Mattino1,09/02/2026 09:00-11:00,5ALSA,1,IIS Amedeo D'Aosta,citizen science,Ida,No
-2,Lunedì,Mattino1,09/02/2026 09:00-11:00,"4G, 5A",2,Liceo Scientifico Einstein,orientamento e competenze,Anita,Sì
-2,Lunedì,Mattino1,09/02/2026 09:00-11:00,5O,1,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Margherita,No
-2,Lunedì,Mattino2,09/02/2026 11:00-13:00,"4BSA, 4H",2,Liceo Scientifico G. Galilei,citizen science,Andreea,Sì
-2,Lunedì,Mattino2,09/02/2026 11:00-13:00,4ALSA,1,IIS Amedeo D'Aosta,citizen science,Margherita,No
-2,Lunedì,Pomeriggio,09/02/2026 14:00-16:00,4B,1,IIS. E. Mattei,citizen science,Anita,No
-2,Lunedì,Pomeriggio,09/02/2026 14:00-16:00,3C,1,IIS. E. Mattei,citizen science,Ida,No
-2,Lunedì,Pomeriggio,09/02/2026 14:00-16:00,5AM,1,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Andreea,No
-2,Lunedì,Pomeriggio,09/02/2026 14:00-16:00,"4AS, 4CU",2,Liceo Pascal,orientamento e competenze,Margherita,Sì
-2,Martedì,Mattino1,10/02/2026 09:00-11:00,"4BS, 4BU",2,Liceo Pascal,orientamento e competenze,Ida,Sì
-2,Martedì,Mattino1,10/02/2026 09:00-11:00,5E,1,Liceo Scientifico e Linguistico M.Curie,presentazione manuali,Anita,No
-2,Martedì,Mattino2,10/02/2026 11:00-13:00,"4F, 5G",2,Liceo Scientifico Leonardo da Vinci,citizen science,Anita,Sì
-2,Martedì,Pomeriggio,10/02/2026 14:00-16:00,"5B, 5C",2,IIS. E. Mattei,sensibilizzazione discriminazioni di genere,Anita,Sì
-2,Mercoledì,Mattino1,11/02/2026 09:00-11:00,"4GL, 5AL",2,IIS PeanoRosa,orientamento e competenze,Ida,Sì
-2,Mercoledì,Mattino1,11/02/2026 09:00-11:00,"4O, 5P",2,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere,Anita,Sì
-2,Mercoledì,Mattino2,11/02/2026 11:00-13:00,5DNO,1,Lic. Scientifico Bafile,citizen science,Anita,No
-2,Mercoledì,Mattino2,11/02/2026 11:00-13:00,5C,1,Liceo Scientifico G. Galilei,orientamento e competenze,Ida,No
-2,Mercoledì,Pomeriggio,11/02/2026 14:00-16:00,"4B, 5G",2,Liceo Scientifico Einstein,presentazione manuali,Ida,Sì
-2,Sabato,Mattino1,14/02/2026 09:00-11:00,3BLSA,1,IIS Amedeo D'Aosta,citizen science,Ida,No
-2,Sabato,Mattino1,14/02/2026 09:00-11:00,"3A, 3C",2,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Anita,Sì
-2,Sabato,Mattino1,14/02/2026 09:00-11:00,4CSA,1,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,Margherita,No
-2,Sabato,Mattino2,14/02/2026 11:00-13:00,5BS,1,Liceo Pascal,citizen science,Ida,No
-2,Sabato,Pomeriggio,14/02/2026 14:00-16:00,5E,1,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,No
-3,Lunedì,Mattino1,16/02/2026 09:00-11:00,5ALSA,1,IIS Amedeo D'Aosta,citizen science,Ida,No
-3,Lunedì,Mattino1,16/02/2026 09:00-11:00,"3A, 3C",2,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Andreea,Sì
-3,Lunedì,Mattino1,16/02/2026 09:00-11:00,4C,1,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,Margherita,No
-3,Lunedì,Mattino2,16/02/2026 11:00-13:00,4CU,1,Liceo Pascal,citizen science,Ida,No
-3,Lunedì,Mattino2,16/02/2026 11:00-13:00,"3E, 5E",2,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Andreea,Sì
-3,Lunedì,Mattino2,16/02/2026 11:00-13:00,"3DSA, 5C",2,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,Margherita,Sì
-3,Mercoledì,Mattino1,18/02/2026 09:00-11:00,5DNO,1,Lic. Scientifico Bafile,citizen science,Anita,No
-3,Mercoledì,Mattino1,18/02/2026 09:00-11:00,3I,1,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,Andreea,No
-3,Mercoledì,Mattino2,18/02/2026 11:00-13:00,5AtIB,1,IIS L.Da Vinci-De Giorgio,sensibilizzazione discriminazioni di genere,Anita,No
-3,Mercoledì,Pomeriggio,18/02/2026 14:00-16:00,"4F, 5G",2,Liceo Scientifico Leonardo da Vinci,citizen science,Anita,Sì
-3,Giovedì,Mattino1,19/02/2026 09:00-11:00,"3A, 4B",2,IIS. E. Mattei,citizen science,Anita,Sì
-3,Sabato,Mattino1,21/02/2026 09:00-11:00,4C,1,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,No
-3,Sabato,Mattino1,21/02/2026 09:00-11:00,5BS,1,Liceo Pascal,citizen science,Ida,No
-3,Sabato,Mattino1,21/02/2026 09:00-11:00,3GL,1,IIS PeanoRosa,presentazione manuali,Anita,No
-3,Sabato,Mattino2,21/02/2026 11:00-13:00,5AS,1,Liceo Pascal,citizen science,Anita,No
-3,Sabato,Mattino2,21/02/2026 11:00-13:00,4BS,1,Liceo Pascal,citizen science,Ida,No
-3,Sabato,Pomeriggio,21/02/2026 14:00-16:00,"3D, 5C",2,Liceo Scientifico e Linguistico M.Curie,citizen science,Anita,Sì
-3,Sabato,Pomeriggio,21/02/2026 14:00-16:00,"3CL, 4GL",2,IIS PeanoRosa,citizen science,Margherita,Sì
-4,Lunedì,Mattino1,23/02/2026 09:00-11:00,4G,1,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,No
-4,Lunedì,Mattino1,23/02/2026 09:00-11:00,4CU,1,Liceo Pascal,citizen science,Ida,No
-4,Lunedì,Mattino1,23/02/2026 09:00-11:00,4GL,1,IIS PeanoRosa,presentazione manuali,Anita,No
-4,Lunedì,Mattino2,23/02/2026 11:00-13:00,4BS,1,Liceo Pascal,citizen science,Anita,No
-4,Lunedì,Mattino2,23/02/2026 11:00-13:00,"3C, 4C",2,IIS. E. Mattei,citizen science,Andreea,Sì
-4,Lunedì,Mattino2,23/02/2026 11:00-13:00,5AS,1,Liceo Pascal,citizen science,Ida,No
-4,Lunedì,Mattino2,23/02/2026 11:00-13:00,"4F, 5D",2,Liceo Scientifico Leonardo da Vinci,presentazione manuali,Margherita,Sì
-4,Lunedì,Pomeriggio,23/02/2026 14:00-16:00,"3D, 5C",2,Liceo Scientifico e Linguistico M.Curie,citizen science,Ida,Sì
-4,Martedì,Mattino1,24/02/2026 09:00-11:00,5DNO,1,Lic. Scientifico Bafile,citizen science,Anita,No
-4,Martedì,Mattino1,24/02/2026 09:00-11:00,"4ASA, 4B",2,Liceo Scientifico G. Galilei,citizen science,Margherita,Sì
-4,Mercoledì,Mattino1,25/02/2026 09:00-11:00,"3A, 5D",2,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,Sì
-4,Mercoledì,Mattino1,25/02/2026 09:00-11:00,"3GL, 5AL",2,IIS PeanoRosa,citizen science,Margherita,Sì
-4,Mercoledì,Mattino1,25/02/2026 09:00-11:00,5AM,1,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Anita,No
-4,Mercoledì,Mattino2,25/02/2026 11:00-13:00,"3A, 4B",2,IIS. E. Mattei,citizen science,Anita,Sì
-4,Mercoledì,Mattino2,25/02/2026 11:00-13:00,"4C, 4O",2,Liceo Scientifico Leonardo da Vinci,presentazione manuali,Andreea,Sì
-4,Sabato,Mattino1,28/02/2026 09:00-11:00,3F,1,Liceo Scientifico Einstein,citizen science,Ida,No
-4,Sabato,Mattino1,28/02/2026 09:00-11:00,5C,1,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Andreea,No
-4,Sabato,Mattino2,28/02/2026 11:00-13:00,3O,1,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,No
-4,Sabato,Mattino2,28/02/2026 11:00-13:00,"3AS, 3ESA",2,Liceo Pascal,orientamento e competenze,Margherita,Sì
-4,Sabato,Mattino2,28/02/2026 11:00-13:00,3E,1,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,Ida,No
-4,Sabato,Pomeriggio,28/02/2026 14:00-16:00,5G,1,Liceo Scientifico Leonardo da Vinci,citizen science,Anita,No
-4,Sabato,Pomeriggio,28/02/2026 14:00-16:00,4BNO,1,Lic. Scientifico Bafile,sensibilizzazione discriminazioni di genere,Andreea,No
-4,Sabato,Pomeriggio,28/02/2026 14:00-16:00,5A,1,IIS Fermi,sensibilizzazione discriminazioni di genere pt.2,Margherita,No
-5,Lunedì,Mattino1,02/03/2026 09:00-11:00,3G,1,Liceo Scientifico Einstein,citizen science,Ida,No
-5,Lunedì,Mattino1,02/03/2026 09:00-11:00,5D,1,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Andreea,No
-5,Lunedì,Mattino1,02/03/2026 09:00-11:00,3E,1,Liceo Scientifico P. P. Pasolini,presentazione manuali,Anita,No
-5,Lunedì,Mattino1,02/03/2026 09:00-11:00,"3AS, 4CU",2,Liceo Pascal,presentazione manuali,Margherita,Sì
-5,Lunedì,Mattino2,02/03/2026 11:00-13:00,4D,1,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,No
-5,Lunedì,Mattino2,02/03/2026 11:00-13:00,"4BNO, 5DNO",2,Lic. Scientifico Bafile,orientamento e competenze,Anita,Sì
-5,Lunedì,Mattino2,02/03/2026 11:00-13:00,3A,1,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,Ida,No
-5,Lunedì,Pomeriggio,02/03/2026 14:00-16:00,4F,1,Liceo Scientifico Leonardo da Vinci,citizen science,Anita,No
-5,Lunedì,Pomeriggio,02/03/2026 14:00-16:00,5F,1,IIS Fermi,sensibilizzazione discriminazioni di genere pt.2,Margherita,No
-5,Martedì,Mattino1,03/03/2026 09:00-11:00,"4BU, 4DS",2,Liceo Pascal,citizen science,Anita,Sì
-5,Martedì,Mattino1,03/03/2026 09:00-11:00,5E,1,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,No
-5,Martedì,Mattino1,03/03/2026 09:00-11:00,"4H, 5F",2,Liceo Scientifico Leonardo da Vinci,citizen science,Margherita,Sì
-5,Martedì,Mattino2,03/03/2026 11:00-13:00,"3C, 5E",2,Liceo Scientifico e Linguistico M.Curie,citizen science,Margherita,Sì
-5,Mercoledì,Mattino1,04/03/2026 09:00-11:00,"3AtMb, 3InA",2,IIS L.Da Vinci-De Giorgio,citizen science,Anita,Sì
-5,Mercoledì,Mattino1,04/03/2026 09:00-11:00,5C,1,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,No
-5,Mercoledì,Mattino2,04/03/2026 11:00-13:00,"4BS, 5AS",2,Liceo Pascal,citizen science,Anita,Sì
-5,Sabato,Mattino1,07/03/2026 09:00-11:00,3D,1,Liceo Scientifico e Linguistico M.Curie,citizen science,Anita,No
-5,Sabato,Mattino1,07/03/2026 09:00-11:00,5C,1,Liceo Scientifico e Linguistico M.Curie,citizen science,Ida,No
-5,Sabato,Mattino2,07/03/2026 11:00-13:00,3CI,1,IIS Amedeo D'Aosta,citizen science,Ida,No
-5,Sabato,Mattino2,07/03/2026 11:00-13:00,5I,1,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere,Anita,No
-5,Sabato,Pomeriggio,07/03/2026 14:00-16:00,"4C, 4G",2,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,Sì
-5,Sabato,Pomeriggio,07/03/2026 14:00-16:00,"3A, 4C",2,IIS. E. Mattei,presentazione manuali,Anita,Sì
-5,Sabato,Pomeriggio,07/03/2026 14:00-16:00,4ALSA,1,IIS Amedeo D'Aosta,presentazione manuali,Ida,No
-6,Lunedì,Mattino1,09/03/2026 09:00-11:00,5C,1,Liceo Scientifico e Linguistico M.Curie,citizen science,Anita,No
-6,Lunedì,Mattino1,09/03/2026 09:00-11:00,"4C, 4G",2,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,Sì
-6,Lunedì,Mattino1,09/03/2026 09:00-11:00,3D,1,Liceo Scientifico e Linguistico M.Curie,citizen science,Ida,No
-6,Lunedì,Mattino1,09/03/2026 09:00-11:00,"3C, 5E",2,Liceo Scientifico e Linguistico M.Curie,citizen science,Margherita,Sì
-6,Lunedì,Mattino2,09/03/2026 11:00-13:00,"3C, 4C",2,IIS. E. Mattei,citizen science,Andreea,Sì
-6,Lunedì,Mattino2,09/03/2026 11:00-13:00,4CI,1,IIS Amedeo D'Aosta,citizen science,Ida,No
-6,Lunedì,Mattino2,09/03/2026 11:00-13:00,5H,1,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere,Anita,No
-6,Lunedì,Pomeriggio,09/03/2026 14:00-16:00,5DI,1,IIS Amedeo D'Aosta,presentazione manuali,Ida,No
-6,Martedì,Mattino1,10/03/2026 09:00-11:00,5E,1,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,No
-6,Martedì,Mattino1,10/03/2026 09:00-11:00,"3AS, 3ESA",2,Liceo Pascal,orientamento e competenze,Anita,Sì
-6,Martedì,Mattino2,10/03/2026 11:00-13:00,"4AS, 4BS",2,Liceo Pascal,presentazione manuali,Anita,Sì
-6,Mercoledì,Mattino1,11/03/2026 09:00-11:00,5AtIB,1,IIS L.Da Vinci-De Giorgio,sensibilizzazione discriminazioni di genere,Anita,No
-6,Mercoledì,Mattino1,11/03/2026 09:00-11:00,"3CL, 5AL",2,IIS PeanoRosa,presentazione manuali,Margherita,Sì
-6,Mercoledì,Mattino2,11/03/2026 11:00-13:00,"4MA, 5MBCH",2,IIS L.Da Vinci-De Giorgio,presentazione manuali,Margherita,Sì
-6,Sabato,Mattino1,14/03/2026 09:00-11:00,3InA,1,IIS L.Da Vinci-De Giorgio,citizen science,Anita,No
-6,Sabato,Mattino1,14/03/2026 09:00-11:00,3F,1,Liceo Scientifico Einstein,citizen science,Ida,No
-6,Sabato,Mattino1,14/03/2026 09:00-11:00,4B,1,Liceo Scientifico G. Galilei,citizen science,Margherita,No
-6,Sabato,Mattino2,14/03/2026 11:00-13:00,4DS,1,Liceo Pascal,citizen science,Anita,No
-6,Sabato,Mattino2,14/03/2026 11:00-13:00,3G,1,Liceo Scientifico Einstein,citizen science,Ida,No
-6,Sabato,Mattino2,14/03/2026 11:00-13:00,5F,1,Liceo Scientifico Leonardo da Vinci,citizen science,Margherita,No
-6,Sabato,Mattino2,14/03/2026 11:00-13:00,"3C, 5C",2,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,Andreea,Sì
-6,Sabato,Pomeriggio,14/03/2026 14:00-16:00,"3A, 5D",2,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,Sì
-6,Sabato,Pomeriggio,14/03/2026 14:00-16:00,4ASA,1,Liceo Scientifico G. Galilei,citizen science,Margherita,No
-6,Sabato,Pomeriggio,14/03/2026 14:00-16:00,4A,1,Liceo Scientifico P. P. Pasolini,presentazione manuali,Anita,No
-6,Sabato,Pomeriggio,14/03/2026 14:00-16:00,3AtMb,1,IIS L.Da Vinci-De Giorgio,presentazione manuali,Ida,No
-7,Lunedì,Mattino1,16/03/2026 09:00-11:00,3AtMb,1,IIS L.Da Vinci-De Giorgio,citizen science,Anita,No
-7,Lunedì,Mattino1,16/03/2026 09:00-11:00,3G,1,Liceo Scientifico Einstein,citizen science,Ida,No
-7,Lunedì,Mattino1,16/03/2026 09:00-11:00,4ASA,1,Liceo Scientifico G. Galilei,citizen science,Margherita,No
-7,Lunedì,Mattino1,16/03/2026 09:00-11:00,"5C, 5D",2,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Andreea,Sì
-7,Lunedì,Mattino2,16/03/2026 11:00-13:00,4BU,1,Liceo Pascal,citizen science,Anita,No
-7,Lunedì,Mattino2,16/03/2026 11:00-13:00,3F,1,Liceo Scientifico Einstein,citizen science,Ida,No
-7,Lunedì,Mattino2,16/03/2026 11:00-13:00,4H,1,Liceo Scientifico Leonardo da Vinci,citizen science,Margherita,No
-7,Lunedì,Pomeriggio,16/03/2026 14:00-16:00,4B,1,Liceo Scientifico G. Galilei,citizen science,Margherita,No
-7,Lunedì,Pomeriggio,16/03/2026 14:00-16:00,3A,1,Liceo Scientifico P. P. Pasolini,presentazione manuali,Anita,No
-7,Lunedì,Pomeriggio,16/03/2026 14:00-16:00,4AtA,1,IIS L.Da Vinci-De Giorgio,presentazione manuali,Ida,No
-7,Martedì,Mattino1,17/03/2026 09:00-11:00,"3GL, 5AL",2,IIS PeanoRosa,citizen science,Anita,Sì
-7,Martedì,Mattino1,17/03/2026 09:00-11:00,"3C, 4C",2,IIS. E. Mattei,citizen science,Andreea,Sì
-7,Martedì,Mattino1,17/03/2026 09:00-11:00,"4BSA, 4H",2,Liceo Scientifico G. Galilei,citizen science,Margherita,Sì
-7,Martedì,Mattino1,17/03/2026 09:00-11:00,"3CI, 4CI",2,IIS Amedeo D'Aosta,presentazione manuali,Ida,Sì
-7,Martedì,Mattino2,17/03/2026 11:00-13:00,"3A, 4B",2,IIS. E. Mattei,citizen science,Anita,Sì
-7,Martedì,Mattino2,17/03/2026 11:00-13:00,"3C, 5E",2,Liceo Scientifico e Linguistico M.Curie,citizen science,Margherita,Sì
-7,Martedì,Mattino2,17/03/2026 11:00-13:00,"3BLSA, 5ALSA",2,IIS Amedeo D'Aosta,presentazione manuali,Ida,Sì
-7,Mercoledì,Mattino1,18/03/2026 09:00-11:00,"3O, 4D",2,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,Sì
-7,Mercoledì,Mattino1,18/03/2026 09:00-11:00,"4F, 5G",2,Liceo Scientifico Leonardo da Vinci,citizen science,Ida,Sì
-7,Sabato,Mattino1,21/03/2026 09:00-11:00,4AS-SAA,1,Liceo Pascal,citizen science,Margherita,No
-7,Sabato,Mattino1,21/03/2026 09:00-11:00,4C,1,Liceo Scientifico P. P. Pasolini,presentazione manuali,Andreea,No
-7,Sabato,Mattino2,21/03/2026 11:00-13:00,3InA,1,IIS L.Da Vinci-De Giorgio,citizen science,Anita,No
-7,Sabato,Mattino2,21/03/2026 11:00-13:00,4AS,1,Liceo Pascal,citizen science,Ida,No
-7,Sabato,Pomeriggio,21/03/2026 14:00-16:00,4MA,1,IIS L.Da Vinci-De Giorgio,orientamento e competenze,Anita,No
-7,Sabato,Pomeriggio,21/03/2026 14:00-16:00,"3DSA, 4CSA",2,Liceo Scientifico G. Galilei,orientamento e competenze,Andreea,Sì
-7,Sabato,Pomeriggio,21/03/2026 14:00-16:00,3I,1,Liceo Scientifico G. Galilei,presentazione manuali,Margherita,No
-8,Lunedì,Mattino1,23/03/2026 09:00-11:00,"4A, 4C",2,Liceo Scientifico P. P. Pasolini,citizen science,Anita,Sì
-8,Lunedì,Mattino1,23/03/2026 09:00-11:00,"4CU, 5BS",2,Liceo Pascal,citizen science,Ida,Sì
-8,Lunedì,Mattino1,23/03/2026 09:00-11:00,4AS,1,Liceo Pascal,citizen science,Margherita,No
-8,Lunedì,Mattino1,23/03/2026 09:00-11:00,5C,1,Liceo Scientifico P. P. Pasolini,presentazione manuali,Andreea,No
-8,Lunedì,Mattino2,23/03/2026 11:00-13:00,3AtMb,1,IIS L.Da Vinci-De Giorgio,citizen science,Anita,No
-8,Lunedì,Mattino2,23/03/2026 11:00-13:00,4AS-SAA,1,Liceo Pascal,citizen science,Ida,No
-8,Lunedì,Pomeriggio,23/03/2026 14:00-16:00,5AtIB,1,IIS L.Da Vinci-De Giorgio,orientamento e competenze,Anita,No
-8,Lunedì,Pomeriggio,23/03/2026 14:00-16:00,4CSA,1,Liceo Scientifico G. Galilei,presentazione manuali,Margherita,No
-8,Martedì,Mattino1,24/03/2026 09:00-11:00,"4BSA, 4H",2,Liceo Scientifico G. Galilei,citizen science,Anita,Sì
-8,Martedì,Mattino2,24/03/2026 11:00-13:00,"5H, 5I",2,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere,Anita,Sì
-8,Martedì,Pomeriggio,24/03/2026 14:00-16:00,"3B, 3M",2,Liceo Scientifico Vitruvio Pollione,orientamento e competenze,Anita,Sì
-8,Mercoledì,Mattino1,25/03/2026 09:00-11:00,"3A, 5D",2,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,Sì
-8,Mercoledì,Mattino1,25/03/2026 09:00-11:00,"3E, 5E",2,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Ida,Sì
-8,Mercoledì,Mattino1,25/03/2026 09:00-11:00,4BNO,1,Lic. Scientifico Bafile,presentazione manuali,Anita,No
-8,Mercoledì,Mattino1,25/03/2026 09:00-11:00,3DSA,1,Liceo Scientifico G. Galilei,presentazione manuali,Margherita,No
-8,Mercoledì,Mattino2,25/03/2026 11:00-13:00,"3CI, 4CI",2,IIS Amedeo D'Aosta,citizen science,Ida,Sì
-8,Mercoledì,Mattino2,25/03/2026 11:00-13:00,"3I, 4C",2,Liceo Scientifico G. Galilei,orientamento e competenze,Margherita,Sì
-8,Mercoledì,Pomeriggio,25/03/2026 14:00-16:00,"5ALSA, 5DI",2,IIS Amedeo D'Aosta,orientamento e competenze,Ida,Sì
-8,Sabato,Mattino1,28/03/2026 09:00-11:00,"4ASA, 4B",2,Liceo Scientifico G. Galilei,citizen science,Anita,Sì
-8,Sabato,Mattino1,28/03/2026 09:00-11:00,3O,1,Liceo Scientifico Leonardo da Vinci,presentazione manuali,Andreea,No
-8,Sabato,Mattino1,28/03/2026 09:00-11:00,5C,1,Liceo Scientifico G. Galilei,presentazione manuali,Ida,No
-8,Sabato,Mattino2,28/03/2026 11:00-13:00,3CL,1,IIS PeanoRosa,citizen science,Anita,No
-8,Sabato,Mattino2,28/03/2026 11:00-13:00,4GL,1,IIS PeanoRosa,citizen science,Andreea,No
-8,Sabato,Mattino2,28/03/2026 11:00-13:00,3C,1,Liceo Scientifico e Linguistico M.Curie,citizen science,Ida,No
-8,Sabato,Mattino2,28/03/2026 11:00-13:00,3A,1,IIS. E. Mattei,orientamento e competenze,Margherita,No
-8,Sabato,Pomeriggio,28/03/2026 14:00-16:00,4D,1,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,No
-8,Sabato,Pomeriggio,28/03/2026 14:00-16:00,3InA,1,IIS L.Da Vinci-De Giorgio,citizen science,Ida,No
-8,Sabato,Pomeriggio,28/03/2026 14:00-16:00,3C,1,IIS. E. Mattei,orientamento e competenze,Margherita,No
-8,Sabato,Pomeriggio,28/03/2026 14:00-16:00,5F,1,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere pt.2,Anita,No
-9,Lunedì,Mattino1,30/03/2026 09:00-11:00,"4H, 5F",2,Liceo Scientifico Leonardo da Vinci,citizen science,Margherita,Sì
-9,Lunedì,Mattino1,30/03/2026 09:00-11:00,4D,1,Liceo Scientifico Leonardo da Vinci,presentazione manuali,Andreea,No
-9,Lunedì,Mattino1,30/03/2026 09:00-11:00,4B,1,Liceo Scientifico G. Galilei,presentazione manuali,Ida,No
-9,Lunedì,Mattino2,30/03/2026 11:00-13:00,4GL,1,IIS PeanoRosa,citizen science,Anita,No
-9,Lunedì,Mattino2,30/03/2026 11:00-13:00,3CL,1,IIS PeanoRosa,citizen science,Andreea,No
-9,Lunedì,Mattino2,30/03/2026 11:00-13:00,5E,1,Liceo Scientifico e Linguistico M.Curie,citizen science,Ida,No
-9,Lunedì,Mattino2,30/03/2026 11:00-13:00,3C,1,IIS. E. Mattei,orientamento e competenze,Margherita,No
-9,Lunedì,Pomeriggio,30/03/2026 14:00-16:00,3O,1,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,No
-9,Lunedì,Pomeriggio,30/03/2026 14:00-16:00,3AtMb,1,IIS L.Da Vinci-De Giorgio,citizen science,Ida,No
-9,Lunedì,Pomeriggio,30/03/2026 14:00-16:00,3A,1,IIS. E. Mattei,orientamento e competenze,Margherita,No
-9,Martedì,Mattino1,31/03/2026 09:00-11:00,"4A, 4C",2,Liceo Scientifico P. P. Pasolini,citizen science,Anita,Sì
-9,Martedì,Mattino1,31/03/2026 09:00-11:00,4ALSA,1,IIS Amedeo D'Aosta,citizen science,Ida,No
-9,Martedì,Mattino1,31/03/2026 09:00-11:00,3A,1,Liceo Scientifico e Linguistico M.Curie,orientamento e competenze,Andreea,No
-9,Martedì,Mattino1,31/03/2026 09:00-11:00,"4BSA, 4H",2,Liceo Scientifico G. Galilei,presentazione manuali,Margherita,Sì
-9,Martedì,Mattino2,31/03/2026 11:00-13:00,5E,1,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,No
-9,Martedì,Mattino2,31/03/2026 11:00-13:00,"4B, 5F",2,IIS Fermi,orientamento e competenze,Margherita,Sì
-9,Martedì,Mattino2,31/03/2026 11:00-13:00,"3InA, 5AtIB",2,IIS L.Da Vinci-De Giorgio,presentazione manuali,Anita,Sì
-9,Martedì,Pomeriggio,31/03/2026 14:00-16:00,"4AS, 4AS-SAA",2,Liceo Pascal,citizen science,Anita,Sì
-9,Martedì,Pomeriggio,31/03/2026 14:00-16:00,5C,1,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,No
-9,Martedì,Pomeriggio,31/03/2026 14:00-16:00,"3C, 3F",2,IIS Fermi,orientamento e competenze,Margherita,Sì
-9,Mercoledì,Mattino1,01/04/2026 09:00-11:00,5AM,1,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,No
-9,Mercoledì,Mattino1,01/04/2026 09:00-11:00,"4BU, 4DS",2,Liceo Pascal,citizen science,Ida,Sì
-9,Mercoledì,Mattino1,01/04/2026 09:00-11:00,"5B, 5C",2,IIS. E. Mattei,sensibilizzazione discriminazioni di genere,Anita,Sì
-9,Mercoledì,Mattino1,01/04/2026 09:00-11:00,"3A, 3E",2,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,Margherita,Sì
-9,Mercoledì,Mattino2,01/04/2026 11:00-13:00,"3CI, 4CI",2,IIS Amedeo D'Aosta,citizen science,Ida,Sì
-9,Mercoledì,Mattino2,01/04/2026 11:00-13:00,"3B, 3M",2,Liceo Scientifico Vitruvio Pollione,orientamento e competenze,Anita,Sì
-9,Mercoledì,Mattino2,01/04/2026 11:00-13:00,5D,1,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,Andreea,No
-9,Mercoledì,Mattino2,01/04/2026 11:00-13:00,"4ASA, 4C",2,Liceo Scientifico G. Galilei,presentazione manuali,Margherita,Sì
-9,Mercoledì,Pomeriggio,01/04/2026 14:00-16:00,"3D, 4D",2,Liceo Scientifico Einstein,presentazione manuali,Anita,Sì
-9,Giovedì,Mattino1,02/04/2026 09:00-11:00,5DNO,1,Lic. Scientifico Bafile,citizen science,Anita,No
-12,Lunedì,Mattino1,27/04/2026 09:00-11:00,"4BSA, 4H",2,Liceo Scientifico G. Galilei,citizen science,Anita,Sì
-12,Lunedì,Mattino1,27/04/2026 09:00-11:00,4ALSA,1,IIS Amedeo D'Aosta,citizen science,Ida,No
-12,Lunedì,Mattino1,27/04/2026 09:00-11:00,"3GL, 5AL",2,IIS PeanoRosa,citizen science,Margherita,Sì
-12,Lunedì,Mattino2,27/04/2026 11:00-13:00,"4C, 5B",2,IIS. E. Mattei,orientamento e competenze,Anita,Sì
-12,Lunedì,Mattino2,27/04/2026 11:00-13:00,"4B, 4D",2,Liceo Scientifico Einstein,orientamento e competenze,Ida,Sì
-12,Lunedì,Mattino2,27/04/2026 11:00-13:00,"4H, 5H",2,Liceo Scientifico Leonardo da Vinci,presentazione manuali,Margherita,Sì
-12,Lunedì,Pomeriggio,27/04/2026 14:00-16:00,"4A, 4C",2,Liceo Scientifico P. P. Pasolini,citizen science,Anita,Sì
-12,Lunedì,Pomeriggio,27/04/2026 14:00-16:00,"3C, 5C",2,Liceo Scientifico e Linguistico M.Curie,presentazione manuali,Margherita,Sì
-12,Martedì,Mattino1,28/04/2026 09:00-11:00,"3D, 5G",2,Liceo Scientifico Einstein,orientamento e competenze,Anita,Sì
-12,Martedì,Mattino1,28/04/2026 09:00-11:00,"4A, 5A",2,IIS Fermi,orientamento e competenze,Margherita,Sì
-12,Martedì,Mattino2,28/04/2026 11:00-13:00,"4B, 5F",2,IIS Fermi,orientamento e competenze,Margherita,Sì
-12,Martedì,Pomeriggio,28/04/2026 14:00-16:00,"3C, 3F",2,IIS Fermi,orientamento e competenze,Margherita,Sì
-12,Mercoledì,Mattino1,29/04/2026 09:00-11:00,"3AtMb, 3InA",2,IIS L.Da Vinci-De Giorgio,citizen science,Anita,Sì
-12,Mercoledì,Mattino1,29/04/2026 09:00-11:00,"4O, 5O",2,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Ida,Sì
-12,Mercoledì,Mattino1,29/04/2026 09:00-11:00,"5D, 5I",2,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Margherita,Sì
-12,Mercoledì,Mattino1,29/04/2026 09:00-11:00,3I,1,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,Andreea,No
-12,Mercoledì,Mattino2,29/04/2026 11:00-13:00,"3O, 4D",2,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,Sì
-12,Mercoledì,Mattino2,29/04/2026 11:00-13:00,"4CU, 5BS",2,Liceo Pascal,citizen science,Ida,Sì
-12,Mercoledì,Mattino2,29/04/2026 11:00-13:00,"4ASA, 4B",2,Liceo Scientifico G. Galilei,citizen science,Margherita,Sì
-12,Mercoledì,Mattino2,29/04/2026 11:00-13:00,"3B, 3M",2,Liceo Scientifico Vitruvio Pollione,presentazione manuali,Anita,Sì
-12,Mercoledì,Pomeriggio,29/04/2026 14:00-16:00,"4C, 4G",2,Liceo Scientifico Leonardo da Vinci,citizen science,Margherita,Sì
-12,Mercoledì,Pomeriggio,29/04/2026 14:00-16:00,"4MA, 5AtIB",2,IIS L.Da Vinci-De Giorgio,orientamento e competenze,Anita,Sì
-12,Mercoledì,Pomeriggio,29/04/2026 14:00-16:00,"3A, 3D",2,Liceo Scientifico e Linguistico M.Curie,presentazione manuali,Andreea,Sì
-12,Giovedì,Mattino1,30/04/2026 09:00-11:00,5AM,1,Liceo Scientifico P. P. Pasolini,citizen science,Anita,No
-12,Giovedì,Mattino1,30/04/2026 09:00-11:00,5C,1,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,No
-12,Giovedì,Mattino1,30/04/2026 09:00-11:00,5C,1,Liceo Scientifico G. Galilei,orientamento e competenze,Margherita,No
-12,Giovedì,Mattino2,30/04/2026 11:00-13:00,"3A, 5D",2,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,Sì
-12,Giovedì,Mattino2,30/04/2026 11:00-13:00,4F,1,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere,Margherita,No
-12,Giovedì,Mattino2,30/04/2026 11:00-13:00,"5F, 5G",2,Liceo Scientifico Leonardo da Vinci,presentazione manuali,Anita,Sì
-12,Giovedì,Pomeriggio,30/04/2026 14:00-16:00,"4DS, 5AS",2,Liceo Pascal,presentazione manuali,Andreea,Sì
-12,Sabato,Mattino1,02/05/2026 09:00-11:00,4CSA,1,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,Margherita,No
-12,Sabato,Mattino1,02/05/2026 09:00-11:00,4AS-SAA,1,Liceo Pascal,presentazione manuali,Anita,No
-12,Sabato,Mattino1,02/05/2026 09:00-11:00,5A,1,Liceo Scientifico Einstein,presentazione manuali,Ida,No
-12,Sabato,Mattino2,02/05/2026 11:00-13:00,"3F, 3G",2,Liceo Scientifico Einstein,citizen science,Ida,Sì
-12,Sabato,Mattino2,02/05/2026 11:00-13:00,4AS,1,Liceo Pascal,orientamento e competenze,Margherita,No
-12,Sabato,Pomeriggio,02/05/2026 14:00-16:00,4BU,1,Liceo Pascal,orientamento e competenze,Ida,No
-12,Sabato,Pomeriggio,02/05/2026 14:00-16:00,4C,1,Liceo Scientifico G. Galilei,orientamento e competenze,Margherita,No
-13,Lunedì,Mattino1,04/05/2026 09:00-11:00,5AM,1,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,No
-13,Lunedì,Mattino1,04/05/2026 09:00-11:00,4C,1,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,Margherita,No
-13,Lunedì,Mattino1,04/05/2026 09:00-11:00,5BS,1,Liceo Pascal,presentazione manuali,Anita,No
-13,Lunedì,Mattino1,04/05/2026 09:00-11:00,3G,1,Liceo Scientifico Einstein,presentazione manuali,Ida,No
-13,Lunedì,Mattino2,04/05/2026 11:00-13:00,"3O, 4D",2,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,Sì
-13,Lunedì,Mattino2,04/05/2026 11:00-13:00,4CU,1,Liceo Pascal,orientamento e competenze,Margherita,No
-13,Lunedì,Pomeriggio,04/05/2026 14:00-16:00,4BS,1,Liceo Pascal,orientamento e competenze,Ida,No
-13,Lunedì,Pomeriggio,04/05/2026 14:00-16:00,3I,1,Liceo Scientifico G. Galilei,orientamento e competenze,Margherita,No
-13,Martedì,Mattino1,05/05/2026 09:00-11:00,"3D, 5C",2,Liceo Scientifico e Linguistico M.Curie,citizen science,Ida,Sì
-13,Martedì,Mattino1,05/05/2026 09:00-11:00,"3C, 4B",2,IIS Fermi,sensibilizzazione discriminazioni di genere pt.2,Margherita,Sì
-13,Martedì,Mattino2,05/05/2026 11:00-13:00,"4BU, 4DS",2,Liceo Pascal,citizen science,Ida,Sì
-13,Sabato,Mattino1,09/05/2026 09:00-11:00,3BLSA,1,IIS Amedeo D'Aosta,citizen science,Ida,No
-13,Sabato,Mattino1,09/05/2026 09:00-11:00,3C,1,Liceo Scientifico e Linguistico M.Curie,citizen science,Margherita,No
-13,Sabato,Mattino1,09/05/2026 09:00-11:00,3D,1,Liceo Scientifico Einstein,orientamento e competenze,Anita,No
-14,Lunedì,Mattino1,11/05/2026 09:00-11:00,5AM,1,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,No
-14,Lunedì,Mattino1,11/05/2026 09:00-11:00,5ALSA,1,IIS Amedeo D'Aosta,citizen science,Ida,No
-14,Lunedì,Mattino1,11/05/2026 09:00-11:00,5E,1,Liceo Scientifico e Linguistico M.Curie,citizen science,Margherita,No
-14,Lunedì,Mattino1,11/05/2026 09:00-11:00,5G,1,Liceo Scientifico Einstein,orientamento e competenze,Anita,No
-14,Lunedì,Mattino2,11/05/2026 11:00-13:00,5C,1,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,No
-14,Lunedì,Mattino2,11/05/2026 11:00-13:00,"4GL, 5AL",2,IIS PeanoRosa,orientamento e competenze,Ida,Sì
-14,Lunedì,Mattino2,11/05/2026 11:00-13:00,"4A, 5A",2,IIS Fermi,orientamento e competenze,Margherita,Sì
-14,Lunedì,Mattino2,11/05/2026 11:00-13:00,"3O, 5O",2,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere,Anita,Sì
-14,Mercoledì,Mattino1,13/05/2026 09:00-11:00,"4O, 5P",2,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere,Anita,Sì
-14,Mercoledì,Mattino2,13/05/2026 11:00-13:00,5DNO,1,Lic. Scientifico Bafile,presentazione manuali,Anita,No
-14,Mercoledì,Pomeriggio,13/05/2026 14:00-16:00,"4G, 5A",2,Liceo Scientifico Einstein,orientamento e competenze,Anita,Sì
-14,Sabato,Mattino2,16/05/2026 11:00-13:00,"4B, 5C",2,IIS. E. Mattei,orientamento e competenze,Anita,Sì
-15,Lunedì,Mattino1,18/05/2026 09:00-11:00,"3BLSA, 5ALSA",2,IIS Amedeo D'Aosta,citizen science,Ida,Sì
-15,Lunedì,Mattino1,18/05/2026 09:00-11:00,"4B, 5C",2,IIS. E. Mattei,orientamento e competenze,Anita,Sì
-15,Lunedì,Pomeriggio,18/05/2026 14:00-16:00,"4C, 5B",2,IIS. E. Mattei,orientamento e competenze,Anita,Sì
-15,Martedì,Mattino1,19/05/2026 09:00-11:00,"4BNO, 5DNO",2,Lic. Scientifico Bafile,orientamento e competenze,Anita,Sì
-15,Mercoledì,Mattino1,20/05/2026 09:00-11:00,"4F, 5G",2,Liceo Scientifico Leonardo da Vinci,citizen science,Anita,Sì
-15,Mercoledì,Mattino1,20/05/2026 09:00-11:00,5AM,1,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,No
-15,Mercoledì,Mattino1,20/05/2026 09:00-11:00,"5H, 5P",2,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Margherita,Sì
-15,Mercoledì,Mattino2,20/05/2026 11:00-13:00,5C,1,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,No
-15,Mercoledì,Mattino2,20/05/2026 11:00-13:00,"4H, 5F",2,Liceo Scientifico Leonardo da Vinci,citizen science,Margherita,Sì
-15,Mercoledì,Mattino2,20/05/2026 11:00-13:00,"5I, 5O",2,Liceo Scientifico Leonardo da Vinci,presentazione manuali,Anita,Sì
+0,Giovedì,Mattino1,29/01/2026 09:00-11:00,"3C, 4B",2,IIS. E. Mattei,citizen science,Anita,Sì
+0,Giovedì,Mattino1,29/01/2026 09:00-11:00,"4ALSA, 4CI",2,IIS Amedeo D'Aosta,citizen science,Ida,Sì
+0,Giovedì,Mattino1,29/01/2026 09:00-11:00,"3CL, 3GL",2,IIS PeanoRosa,citizen science,Margherita,Sì
+0,Giovedì,Mattino1,29/01/2026 09:00-11:00,"3O, 5F",2,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,Sì
+0,Giovedì,Mattino2,29/01/2026 11:00-13:00,"3BLSA, 3CI",2,IIS Amedeo D'Aosta,citizen science,Andreea,Sì
+0,Giovedì,Mattino2,29/01/2026 11:00-13:00,"3F, 3G",2,Liceo Scientifico Einstein,citizen science,Ida,Sì
+0,Giovedì,Mattino2,29/01/2026 11:00-13:00,"4B, 4BSA",2,Liceo Scientifico G. Galilei,citizen science,Margherita,Sì
+0,Giovedì,Mattino2,29/01/2026 11:00-13:00,5G,1,Liceo Scientifico Leonardo da Vinci,citizen science,Anita,No
+0,Giovedì,Pomeriggio,29/01/2026 14:00-16:00,"4BU, 4CU",2,Liceo Pascal,citizen science,Anita,Sì
+0,Giovedì,Pomeriggio,29/01/2026 14:00-16:00,4C,1,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,No
+0,Venerdì,Mattino1,30/01/2026 09:00-11:00,"3AtMb, 3InA",2,IIS L.Da Vinci-De Giorgio,citizen science,Anita,Sì
+0,Venerdì,Mattino1,30/01/2026 09:00-11:00,"4GL, 5AL",2,IIS PeanoRosa,citizen science,Ida,Sì
+0,Venerdì,Mattino1,30/01/2026 09:00-11:00,"4ASA, 4H",2,Liceo Scientifico G. Galilei,citizen science,Andreea,Sì
+0,Venerdì,Mattino2,30/01/2026 11:00-13:00,"4D, 4F, 4G, 4H",4,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,Sì
+0,Venerdì,Mattino2,30/01/2026 11:00-13:00,"3C, 3D",2,Liceo Scientifico e Linguistico M.Curie,citizen science,Anita,Sì
+0,Venerdì,Pomeriggio,30/01/2026 14:00-16:00,"4AS, 4BS, 5AS, 5BS",4,Liceo Pascal,citizen science,Anita,Sì
+0,Venerdì,Pomeriggio,30/01/2026 14:00-16:00,"3A, 4C",2,Liceo Scientifico P. P. Pasolini,citizen science,Margherita,Sì
+0,Sabato,Mattino1,31/01/2026 09:00-11:00,4A,1,Liceo Scientifico P. P. Pasolini,citizen science,Margherita,No
+0,Sabato,Mattino2,31/01/2026 11:00-13:00,"3F, 5A",2,IIS Fermi,orientamento e competenze,Margherita,Sì
+1,Lunedì,Mattino1,02/02/2026 09:00-11:00,"3D, 4G, 5A, 5G",4,Liceo Scientifico Einstein,orientamento e competenze,Ida,Sì
+1,Lunedì,Mattino1,02/02/2026 09:00-11:00,5I,1,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Anita,No
+1,Lunedì,Mattino2,02/02/2026 11:00-13:00,5B,1,IIS. E. Mattei,orientamento e competenze,Anita,No
+1,Lunedì,Mattino2,02/02/2026 11:00-13:00,"4B, 4D",2,Liceo Scientifico Einstein,orientamento e competenze,Ida,Sì
+1,Lunedì,Mattino2,02/02/2026 11:00-13:00,"4B, 4H",2,Liceo Scientifico G. Galilei,citizen science,Andreea,Sì
+1,Lunedì,Pomeriggio,02/02/2026 14:00-16:00,5D,1,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Anita,No
+1,Lunedì,Pomeriggio,02/02/2026 14:00-16:00,3A,1,Liceo Scientifico e Linguistico M.Curie,orientamento e competenze,Andreea,No
+1,Martedì,Mattino1,03/02/2026 09:00-11:00,"4GL, 5AL",2,IIS PeanoRosa,orientamento e competenze,Ida,Sì
+1,Martedì,Mattino1,03/02/2026 09:00-11:00,"4O, 5H",2,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Anita,Sì
+1,Martedì,Mattino1,03/02/2026 09:00-11:00,"3C, 3D",2,Liceo Scientifico e Linguistico M.Curie,citizen science,Andreea,Sì
+1,Martedì,Mattino2,03/02/2026 11:00-13:00,"3F, 3G",2,Liceo Scientifico Einstein,citizen science,Ida,Sì
+1,Martedì,Mattino2,03/02/2026 11:00-13:00,"5O, 5P",2,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Anita,Sì
+1,Martedì,Mattino2,03/02/2026 11:00-13:00,"3C, 4B",2,IIS Fermi,orientamento e competenze,Andreea,Sì
+1,Martedì,Pomeriggio,03/02/2026 14:00-16:00,5DNO,1,Lic. Scientifico Bafile,citizen science,Ida,No
+1,Martedì,Pomeriggio,03/02/2026 14:00-16:00,"3AS, 3ESA",2,Liceo Pascal,orientamento e competenze,Anita,Sì
+1,Mercoledì,Mattino1,04/02/2026 09:00-11:00,"3C, 4B",2,IIS. E. Mattei,citizen science,Anita,Sì
+1,Mercoledì,Mattino1,04/02/2026 09:00-11:00,"3CL, 3GL",2,IIS PeanoRosa,citizen science,Ida,Sì
+1,Mercoledì,Pomeriggio,04/02/2026 14:00-16:00,"3A, 4C",2,IIS. E. Mattei,citizen science,Anita,Sì
+1,Mercoledì,Pomeriggio,04/02/2026 14:00-16:00,"4C, 5C",2,Liceo Scientifico G. Galilei,orientamento e competenze,Ida,Sì
+1,Mercoledì,Pomeriggio,04/02/2026 14:00-16:00,"4C, 5E",2,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,Sì
+1,Giovedì,Mattino1,05/02/2026 09:00-11:00,3BLSA,1,IIS Amedeo D'Aosta,citizen science,Ida,No
+1,Giovedì,Mattino1,05/02/2026 09:00-11:00,5MBCH,1,IIS L.Da Vinci-De Giorgio,presentazione manuali,Anita,No
+1,Giovedì,Mattino1,05/02/2026 09:00-11:00,3O,1,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,No
+1,Giovedì,Mattino2,05/02/2026 11:00-13:00,"3DSA, 3I",2,Liceo Scientifico G. Galilei,orientamento e competenze,Ida,Sì
+1,Giovedì,Mattino2,05/02/2026 11:00-13:00,"4G, 4H",2,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,Sì
+1,Giovedì,Mattino2,05/02/2026 11:00-13:00,"4A, 5F",2,IIS Fermi,orientamento e competenze,Anita,Sì
+1,Giovedì,Pomeriggio,05/02/2026 14:00-16:00,"4AS, 4AS-SAA, 4BS, 4DS",4,Liceo Pascal,citizen science,Anita,Sì
+1,Giovedì,Pomeriggio,05/02/2026 14:00-16:00,"3A, 3E",2,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Margherita,Sì
+1,Venerdì,Mattino1,06/02/2026 09:00-11:00,"3AtMb, 3InA",2,IIS L.Da Vinci-De Giorgio,citizen science,Ida,Sì
+1,Venerdì,Mattino1,06/02/2026 09:00-11:00,"4D, 4F, 5G",3,Liceo Scientifico Leonardo da Vinci,citizen science,Anita,Sì
+1,Venerdì,Mattino2,06/02/2026 11:00-13:00,"4ASA, 4BSA",2,Liceo Scientifico G. Galilei,citizen science,Anita,Sì
+1,Venerdì,Mattino2,06/02/2026 11:00-13:00,4CSA,1,Liceo Scientifico G. Galilei,orientamento e competenze,Andreea,No
+1,Venerdì,Mattino2,06/02/2026 11:00-13:00,4A,1,Liceo Scientifico P. P. Pasolini,citizen science,Ida,No
+1,Venerdì,Mattino2,06/02/2026 11:00-13:00,"3F, 5A",2,IIS Fermi,orientamento e competenze,Margherita,Sì
+1,Venerdì,Pomeriggio,06/02/2026 14:00-16:00,"3CI, 5ALSA",2,IIS Amedeo D'Aosta,citizen science,Margherita,Sì
+1,Venerdì,Pomeriggio,06/02/2026 14:00-16:00,"5AS, 5BS",2,Liceo Pascal,citizen science,Anita,Sì
+1,Venerdì,Pomeriggio,06/02/2026 14:00-16:00,4C,1,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,No
+1,Sabato,Mattino1,07/02/2026 09:00-11:00,"3B, 3M",2,Liceo Scientifico Vitruvio Pollione,orientamento e competenze,Margherita,Sì
+1,Sabato,Mattino2,07/02/2026 11:00-13:00,3C,1,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Margherita,No
+2,Lunedì,Mattino1,09/02/2026 09:00-11:00,"3D, 4G",2,Liceo Scientifico Einstein,orientamento e competenze,Ida,Sì
+2,Lunedì,Mattino1,09/02/2026 09:00-11:00,"4O, 5H",2,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Anita,Sì
+2,Lunedì,Mattino1,09/02/2026 09:00-11:00,3C,1,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Andreea,No
+2,Lunedì,Mattino2,09/02/2026 11:00-13:00,"5ALSA, 5DI",2,IIS Amedeo D'Aosta,orientamento e competenze,Ida,Sì
+2,Lunedì,Mattino2,09/02/2026 11:00-13:00,4CSA,1,Liceo Scientifico G. Galilei,orientamento e competenze,Andreea,No
+2,Lunedì,Mattino2,09/02/2026 11:00-13:00,5I,1,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Anita,No
+2,Lunedì,Pomeriggio,09/02/2026 14:00-16:00,5DNO,1,Lic. Scientifico Bafile,citizen science,Anita,No
+2,Lunedì,Pomeriggio,09/02/2026 14:00-16:00,4C,1,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,No
+2,Lunedì,Pomeriggio,09/02/2026 14:00-16:00,4C,1,Liceo Scientifico P. P. Pasolini,citizen science,Margherita,No
+2,Martedì,Mattino1,10/02/2026 09:00-11:00,"3AtMb, 3InA",2,IIS L.Da Vinci-De Giorgio,citizen science,Anita,Sì
+2,Martedì,Mattino1,10/02/2026 09:00-11:00,"4D, 4F",2,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,Sì
+2,Martedì,Mattino2,10/02/2026 11:00-13:00,5AtIB,1,IIS L.Da Vinci-De Giorgio,orientamento e competenze,Anita,No
+2,Martedì,Mattino2,10/02/2026 11:00-13:00,"4B, 4D",2,Liceo Scientifico Einstein,orientamento e competenze,Ida,Sì
+2,Martedì,Mattino2,10/02/2026 11:00-13:00,"3C, 3D",2,Liceo Scientifico e Linguistico M.Curie,citizen science,Andreea,Sì
+2,Martedì,Pomeriggio,10/02/2026 14:00-16:00,"5C, 5E",2,Liceo Scientifico e Linguistico M.Curie,citizen science,Ida,Sì
+2,Martedì,Pomeriggio,10/02/2026 14:00-16:00,"5AM, 5E",2,Liceo Scientifico P. P. Pasolini,citizen science,Anita,Sì
+2,Mercoledì,Mattino1,11/02/2026 09:00-11:00,"3F, 3G",2,Liceo Scientifico Einstein,citizen science,Ida,Sì
+2,Mercoledì,Mattino2,11/02/2026 11:00-13:00,"4B, 4H",2,Liceo Scientifico G. Galilei,citizen science,Ida,Sì
+2,Mercoledì,Mattino2,11/02/2026 11:00-13:00,"4G, 5G",2,Liceo Scientifico Leonardo da Vinci,citizen science,Anita,Sì
+2,Mercoledì,Pomeriggio,11/02/2026 14:00-16:00,"3A, 4C",2,IIS. E. Mattei,citizen science,Anita,Sì
+2,Mercoledì,Pomeriggio,11/02/2026 14:00-16:00,"4AS-SAA, 4DS",2,Liceo Pascal,citizen science,Andreea,Sì
+2,Mercoledì,Pomeriggio,11/02/2026 14:00-16:00,"4BU, 4CU",2,Liceo Pascal,citizen science,Ida,Sì
+2,Giovedì,Mattino1,12/02/2026 09:00-11:00,"3DSA, 3I",2,Liceo Scientifico G. Galilei,orientamento e competenze,Andreea,Sì
+2,Giovedì,Mattino1,12/02/2026 09:00-11:00,4A,1,Liceo Scientifico P. P. Pasolini,citizen science,Anita,No
+2,Giovedì,Mattino1,12/02/2026 09:00-11:00,"4A, 5F",2,IIS Fermi,orientamento e competenze,Ida,Sì
+2,Giovedì,Mattino2,12/02/2026 11:00-13:00,"4GL, 5AL",2,IIS PeanoRosa,orientamento e competenze,Ida,Sì
+2,Giovedì,Mattino2,12/02/2026 11:00-13:00,3O,1,Liceo Scientifico Leonardo da Vinci,citizen science,Anita,No
+2,Giovedì,Mattino2,12/02/2026 11:00-13:00,"3C, 4B",2,IIS Fermi,orientamento e competenze,Andreea,Sì
+2,Giovedì,Pomeriggio,12/02/2026 14:00-16:00,"4C, 5C",2,Liceo Scientifico G. Galilei,orientamento e competenze,Anita,Sì
+2,Giovedì,Pomeriggio,12/02/2026 14:00-16:00,"5C, 5D",2,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,Sì
+2,Venerdì,Mattino1,13/02/2026 09:00-11:00,"3BLSA, 3CI",2,IIS Amedeo D'Aosta,citizen science,Ida,Sì
+2,Venerdì,Mattino1,13/02/2026 09:00-11:00,"4ASA, 4BSA",2,Liceo Scientifico G. Galilei,citizen science,Anita,Sì
+2,Venerdì,Mattino1,13/02/2026 09:00-11:00,"4H, 5F",2,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,Sì
+2,Venerdì,Mattino2,13/02/2026 11:00-13:00,5B,1,IIS. E. Mattei,orientamento e competenze,Anita,No
+2,Venerdì,Mattino2,13/02/2026 11:00-13:00,"5A, 5G",2,Liceo Scientifico Einstein,orientamento e competenze,Andreea,Sì
+2,Venerdì,Mattino2,13/02/2026 11:00-13:00,"5O, 5P",2,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Ida,Sì
+2,Venerdì,Pomeriggio,13/02/2026 14:00-16:00,"4AS, 4BS",2,Liceo Pascal,citizen science,Anita,Sì
+2,Venerdì,Pomeriggio,13/02/2026 14:00-16:00,"5AS, 5BS",2,Liceo Pascal,citizen science,Andreea,Sì
+2,Sabato,Mattino1,14/02/2026 09:00-11:00,"3C, 4B",2,IIS. E. Mattei,citizen science,Margherita,Sì
+2,Sabato,Mattino2,14/02/2026 11:00-13:00,"3B, 3M",2,Liceo Scientifico Vitruvio Pollione,orientamento e competenze,Margherita,Sì
+3,Lunedì,Mattino1,16/02/2026 09:00-11:00,"5ALSA, 5DI",2,IIS Amedeo D'Aosta,orientamento e competenze,Ida,Sì
+3,Lunedì,Mattino1,16/02/2026 09:00-11:00,"4MA, 5AtIB",2,IIS L.Da Vinci-De Giorgio,orientamento e competenze,Anita,Sì
+3,Lunedì,Mattino1,16/02/2026 09:00-11:00,"4D, 5F",2,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,Sì
+3,Lunedì,Mattino1,16/02/2026 09:00-11:00,4A,1,Liceo Scientifico P. P. Pasolini,citizen science,Margherita,No
+3,Lunedì,Mattino2,16/02/2026 11:00-13:00,"4GL, 5AL",2,IIS PeanoRosa,presentazione manuali,Anita,Sì
+3,Lunedì,Mattino2,16/02/2026 11:00-13:00,"3D, 4G",2,Liceo Scientifico Einstein,presentazione manuali,Ida,Sì
+3,Lunedì,Mattino2,16/02/2026 11:00-13:00,"4F, 4H",2,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,Sì
+3,Lunedì,Pomeriggio,16/02/2026 14:00-16:00,"3A, 4C",2,IIS. E. Mattei,citizen science,Anita,Sì
+3,Lunedì,Pomeriggio,16/02/2026 14:00-16:00,"3AS, 3ESA",2,Liceo Pascal,orientamento e competenze,Margherita,Sì
+3,Lunedì,Pomeriggio,16/02/2026 14:00-16:00,4C,1,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,No
+3,Martedì,Mattino1,17/02/2026 09:00-11:00,"4ALSA, 4CI",2,IIS Amedeo D'Aosta,citizen science,Ida,Sì
+3,Martedì,Mattino1,17/02/2026 09:00-11:00,"3B, 3M",2,Liceo Scientifico Vitruvio Pollione,presentazione manuali,Anita,Sì
+3,Martedì,Pomeriggio,17/02/2026 14:00-16:00,"4BU, 4CU",2,Liceo Pascal,citizen science,Ida,Sì
+3,Martedì,Pomeriggio,17/02/2026 14:00-16:00,3A,1,Liceo Scientifico e Linguistico M.Curie,orientamento e competenze,Anita,No
+3,Mercoledì,Pomeriggio,18/02/2026 14:00-16:00,"5C, 5E",2,Liceo Scientifico e Linguistico M.Curie,citizen science,Ida,Sì
+3,Mercoledì,Pomeriggio,18/02/2026 14:00-16:00,"3A, 3E",2,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Andreea,Sì
+3,Mercoledì,Pomeriggio,18/02/2026 14:00-16:00,4C,1,Liceo Scientifico P. P. Pasolini,citizen science,Anita,No
+3,Giovedì,Mattino1,19/02/2026 09:00-11:00,"3AtMb, 3InA",2,IIS L.Da Vinci-De Giorgio,citizen science,Anita,Sì
+3,Giovedì,Mattino1,19/02/2026 09:00-11:00,"3F, 3G",2,Liceo Scientifico Einstein,citizen science,Ida,Sì
+3,Giovedì,Mattino1,19/02/2026 09:00-11:00,"3O, 4G",2,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,Sì
+3,Giovedì,Mattino2,19/02/2026 11:00-13:00,"3BLSA, 3CI",2,IIS Amedeo D'Aosta,citizen science,Ida,Sì
+3,Giovedì,Mattino2,19/02/2026 11:00-13:00,"4B, 4H",2,Liceo Scientifico G. Galilei,citizen science,Anita,Sì
+3,Giovedì,Mattino2,19/02/2026 11:00-13:00,"3C, 3D",2,Liceo Scientifico e Linguistico M.Curie,citizen science,Andreea,Sì
+3,Giovedì,Pomeriggio,19/02/2026 14:00-16:00,5DNO,1,Lic. Scientifico Bafile,citizen science,Andreea,No
+3,Giovedì,Pomeriggio,19/02/2026 14:00-16:00,"4AS-SAA, 4DS",2,Liceo Pascal,citizen science,Anita,Sì
+3,Venerdì,Mattino1,20/02/2026 09:00-11:00,"3C, 4B",2,IIS. E. Mattei,citizen science,Anita,Sì
+3,Venerdì,Mattino1,20/02/2026 09:00-11:00,"4B, 4D, 5A, 5G",4,Liceo Scientifico Einstein,presentazione manuali,Ida,Sì
+3,Venerdì,Pomeriggio,20/02/2026 14:00-16:00,"4AS, 4BS",2,Liceo Pascal,citizen science,Anita,Sì
+3,Venerdì,Pomeriggio,20/02/2026 14:00-16:00,5D,1,Liceo Scientifico Leonardo da Vinci,orientamento e competenze,Margherita,No
+3,Venerdì,Pomeriggio,20/02/2026 14:00-16:00,5AM,1,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,No
+4,Lunedì,Mattino1,23/02/2026 09:00-11:00,"4AtA, 4MA",2,IIS L.Da Vinci-De Giorgio,presentazione manuali,Anita,Sì
+4,Lunedì,Mattino1,23/02/2026 09:00-11:00,"3F, 5F",2,IIS Fermi,sensibilizzazione discriminazioni di genere pt.2,Ida,Sì
+4,Lunedì,Mattino2,23/02/2026 11:00-13:00,"3CI, 4CI",2,IIS Amedeo D'Aosta,citizen science,Anita,Sì
+4,Lunedì,Mattino2,23/02/2026 11:00-13:00,"5ALSA, 5DI",2,IIS Amedeo D'Aosta,presentazione manuali,Ida,Sì
+4,Lunedì,Mattino2,23/02/2026 11:00-13:00,"3CL, 3GL",2,IIS PeanoRosa,citizen science,Andreea,Sì
+4,Lunedì,Pomeriggio,23/02/2026 14:00-16:00,5DNO,1,Lic. Scientifico Bafile,citizen science,Margherita,No
+4,Lunedì,Pomeriggio,23/02/2026 14:00-16:00,"5AM, 5E",2,Liceo Scientifico P. P. Pasolini,citizen science,Anita,Sì
+4,Martedì,Mattino2,24/02/2026 11:00-13:00,"3BLSA, 4ALSA",2,IIS Amedeo D'Aosta,citizen science,Ida,Sì
+4,Martedì,Pomeriggio,24/02/2026 14:00-16:00,"5C, 5E",2,Liceo Scientifico e Linguistico M.Curie,citizen science,Ida,Sì
+4,Martedì,Pomeriggio,24/02/2026 14:00-16:00,4C,1,Liceo Scientifico P. P. Pasolini,citizen science,Anita,No
+4,Mercoledì,Mattino2,25/02/2026 11:00-13:00,"3AtMb, 3InA",2,IIS L.Da Vinci-De Giorgio,citizen science,Anita,Sì
+4,Mercoledì,Mattino2,25/02/2026 11:00-13:00,"3F, 3G",2,Liceo Scientifico Einstein,citizen science,Ida,Sì
+4,Mercoledì,Pomeriggio,25/02/2026 14:00-16:00,"3A, 4C",2,IIS. E. Mattei,citizen science,Anita,Sì
+4,Mercoledì,Pomeriggio,25/02/2026 14:00-16:00,"3AS, 3ESA",2,Liceo Pascal,presentazione manuali,Ida,Sì
+4,Mercoledì,Pomeriggio,25/02/2026 14:00-16:00,"5C, 5D",2,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,Sì
+4,Giovedì,Mattino1,26/02/2026 09:00-11:00,"3O, 5F, 5G",3,Liceo Scientifico Leonardo da Vinci,citizen science,Margherita,Sì
+4,Giovedì,Mattino2,26/02/2026 11:00-13:00,"3C, 4B",2,IIS. E. Mattei,citizen science,Anita,Sì
+4,Giovedì,Pomeriggio,26/02/2026 14:00-16:00,5C,1,IIS. E. Mattei,orientamento e competenze,Anita,No
+4,Giovedì,Pomeriggio,26/02/2026 14:00-16:00,"5AS, 5BS",2,Liceo Pascal,citizen science,Andreea,Sì
+4,Venerdì,Mattino1,27/02/2026 09:00-11:00,"3C, 3D",2,Liceo Scientifico e Linguistico M.Curie,citizen science,Anita,Sì
+4,Venerdì,Mattino2,27/02/2026 11:00-13:00,4A,1,Liceo Scientifico P. P. Pasolini,citizen science,Anita,No
+4,Venerdì,Pomeriggio,27/02/2026 14:00-16:00,"4AS-SAA, 4DS",2,Liceo Pascal,citizen science,Anita,Sì
+4,Venerdì,Pomeriggio,27/02/2026 14:00-16:00,"4AS, 4BS",2,Liceo Pascal,citizen science,Margherita,Sì
+4,Venerdì,Pomeriggio,27/02/2026 14:00-16:00,4C,1,Liceo Scientifico Leonardo da Vinci,citizen science,Andreea,No
+5,Lunedì,Mattino1,02/03/2026 09:00-11:00,"4ASA, 4BSA",2,Liceo Scientifico G. Galilei,citizen science,Anita,Sì
+5,Lunedì,Pomeriggio,02/03/2026 14:00-16:00,"4BU, 4CU",2,Liceo Pascal,citizen science,Anita,Sì
+5,Lunedì,Pomeriggio,02/03/2026 14:00-16:00,"3A, 3D",2,Liceo Scientifico e Linguistico M.Curie,presentazione manuali,Margherita,Sì
+5,Martedì,Mattino1,03/03/2026 09:00-11:00,"3BLSA, 3CI",2,IIS Amedeo D'Aosta,presentazione manuali,Anita,Sì
+5,Martedì,Mattino1,03/03/2026 09:00-11:00,"3F, 3G",2,Liceo Scientifico Einstein,presentazione manuali,Ida,Sì
+5,Martedì,Mattino1,03/03/2026 09:00-11:00,3C,1,Liceo Scientifico e Linguistico M.Curie,presentazione manuali,Andreea,No
+5,Martedì,Mattino2,03/03/2026 11:00-13:00,"3C, 4B",2,IIS. E. Mattei,orientamento e competenze,Anita,Sì
+5,Martedì,Pomeriggio,03/03/2026 14:00-16:00,"3AtMb, 3InA",2,IIS L.Da Vinci-De Giorgio,presentazione manuali,Ida,Sì
+5,Martedì,Pomeriggio,03/03/2026 14:00-16:00,"5C, 5E",2,Liceo Scientifico e Linguistico M.Curie,citizen science,Anita,Sì
+5,Mercoledì,Pomeriggio,04/03/2026 14:00-16:00,5C,1,IIS. E. Mattei,orientamento e competenze,Anita,No
+5,Mercoledì,Pomeriggio,04/03/2026 14:00-16:00,"4AS, 4BS",2,Liceo Pascal,orientamento e competenze,Ida,Sì
+5,Mercoledì,Pomeriggio,04/03/2026 14:00-16:00,"5C, 5D",2,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Andreea,Sì
+5,Giovedì,Mattino1,05/03/2026 09:00-11:00,"4ALSA, 4CI",2,IIS Amedeo D'Aosta,citizen science,Margherita,Sì
+5,Giovedì,Pomeriggio,05/03/2026 14:00-16:00,"3A, 4C",2,IIS. E. Mattei,citizen science,Anita,Sì
+5,Giovedì,Pomeriggio,05/03/2026 14:00-16:00,5DNO,1,Lic. Scientifico Bafile,citizen science,Margherita,No
+5,Giovedì,Pomeriggio,05/03/2026 14:00-16:00,"5AM, 5E",2,Liceo Scientifico P. P. Pasolini,citizen science,Andreea,Sì
+5,Venerdì,Mattino1,06/03/2026 09:00-11:00,"3CL, 3GL",2,IIS PeanoRosa,citizen science,Ida,Sì
+5,Venerdì,Mattino1,06/03/2026 09:00-11:00,"5F, 5G",2,Liceo Scientifico Leonardo da Vinci,citizen science,Anita,Sì
+5,Venerdì,Pomeriggio,06/03/2026 14:00-16:00,"4C, 5D",2,Liceo Scientifico Leonardo da Vinci,presentazione manuali,Anita,Sì
+6,Lunedì,Mattino1,09/03/2026 09:00-11:00,5F,1,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere pt.2,Andreea,No
+6,Lunedì,Mattino1,09/03/2026 09:00-11:00,5G,1,Liceo Scientifico Leonardo da Vinci,presentazione manuali,Anita,No
+6,Lunedì,Mattino1,09/03/2026 09:00-11:00,"4A, 4B",2,IIS Fermi,sensibilizzazione discriminazioni di genere pt.2,Ida,Sì
+6,Martedì,Mattino2,10/03/2026 11:00-13:00,"3C, 4B",2,IIS. E. Mattei,orientamento e competenze,Anita,Sì
+6,Martedì,Pomeriggio,10/03/2026 14:00-16:00,"4BNO, 5DNO",2,Lic. Scientifico Bafile,orientamento e competenze,Ida,Sì
+6,Martedì,Pomeriggio,10/03/2026 14:00-16:00,"4AS, 4BS",2,Liceo Pascal,orientamento e competenze,Anita,Sì
+6,Mercoledì,Mattino1,11/03/2026 09:00-11:00,"3CL, 3GL",2,IIS PeanoRosa,citizen science,Anita,Sì
+6,Mercoledì,Pomeriggio,11/03/2026 14:00-16:00,"3A, 4C",2,IIS. E. Mattei,orientamento e competenze,Anita,Sì
+6,Mercoledì,Pomeriggio,11/03/2026 14:00-16:00,"5C, 5D",2,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Andreea,Sì
+6,Giovedì,Mattino1,12/03/2026 09:00-11:00,"4BSA, 4H",2,Liceo Scientifico G. Galilei,citizen science,Margherita,Sì
+6,Giovedì,Mattino2,12/03/2026 11:00-13:00,"4ASA, 4B",2,Liceo Scientifico G. Galilei,citizen science,Anita,Sì
+6,Giovedì,Pomeriggio,12/03/2026 14:00-16:00,"4BU, 4CU",2,Liceo Pascal,citizen science,Anita,Sì
+6,Giovedì,Pomeriggio,12/03/2026 14:00-16:00,"5C, 5E",2,Liceo Scientifico e Linguistico M.Curie,citizen science,Andreea,Sì
+6,Venerdì,Mattino2,13/03/2026 11:00-13:00,"4ALSA, 4CI",2,IIS Amedeo D'Aosta,citizen science,Ida,Sì
+6,Venerdì,Mattino2,13/03/2026 11:00-13:00,"4D, 4F, 4G, 4H",4,Liceo Scientifico Leonardo da Vinci,citizen science,Anita,Sì
+6,Venerdì,Pomeriggio,13/03/2026 14:00-16:00,"4AS-SAA, 4DS",2,Liceo Pascal,citizen science,Margherita,Sì
+6,Venerdì,Pomeriggio,13/03/2026 14:00-16:00,"5AM, 5E",2,Liceo Scientifico P. P. Pasolini,citizen science,Anita,Sì
+7,Lunedì,Mattino1,16/03/2026 09:00-11:00,"3C, 4B",2,IIS. E. Mattei,presentazione manuali,Anita,Sì
+7,Lunedì,Mattino1,16/03/2026 09:00-11:00,"3CL, 3GL",2,IIS PeanoRosa,presentazione manuali,Ida,Sì
+7,Lunedì,Pomeriggio,16/03/2026 14:00-16:00,"4ALSA, 4CI",2,IIS Amedeo D'Aosta,presentazione manuali,Andreea,Sì
+7,Lunedì,Pomeriggio,16/03/2026 14:00-16:00,"4AS, 4AS-SAA",2,Liceo Pascal,presentazione manuali,Anita,Sì
+7,Lunedì,Pomeriggio,16/03/2026 14:00-16:00,"4ASA, 4BSA",2,Liceo Scientifico G. Galilei,presentazione manuali,Margherita,Sì
+7,Martedì,Pomeriggio,17/03/2026 14:00-16:00,"5AM, 5E",2,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Anita,Sì
+7,Mercoledì,Mattino1,18/03/2026 09:00-11:00,"4D, 4G, 4H, 5F",4,Liceo Scientifico Leonardo da Vinci,presentazione manuali,Anita,Sì
+7,Mercoledì,Pomeriggio,18/03/2026 14:00-16:00,"3A, 4C",2,IIS. E. Mattei,orientamento e competenze,Andreea,Sì
+7,Mercoledì,Pomeriggio,18/03/2026 14:00-16:00,"4BNO, 5DNO",2,Lic. Scientifico Bafile,orientamento e competenze,Anita,Sì
+7,Mercoledì,Pomeriggio,18/03/2026 14:00-16:00,"4BU, 4CU",2,Liceo Pascal,orientamento e competenze,Ida,Sì
+7,Giovedì,Pomeriggio,19/03/2026 14:00-16:00,"5AS, 5BS",2,Liceo Pascal,citizen science,Anita,Sì
+7,Venerdì,Mattino1,20/03/2026 09:00-11:00,"4B, 4H",2,Liceo Scientifico G. Galilei,presentazione manuali,Anita,Sì
+7,Venerdì,Pomeriggio,20/03/2026 14:00-16:00,"4BS, 4DS",2,Liceo Pascal,presentazione manuali,Anita,Sì
+7,Venerdì,Pomeriggio,20/03/2026 14:00-16:00,"5C, 5E",2,Liceo Scientifico e Linguistico M.Curie,presentazione manuali,Margherita,Sì
+8,Lunedì,Pomeriggio,23/03/2026 14:00-16:00,"3A, 4C",2,IIS. E. Mattei,presentazione manuali,Margherita,Sì
+8,Lunedì,Pomeriggio,23/03/2026 14:00-16:00,"4C, 5AM",2,Liceo Scientifico P. P. Pasolini,presentazione manuali,Anita,Sì
+8,Mercoledì,Pomeriggio,25/03/2026 14:00-16:00,5DNO,1,Lic. Scientifico Bafile,presentazione manuali,Ida,No
+8,Mercoledì,Pomeriggio,25/03/2026 14:00-16:00,"5AS, 5BS",2,Liceo Pascal,presentazione manuali,Anita,Sì
+8,Giovedì,Pomeriggio,26/03/2026 14:00-16:00,"4BU, 4CU",2,Liceo Pascal,orientamento e competenze,Anita,Sì
+8,Giovedì,Pomeriggio,26/03/2026 14:00-16:00,5E,1,Liceo Scientifico P. P. Pasolini,orientamento e competenze,Andreea,No
+9,Lunedì,Mattino1,30/03/2026 09:00-11:00,5AtIB,1,IIS L.Da Vinci-De Giorgio,sensibilizzazione discriminazioni di genere,Ida,No
+9,Lunedì,Mattino1,30/03/2026 09:00-11:00,3DSA,1,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,Andreea,No
+9,Lunedì,Mattino1,30/03/2026 09:00-11:00,"5H, 5I",2,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere,Anita,Sì
+9,Lunedì,Mattino1,30/03/2026 09:00-11:00,3C,1,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,Margherita,No
+9,Lunedì,Pomeriggio,30/03/2026 14:00-16:00,5C,1,IIS. E. Mattei,sensibilizzazione discriminazioni di genere,Anita,No
+9,Lunedì,Pomeriggio,30/03/2026 14:00-16:00,"4C, 4CSA",2,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,Margherita,Sì
+9,Lunedì,Pomeriggio,30/03/2026 14:00-16:00,"3E, 5C",2,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,Andreea,Sì
+9,Mercoledì,Pomeriggio,01/04/2026 14:00-16:00,"4BU, 4CU",2,Liceo Pascal,presentazione manuali,Anita,Sì
+9,Mercoledì,Pomeriggio,01/04/2026 14:00-16:00,5E,1,Liceo Scientifico P. P. Pasolini,presentazione manuali,Andreea,No
+10,Giovedì,Mattino2,16/04/2026 11:00-13:00,"5H, 5I",2,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere,Anita,Sì
+10,Giovedì,Mattino2,16/04/2026 11:00-13:00,3C,1,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,Ida,No
+10,Giovedì,Pomeriggio,16/04/2026 14:00-16:00,4C,1,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,Anita,No
+10,Giovedì,Pomeriggio,16/04/2026 14:00-16:00,"3E, 5C",2,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,Andreea,Sì
+10,Venerdì,Pomeriggio,17/04/2026 14:00-16:00,5C,1,IIS. E. Mattei,sensibilizzazione discriminazioni di genere,Anita,No
+10,Venerdì,Pomeriggio,17/04/2026 14:00-16:00,5AtIB,1,IIS L.Da Vinci-De Giorgio,sensibilizzazione discriminazioni di genere,Andreea,No
+10,Venerdì,Pomeriggio,17/04/2026 14:00-16:00,"3DSA, 4CSA",2,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,Margherita,Sì
+11,Lunedì,Mattino1,20/04/2026 09:00-11:00,"5H, 5I",2,Liceo Scientifico Leonardo da Vinci,presentazione manuali,Anita,Sì
+11,Lunedì,Mattino1,20/04/2026 09:00-11:00,"3C, 4A",2,Liceo Scientifico P. P. Pasolini,presentazione manuali,Ida,Sì
+11,Lunedì,Mattino1,20/04/2026 09:00-11:00,"3C, 5A",2,IIS Fermi,sensibilizzazione discriminazioni di genere pt.2,Andreea,Sì
+11,Lunedì,Pomeriggio,20/04/2026 14:00-16:00,5C,1,IIS. E. Mattei,presentazione manuali,Anita,No
+11,Lunedì,Pomeriggio,20/04/2026 14:00-16:00,"3E, 5C",2,Liceo Scientifico P. P. Pasolini,presentazione manuali,Margherita,Sì
+11,Mercoledì,Pomeriggio,22/04/2026 14:00-16:00,5AtIB,1,IIS L.Da Vinci-De Giorgio,presentazione manuali,Anita,No
+11,Mercoledì,Pomeriggio,22/04/2026 14:00-16:00,"3DSA, 4C, 4CSA",3,Liceo Scientifico G. Galilei,presentazione manuali,Ida,Sì
+13,Lunedì,Pomeriggio,04/05/2026 14:00-16:00,4BNO,1,Lic. Scientifico Bafile,sensibilizzazione discriminazioni di genere,Anita,No
+13,Lunedì,Pomeriggio,04/05/2026 14:00-16:00,"3I, 5C",2,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,Margherita,Sì
+13,Lunedì,Pomeriggio,04/05/2026 14:00-16:00,"3A, 5D",2,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,Andreea,Sì
+13,Venerdì,Mattino1,08/05/2026 09:00-11:00,5B,1,IIS. E. Mattei,sensibilizzazione discriminazioni di genere,Anita,No
+13,Venerdì,Mattino1,08/05/2026 09:00-11:00,"3O, 4F, 4O, 5O, 5P",5,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere,Margherita,Sì
+14,Mercoledì,Pomeriggio,13/05/2026 14:00-16:00,4BNO,1,Lic. Scientifico Bafile,sensibilizzazione discriminazioni di genere,Anita,No
+14,Mercoledì,Pomeriggio,13/05/2026 14:00-16:00,"3I, 5C",2,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,Ida,Sì
+14,Mercoledì,Pomeriggio,13/05/2026 14:00-16:00,"3A, 5D",2,Liceo Scientifico P. P. Pasolini,sensibilizzazione discriminazioni di genere,Andreea,Sì
+14,Venerdì,Mattino2,15/05/2026 11:00-13:00,5B,1,IIS. E. Mattei,sensibilizzazione discriminazioni di genere,Anita,No
+14,Venerdì,Mattino2,15/05/2026 11:00-13:00,"3O, 4F, 4O, 5O, 5P",5,Liceo Scientifico Leonardo da Vinci,sensibilizzazione discriminazioni di genere,Margherita,Sì
+15,Lunedì,Pomeriggio,18/05/2026 14:00-16:00,4BNO,1,Lic. Scientifico Bafile,presentazione manuali,Anita,No
+15,Lunedì,Pomeriggio,18/05/2026 14:00-16:00,"3I, 5C",2,Liceo Scientifico G. Galilei,presentazione manuali,Margherita,Sì
+15,Lunedì,Pomeriggio,18/05/2026 14:00-16:00,"3A, 5D",2,Liceo Scientifico P. P. Pasolini,presentazione manuali,Andreea,Sì
+15,Mercoledì,Mattino2,20/05/2026 11:00-13:00,"4F, 5P",2,Liceo Scientifico Leonardo da Vinci,presentazione manuali,Anita,Sì
+15,Venerdì,Mattino2,22/05/2026 11:00-13:00,5B,1,IIS. E. Mattei,presentazione manuali,Ida,No
+15,Venerdì,Mattino2,22/05/2026 11:00-13:00,"3O, 4O, 5O",3,Liceo Scientifico Leonardo da Vinci,presentazione manuali,Anita,Sì
