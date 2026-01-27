@@ -1,37 +1,43 @@
 Classi,N. Classi,Scuola,Settimana,Giorno,Fascia Oraria,Data e Ora,Formatrice,Accorpamento
-"3C, 3CL, 3GL, 4B",4,"IIS PeanoRosa, IIS. E. Mattei",0,Giovedì,Mattino1,29/01/2026 09:00-11:00,Margherita,Sì
+"3C, 4B",2,IIS. E. Mattei,0,Giovedì,Mattino1,29/01/2026 09:00-11:00,Anita,Sì
 "4ALSA, 4CI",2,IIS Amedeo D'Aosta,0,Giovedì,Mattino1,29/01/2026 09:00-11:00,Ida,Sì
-"3O, 5F",2,Liceo Scientifico Leonardo da Vinci,0,Giovedì,Mattino1,29/01/2026 09:00-11:00,Anita,Sì
-"3BLSA, 3CI, 3F, 3G",4,"IIS Amedeo D'Aosta, Liceo Scientifico Einstein",0,Giovedì,Mattino2,29/01/2026 11:00-13:00,Ida,Sì
-"4B, 4BSA",2,Liceo Scientifico G. Galilei,0,Giovedì,Mattino2,29/01/2026 11:00-13:00,Margherita,Sì
+"3CL, 3GL",2,IIS PeanoRosa,0,Giovedì,Mattino1,29/01/2026 09:00-11:00,Margherita,Sì
+"3O, 5F",2,Liceo Scientifico Leonardo da Vinci,0,Giovedì,Mattino1,29/01/2026 09:00-11:00,Andreea,Sì
+"3BLSA, 3CI",2,IIS Amedeo D'Aosta,0,Giovedì,Mattino2,29/01/2026 11:00-13:00,Ida,Sì
+"3F, 3G",2,Liceo Scientifico Einstein,0,Giovedì,Mattino2,29/01/2026 11:00-13:00,Margherita,Sì
+"4B, 4BSA",2,Liceo Scientifico G. Galilei,0,Giovedì,Mattino2,29/01/2026 11:00-13:00,Anita,Sì
 "4BU, 4CU",2,Liceo Pascal,0,Giovedì,Pomeriggio,29/01/2026 14:00-16:00,Anita,Sì
-"3AtMb, 3InA, 4GL, 5AL",4,"IIS PeanoRosa, IIS L.Da Vinci-De Giorgio",0,Venerdì,Mattino1,30/01/2026 09:00-11:00,Ida,Sì
-"4ASA, 4H",2,Liceo Scientifico G. Galilei,0,Venerdì,Mattino1,30/01/2026 09:00-11:00,Anita,Sì
+"3AtMb, 3InA",2,IIS L.Da Vinci-De Giorgio,0,Venerdì,Mattino1,30/01/2026 09:00-11:00,Ida,Sì
+"4GL, 5AL",2,IIS PeanoRosa,0,Venerdì,Mattino1,30/01/2026 09:00-11:00,Anita,Sì
+"4ASA, 4H",2,Liceo Scientifico G. Galilei,0,Venerdì,Mattino1,30/01/2026 09:00-11:00,Andreea,Sì
 "4D, 4F, 4G, 4H",4,Liceo Scientifico Leonardo da Vinci,0,Venerdì,Mattino2,30/01/2026 11:00-13:00,Andreea,Sì
-"3C, 3D",2,Liceo Scientifico e Linguistico M.Curie,0,Venerdì,Mattino2,30/01/2026 11:00-13:00,Anita,Sì
+"3C, 3D",2,Liceo Scientifico e Linguistico M.Curie,0,Venerdì,Mattino2,30/01/2026 11:00-13:00,Ida,Sì
 "4AS, 4BS, 5AS, 5BS",4,Liceo Pascal,0,Venerdì,Pomeriggio,30/01/2026 14:00-16:00,Anita,Sì
 "3A, 4C",2,Liceo Scientifico P. P. Pasolini,0,Venerdì,Pomeriggio,30/01/2026 14:00-16:00,Margherita,Sì
 "4B, 4H",2,Liceo Scientifico G. Galilei,1,Lunedì,Mattino2,02/02/2026 11:00-13:00,Anita,Sì
 "3C, 3D",2,Liceo Scientifico e Linguistico M.Curie,1,Martedì,Mattino1,03/02/2026 09:00-11:00,Ida,Sì
 "3F, 3G",2,Liceo Scientifico Einstein,1,Martedì,Mattino2,03/02/2026 11:00-13:00,Ida,Sì
-"3C, 3CL, 3GL, 4B",4,"IIS PeanoRosa, IIS. E. Mattei",1,Mercoledì,Mattino1,04/02/2026 09:00-11:00,Anita,Sì
+"3C, 4B",2,IIS. E. Mattei,1,Mercoledì,Mattino1,04/02/2026 09:00-11:00,Anita,Sì
+"3CL, 3GL",2,IIS PeanoRosa,1,Mercoledì,Mattino1,04/02/2026 09:00-11:00,Ida,Sì
 "3A, 4C",2,IIS. E. Mattei,1,Mercoledì,Pomeriggio,04/02/2026 14:00-16:00,Anita,Sì
 "4C, 5E",2,Liceo Scientifico P. P. Pasolini,1,Mercoledì,Pomeriggio,04/02/2026 14:00-16:00,Andreea,Sì
-"4G, 4H",2,Liceo Scientifico Leonardo da Vinci,1,Giovedì,Mattino2,05/02/2026 11:00-13:00,Ida,Sì
+"4G, 4H",2,Liceo Scientifico Leonardo da Vinci,1,Giovedì,Mattino2,05/02/2026 11:00-13:00,Andreea,Sì
 "4AS, 4AS-SAA, 4BS, 4DS",4,Liceo Pascal,1,Giovedì,Pomeriggio,05/02/2026 14:00-16:00,Anita,Sì
-"3AtMb, 3InA, 4F, 5G",4,"Liceo Scientifico Leonardo da Vinci, IIS L.Da Vinci-De Giorgio",1,Venerdì,Mattino1,06/02/2026 09:00-11:00,Anita,Sì
+"3AtMb, 3InA",2,IIS L.Da Vinci-De Giorgio,1,Venerdì,Mattino1,06/02/2026 09:00-11:00,Ida,Sì
+"4F, 5G",2,Liceo Scientifico Leonardo da Vinci,1,Venerdì,Mattino1,06/02/2026 09:00-11:00,Anita,Sì
 "4ASA, 4BSA",2,Liceo Scientifico G. Galilei,1,Venerdì,Mattino2,06/02/2026 11:00-13:00,Anita,Sì
-"3CI, 5ALSA, 5AS, 5BS",4,"Liceo Pascal, IIS Amedeo D'Aosta",1,Venerdì,Pomeriggio,06/02/2026 14:00-16:00,Margherita,Sì
-"3AtMb, 3InA",2,IIS L.Da Vinci-De Giorgio,2,Martedì,Mattino1,10/02/2026 09:00-11:00,Ida,Sì
+"3CI, 5ALSA",2,IIS Amedeo D'Aosta,1,Venerdì,Pomeriggio,06/02/2026 14:00-16:00,Margherita,Sì
+"5AS, 5BS",2,Liceo Pascal,1,Venerdì,Pomeriggio,06/02/2026 14:00-16:00,Anita,Sì
+"3AtMb, 3InA",2,IIS L.Da Vinci-De Giorgio,2,Martedì,Mattino1,10/02/2026 09:00-11:00,Anita,Sì
 "4D, 4F",2,Liceo Scientifico Leonardo da Vinci,2,Martedì,Mattino1,10/02/2026 09:00-11:00,Andreea,Sì
-"3C, 3D",2,Liceo Scientifico e Linguistico M.Curie,2,Martedì,Mattino2,10/02/2026 11:00-13:00,Andreea,Sì
+"3C, 3D",2,Liceo Scientifico e Linguistico M.Curie,2,Martedì,Mattino2,10/02/2026 11:00-13:00,Anita,Sì
 "5C, 5E",2,Liceo Scientifico e Linguistico M.Curie,2,Martedì,Pomeriggio,10/02/2026 14:00-16:00,Ida,Sì
 "5AM, 5E",2,Liceo Scientifico P. P. Pasolini,2,Martedì,Pomeriggio,10/02/2026 14:00-16:00,Anita,Sì
 "3F, 3G",2,Liceo Scientifico Einstein,2,Mercoledì,Mattino1,11/02/2026 09:00-11:00,Ida,Sì
 "4B, 4H",2,Liceo Scientifico G. Galilei,2,Mercoledì,Mattino2,11/02/2026 11:00-13:00,Ida,Sì
 "4G, 5G",2,Liceo Scientifico Leonardo da Vinci,2,Mercoledì,Mattino2,11/02/2026 11:00-13:00,Anita,Sì
-"3A, 4C",2,IIS. E. Mattei,2,Mercoledì,Pomeriggio,11/02/2026 14:00-16:00,Anita,Sì
-"4AS-SAA, 4DS",2,Liceo Pascal,2,Mercoledì,Pomeriggio,11/02/2026 14:00-16:00,Andreea,Sì
+"3A, 4C",2,IIS. E. Mattei,2,Mercoledì,Pomeriggio,11/02/2026 14:00-16:00,Andreea,Sì
+"4AS-SAA, 4DS",2,Liceo Pascal,2,Mercoledì,Pomeriggio,11/02/2026 14:00-16:00,Anita,Sì
 "4BU, 4CU",2,Liceo Pascal,2,Mercoledì,Pomeriggio,11/02/2026 14:00-16:00,Ida,Sì
 "5C, 5D",2,Liceo Scientifico P. P. Pasolini,2,Giovedì,Pomeriggio,12/02/2026 14:00-16:00,Andreea,Sì
 "3BLSA, 3CI",2,IIS Amedeo D'Aosta,2,Venerdì,Mattino1,13/02/2026 09:00-11:00,Ida,Sì
@@ -40,41 +46,44 @@ Classi,N. Classi,Scuola,Settimana,Giorno,Fascia Oraria,Data e Ora,Formatrice,Acc
 "4AS, 4BS",2,Liceo Pascal,2,Venerdì,Pomeriggio,13/02/2026 14:00-16:00,Anita,Sì
 "5AS, 5BS",2,Liceo Pascal,2,Venerdì,Pomeriggio,13/02/2026 14:00-16:00,Andreea,Sì
 "3C, 4B",2,IIS. E. Mattei,2,Sabato,Mattino1,14/02/2026 09:00-11:00,Margherita,Sì
-"4D, 5F",2,Liceo Scientifico Leonardo da Vinci,3,Lunedì,Mattino1,16/02/2026 09:00-11:00,Andreea,Sì
+"4D, 5F",2,Liceo Scientifico Leonardo da Vinci,3,Lunedì,Mattino1,16/02/2026 09:00-11:00,Anita,Sì
 "4F, 4H",2,Liceo Scientifico Leonardo da Vinci,3,Lunedì,Mattino2,16/02/2026 11:00-13:00,Andreea,Sì
 "3A, 4C",2,IIS. E. Mattei,3,Lunedì,Pomeriggio,16/02/2026 14:00-16:00,Anita,Sì
 "4ALSA, 4CI",2,IIS Amedeo D'Aosta,3,Martedì,Mattino1,17/02/2026 09:00-11:00,Ida,Sì
 "4BU, 4CU",2,Liceo Pascal,3,Martedì,Pomeriggio,17/02/2026 14:00-16:00,Anita,Sì
-"5C, 5E",2,Liceo Scientifico e Linguistico M.Curie,3,Mercoledì,Pomeriggio,18/02/2026 14:00-16:00,Andreea,Sì
-"3AtMb, 3F, 3G, 3InA",4,"Liceo Scientifico Einstein, IIS L.Da Vinci-De Giorgio",3,Giovedì,Mattino1,19/02/2026 09:00-11:00,Anita,Sì
+"5C, 5E",2,Liceo Scientifico e Linguistico M.Curie,3,Mercoledì,Pomeriggio,18/02/2026 14:00-16:00,Anita,Sì
+"3AtMb, 3InA",2,IIS L.Da Vinci-De Giorgio,3,Giovedì,Mattino1,19/02/2026 09:00-11:00,Anita,Sì
+"3F, 3G",2,Liceo Scientifico Einstein,3,Giovedì,Mattino1,19/02/2026 09:00-11:00,Ida,Sì
 "3O, 4G",2,Liceo Scientifico Leonardo da Vinci,3,Giovedì,Mattino1,19/02/2026 09:00-11:00,Andreea,Sì
 "3BLSA, 3CI",2,IIS Amedeo D'Aosta,3,Giovedì,Mattino2,19/02/2026 11:00-13:00,Ida,Sì
 "4B, 4H",2,Liceo Scientifico G. Galilei,3,Giovedì,Mattino2,19/02/2026 11:00-13:00,Anita,Sì
 "3C, 3D",2,Liceo Scientifico e Linguistico M.Curie,3,Giovedì,Mattino2,19/02/2026 11:00-13:00,Andreea,Sì
 "4AS-SAA, 4DS",2,Liceo Pascal,3,Giovedì,Pomeriggio,19/02/2026 14:00-16:00,Anita,Sì
-"3C, 4B",2,IIS. E. Mattei,3,Venerdì,Mattino1,20/02/2026 09:00-11:00,Andreea,Sì
+"3C, 4B",2,IIS. E. Mattei,3,Venerdì,Mattino1,20/02/2026 09:00-11:00,Anita,Sì
 "4AS, 4BS",2,Liceo Pascal,3,Venerdì,Pomeriggio,20/02/2026 14:00-16:00,Margherita,Sì
-"3CI, 4CI",2,IIS Amedeo D'Aosta,4,Lunedì,Mattino2,23/02/2026 11:00-13:00,Andreea,Sì
-"3CL, 3GL",2,IIS PeanoRosa,4,Lunedì,Mattino2,23/02/2026 11:00-13:00,Anita,Sì
+"3CI, 4CI",2,IIS Amedeo D'Aosta,4,Lunedì,Mattino2,23/02/2026 11:00-13:00,Ida,Sì
+"3CL, 3GL",2,IIS PeanoRosa,4,Lunedì,Mattino2,23/02/2026 11:00-13:00,Andreea,Sì
 "5AM, 5E",2,Liceo Scientifico P. P. Pasolini,4,Lunedì,Pomeriggio,23/02/2026 14:00-16:00,Margherita,Sì
 "3BLSA, 4ALSA",2,IIS Amedeo D'Aosta,4,Martedì,Mattino2,24/02/2026 11:00-13:00,Ida,Sì
 "5C, 5E",2,Liceo Scientifico e Linguistico M.Curie,4,Martedì,Pomeriggio,24/02/2026 14:00-16:00,Anita,Sì
 "3AtMb, 3InA",2,IIS L.Da Vinci-De Giorgio,4,Mercoledì,Mattino2,25/02/2026 11:00-13:00,Anita,Sì
 "3F, 3G",2,Liceo Scientifico Einstein,4,Mercoledì,Mattino2,25/02/2026 11:00-13:00,Ida,Sì
-"3A, 4C",2,IIS. E. Mattei,4,Mercoledì,Pomeriggio,25/02/2026 14:00-16:00,Anita,Sì
+"3A, 4C",2,IIS. E. Mattei,4,Mercoledì,Pomeriggio,25/02/2026 14:00-16:00,Ida,Sì
 "5C, 5D",2,Liceo Scientifico P. P. Pasolini,4,Mercoledì,Pomeriggio,25/02/2026 14:00-16:00,Andreea,Sì
-"5F, 5G",2,Liceo Scientifico Leonardo da Vinci,4,Giovedì,Mattino1,26/02/2026 09:00-11:00,Anita,Sì
+"5F, 5G",2,Liceo Scientifico Leonardo da Vinci,4,Giovedì,Mattino1,26/02/2026 09:00-11:00,Margherita,Sì
 "3C, 4B",2,IIS. E. Mattei,4,Giovedì,Mattino2,26/02/2026 11:00-13:00,Anita,Sì
 "5AS, 5BS",2,Liceo Pascal,4,Giovedì,Pomeriggio,26/02/2026 14:00-16:00,Anita,Sì
-"3C, 3D",2,Liceo Scientifico e Linguistico M.Curie,4,Venerdì,Mattino1,27/02/2026 09:00-11:00,Ida,Sì
+"3C, 3D",2,Liceo Scientifico e Linguistico M.Curie,4,Venerdì,Mattino1,27/02/2026 09:00-11:00,Anita,Sì
 "4AS-SAA, 4DS",2,Liceo Pascal,4,Venerdì,Pomeriggio,27/02/2026 14:00-16:00,Anita,Sì
 "4AS, 4BS",2,Liceo Pascal,4,Venerdì,Pomeriggio,27/02/2026 14:00-16:00,Margherita,Sì
 "4ASA, 4BSA",2,Liceo Scientifico G. Galilei,5,Lunedì,Mattino1,02/03/2026 09:00-11:00,Anita,Sì
-"4BU, 4CU",2,Liceo Pascal,5,Lunedì,Pomeriggio,02/03/2026 14:00-16:00,Margherita,Sì
+"4BU, 4CU",2,Liceo Pascal,5,Lunedì,Pomeriggio,02/03/2026 14:00-16:00,Anita,Sì
 "5C, 5E",2,Liceo Scientifico e Linguistico M.Curie,5,Martedì,Pomeriggio,03/03/2026 14:00-16:00,Anita,Sì
 "4ALSA, 4CI",2,IIS Amedeo D'Aosta,5,Giovedì,Mattino1,05/03/2026 09:00-11:00,Margherita,Sì
-"3A, 4C, 5AM, 5E",4,"Liceo Scientifico P. P. Pasolini, IIS. E. Mattei",5,Giovedì,Pomeriggio,05/03/2026 14:00-16:00,Margherita,Sì
-"3CL, 3GL, 5F, 5G",4,"Liceo Scientifico Leonardo da Vinci, IIS PeanoRosa",5,Venerdì,Mattino1,06/03/2026 09:00-11:00,Anita,Sì
+"3A, 4C",2,IIS. E. Mattei,5,Giovedì,Pomeriggio,05/03/2026 14:00-16:00,Anita,Sì
+"5AM, 5E",2,Liceo Scientifico P. P. Pasolini,5,Giovedì,Pomeriggio,05/03/2026 14:00-16:00,Margherita,Sì
+"3CL, 3GL",2,IIS PeanoRosa,5,Venerdì,Mattino1,06/03/2026 09:00-11:00,Anita,Sì
+"5F, 5G",2,Liceo Scientifico Leonardo da Vinci,5,Venerdì,Mattino1,06/03/2026 09:00-11:00,Andreea,Sì
 "3CL, 3GL",2,IIS PeanoRosa,6,Mercoledì,Mattino1,11/03/2026 09:00-11:00,Anita,Sì
 "4BSA, 4H",2,Liceo Scientifico G. Galilei,6,Giovedì,Mattino1,12/03/2026 09:00-11:00,Margherita,Sì
 "4ASA, 4B",2,Liceo Scientifico G. Galilei,6,Giovedì,Mattino2,12/03/2026 11:00-13:00,Anita,Sì
@@ -82,6 +91,6 @@ Classi,N. Classi,Scuola,Settimana,Giorno,Fascia Oraria,Data e Ora,Formatrice,Acc
 "5C, 5E",2,Liceo Scientifico e Linguistico M.Curie,6,Giovedì,Pomeriggio,12/03/2026 14:00-16:00,Andreea,Sì
 "4ALSA, 4CI",2,IIS Amedeo D'Aosta,6,Venerdì,Mattino2,13/03/2026 11:00-13:00,Ida,Sì
 "4D, 4F, 4G, 4H",4,Liceo Scientifico Leonardo da Vinci,6,Venerdì,Mattino2,13/03/2026 11:00-13:00,Andreea,Sì
-"4AS-SAA, 4DS",2,Liceo Pascal,6,Venerdì,Pomeriggio,13/03/2026 14:00-16:00,Margherita,Sì
-"5AM, 5E",2,Liceo Scientifico P. P. Pasolini,6,Venerdì,Pomeriggio,13/03/2026 14:00-16:00,Andreea,Sì
+"4AS-SAA, 4DS",2,Liceo Pascal,6,Venerdì,Pomeriggio,13/03/2026 14:00-16:00,Anita,Sì
+"5AM, 5E",2,Liceo Scientifico P. P. Pasolini,6,Venerdì,Pomeriggio,13/03/2026 14:00-16:00,Margherita,Sì
 "5AS, 5BS",2,Liceo Pascal,7,Giovedì,Pomeriggio,19/03/2026 14:00-16:00,Anita,Sì

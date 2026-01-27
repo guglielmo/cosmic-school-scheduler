@@ -121,26 +121,41 @@ class LabSlot:
     def __init__(self, slot_id: str, col_idx: int, col_name: str, cell_value: str):
         self.slot_id = slot_id
         self.col_idx = col_idx
-        self.col_name = col_name  # e.g., "3-1-4B" (school_id-class_id-class_name)
+        self.col_name = col_name  # e.g., "3-1-4B" (col_num-school_id-class_name)
         self.cell_value = cell_value  # e.g., "L4-1/3-1-4B"
         self.class_id = self._extract_class_id()
+        self.school_id = self._extract_school_id()
         self.lab_meeting_key = self._extract_lab_meeting_key()
 
     def _extract_class_id(self) -> Optional[int]:
-        """Extract class_id from column name or cell value."""
-        # Column name format: {col_num}-{school_id}-{class_name}
+        """Extract class_id (column index) from cell value."""
         # Cell value format: L{lab}-{meeting}/{col_num}-{school_id}-{class_name}
-
-        # Try from cell value first
         match = re.search(r'/(\d+)-\d+-', self.cell_value)
         if match:
             return int(match.group(1))
 
-        # Try from column name
+        # Fallback to column name
+        parts = self.col_name.split('-')
+        if len(parts) >= 1:
+            try:
+                return int(parts[0])
+            except ValueError:
+                pass
+
+        return None
+
+    def _extract_school_id(self) -> Optional[int]:
+        """Extract school_id from cell value or column name."""
+        # Cell value format: L{lab}-{meeting}/{col_num}-{school_id}-{class_name}
+        match = re.search(r'/\d+-(\d+)-', self.cell_value)
+        if match:
+            return int(match.group(1))
+
+        # Fallback to column name format: {col_num}-{school_id}-{class_name}
         parts = self.col_name.split('-')
         if len(parts) >= 2:
             try:
-                return int(parts[0])
+                return int(parts[1])
             except ValueError:
                 pass
 
@@ -156,11 +171,12 @@ class LabSlot:
 
 
 class LabGroup:
-    """Represents a group of accorpated lab slots (same lab-meeting at same time)."""
+    """Represents a group of accorpated lab slots (same lab-meeting, same school, same time)."""
 
-    def __init__(self, slot_id: str, lab_meeting_key: str):
+    def __init__(self, slot_id: str, lab_meeting_key: str, school_id: int):
         self.slot_id = slot_id
         self.lab_meeting_key = lab_meeting_key
+        self.school_id = school_id
         self.lab_slots: List[LabSlot] = []
 
     def add_slot(self, lab_slot: LabSlot):
@@ -272,17 +288,18 @@ def extract_lab_slots(headers: List[str], slot_ids: List[str],
 
 def group_lab_slots(lab_slots: List[LabSlot]) -> List[LabGroup]:
     """
-    Group lab slots by (slot_id, lab_meeting_key) to identify accorpamenti.
+    Group lab slots by (slot_id, lab_meeting_key, school_id) to identify accorpamenti.
 
-    Labs with the same lab-meeting key at the same time are grouped together
-    and need only ONE trainer.
+    Labs with the same lab-meeting key, same school, at the same time are grouped together
+    and need only ONE trainer. Different schools = different groups = different trainers.
     """
-    groups_dict: Dict[Tuple[str, str], LabGroup] = {}
+    groups_dict: Dict[Tuple[str, str, int], LabGroup] = {}
 
     for ls in lab_slots:
-        key = (ls.slot_id, ls.lab_meeting_key)
+        # Key includes school_id to separate different schools
+        key = (ls.slot_id, ls.lab_meeting_key, ls.school_id or 0)
         if key not in groups_dict:
-            groups_dict[key] = LabGroup(ls.slot_id, ls.lab_meeting_key)
+            groups_dict[key] = LabGroup(ls.slot_id, ls.lab_meeting_key, ls.school_id or 0)
         groups_dict[key].add_slot(ls)
 
     return list(groups_dict.values())

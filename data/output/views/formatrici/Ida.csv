@@ -1,37 +1,43 @@
 Classi,N. Classi,Scuola,Laboratorio,Settimana,Giorno,Fascia Oraria,Data e Ora,Accorpamento
 "4ALSA, 4CI",2,IIS Amedeo D'Aosta,citizen science,0,Giovedì,Mattino1,29/01/2026 09:00-11:00,Sì
-"3BLSA, 3CI, 3F, 3G",4,"IIS Amedeo D'Aosta, Liceo Scientifico Einstein",citizen science,0,Giovedì,Mattino2,29/01/2026 11:00-13:00,Sì
-"3AtMb, 3InA, 4GL, 5AL",4,"IIS PeanoRosa, IIS L.Da Vinci-De Giorgio",citizen science,0,Venerdì,Mattino1,30/01/2026 09:00-11:00,Sì
+"3BLSA, 3CI",2,IIS Amedeo D'Aosta,citizen science,0,Giovedì,Mattino2,29/01/2026 11:00-13:00,Sì
+"3AtMb, 3InA",2,IIS L.Da Vinci-De Giorgio,citizen science,0,Venerdì,Mattino1,30/01/2026 09:00-11:00,Sì
+"3C, 3D",2,Liceo Scientifico e Linguistico M.Curie,citizen science,0,Venerdì,Mattino2,30/01/2026 11:00-13:00,Sì
 "3D, 4G, 5A, 5G",4,Liceo Scientifico Einstein,orientamento e competenze,1,Lunedì,Mattino1,02/02/2026 09:00-11:00,Sì
 "4B, 4D",2,Liceo Scientifico Einstein,orientamento e competenze,1,Lunedì,Mattino2,02/02/2026 11:00-13:00,Sì
 "3C, 3D",2,Liceo Scientifico e Linguistico M.Curie,citizen science,1,Martedì,Mattino1,03/02/2026 09:00-11:00,Sì
 "3F, 3G",2,Liceo Scientifico Einstein,citizen science,1,Martedì,Mattino2,03/02/2026 11:00-13:00,Sì
+"3CL, 3GL",2,IIS PeanoRosa,citizen science,1,Mercoledì,Mattino1,04/02/2026 09:00-11:00,Sì
 "4C, 5C",2,Liceo Scientifico G. Galilei,orientamento e competenze,1,Mercoledì,Pomeriggio,04/02/2026 14:00-16:00,Sì
-"4G, 4H",2,Liceo Scientifico Leonardo da Vinci,citizen science,1,Giovedì,Mattino2,05/02/2026 11:00-13:00,Sì
+"3DSA, 3I",2,Liceo Scientifico G. Galilei,orientamento e competenze,1,Giovedì,Mattino2,05/02/2026 11:00-13:00,Sì
+"3AtMb, 3InA",2,IIS L.Da Vinci-De Giorgio,citizen science,1,Venerdì,Mattino1,06/02/2026 09:00-11:00,Sì
 "3D, 4G",2,Liceo Scientifico Einstein,orientamento e competenze,2,Lunedì,Mattino1,09/02/2026 09:00-11:00,Sì
 "5ALSA, 5DI",2,IIS Amedeo D'Aosta,orientamento e competenze,2,Lunedì,Mattino2,09/02/2026 11:00-13:00,Sì
-"3AtMb, 3InA",2,IIS L.Da Vinci-De Giorgio,citizen science,2,Martedì,Mattino1,10/02/2026 09:00-11:00,Sì
 "4B, 4D",2,Liceo Scientifico Einstein,orientamento e competenze,2,Martedì,Mattino2,10/02/2026 11:00-13:00,Sì
 "5C, 5E",2,Liceo Scientifico e Linguistico M.Curie,citizen science,2,Martedì,Pomeriggio,10/02/2026 14:00-16:00,Sì
 "3F, 3G",2,Liceo Scientifico Einstein,citizen science,2,Mercoledì,Mattino1,11/02/2026 09:00-11:00,Sì
 "4B, 4H",2,Liceo Scientifico G. Galilei,citizen science,2,Mercoledì,Mattino2,11/02/2026 11:00-13:00,Sì
 "4BU, 4CU",2,Liceo Pascal,citizen science,2,Mercoledì,Pomeriggio,11/02/2026 14:00-16:00,Sì
-"3DSA, 3I, 4A, 5F",4,"IIS Fermi, Liceo Scientifico G. Galilei",orientamento e competenze,2,Giovedì,Mattino1,12/02/2026 09:00-11:00,Sì
+"4A, 5F",2,IIS Fermi,orientamento e competenze,2,Giovedì,Mattino1,12/02/2026 09:00-11:00,Sì
+"4GL, 5AL",2,IIS PeanoRosa,orientamento e competenze,2,Giovedì,Mattino2,12/02/2026 11:00-13:00,Sì
 "3BLSA, 3CI",2,IIS Amedeo D'Aosta,citizen science,2,Venerdì,Mattino1,13/02/2026 09:00-11:00,Sì
-"4MA, 5ALSA, 5AtIB, 5DI",4,"IIS Amedeo D'Aosta, IIS L.Da Vinci-De Giorgio",orientamento e competenze,3,Lunedì,Mattino1,16/02/2026 09:00-11:00,Sì
-"3D, 4G, 4GL, 5AL",4,"IIS PeanoRosa, Liceo Scientifico Einstein",presentazione manuali,3,Lunedì,Mattino2,16/02/2026 11:00-13:00,Sì
+"5ALSA, 5DI",2,IIS Amedeo D'Aosta,orientamento e competenze,3,Lunedì,Mattino1,16/02/2026 09:00-11:00,Sì
+"4GL, 5AL",2,IIS PeanoRosa,presentazione manuali,3,Lunedì,Mattino2,16/02/2026 11:00-13:00,Sì
 "4ALSA, 4CI",2,IIS Amedeo D'Aosta,citizen science,3,Martedì,Mattino1,17/02/2026 09:00-11:00,Sì
 "3A, 3E",2,Liceo Scientifico P. P. Pasolini,orientamento e competenze,3,Mercoledì,Pomeriggio,18/02/2026 14:00-16:00,Sì
+"3F, 3G",2,Liceo Scientifico Einstein,citizen science,3,Giovedì,Mattino1,19/02/2026 09:00-11:00,Sì
 "3BLSA, 3CI",2,IIS Amedeo D'Aosta,citizen science,3,Giovedì,Mattino2,19/02/2026 11:00-13:00,Sì
+"4B, 4D, 5A, 5G",4,Liceo Scientifico Einstein,presentazione manuali,3,Venerdì,Mattino1,20/02/2026 09:00-11:00,Sì
 "3F, 5F",2,IIS Fermi,sensibilizzazione discriminazioni di genere pt.2,4,Lunedì,Mattino1,23/02/2026 09:00-11:00,Sì
-"5ALSA, 5DI",2,IIS Amedeo D'Aosta,presentazione manuali,4,Lunedì,Mattino2,23/02/2026 11:00-13:00,Sì
+"3CI, 4CI",2,IIS Amedeo D'Aosta,citizen science,4,Lunedì,Mattino2,23/02/2026 11:00-13:00,Sì
 "3BLSA, 4ALSA",2,IIS Amedeo D'Aosta,citizen science,4,Martedì,Mattino2,24/02/2026 11:00-13:00,Sì
 "3F, 3G",2,Liceo Scientifico Einstein,citizen science,4,Mercoledì,Mattino2,25/02/2026 11:00-13:00,Sì
-"3AS, 3ESA",2,Liceo Pascal,presentazione manuali,4,Mercoledì,Pomeriggio,25/02/2026 14:00-16:00,Sì
-"3C, 3D",2,Liceo Scientifico e Linguistico M.Curie,citizen science,4,Venerdì,Mattino1,27/02/2026 09:00-11:00,Sì
-"3BLSA, 3CI, 3F, 3G",4,"IIS Amedeo D'Aosta, Liceo Scientifico Einstein",presentazione manuali,5,Martedì,Mattino1,03/03/2026 09:00-11:00,Sì
+"3A, 4C",2,IIS. E. Mattei,citizen science,4,Mercoledì,Pomeriggio,25/02/2026 14:00-16:00,Sì
+"3F, 3G",2,Liceo Scientifico Einstein,presentazione manuali,5,Martedì,Mattino1,03/03/2026 09:00-11:00,Sì
 "3AtMb, 3InA",2,IIS L.Da Vinci-De Giorgio,presentazione manuali,5,Martedì,Pomeriggio,03/03/2026 14:00-16:00,Sì
-"4A, 4B",2,IIS Fermi,sensibilizzazione discriminazioni di genere pt.2,6,Lunedì,Mattino1,09/03/2026 09:00-11:00,Sì
+"4BNO, 5DNO",2,Lic. Scientifico Bafile,orientamento e competenze,6,Martedì,Pomeriggio,10/03/2026 14:00-16:00,Sì
 "4ALSA, 4CI",2,IIS Amedeo D'Aosta,citizen science,6,Venerdì,Mattino2,13/03/2026 11:00-13:00,Sì
-"4BNO, 4BU, 4CU, 5DNO",4,"Liceo Pascal, Lic. Scientifico Bafile",orientamento e competenze,7,Mercoledì,Pomeriggio,18/03/2026 14:00-16:00,Sì
-"3DSA, 4CSA",2,Liceo Scientifico G. Galilei,presentazione manuali,11,Mercoledì,Pomeriggio,22/04/2026 14:00-16:00,Sì
+"4BU, 4CU",2,Liceo Pascal,orientamento e competenze,7,Mercoledì,Pomeriggio,18/03/2026 14:00-16:00,Sì
+"4BU, 4CU",2,Liceo Pascal,presentazione manuali,9,Mercoledì,Pomeriggio,01/04/2026 14:00-16:00,Sì
+"3C, 4A",2,Liceo Scientifico P. P. Pasolini,presentazione manuali,11,Lunedì,Mattino1,20/04/2026 09:00-11:00,Sì
+"3I, 5C",2,Liceo Scientifico G. Galilei,sensibilizzazione discriminazioni di genere,14,Mercoledì,Pomeriggio,13/05/2026 14:00-16:00,Sì
