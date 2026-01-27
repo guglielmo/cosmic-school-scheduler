@@ -287,43 +287,70 @@ def build_lab5_model(
             else:
                 print(f"⚠️  Classe {classe_id} meeting {meeting_num}: nessuno slot disponibile dopo Lab 4")
 
-    # H2: Max 1 incontro Lab 5 per classe per settimana
+    # H2: VINCOLO TEMPORALE - Lab 5 deve essere completamente PRIMA o completamente DOPO Lab 4
+    # Non possono sovrapporsi temporalmente (stesse settimane o settimane intermedie)
+
+    # Per ogni classe che ha sia Lab 4 che Lab 5
     for classe_id, num_meetings in lab5_classes.items():
-        for week, week_slots in week_to_slots.items():
-            meetings_this_week = []
+        if classe_id not in lab4_schedule:
+            # Se la classe NON ha fatto Lab 4, Lab 5 può essere schedulato liberamente
+            # Vincolo: max 1 incontro Lab 5 per settimana (come prima)
+            for week, week_slots in week_to_slots.items():
+                lab5_meetings_this_week = []
+                for meeting_num in range(1, num_meetings + 1):
+                    for slot_id in week_slots:
+                        if (classe_id, meeting_num, slot_id) in meeting:
+                            lab5_meetings_this_week.append(meeting[classe_id, meeting_num, slot_id])
+
+                if lab5_meetings_this_week:
+                    model.Add(sum(lab5_meetings_this_week) <= 1)
+            continue
+
+        # Classe ha ENTRAMBI i lab - applica vincolo temporale
+        # Trova il range di settimane di Lab 4
+        lab4_weeks = set()
+        for slot_id, _ in lab4_schedule[classe_id]:
+            week = slot_to_week.get(slot_id, -1)
+            if week >= 0:
+                lab4_weeks.add(week)
+
+        if not lab4_weeks:
+            continue
+
+        first_lab4_week = min(lab4_weeks)
+        last_lab4_week = max(lab4_weeks)
+
+        # Lab 5 NON può essere schedulato in nessuna settimana da first_lab4_week a last_lab4_week (incluse)
+        for week in range(first_lab4_week, last_lab4_week + 1):
+            if week not in week_to_slots:
+                continue
+
+            week_slots = week_to_slots[week]
+            lab5_meetings_forbidden_week = []
             for meeting_num in range(1, num_meetings + 1):
                 for slot_id in week_slots:
                     if (classe_id, meeting_num, slot_id) in meeting:
-                        meetings_this_week.append(meeting[classe_id, meeting_num, slot_id])
+                        lab5_meetings_forbidden_week.append(meeting[classe_id, meeting_num, slot_id])
 
-            if meetings_this_week:
-                model.Add(sum(meetings_this_week) <= 1)
+            if lab5_meetings_forbidden_week:
+                # Blocca completamente Lab 5 in questa settimana
+                model.Add(sum(lab5_meetings_forbidden_week) == 0)
 
-    # H3: NUOVO - Una classe non può avere Lab 4 e Lab 5 nella stessa settimana
-    # Questo vincolo si applica SOLO alle classi che hanno effettivamente fatto Lab 4
-    class_has_lab4_in_week = {}
-    for classe_id, lab4_meetings in lab4_schedule.items():
-        for slot_id, _ in lab4_meetings:
-            week = slot_to_week.get(slot_id, -1)
-            if week >= 0:
-                class_has_lab4_in_week[(classe_id, week)] = True
+        # Lab 5 può essere in qualsiasi settimana PRIMA o DOPO il range Lab 4
+        # Vincolo: max 1 incontro Lab 5 per settimana
+        for week, week_slots in week_to_slots.items():
+            # Salta le settimane già bloccate
+            if first_lab4_week <= week <= last_lab4_week:
+                continue
 
-    # Per ogni classe che ha fatto Lab 4, se ha Lab 4 in una settimana, non può avere Lab 5
-    for classe_id, num_meetings in lab5_classes.items():
-        # Solo per classi che hanno fatto Lab 4
-        if classe_id in lab4_schedule:
-            for week, week_slots in week_to_slots.items():
-                # Se questa classe ha Lab 4 in questa settimana
-                if class_has_lab4_in_week.get((classe_id, week), False):
-                    # Allora non può avere Lab 5
-                    meetings_this_week = []
-                    for meeting_num in range(1, num_meetings + 1):
-                        for slot_id in week_slots:
-                            if (classe_id, meeting_num, slot_id) in meeting:
-                                meetings_this_week.append(meeting[classe_id, meeting_num, slot_id])
+            lab5_meetings_this_week = []
+            for meeting_num in range(1, num_meetings + 1):
+                for slot_id in week_slots:
+                    if (classe_id, meeting_num, slot_id) in meeting:
+                        lab5_meetings_this_week.append(meeting[classe_id, meeting_num, slot_id])
 
-                    if meetings_this_week:
-                        model.Add(sum(meetings_this_week) == 0)
+            if lab5_meetings_this_week:
+                model.Add(sum(lab5_meetings_this_week) <= 1)
 
     # H4: Link accorpamenti a scheduling
     # Se grouped[c1, c2, m, slot] = 1, allora entrambi meeting[c1, m, slot] e meeting[c2, m, slot] = 1

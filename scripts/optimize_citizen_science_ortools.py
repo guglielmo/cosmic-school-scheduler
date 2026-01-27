@@ -220,7 +220,10 @@ def build_ortools_model(
             if slots_for_meeting:
                 model.Add(sum(slots_for_meeting) == 1)
 
-    # H2: Una classe può avere al massimo 1 incontro per settimana
+    # H2: VINCOLO SETTIMANALE - Max 1 incontro Lab 4 per classe per settimana
+    # NOTA: Questo vincolo copre solo Lab 4. Il vincolo globale "max 1 incontro TOTALE
+    # per settimana" sarà applicato dall'optimizer Lab 5, che tiene conto sia di Lab 4
+    # (già schedulato) che di Lab 5 (da schedulare).
     for classe_id, num_meetings in lab_classes.items():
         # Raggruppa slot per settimana
         slots_by_week = {}
@@ -230,7 +233,7 @@ def build_ortools_model(
                 slots_by_week[week] = []
             slots_by_week[week].append(slot_id)
 
-        # Per ogni settimana
+        # Per ogni settimana, max 1 incontro Lab 4
         for week, week_slots in slots_by_week.items():
             meetings_this_week = []
             for meeting_num in range(1, num_meetings + 1):
