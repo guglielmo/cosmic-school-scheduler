@@ -309,16 +309,12 @@ class ClassAvailabilityChecker:
         scuola_id = classe['scuola_id']
         school = self.schools.get(scuola_id, {})
 
-        # 1. Check Saturday availability
-        if day_num == 5 and not school.get('sabato_disponibile', False):
-            return False
-
-        # 2. Check blocked weeks (GSI/GSST labs)
+        # 1. Check blocked weeks (GSI/GSST labs)
         if classe_id in self.blocked_weeks:
             if week_num in self.blocked_weeks[classe_id]:
                 return False
 
-        # 3. Check time slot constraints
+        # 2. Check time slot constraints (includes weekday availability from class)
         if classe_id in self.time_constraints:
             constraints = self.time_constraints[classe_id]
 
@@ -326,11 +322,11 @@ class ClassAvailabilityChecker:
             if slot_num not in constraints['allowed_slots']:
                 return False
 
-            # Check allowed days
+            # Check allowed days (Saturday is allowed only if specified in class giorni_settimana)
             if constraints['allowed_days'] and day_num not in constraints['allowed_days']:
                 return False
 
-        # 4. Check excluded dates
+        # 3. Check excluded dates
         if classe_id in self.excluded_dates:
             excl = self.excluded_dates[classe_id]
 

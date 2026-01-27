@@ -2,7 +2,7 @@
 """
 Build complete calendar of available time slots.
 
-Generates all available slots from January 29 to end of May,
+Generates all available slots from January 29 (Thursday) to end of May,
 following the project's scheduling windows and constraints.
 
 Output format: sWW-mm-dd-wd-slot (e.g., "s01-02-02-lun-M1")

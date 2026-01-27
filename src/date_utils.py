@@ -16,16 +16,16 @@ class DateMapper:
     School year runs from late January to mid-May with Easter break.
 
     Windows:
-    - Window 1: 28/01/2026 - 01/04/2026 (weeks 0-9)
+    - Window 1: 29/01/2026 - 01/04/2026 (weeks 0-9)
     - Easter break: 02/04/2026 - 12/04/2026
     - Window 2: 13/04/2026 - 16/05/2026 (weeks 10-15)
     """
 
     # Inizio anno scolastico
-    YEAR_START = datetime(2026, 1, 28)  # Mercoledì 28 gennaio 2026
+    YEAR_START = datetime(2026, 1, 29)  # Giovedì 29 gennaio 2026
 
     # Finestre temporali
-    WINDOW1_START = datetime(2026, 1, 28)  # Mercoledì 28 gennaio 2026
+    WINDOW1_START = datetime(2026, 1, 29)  # Giovedì 29 gennaio 2026
     WINDOW1_END = datetime(2026, 4, 1)
 
     EASTER_START = datetime(2026, 4, 2)
