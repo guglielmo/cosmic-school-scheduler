@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Genera un calendario unificato che combina Lab 4 e Lab 5.
+Genera un calendario unificato che combina Lab 4, Lab 5 e Lab 7.
 Legge i calendari ottimizzati OR-Tools e li unisce in un unico file.
 """
 
@@ -58,10 +58,11 @@ def read_lab_schedule(filename: str, lab_prefix: str, formatrici_col: str):
 
             for col, val in row.items():
                 if col in ['slot_id', 'num_formatrici', 'num_formatrici_disponibili',
-                          'num_formatrici_lab5', 'num_formatrici_lab4', 'num_formatrici_totali']:
+                          'num_formatrici_lab5', 'num_formatrici_lab4', 'num_formatrici_lab7',
+                          'num_formatrici_prev', 'num_formatrici_totali']:
                     continue
 
-                if val.startswith(lab_prefix):
+                if val and val.startswith(lab_prefix):
                     classe_id = int(col.split('-')[0])
                     schedule[slot_id][classe_id] = val
 
@@ -108,6 +109,7 @@ def generate_unified_calendar():
     class_columns, all_slots, availability = read_class_availability()
     lab4_schedule, lab4_formatrici = read_lab_schedule('data/output/calendario_lab4_ortools.csv', 'L4-', 'num_formatrici')
     lab5_schedule, lab5_formatrici = read_lab_schedule('data/output/calendario_lab5_ortools.csv', 'L5-', 'num_formatrici_lab5')
+    lab7_schedule, lab7_formatrici = read_lab_schedule('data/output/calendario_lab7_ortools.csv', 'L7-', 'num_formatrici_lab7')
     formatrici_availability = read_formatrici_availability()
     formatrici_budget_incontri = read_formatrici_budget()
 
@@ -115,6 +117,7 @@ def generate_unified_calendar():
     print(f"  - {len(class_columns)} classi")
     print(f"  - Lab 4: {sum(len(v) for v in lab4_schedule.values())} incontri")
     print(f"  - Lab 5: {sum(len(v) for v in lab5_schedule.values())} incontri")
+    print(f"  - Lab 7: {sum(len(v) for v in lab7_schedule.values())} incontri")
     print(f"  - Budget formatrici: {formatrici_budget_incontri:.1f} incontri")
 
     # Genera calendario unificato
@@ -139,30 +142,34 @@ def generate_unified_calendar():
 
             lab4_in_slot = lab4_schedule.get(slot_id, {})
             lab5_in_slot = lab5_schedule.get(slot_id, {})
+            lab7_in_slot = lab7_schedule.get(slot_id, {})
 
             # Per ogni classe
             for col in class_columns:
                 classe_id = int(col.split('-')[0])
 
-                # Combina Lab 4 e Lab 5
+                # Combina Lab 4, Lab 5 e Lab 7
                 labels = []
                 if classe_id in lab4_in_slot:
                     labels.append(lab4_in_slot[classe_id])
                 if classe_id in lab5_in_slot:
                     labels.append(lab5_in_slot[classe_id])
+                if classe_id in lab7_in_slot:
+                    labels.append(lab7_in_slot[classe_id])
 
                 if labels:
-                    # Se ha entrambi i lab, uniscili con "+"
+                    # Se ha più lab, uniscili con "+"
                     row.append(' + '.join(labels))
                 elif availability[slot_id].get(classe_id, False):
                     row.append('-')
                 else:
                     row.append('X')
 
-            # Conta formatrici (somma dei valori già corretti da Lab 4 e Lab 5)
+            # Conta formatrici (somma dei valori già corretti da Lab 4, Lab 5 e Lab 7)
             num_lab4 = lab4_formatrici.get(slot_id, 0)
             num_lab5 = lab5_formatrici.get(slot_id, 0)
-            num_total = num_lab4 + num_lab5
+            num_lab7 = lab7_formatrici.get(slot_id, 0)
+            num_total = num_lab4 + num_lab5 + num_lab7
             num_avail = formatrici_availability.get(slot_id, 0)
 
             # Formatta come intero se possibile
@@ -194,7 +201,7 @@ def generate_unified_calendar():
     # Conta slot utilizzati
     slots_with_labs = set()
     for slot_id in all_slots:
-        if lab4_schedule.get(slot_id) or lab5_schedule.get(slot_id):
+        if lab4_schedule.get(slot_id) or lab5_schedule.get(slot_id) or lab7_schedule.get(slot_id):
             slots_with_labs.add(slot_id)
 
     # Conta slot con overbooking (usando i valori corretti con accorpamenti)
@@ -202,62 +209,71 @@ def generate_unified_calendar():
     for slot_id in all_slots:
         num_lab4 = lab4_formatrici.get(slot_id, 0)
         num_lab5 = lab5_formatrici.get(slot_id, 0)
-        num_total = num_lab4 + num_lab5
+        num_lab7 = lab7_formatrici.get(slot_id, 0)
+        num_total = num_lab4 + num_lab5 + num_lab7
         num_avail = formatrici_availability.get(slot_id, 0)
 
         if num_total > num_avail:
             overbooking_count += 1
 
-    # Conta classi con entrambi i lab
-    classes_with_both = set()
-    for slot_id in all_slots:
-        lab4_classes = set(lab4_schedule.get(slot_id, {}).keys())
-        lab5_classes = set(lab5_schedule.get(slot_id, {}).keys())
-        # Non conta nella stessa settimana, ma in generale
-        classes_with_both.update(lab4_classes)
-
-    # Conta effettivamente classi con entrambi
+    # Conta classi per ogni lab
     all_lab4_classes = set()
     all_lab5_classes = set()
+    all_lab7_classes = set()
     for slot_id in all_slots:
         all_lab4_classes.update(lab4_schedule.get(slot_id, {}).keys())
         all_lab5_classes.update(lab5_schedule.get(slot_id, {}).keys())
+        all_lab7_classes.update(lab7_schedule.get(slot_id, {}).keys())
 
-    both = all_lab4_classes & all_lab5_classes
+    lab4_and_5 = all_lab4_classes & all_lab5_classes
+    lab4_and_7 = all_lab4_classes & all_lab7_classes
+    lab5_and_7 = all_lab5_classes & all_lab7_classes
+    all_three = all_lab4_classes & all_lab5_classes & all_lab7_classes
 
     print(f"Slot utilizzati: {len(slots_with_labs)}")
     print(f"Slot in overbooking: {overbooking_count}")
     print(f"Classi totali con Lab 4: {len(all_lab4_classes)}")
     print(f"Classi totali con Lab 5: {len(all_lab5_classes)}")
-    print(f"Classi con entrambi i lab: {len(both)}")
+    print(f"Classi totali con Lab 7: {len(all_lab7_classes)}")
+    print(f"Classi con Lab 4+5: {len(lab4_and_5)}")
+    print(f"Classi con Lab 4+7: {len(lab4_and_7)}")
+    print(f"Classi con Lab 5+7: {len(lab5_and_7)}")
+    print(f"Classi con tutti e tre i lab: {len(all_three)}")
     print(f"\n=== Budget formatrici ===")
     print(f"Formatrici-incontri totali: {total_formatrici_usate:.1f}")
     print(f"Budget disponibile (incontri): {int(formatrici_budget_incontri)}")
     print(f"Margine: {formatrici_budget_incontri - total_formatrici_usate:.1f} incontri")
     print(f"Utilizzo: {total_formatrici_usate / formatrici_budget_incontri * 100:.1f}%")
 
-    # Verifica conflitti settimanali
+    # Verifica conflitti settimanali (max 1 lab per settimana)
     print("\n=== Verifica vincoli settimanali ===")
-    week_conflicts = 0
-    for classe_id in both:
+    week_conflicts = []
+
+    all_classes = all_lab4_classes | all_lab5_classes | all_lab7_classes
+
+    for classe_id in all_classes:
         for week in range(16):
-            has_lab4 = False
-            has_lab5 = False
+            labs_in_week = []
 
             for slot_id in all_slots:
                 slot_week = int(slot_id.split('-')[0][1:])
                 if slot_week == week:
                     if classe_id in lab4_schedule.get(slot_id, {}):
-                        has_lab4 = True
+                        labs_in_week.append('L4')
                     if classe_id in lab5_schedule.get(slot_id, {}):
-                        has_lab5 = True
+                        labs_in_week.append('L5')
+                    if classe_id in lab7_schedule.get(slot_id, {}):
+                        labs_in_week.append('L7')
 
-            if has_lab4 and has_lab5:
-                week_conflicts += 1
-                print(f"⚠️  Classe {classe_id}: Lab 4 e Lab 5 in settimana {week}")
+            # Rimuovi duplicati
+            labs_in_week = list(set(labs_in_week))
 
-    if week_conflicts == 0:
-        print("✅ Nessun conflitto Lab 4/5 nella stessa settimana")
+            if len(labs_in_week) > 1:
+                week_conflicts.append((classe_id, week, labs_in_week))
+                print(f"⚠️  Classe {classe_id}: {', '.join(labs_in_week)} in settimana {week}")
+
+    if len(week_conflicts) == 0:
+        print("✅ Nessun conflitto: max 1 lab per settimana rispettato")
 
 
 if __name__ == '__main__':
