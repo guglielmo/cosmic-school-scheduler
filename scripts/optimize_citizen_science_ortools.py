@@ -337,7 +337,31 @@ def build_ortools_model(
         else:
             objective_terms.append(100 * group_var)
 
-    # Obiettivo 2: Minimizza modifiche dalla soluzione greedy (peso basso)
+    # Obiettivo 2: MINIMIZZA settimana massima per classe (finire prima)
+    # Crea variabili per settimana massima di ogni classe
+    max_week = {}
+    slot_to_week = {}
+    for slot_id in relevant_slots:
+        week = int(slot_id.split('-')[0][1:])
+        slot_to_week[slot_id] = week
+
+    for classe_id, num_meetings in lab_classes.items():
+        max_week[classe_id] = model.NewIntVar(0, 15, f"max_week_c{classe_id}")
+
+        # max_week >= settimana di ogni incontro
+        for meeting_num in range(1, num_meetings + 1):
+            for slot_id in relevant_slots:
+                if (classe_id, meeting_num, slot_id) in meeting:
+                    week = slot_to_week[slot_id]
+                    # Se questo meeting è schedulato qui, max_week >= week
+                    model.Add(max_week[classe_id] >= week).OnlyEnforceIf(
+                        meeting[classe_id, meeting_num, slot_id]
+                    )
+
+        # Penalizza settimane alte (peso medio-basso, inferiore ad accorpamenti)
+        objective_terms.append(-10 * max_week[classe_id])
+
+    # Obiettivo 3: Minimizza modifiche dalla soluzione greedy (peso basso)
     # Solo per slot NON in overbooking
     for classe_id, meetings in existing_schedule.items():
         for slot_id, meeting_num in meetings:

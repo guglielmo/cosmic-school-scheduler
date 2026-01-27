@@ -433,7 +433,31 @@ def build_lab5_model(
         else:
             objective_terms.append(100 * group_var)
 
-    # Obiettivo 2: Minimizza slot utilizzati (peso basso)
+    # Obiettivo 2: MINIMIZZA settimana massima per classe (finire prima)
+    # Crea variabili per settimana massima di ogni classe
+    max_week = {}
+    slot_to_week = {}
+    for slot_id in relevant_slots:
+        week = int(slot_id.split('-')[0][1:])
+        slot_to_week[slot_id] = week
+
+    for classe_id, num_meetings in lab5_classes.items():
+        max_week[classe_id] = model.NewIntVar(0, 15, f"max_week_c{classe_id}")
+
+        # max_week >= settimana di ogni incontro
+        for meeting_num in range(1, num_meetings + 1):
+            for slot_id in relevant_slots:
+                if (classe_id, meeting_num, slot_id) in meeting:
+                    week = slot_to_week[slot_id]
+                    # Se questo meeting è schedulato qui, max_week >= week
+                    model.Add(max_week[classe_id] >= week).OnlyEnforceIf(
+                        meeting[classe_id, meeting_num, slot_id]
+                    )
+
+        # Penalizza settimane alte (peso medio-basso, inferiore ad accorpamenti)
+        objective_terms.append(-10 * max_week[classe_id])
+
+    # Obiettivo 3: Minimizza slot utilizzati (peso basso)
     # Aiuta a concentrare gli incontri
     slots_used = []
     for slot_id in relevant_slots:
@@ -456,7 +480,7 @@ def build_lab5_model(
     for slot_used_var in slots_used:
         objective_terms.append(-1 * slot_used_var)
 
-    # Massimizza: accorpamenti (peso 100-200) - slot usati (peso 1)
+    # Massimizza: accorpamenti (peso 100-200) - settimana max (peso 10) - slot usati (peso 1)
     if objective_terms:
         model.Maximize(sum(objective_terms))
 
