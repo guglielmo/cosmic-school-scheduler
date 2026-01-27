@@ -5,7 +5,7 @@ Build complete calendar of available time slots.
 Generates all available slots from January 29 to end of May,
 following the project's scheduling windows and constraints.
 
-Output format: mm-dd-wd-slot (e.g., "02-02-lun-M1")
+Output format: sWW-mm-dd-wd-slot (e.g., "s01-02-02-lun-M1")
 """
 
 from datetime import datetime, timedelta
@@ -73,8 +73,8 @@ def generate_all_slots():
                 slot_name = SLOT_NAMES[slot]
                 time_range = mapper.slot_to_time_str(slot)
 
-                # Format: mm-dd-wd-slot
-                slot_id = f"{date.month:02d}-{date.day:02d}-{weekday}-{slot_name}"
+                # Format: sWW-mm-dd-wd-slot
+                slot_id = f"s{week:02d}-{date.month:02d}-{date.day:02d}-{weekday}-{slot_name}"
 
                 slots.append({
                     "slot_id": slot_id,
