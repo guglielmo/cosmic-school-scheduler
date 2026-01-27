@@ -290,6 +290,31 @@ def schedule_lab(
     return schedule, groupings
 
 
+def read_formatrici_availability() -> Dict[str, int]:
+    """
+    Legge la disponibilità delle formatrici per ogni slot.
+    Returns: dict mapping slot_id -> numero di formatrici disponibili
+    """
+    formatrici_count = {}
+
+    try:
+        with open('data/output/formatrici_availability.csv', 'r') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                slot_id = row['slot_id']
+                # Conta quante colonne non hanno 'N'
+                count = 0
+                for col, val in row.items():
+                    if col != 'slot_id' and val != 'N':
+                        count += 1
+                formatrici_count[slot_id] = count
+    except FileNotFoundError:
+        print("⚠️  File formatrici_availability.csv non trovato. Colonna non aggiunta.")
+        return {}
+
+    return formatrici_count
+
+
 def write_calendar(
     slot_ids: List[str],
     availability: Dict[str, Set[int]],
@@ -305,11 +330,17 @@ def write_calendar(
         classe_id = int(col.split('-')[0])
         cid_to_col[classe_id] = col
 
+    # Leggi disponibilità formatrici
+    formatrici_count = read_formatrici_availability()
+
     with open('data/output/calendario_laboratori.csv', 'w', newline='') as f:
         writer = csv.writer(f)
 
-        # Header (mantiene formato "classe_id-scuola_id-nome") + colonna totale formatrici
-        writer.writerow(['slot_id'] + class_columns + ['num_formatrici'])
+        # Header (mantiene formato "classe_id-scuola_id-nome") + colonne finali
+        header = ['slot_id'] + class_columns + ['num_formatrici']
+        if formatrici_count:
+            header.append('num_formatrici_disponibili')
+        writer.writerow(header)
 
         # Per ogni slot
         for slot_id in slot_ids:
@@ -367,6 +398,10 @@ def write_calendar(
                 row.append(int(num_formatrici))
             else:
                 row.append(num_formatrici)
+
+            # Aggiungi numero formatrici disponibili se presente
+            if formatrici_count:
+                row.append(formatrici_count.get(slot_id, 0))
 
             writer.writerow(row)
 
