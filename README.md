@@ -1,13 +1,13 @@
 # Cosmic School - Ottimizzatore Calendario Laboratori
 
-Sistema di ottimizzazione per la distribuzione di laboratori scolastici tra classi e formatrici, utilizzando **Google OR-Tools CP-SAT solver** con un **sistema formale di constraints**.
+Sistema di ottimizzazione per la distribuzione di laboratori scolastici tra classi e formatrici, utilizzando **Google OR-Tools CP-SAT solver**.
 
 ## Overview
 
-L'optimizer schedula 87 classi in 13 scuole per 5 laboratori FOP, gestiti da 4 formatrici, rispettando:
-- **14 Hard Constraints** (vincoli obbligatori)
-- **10 Soft Constraints** (preferenze ottimizzate)
-- Budget di 708 ore totali
+Il sistema schedula 87 classi in 13 scuole per 5 laboratori FOP, gestiti da 4 formatrici, attraverso una **pipeline modulare**:
+- Ogni laboratorio ha il proprio optimizer
+- I calendari vengono unificati
+- Le formatrici vengono assegnate proporzionalmente al budget ore
 - Massimizzazione accorpamenti (2 classi insieme) per efficienza
 
 **Documentazione vincoli**: Vedi `INTERPRETAZIONE_VINCOLI.md` per specifiche complete.
@@ -26,291 +26,179 @@ uv pip install -r requirements.txt
 
 ```
 cosmic-school/
-├── requirements.txt              # Dipendenze unificate
-├── INTERPRETAZIONE_VINCOLI.md    # Specifica vincoli (riferimento)
-├── CLAUDE.md                     # Istruzioni per Claude Code
+├── src/
+│   ├── optimizers/                    # Optimizer per laboratorio
+│   │   ├── lab4_citizen_science.py    # Citizen Science (5 incontri)
+│   │   ├── lab5_orientamento.py       # Orientamento e competenze (2 incontri)
+│   │   ├── lab7_sensibilizzazione.py  # Sensibilizzazione (2 incontri consecutivi)
+│   │   ├── lab8_lab9.py               # Presentazione manuali + pt.2
+│   │   └── trainer_assignment.py      # Assegnazione formatrici
+│   │
+│   ├── generators/                    # Generazione calendari e viste
+│   │   ├── build_slots_calendar.py    # Crea matrice slot temporali
+│   │   ├── build_class_availability.py # Disponibilità classi per slot
+│   │   ├── generate_formatrici_availability.py # Disponibilità formatrici
+│   │   ├── generate_unified_calendar.py # Unifica calendari lab
+│   │   └── generate_views.py          # Genera viste calendario
+│   │
+│   ├── utils/
+│   │   └── date_utils.py              # Utilities per date
+│   │
+│   └── verify_constraints.py          # Verifica vincoli
 │
 ├── data/
-│   ├── input/                    # File CSV di input
-│   │   ├── scuole.csv
-│   │   ├── classi.csv
-│   │   ├── formatrici.csv
-│   │   ├── laboratori.csv
-│   │   ├── laboratori_classi.csv
-│   │   ├── formatrici_classi.csv
-│   │   ├── fasce_orarie_classi.csv
-│   │   └── date_escluse_classi.csv
-│   └── output/                   # Risultati ottimizzazione
-│       └── calendario.csv
+│   ├── input/                         # File CSV di input
+│   └── output/                        # Risultati ottimizzazione
+│       └── views/                     # Viste calendario
 │
-├── src/
-│   ├── optimizer.py              # Optimizer principale
-│   ├── constraints/              # Sistema formale constraints
-│   │   ├── base.py              # Classi base
-│   │   ├── hard_constraints.py  # 14 hard constraints
-│   │   ├── soft_constraints.py  # 10 soft constraints
-│   │   ├── special_rules.py     # Regole speciali
-│   │   ├── factory.py           # Factory per caricamento
-│   │   ├── README.md            # Documentazione constraints
-│   │   ├── config/              # Configurazione
-│   │   │   └── constraint_weights.yaml  # Pesi soft constraints
-│   │   └── examples/            # Esempi di utilizzo
-│   │       └── constraint_example.py
-│   ├── date_utils.py            # Utilities date/orari
-│   └── export_formatter.py      # Formattazione Excel output
+├── archive/                           # Codice legacy (V0-V7)
 │
-├── scripts/
-│   ├── test_optimizer_pipeline.py  # Test pipeline completo
-│   └── test_subset.py              # Test su subset ridotto
-│
-└── archive/                     # Codice legacy e doc obsoleti
-    ├── optimizers/              # V0-V6 (versioni precedenti)
-    ├── docs/                    # Documentazione obsoleta
-    └── legacy_utils/            # Utilities non più usati
+├── INTERPRETAZIONE_VINCOLI.md         # Specifica vincoli
+├── CLAUDE.md                          # Istruzioni per Claude Code
+└── requirements.txt
 ```
 
 ## Quick Start
 
-### Run Optimizer
+### Pipeline Completa
 
 ```bash
-# Dati completi (default timeout: 300s)
-python src/optimizer.py --verbose
+# 1. Genera matrici disponibilità (solo prima volta)
+python src/generators/build_slots_calendar.py
+python src/generators/build_class_availability.py
+python src/generators/generate_formatrici_availability.py
 
-# Con timeout personalizzato
-python src/optimizer.py --verbose --timeout 600
+# 2. Esegui optimizer lab (in ordine)
+python src/optimizers/lab4_citizen_science.py
+python src/optimizers/lab5_orientamento.py
+python src/optimizers/lab7_sensibilizzazione.py
+python src/optimizers/lab8_lab9.py
 
-# Output personalizzato
-python src/optimizer.py --output data/output/my_calendar.csv
+# 3. Genera calendario unificato
+python src/generators/generate_unified_calendar.py
+
+# 4. Assegna formatrici
+python src/optimizers/trainer_assignment.py -v
+
+# 5. Genera viste
+python src/generators/generate_views.py
+
+# 6. Verifica vincoli
+python src/verify_constraints.py
 ```
 
-### Test
+## Architettura Pipeline
 
-```bash
-# Test pipeline completo (smoke test)
-python scripts/test_optimizer_pipeline.py
+### 1. Optimizer per Laboratorio
 
-# Test su subset ridotto (2 scuole)
-python scripts/test_subset.py
+Ogni lab ha vincoli specifici:
 
-# Analizza sistema constraints
-./analyze-constraints
-```
+| Lab | Nome | Incontri | Vincoli Speciali |
+|-----|------|----------|------------------|
+| 4 | Citizen Science | 5 | Gap tra incontro 2 e 4 |
+| 5 | Orientamento | 2 | Dopo Lab 4 |
+| 7 | Sensibilizzazione | 2 | Settimane consecutive, dopo Lab 4+5 |
+| 8 | Presentazione manuali | 1 | Deve essere l'ultimo |
+| 9 | Sensibilizzazione pt.2 | 1 | Prima di Lab 5 |
 
-## Architettura
+### 2. Accorpamenti
 
-### Sistema di Constraints Formali
+Classi della stessa scuola possono fare lo stesso incontro insieme:
+- Risparmio ore formatrice (1 invece di 2)
+- Essenziale per rispettare il budget
 
-L'optimizer usa un sistema strutturato di constraints definiti in `src/constraints/`:
+### 3. Assegnazione Formatrici
 
-```python
-from constraints import ConstraintFactory
+- Distribuzione proporzionale al budget ore
+- Rispetto disponibilità (giorni, fasce orarie)
+- Massimizzazione preferenze formatrice-classe
 
-# Carica tutti i constraints dai CSV
-factory = ConstraintFactory(data_dir="data/input")
-constraints = factory.build_all_constraints()
-
-# Filtra per tipo
-hard = [c for c in constraints if c.type == ConstraintType.HARD]
-soft = [c for c in constraints if c.type == ConstraintType.SOFT]
-```
-
-**Vedi `src/constraints/README.md`** per documentazione completa del sistema.
-
-### Variabili di Decisione
-
-Per ogni incontro `(classe, lab, k)`:
-- `settimana[c,l,k]`: IntVar(0..15) - Settimana (16 totali)
-- `giorno[c,l,k]`: IntVar(0..5) - Giorno (lun-sab)
-- `fascia[c,l,k]`: IntVar(1..3) - Fascia oraria (mattino1, mattino2, pomeriggio)
-- `formatrice[c,l,k]`: IntVar(1..4) - ID formatrice
-- `accorpa[c1,c2,lab]`: BoolVar - True se classi accorpate
-
-### Constraints Implementati
-
-**Hard Constraints (14)** - devono essere soddisfatti:
-- H01: Budget ore formatrici (708h totali)
-- H02: Disponibilità temporale formatrici
-- H03: Date già fissate (pre-schedulati)
-- H04: Laboratori specifici per classe
-- H05: Dettagli laboratorio (mattina/pomeriggio)
-- H06: Fasce orarie per classe
-- H07: Date escluse per classe
-- H08: Max 1 incontro/settimana per classe
-- H09: Lab 8.0 deve essere ultimo
-- H10: No sovrapposizioni formatrici
-- H11: Periodo scheduling (16 settimane, 2 finestre)
-- H12: Max 2 classi accorpate
-- H13: Completamento laboratori
-- H14: Lab 9.0 prima di Lab 5.0
-
-**Soft Constraints (10)** - ottimizzati nell'obiettivo:
-- S01: **Massimizza accorpamenti (peso 20)** ⭐ CRITICO
-- S02: Continuità formatrice per classe
-- S03: Media ore settimanali formatrici
-- S04: Preferenze fasce formatrici
-- S05: Accorpamenti preferenziali classi
-- S06: Sequenza ideale laboratori
-- S07: Priorità classi quinte (finire prima)
-- S08: Variazione fasce orarie
-- S09: Bilanciamento carico formatrici
-- S10: Minimizza scheduling tardo (maggio)
-
-**Regole Speciali**:
-- Citizen Science (Lab 4.0): gap 1 settimana tra incontro 2 e 4 (incontro 3 autonomo)
-- Incontri parziali: alcune classi fanno solo 1-2 incontri invece del totale
-- Vincoli pomeriggio: varie combinazioni (tutti, almeno 1, 2 non consecutivi)
-
-### Dati Input
+## Dati Input
 
 File CSV in `data/input/`:
 
 | File | Descrizione |
 |------|-------------|
 | `scuole.csv` | 13 scuole |
-| `classi.csv` | 87 classi (anno, priorità, accorpamenti preferenziali) |
-| `formatrici.csv` | 4 formatrici (budget ore, disponibilità, preferenze) |
-| `laboratori.csv` | 5 laboratori FOP (num incontri, ore, sequenza) |
-| `laboratori_classi.csv` | Assegnazione lab a classi + date fissate |
-| `formatrici_classi.csv` | Preferenze formatrice-classe (soft) |
-| `fasce_orarie_classi.csv` | Vincoli fasce orarie per classe |
-| `date_escluse_classi.csv` | Date non disponibili per classe |
+| `classi.csv` | 87 classi (anno, accorpamenti preferenziali) |
+| `formatrici.csv` | 4 formatrici (budget ore, disponibilità) |
+| `laboratori.csv` | 5 laboratori FOP |
+| `laboratori_classi.csv` | Assegnazioni + note "solo X incontri" |
+| `fasce_orarie_classi.csv` | Vincoli fasce orarie |
+| `date_escluse_classi.csv` | Date non disponibili |
+| `formatrici_classi.csv` | Preferenze formatrice-classe |
 
-### Output
+### Note Speciali
 
-File CSV: `data/output/calendario.csv` (default)
+Nel file `laboratori_classi.csv`, la colonna `dettagli` può contenere:
+- `"solo 1 incontro"` - classe fa 1 incontro invece del default
+- `"solo 2 incontri"` - classe fa 2 incontri invece del default
 
-**Colonne**:
-- `classe_id`, `classe_nome`, `scuola_nome`
-- `laboratorio_id`, `laboratorio_nome`
-- `incontro_num` (1-based)
-- `formatrice_id`, `formatrice_nome`
-- `settimana`, `giorno_num`, `giorno_nome`
-- `fascia_num`, `fascia_nome`
-- `slot` (ordinamento)
-- `data_ora` (formato leggibile)
-- `accorpata_con` (se accorpata con altre classi)
+## Output
 
-**Statistiche**:
-- Numero incontri schedulati
-- Numero accorpamenti realizzati
-- Distribuzione ore per formatrice
+### File Generati
 
-## Configurazione
+- `data/output/calendario_lab4_ortools.csv` - Calendario Lab 4
+- `data/output/calendario_lab5_ortools.csv` - Calendario Lab 5
+- `data/output/calendario_lab7_ortools.csv` - Calendario Lab 7
+- `data/output/calendario_lab8_lab9_ortools.csv` - Calendario Lab 8/9
+- `data/output/calendario_laboratori.csv` - Calendario unificato
+- `data/output/calendario_con_formatrici.csv` - Con assegnazione formatrici
 
-### Pesi Soft Constraints
+### Viste
 
-Modifica `src/constraints/config/constraint_weights.yaml`:
+In `data/output/views/`:
+- `calendario_giornaliero.csv` - Vista giornaliera
+- `formatrici/` - Un file per formatrice
+- `classi/` - Un file per classe
+- `laboratori/` - Un file per laboratorio
 
-```yaml
-objective_function:
-  maximize_grouping: 20        # Accorpamenti (CRITICO!)
-  trainer_continuity: 10       # Continuità formatrice
-  fifth_year_priority: 3       # Priorità quinte
-  # ... altri pesi
+## Verifica Vincoli
+
+```bash
+python src/verify_constraints.py
 ```
 
-### Solver Parameters
-
-In `src/optimizer.py`:
-- `NUM_SETTIMANE = 16` - Orizzonte scheduling
-- `NUM_GIORNI = 6` - Lun-Sab
-- `NUM_FASCE = 3` - Mattino1, Mattino2, Pomeriggio
-- `timeout = 300s` - Default (configurabile via CLI)
-- `num_workers = 12` - Parallelizzazione CP-SAT
+Verifica:
+1. **Ore formatrici**: assegnate vs budget
+2. **Completamento classi**: tutti i lab richiesti assegnati
+3. **Integrità lab**: numero corretto di incontri
 
 ## Budget Context
 
-**Perché S01 (massimizzare accorpamenti) ha peso 20?**
+**Perché gli accorpamenti sono critici?**
 
 - Budget totale: **708 ore** (somma 4 formatrici)
-- Con max accorpamenti: **664 ore** → +44h margine ✅
-- Senza accorpamenti: **926 ore** → eccede budget ❌
-
-**Gli accorpamenti sono essenziali per la fattibilità del problema.**
+- Con max accorpamenti: ~500 ore necessarie ✅
+- Senza accorpamenti: ~900 ore necessarie ❌
 
 ## Troubleshooting
 
-### Nessuna soluzione trovata
+### Optimizer INFEASIBLE
 
 **Possibili cause**:
-1. **Vincoli troppo stringenti**: Rilassa alcuni hard constraints o verifica date escluse
-2. **Budget insufficiente**: Verifica che accorpamenti siano possibili
-3. **Timeout troppo breve**: Aumenta `--timeout 600`
-4. **Conflitti date fissate**: Controlla `laboratori_classi.csv`
+1. Overbooking slot (troppi lab nello stesso momento)
+2. Disponibilità formatrici insufficiente
+3. Vincoli di consecutività non soddisfacibili
 
 **Debug**:
 ```bash
-# Analizza constraints e compatibilità
-./analyze-constraints
+# Verifica stato attuale
+python src/verify_constraints.py
 
-# Test su subset ridotto
-python scripts/test_subset.py
-
-# Verbose output
-python src/optimizer.py --verbose --timeout 600
+# Controlla overbooking nel calendario unificato
+python src/generators/generate_unified_calendar.py
 ```
 
-### Performance lente
+### Classi Incomplete
 
-- Aumenta `num_search_workers` in `optimizer.py`
-- Riduci `NUM_SETTIMANE` se possibile
-- Usa subset per test rapidi
+Verifica che le note "solo X incontri" in `laboratori_classi.csv` siano corrette.
 
+## Versioni Archiviate
 
-## Sviluppo
-
-### Aggiungere Nuovi Constraints
-
-1. **Definisci il constraint** in `src/constraints/hard_constraints.py` o `soft_constraints.py`:
-
-```python
-@dataclass(kw_only=True)
-class MyNewConstraint(HardConstraint):
-    """Descrizione del vincolo."""
-    param1: int
-    param2: str
-
-    id: str = "H15"
-    name: str = "My New Constraint"
-    category: ConstraintCategory = ConstraintCategory.TEMPORAL
-
-    def add_to_model(self, model, variables, context):
-        # Implementa vincolo OR-Tools
-        # model.Add(...)
-        pass
-```
-
-2. **Aggiungi al factory** in `src/constraints/factory.py` per caricamento automatico dai CSV
-
-3. **Configura peso** in `src/constraints/config/constraint_weights.yaml` (se soft)
-
-4. **Documenta** in `INTERPRETAZIONE_VINCOLI.md`
-
-### Testing
-
-```bash
-# Test constraints singoli
-python tests/test_constraints.py
-
-# Test pipeline completo
-python scripts/test_optimizer_pipeline.py
-
-# Test su dati reali subset
-python scripts/test_subset.py
-```
-
-### Versioni Archiviate
-
-Le versioni precedenti (V0-V6) sono in `archive/optimizers/` per riferimento storico.
+Le versioni precedenti (V0-V7) e il sistema di constraints formali sono in `archive/` per riferimento storico.
 
 ## Riferimenti
 
 - **INTERPRETAZIONE_VINCOLI.md** - Specifica completa vincoli
-- **src/constraints/README.md** - Documentazione sistema constraints
 - **CLAUDE.md** - Istruzioni per Claude Code
-- **src/constraints/config/constraint_weights.yaml** - Configurazione pesi
-
-## License
-
-Progetto Cosmic School - Sistema di scheduling laboratori scolastici.
