@@ -53,15 +53,23 @@ def load_reference_data(data_dir: Path) -> Dict:
                 'ore_generali': int(row['ore_generali'])
             }
 
-    # Class-lab assignments (which labs each class must attend)
-    class_labs = defaultdict(set)
+    # Class-lab assignments (which labs each class must attend and how many meetings)
+    class_labs = defaultdict(dict)  # class_id -> {lab_id -> num_meetings}
     with open(data_dir / "laboratori_classi.csv", 'r', encoding='utf-8') as f:
         for row in csv.DictReader(f):
             class_id = int(row['classe_id'])
             lab_id = int(row['laboratorio_id'])
             # Only include labs that are in our labs.csv (FOP labs)
             if lab_id in labs:
-                class_labs[class_id].add(lab_id)
+                # Check for "solo X incontri" notes
+                dettagli = row.get('dettagli', '').lower()
+                if 'solo 1 incontro' in dettagli:
+                    num_meetings = 1
+                elif 'solo 2 incontri' in dettagli:
+                    num_meetings = 2
+                else:
+                    num_meetings = labs[lab_id]['num_incontri']
+                class_labs[class_id][lab_id] = num_meetings
 
     return {
         'schools': schools,
@@ -153,7 +161,8 @@ def verify_class_labs(records: List[Dict], ref_data: Dict) -> Dict:
 
     results = {}
 
-    for class_id, required_labs in ref_data['class_labs'].items():
+    # class_labs is now: class_id -> {lab_id -> num_meetings}
+    for class_id, lab_meetings in ref_data['class_labs'].items():
         class_info = ref_data['classes'].get(class_id, {})
         class_name = class_info.get('nome', f'Class {class_id}')
         school_id = class_info.get('scuola_id', 0)
@@ -168,9 +177,8 @@ def verify_class_labs(records: List[Dict], ref_data: Dict) -> Dict:
         lab_status = {}
         all_complete = True
 
-        for lab_id in required_labs:
+        for lab_id, required_meetings in lab_meetings.items():
             lab_info = ref_data['labs'].get(lab_id, {})
-            required_meetings = lab_info.get('num_incontri', 0)
             lab_name = lab_info.get('nome', f'Lab {lab_id}')
 
             assigned_meetings = assigned.get(lab_id, set())

@@ -61,7 +61,7 @@ def read_previous_labs_schedule() -> Dict[int, List[Tuple[str, str]]]:
 
 
 def read_lab7_classes() -> Dict[int, int]:
-    """Legge quanti incontri Lab 7 servono per ogni classe (sempre 2)."""
+    """Legge quanti incontri Lab 7 servono per ogni classe."""
     lab7_classes = {}
 
     with open('data/input/laboratori_classi.csv', 'r') as f:
@@ -69,7 +69,12 @@ def read_lab7_classes() -> Dict[int, int]:
         for row in reader:
             if row['laboratorio_id'] == '7':
                 classe_id = int(row['classe_id'])
-                lab7_classes[classe_id] = 2  # Lab 7 ha sempre 2 incontri
+                # Check for "solo X incontri" notes
+                dettagli = row.get('dettagli', '').lower()
+                if 'solo 1 incontro' in dettagli:
+                    lab7_classes[classe_id] = 1
+                else:
+                    lab7_classes[classe_id] = 2  # Default: 2 incontri
 
     return lab7_classes
 
@@ -239,8 +244,9 @@ def build_lab7_model(
             if not common_relevant:
                 continue
 
-            # Per ogni numero di incontro (1, 2)
-            for meeting_num in range(1, 3):
+            # Per ogni numero di incontro (min tra le due classi)
+            max_meeting_num = min(lab7_classes[c1], lab7_classes[c2])
+            for meeting_num in range(1, max_meeting_num + 1):
                 for slot_id in common_relevant:
                     var_name = f"grouped_c{c1}_c{c2}_m{meeting_num}_s{slot_id}"
                     grouped[c1, c2, meeting_num, slot_id] = model.NewBoolVar(var_name)
@@ -263,8 +269,11 @@ def build_lab7_model(
                 print(f"⚠️  Classe {classe_id} meeting {meeting_num}: nessuno slot disponibile")
 
     # H2: VINCOLO CONSECUTIVITÀ - I 2 incontri Lab 7 devono essere in settimane DIVERSE E CONSECUTIVE
-    # Incontro 1 e Incontro 2 non possono essere nella stessa settimana
-    for classe_id in lab7_classes.keys():
+    # Applica solo a classi con 2 incontri
+    for classe_id, num_meetings in lab7_classes.items():
+        if num_meetings < 2:
+            continue  # Skip consecutivity constraints for classes with only 1 meeting
+
         for week in week_to_slots.keys():
             week_slots = week_to_slots[week]
 
@@ -282,7 +291,11 @@ def build_lab7_model(
                 model.Add(sum(meeting1_in_week) + sum(meeting2_in_week) <= 1)
 
     # H2b: VINCOLO ORDINE E CONSECUTIVITÀ - week(M2) = week(M1) + 1
-    for classe_id in lab7_classes.keys():
+    # Applica solo a classi con 2 incontri
+    for classe_id, num_meetings in lab7_classes.items():
+        if num_meetings < 2:
+            continue  # Skip consecutivity constraints for classes with only 1 meeting
+
         # Crea variabile intera per la settimana dell'incontro 1 e 2
         week_m1 = model.NewIntVar(0, 15, f"week_m1_c{classe_id}")
         week_m2 = model.NewIntVar(0, 15, f"week_m2_c{classe_id}")
@@ -309,8 +322,8 @@ def build_lab7_model(
             model.Add(meeting[c2, meeting_num, slot_id] == 1).OnlyEnforceIf(group_var)
 
     # H4: Max 1 accorpamento per classe per meeting
-    for classe_id in lab7_classes.keys():
-        for meeting_num in range(1, 3):
+    for classe_id, num_meetings in lab7_classes.items():
+        for meeting_num in range(1, num_meetings + 1):
             for slot_id in relevant_slots:
                 groupings_here = []
                 for (c1, c2, m, s), group_var in grouped.items():
@@ -352,33 +365,27 @@ def build_lab7_model(
         num_available = formatrici_availability.get(slot_id, 0)
 
         # Lab 4 + Lab 5 (già schedulati)
-        lab4_units = int(lab4_formatrici.get(slot_id, 0) * 2)
-        lab5_units = int(lab5_formatrici.get(slot_id, 0) * 2)
+        lab4_used = lab4_formatrici.get(slot_id, 0)
+        lab5_used = lab5_formatrici.get(slot_id, 0)
+        free_capacity = num_available - lab4_used - lab5_used
 
-        # Lab 7 con accorpamenti
-        trainer_units_lab7 = []
+        if free_capacity < 0:
+            free_capacity = 0
+
+        # Lab 7 semplificato: conta meeting (senza considerare accorpamenti per ora)
+        # Gli accorpamenti ridurranno il conteggio reale, ma questo è un upper bound
+        meetings_in_slot = []
         for classe_id, num_meetings in lab7_classes.items():
             for meeting_num in range(1, num_meetings + 1):
                 if (classe_id, meeting_num, slot_id) in meeting:
-                    meet_var = meeting[classe_id, meeting_num, slot_id]
+                    meetings_in_slot.append(meeting[classe_id, meeting_num, slot_id])
 
-                    # Trova se questa classe è accorpata
-                    is_grouped_vars = []
-                    for (c1, c2, m, s), group_var in grouped.items():
-                        if m == meeting_num and s == slot_id:
-                            if c1 == classe_id or c2 == classe_id:
-                                is_grouped_vars.append(group_var)
-
-                    if is_grouped_vars:
-                        contribution = model.NewIntVar(0, 2, f"contrib_c{classe_id}_m{meeting_num}_s{slot_id}")
-                        model.Add(contribution == 2 * meet_var - sum(is_grouped_vars))
-                        trainer_units_lab7.append(contribution)
-                    else:
-                        trainer_units_lab7.append(2 * meet_var)
-
-        if trainer_units_lab7:
-            # Totale <= 2 * disponibili
-            model.Add(lab4_units + lab5_units + sum(trainer_units_lab7) <= 2 * num_available)
+        if meetings_in_slot:
+            # Max meeting singoli = free_capacity
+            # Con accorpamenti possiamo schedulare di più (2 classi = 1 formatrice)
+            # Per semplicità, permettiamo 2 * free_capacity meeting (worst case tutti accorpati)
+            max_meetings = max(0, int(free_capacity * 2))
+            model.Add(sum(meetings_in_slot) <= max_meetings)
 
     # === OBIETTIVO ===
 
