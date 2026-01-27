@@ -1,13 +1,25 @@
 Classi,N. Classi,Scuola,Settimana,Giorno,Fascia Oraria,Data e Ora,Formatrice,Accorpamento
-"5H, 5I",2,Liceo Scientifico Leonardo da Vinci,9,Lunedì,Mattino1,30/03/2026 09:00-11:00,Margherita,Sì
+5AtIB,1,IIS L.Da Vinci-De Giorgio,9,Lunedì,Mattino1,30/03/2026 09:00-11:00,Ida,No
+3DSA,1,Liceo Scientifico G. Galilei,9,Lunedì,Mattino1,30/03/2026 09:00-11:00,Andreea,No
+"5H, 5I",2,Liceo Scientifico Leonardo da Vinci,9,Lunedì,Mattino1,30/03/2026 09:00-11:00,Anita,Sì
+3C,1,Liceo Scientifico P. P. Pasolini,9,Lunedì,Mattino1,30/03/2026 09:00-11:00,Margherita,No
+5C,1,IIS. E. Mattei,9,Lunedì,Pomeriggio,30/03/2026 14:00-16:00,Anita,No
 "4C, 4CSA",2,Liceo Scientifico G. Galilei,9,Lunedì,Pomeriggio,30/03/2026 14:00-16:00,Margherita,Sì
 "3E, 5C",2,Liceo Scientifico P. P. Pasolini,9,Lunedì,Pomeriggio,30/03/2026 14:00-16:00,Andreea,Sì
 "5H, 5I",2,Liceo Scientifico Leonardo da Vinci,10,Giovedì,Mattino2,16/04/2026 11:00-13:00,Anita,Sì
+3C,1,Liceo Scientifico P. P. Pasolini,10,Giovedì,Mattino2,16/04/2026 11:00-13:00,Ida,No
+4C,1,Liceo Scientifico G. Galilei,10,Giovedì,Pomeriggio,16/04/2026 14:00-16:00,Anita,No
 "3E, 5C",2,Liceo Scientifico P. P. Pasolini,10,Giovedì,Pomeriggio,16/04/2026 14:00-16:00,Andreea,Sì
+5C,1,IIS. E. Mattei,10,Venerdì,Pomeriggio,17/04/2026 14:00-16:00,Anita,No
+5AtIB,1,IIS L.Da Vinci-De Giorgio,10,Venerdì,Pomeriggio,17/04/2026 14:00-16:00,Andreea,No
 "3DSA, 4CSA",2,Liceo Scientifico G. Galilei,10,Venerdì,Pomeriggio,17/04/2026 14:00-16:00,Margherita,Sì
+4BNO,1,Lic. Scientifico Bafile,13,Lunedì,Pomeriggio,04/05/2026 14:00-16:00,Anita,No
 "3I, 5C",2,Liceo Scientifico G. Galilei,13,Lunedì,Pomeriggio,04/05/2026 14:00-16:00,Margherita,Sì
 "3A, 5D",2,Liceo Scientifico P. P. Pasolini,13,Lunedì,Pomeriggio,04/05/2026 14:00-16:00,Andreea,Sì
-"3O, 4F, 4O, 5P",4,Liceo Scientifico Leonardo da Vinci,13,Venerdì,Mattino1,08/05/2026 09:00-11:00,Margherita,Sì
+5B,1,IIS. E. Mattei,13,Venerdì,Mattino1,08/05/2026 09:00-11:00,Anita,No
+"3O, 4F, 4O, 5O, 5P",5,Liceo Scientifico Leonardo da Vinci,13,Venerdì,Mattino1,08/05/2026 09:00-11:00,Margherita,Sì
+4BNO,1,Lic. Scientifico Bafile,14,Mercoledì,Pomeriggio,13/05/2026 14:00-16:00,Anita,No
 "3I, 5C",2,Liceo Scientifico G. Galilei,14,Mercoledì,Pomeriggio,13/05/2026 14:00-16:00,Ida,Sì
 "3A, 5D",2,Liceo Scientifico P. P. Pasolini,14,Mercoledì,Pomeriggio,13/05/2026 14:00-16:00,Andreea,Sì
-"3O, 4F, 4O, 5P",4,Liceo Scientifico Leonardo da Vinci,14,Venerdì,Mattino2,15/05/2026 11:00-13:00,Margherita,Sì
+5B,1,IIS. E. Mattei,14,Venerdì,Mattino2,15/05/2026 11:00-13:00,Anita,No
+"3O, 4F, 4O, 5O, 5P",5,Liceo Scientifico Leonardo da Vinci,14,Venerdì,Mattino2,15/05/2026 11:00-13:00,Margherita,Sì

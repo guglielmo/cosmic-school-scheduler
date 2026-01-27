@@ -274,14 +274,23 @@ def extract_lab_slots(headers: List[str], slot_ids: List[str],
 
     for row_idx, slot_id in enumerate(slot_ids):
         for col_idx, cell in enumerate(data[row_idx]):
-            # Skip non-lab cells (X, -, empty, or just lab code without full info)
+            # Skip non-lab cells (X, -, empty)
             if cell in ('X', '-', '') or not cell.startswith('L'):
                 continue
 
-            # Must have format L{lab}-{meeting}/{class_info} or L{lab}-{meeting}
+            col_name = headers[col_idx] if col_idx < len(headers) else str(col_idx)
+
+            # Handle both formats:
+            # - Full: L{lab}-{meeting}/{col}-{school}-{class}
+            # - Simple: L{lab}-{meeting} (get info from column header)
             if '/' in cell:
-                col_name = headers[col_idx] if col_idx < len(headers) else str(col_idx)
+                # Full format - use as is
                 lab_slots.append(LabSlot(slot_id, col_idx, col_name, cell))
+            else:
+                # Simple format - construct full format from column header
+                # cell = "L5-2", col_name = "5-1-5B" -> "L5-2/5-1-5B"
+                full_cell = f"{cell}/{col_name}"
+                lab_slots.append(LabSlot(slot_id, col_idx, col_name, full_cell))
 
     return lab_slots
 
@@ -493,8 +502,17 @@ def apply_assignments(
         trainer = trainers[trainer_id]
 
         original_value = data[row_idx][col_idx]
+
+        # Convert simple format to full format if needed
+        # Simple: L5-2 -> Full: L5-2/5-1-5B (using column header)
+        if '/' not in original_value and original_value.startswith('L'):
+            col_name = headers[col_idx] if col_idx < len(headers) else str(col_idx)
+            cell_value = f"{original_value}/{col_name}"
+        else:
+            cell_value = original_value
+
         # Append trainer info: ":ID-Name"
-        new_value = f"{original_value}:{trainer_id}-{trainer.name}"
+        new_value = f"{cell_value}:{trainer_id}-{trainer.name}"
         new_data[row_idx][col_idx] = new_value
 
     return new_data
