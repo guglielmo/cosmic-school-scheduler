@@ -18,7 +18,7 @@ class DateMapper:
     Windows:
     - Window 1: 29/01/2026 - 01/04/2026 (weeks 0-9)
     - Easter break: 02/04/2026 - 12/04/2026
-    - Window 2: 13/04/2026 - 16/05/2026 (weeks 10-15)
+    - Window 2: 13/04/2026 - 23/05/2026 (weeks 10-15)
     """
 
     # Inizio anno scolastico
@@ -32,7 +32,7 @@ class DateMapper:
     EASTER_END = datetime(2026, 4, 12)
 
     WINDOW2_START = datetime(2026, 4, 13)
-    WINDOW2_END = datetime(2026, 5, 16)
+    WINDOW2_END = datetime(2026, 5, 23)  # Esteso a W15 (settimana 18-24 maggio)
 
     # Mappings
     WEEKDAY_TO_NUM = {

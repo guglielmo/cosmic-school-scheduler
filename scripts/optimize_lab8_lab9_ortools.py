@@ -443,8 +443,8 @@ def build_lab8_lab9_model(
     # === SOLVE ===
 
     solver = cp_model.CpSolver()
-    solver.parameters.max_time_in_seconds = 120.0
-    solver.parameters.num_search_workers = 12
+    solver.parameters.max_time_in_seconds = 60.0
+    solver.parameters.num_search_workers = 4
 
     print("\n=== Risoluzione OR-Tools (Lab 8 + Lab 9) ===")
     status = solver.Solve(model)
