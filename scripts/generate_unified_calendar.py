@@ -28,12 +28,19 @@ def read_class_availability():
     return class_columns, all_slots, availability
 
 
-def read_lab_schedule(filename: str, lab_prefix: str) -> Dict[str, Dict[int, str]]:
+def read_lab_schedule(filename: str, lab_prefix: str, formatrici_col: str):
     """
     Legge un calendario laboratorio.
-    Returns: dict mapping slot_id -> dict mapping classe_id -> label (es: "L4-1")
+    Args:
+        filename: path al file CSV
+        lab_prefix: prefisso del laboratorio (es: "L4-")
+        formatrici_col: nome della colonna num_formatrici da leggere
+    Returns:
+        - schedule: dict mapping slot_id -> dict mapping classe_id -> label (es: "L4-1")
+        - formatrici_count: dict mapping slot_id -> num formatrici (float, considera accorpamenti)
     """
     schedule = {}
+    formatrici_count = {}
 
     with open(filename, 'r') as f:
         reader = csv.DictReader(f)
@@ -41,6 +48,13 @@ def read_lab_schedule(filename: str, lab_prefix: str) -> Dict[str, Dict[int, str
         for row in reader:
             slot_id = row['slot_id']
             schedule[slot_id] = {}
+
+            # Leggi num_formatrici dalla colonna specificata (già calcolato correttamente con accorpamenti)
+            num_form = row.get(formatrici_col, '0')
+            try:
+                formatrici_count[slot_id] = float(num_form) if num_form else 0
+            except (ValueError, KeyError):
+                formatrici_count[slot_id] = 0
 
             for col, val in row.items():
                 if col in ['slot_id', 'num_formatrici', 'num_formatrici_disponibili',
@@ -51,7 +65,7 @@ def read_lab_schedule(filename: str, lab_prefix: str) -> Dict[str, Dict[int, str
                     classe_id = int(col.split('-')[0])
                     schedule[slot_id][classe_id] = val
 
-    return schedule
+    return schedule, formatrici_count
 
 
 def read_formatrici_availability():
@@ -92,8 +106,8 @@ def generate_unified_calendar():
     # Leggi dati
     print("Caricamento dati...")
     class_columns, all_slots, availability = read_class_availability()
-    lab4_schedule = read_lab_schedule('data/output/calendario_lab4_ortools.csv', 'L4-')
-    lab5_schedule = read_lab_schedule('data/output/calendario_lab5_ortools.csv', 'L5-')
+    lab4_schedule, lab4_formatrici = read_lab_schedule('data/output/calendario_lab4_ortools.csv', 'L4-', 'num_formatrici')
+    lab5_schedule, lab5_formatrici = read_lab_schedule('data/output/calendario_lab5_ortools.csv', 'L5-', 'num_formatrici_lab5')
     formatrici_availability = read_formatrici_availability()
     formatrici_budget_incontri = read_formatrici_budget()
 
@@ -107,16 +121,14 @@ def generate_unified_calendar():
     print("\nGenerazione calendario...")
 
     # Traccia totali per riga finale
-    total_formatrici_usate = 0
+    total_formatrici_usate = 0.0
 
     with open('data/output/calendario_laboratori.csv', 'w', newline='') as f:
         writer = csv.writer(f)
 
-        # Header
+        # Header (senza colonne separate Lab 4/Lab 5)
         header = ['slot_id'] + class_columns + [
-            'num_formatrici_lab4',
-            'num_formatrici_lab5',
-            'num_formatrici_totali',
+            'num_formatrici',
             'num_formatrici_disponibili'
         ]
         writer.writerow(header)
@@ -147,13 +159,19 @@ def generate_unified_calendar():
                 else:
                     row.append('X')
 
-            # Conta formatrici
-            num_lab4 = len(lab4_in_slot)
-            num_lab5 = len(lab5_in_slot)
+            # Conta formatrici (somma dei valori già corretti da Lab 4 e Lab 5)
+            num_lab4 = lab4_formatrici.get(slot_id, 0)
+            num_lab5 = lab5_formatrici.get(slot_id, 0)
             num_total = num_lab4 + num_lab5
             num_avail = formatrici_availability.get(slot_id, 0)
 
-            row.extend([num_lab4, num_lab5, num_total, num_avail])
+            # Formatta come intero se possibile
+            if num_total == int(num_total):
+                num_total_display = int(num_total)
+            else:
+                num_total_display = num_total
+
+            row.extend([num_total_display, num_avail])
 
             # Accumula totale
             total_formatrici_usate += num_total
@@ -161,10 +179,9 @@ def generate_unified_calendar():
             writer.writerow(row)
 
         # Riga finale TOTALE
+        total_formatrici_display = int(total_formatrici_usate) if total_formatrici_usate == int(total_formatrici_usate) else total_formatrici_usate
         total_row = ['Totale'] + [''] * len(class_columns) + [
-            '',  # num_formatrici_lab4 (vuoto)
-            '',  # num_formatrici_lab5 (vuoto)
-            total_formatrici_usate,  # num_formatrici_totali
+            total_formatrici_display,  # num_formatrici totale
             int(formatrici_budget_incontri)  # num_formatrici_disponibili
         ]
         writer.writerow(total_row)
@@ -180,11 +197,11 @@ def generate_unified_calendar():
         if lab4_schedule.get(slot_id) or lab5_schedule.get(slot_id):
             slots_with_labs.add(slot_id)
 
-    # Conta slot con overbooking
+    # Conta slot con overbooking (usando i valori corretti con accorpamenti)
     overbooking_count = 0
     for slot_id in all_slots:
-        num_lab4 = len(lab4_schedule.get(slot_id, {}))
-        num_lab5 = len(lab5_schedule.get(slot_id, {}))
+        num_lab4 = lab4_formatrici.get(slot_id, 0)
+        num_lab5 = lab5_formatrici.get(slot_id, 0)
         num_total = num_lab4 + num_lab5
         num_avail = formatrici_availability.get(slot_id, 0)
 
@@ -214,9 +231,9 @@ def generate_unified_calendar():
     print(f"Classi totali con Lab 5: {len(all_lab5_classes)}")
     print(f"Classi con entrambi i lab: {len(both)}")
     print(f"\n=== Budget formatrici ===")
-    print(f"Incontri totali schedulati: {total_formatrici_usate}")
+    print(f"Formatrici-incontri totali: {total_formatrici_usate:.1f}")
     print(f"Budget disponibile (incontri): {int(formatrici_budget_incontri)}")
-    print(f"Margine: {int(formatrici_budget_incontri) - total_formatrici_usate} incontri")
+    print(f"Margine: {formatrici_budget_incontri - total_formatrici_usate:.1f} incontri")
     print(f"Utilizzo: {total_formatrici_usate / formatrici_budget_incontri * 100:.1f}%")
 
     # Verifica conflitti settimanali
