@@ -68,6 +68,23 @@ def read_formatrici_availability():
     return formatrici_count
 
 
+def read_formatrici_budget():
+    """
+    Legge il budget ore delle formatrici.
+    Returns: budget totale disponibile in termini di incontri (ore / 2)
+    """
+    total_hours = 0
+
+    with open('data/input/formatrici.csv', 'r') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            ore_generali = int(row.get('ore_generali', 0))
+            total_hours += ore_generali
+
+    # Ogni incontro è di 2 ore
+    return total_hours / 2
+
+
 def generate_unified_calendar():
     """Genera il calendario unificato."""
     print("=== Generazione calendario unificato ===\n")
@@ -78,14 +95,19 @@ def generate_unified_calendar():
     lab4_schedule = read_lab_schedule('data/output/calendario_lab4_ortools.csv', 'L4-')
     lab5_schedule = read_lab_schedule('data/output/calendario_lab5_ortools.csv', 'L5-')
     formatrici_availability = read_formatrici_availability()
+    formatrici_budget_incontri = read_formatrici_budget()
 
     print(f"  - {len(all_slots)} slot")
     print(f"  - {len(class_columns)} classi")
     print(f"  - Lab 4: {sum(len(v) for v in lab4_schedule.values())} incontri")
     print(f"  - Lab 5: {sum(len(v) for v in lab5_schedule.values())} incontri")
+    print(f"  - Budget formatrici: {formatrici_budget_incontri:.1f} incontri")
 
     # Genera calendario unificato
     print("\nGenerazione calendario...")
+
+    # Traccia totali per riga finale
+    total_formatrici_usate = 0
 
     with open('data/output/calendario_laboratori.csv', 'w', newline='') as f:
         writer = csv.writer(f)
@@ -133,7 +155,19 @@ def generate_unified_calendar():
 
             row.extend([num_lab4, num_lab5, num_total, num_avail])
 
+            # Accumula totale
+            total_formatrici_usate += num_total
+
             writer.writerow(row)
+
+        # Riga finale TOTALE
+        total_row = ['Totale'] + [''] * len(class_columns) + [
+            '',  # num_formatrici_lab4 (vuoto)
+            '',  # num_formatrici_lab5 (vuoto)
+            total_formatrici_usate,  # num_formatrici_totali
+            int(formatrici_budget_incontri)  # num_formatrici_disponibili
+        ]
+        writer.writerow(total_row)
 
     print(f"✅ Calendario unificato scritto in data/output/calendario_laboratori.csv")
 
@@ -179,6 +213,11 @@ def generate_unified_calendar():
     print(f"Classi totali con Lab 4: {len(all_lab4_classes)}")
     print(f"Classi totali con Lab 5: {len(all_lab5_classes)}")
     print(f"Classi con entrambi i lab: {len(both)}")
+    print(f"\n=== Budget formatrici ===")
+    print(f"Incontri totali schedulati: {total_formatrici_usate}")
+    print(f"Budget disponibile (incontri): {int(formatrici_budget_incontri)}")
+    print(f"Margine: {int(formatrici_budget_incontri) - total_formatrici_usate} incontri")
+    print(f"Utilizzo: {total_formatrici_usate / formatrici_budget_incontri * 100:.1f}%")
 
     # Verifica conflitti settimanali
     print("\n=== Verifica vincoli settimanali ===")
