@@ -333,7 +333,7 @@ def write_calendar(
     # Leggi disponibilità formatrici
     formatrici_count = read_formatrici_availability()
 
-    with open('data/output/calendario_laboratori.csv', 'w', newline='') as f:
+    with open('data/output/calendario_lab4_greedy.csv', 'w', newline='') as f:
         writer = csv.writer(f)
 
         # Header (mantiene formato "classe_id-scuola_id-nome") + colonne finali
@@ -405,7 +405,7 @@ def write_calendar(
 
             writer.writerow(row)
 
-    print(f"\n✅ Calendario scritto in data/output/calendario_laboratori.csv")
+    print(f"\n✅ Calendario scritto in data/output/calendario_lab4_greedy.csv")
 
 
 def main():

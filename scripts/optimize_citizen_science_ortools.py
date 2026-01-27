@@ -24,7 +24,7 @@ def read_existing_schedule() -> Tuple[Dict, Dict, Set]:
     slot_schedule = {}
     overbooking_slots = set()
 
-    with open('data/output/calendario_laboratori.csv', 'r') as f:
+    with open('data/output/calendario_lab4_greedy.csv', 'r') as f:
         reader = csv.DictReader(f)
 
         for row in reader:
@@ -327,7 +327,7 @@ def write_optimized_calendar(
             slot_meetings[slot_id].append((classe_id, meeting_num))
 
     # Scrivi calendario
-    with open('data/output/calendario_laboratori_ortools.csv', 'w', newline='') as f:
+    with open('data/output/calendario_lab4_ortools.csv', 'w', newline='') as f:
         writer = csv.writer(f)
 
         # Header
@@ -365,7 +365,7 @@ def write_optimized_calendar(
 
             writer.writerow(row)
 
-    print(f"✅ Calendario scritto in data/output/calendario_laboratori_ortools.csv")
+    print(f"✅ Calendario scritto in data/output/calendario_lab4_ortools.csv")
 
 
 def main():

@@ -20,7 +20,7 @@ def read_lab4_schedule() -> Dict[int, List[Tuple[str, int]]]:
     """
     lab4_schedule = {}
 
-    with open('data/output/calendario_laboratori_ortools.csv', 'r') as f:
+    with open('data/output/calendario_lab4_ortools.csv', 'r') as f:
         reader = csv.DictReader(f)
 
         for row in reader:
