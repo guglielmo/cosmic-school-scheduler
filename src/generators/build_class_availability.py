@@ -19,8 +19,8 @@ import sys
 from pathlib import Path
 import re
 
-# Add src to path
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+# Add utils to path
+sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
 
 from date_utils import DateMapper
 
@@ -374,7 +374,11 @@ def build_availability_matrix(data_dir, slots_file, output_file):
     # Write output
     with open(output_file, 'w', newline='', encoding='utf-8') as f:
         # Header: slot_id, class1, class2, ...
-        fieldnames = ['slot_id'] + [checker.classes[cid]['nome'] for cid in class_ids]
+        # Format: "classe_id-scuola_id-nome_classe"
+        fieldnames = ['slot_id'] + [
+            f"{cid}-{checker.classes[cid]['scuola_id']}-{checker.classes[cid]['nome']}"
+            for cid in class_ids
+        ]
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
 
@@ -383,6 +387,7 @@ def build_availability_matrix(data_dir, slots_file, output_file):
             row_data = {'slot_id': slot['slot_id']}
 
             for cid in class_ids:
+                col_name = f"{cid}-{checker.classes[cid]['scuola_id']}-{checker.classes[cid]['nome']}"
                 available = checker.is_available(
                     cid,
                     slot['week_num'],
@@ -390,7 +395,7 @@ def build_availability_matrix(data_dir, slots_file, output_file):
                     slot['slot_num'],
                     slot['date']
                 )
-                row_data[checker.classes[cid]['nome']] = 'S' if available else 'N'
+                row_data[col_name] = 'S' if available else 'N'
 
             writer.writerow(row_data)
 
@@ -414,7 +419,7 @@ def main():
     print("=" * 60)
 
     # Paths
-    base_dir = Path(__file__).parent.parent
+    base_dir = Path(__file__).parent.parent.parent  # Project root
     data_dir = base_dir / "data"
     slots_file = data_dir / "output" / "slots_calendar.csv"
     output_file = data_dir / "output" / "class_availability.csv"

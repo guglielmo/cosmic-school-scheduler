@@ -1,5 +1,3 @@
 Classi,N. Classi,Scuola,Settimana,Giorno,Fascia Oraria,Data e Ora,Formatrice,Accorpamento
-"3F, 5F",2,IIS Fermi,4,Lunedì,Mattino1,23/02/2026 09:00-11:00,Ida,Sì
-5F,1,Liceo Scientifico Leonardo da Vinci,6,Lunedì,Mattino1,09/03/2026 09:00-11:00,Andreea,No
-"4A, 4B",2,IIS Fermi,6,Lunedì,Mattino1,09/03/2026 09:00-11:00,Ida,Sì
-"3C, 5A",2,IIS Fermi,11,Lunedì,Mattino1,20/04/2026 09:00-11:00,Andreea,Sì
+5F,1,Liceo Scientifico Leonardo da Vinci,4,Giovedì,Mattino1,26/02/2026 09:00-11:00,Anita,No
+"3C, 3F, 4A, 4B, 5A, 5F",6,IIS Fermi,4,Giovedì,Mattino1,26/02/2026 09:00-11:00,Margherita,Sì

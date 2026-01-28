@@ -45,13 +45,24 @@ src/
 ## Commands
 
 ```bash
-# Run individual lab optimizers
+# Run individual lab optimizers (in order)
 python src/optimizers/lab4_citizen_science.py
 python src/optimizers/lab5_orientamento.py
 python src/optimizers/lab7_sensibilizzazione.py
-python src/optimizers/lab8_lab9.py
 
-# Generate unified calendar
+# Generate unified calendar (Lab 4+5+7)
+python src/generators/generate_unified_calendar.py
+
+# Run Lab 9 optimizer
+python src/optimizers/lab8_lab9.py --lab 9
+
+# Regenerate unified calendar (Lab 4+5+7+9)
+python src/generators/generate_unified_calendar.py
+
+# Run Lab 8 optimizer
+python src/optimizers/lab8_lab9.py --lab 8
+
+# Regenerate unified calendar (all labs)
 python src/generators/generate_unified_calendar.py
 
 # Assign trainers
@@ -64,32 +75,33 @@ python src/generators/generate_views.py
 python src/verify_constraints.py
 ```
 
-As a general rule, optimization runs should be launched by the user in a separate shell. Just provide the command and wait for results to be pasted into the conversation.
+**Important**: Lab 9 and Lab 8 must be run separately with `--lab 9` and `--lab 8` parameters. Each requires the unified calendar to be regenerated beforehand.
 
 ## Pipeline Overview
 
 1. **Build availability matrices** (run once):
-   - `build_slots_calendar.py` - Creates slot structure
+   - `build_slots_calendar.py` - Creates slot structure (17 weeks, 0-16)
    - `build_class_availability.py` - Class availability per slot
    - `generate_formatrici_availability.py` - Trainer availability
 
 2. **Run lab optimizers** (in order):
-   - Lab 4 (Citizen Science) - first, has most meetings
-   - Lab 5 (Orientamento) - respects Lab 4 schedule
-   - Lab 7 (Sensibilizzazione) - after Lab 4 and 5 complete
-   - Lab 8/9 - last (Lab 8 must be final lab for each class)
+   - Lab 4 (Citizen Science) - first, has most meetings (5)
+   - Lab 5 (Orientamento) - respects Lab 4 schedule (2)
+   - Lab 7 (Sensibilizzazione) - after Lab 4 and 5 complete (2)
+   - **Generate unified calendar** (Lab 4+5+7)
+   - Lab 9 (Sensibilizzazione pt.2) - avoids Lab 4+5+7 (1)
+   - **Regenerate unified calendar** (Lab 4+5+7+9)
+   - Lab 8 (Presentazione manuali) - avoids Lab 4+5+7+9, last lab (1)
+   - **Regenerate unified calendar** (all labs)
 
-3. **Generate unified calendar**:
-   - Combines all lab calendars into one matrix
-
-4. **Assign trainers**:
+3. **Assign trainers**:
    - Distributes trainers proportionally to their hours budget
    - Respects trainer availability and groupings (accorpamenti)
 
-5. **Generate views**:
+4. **Generate views**:
    - Per-trainer, per-class, per-lab, daily views
 
-6. **Verify constraints**:
+5. **Verify constraints**:
    - Checks hours, lab completion, integrity
 
 ## Key Concepts

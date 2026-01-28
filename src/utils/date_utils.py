@@ -18,7 +18,7 @@ class DateMapper:
     Windows:
     - Window 1: 29/01/2026 - 01/04/2026 (weeks 0-9)
     - Easter break: 02/04/2026 - 12/04/2026
-    - Window 2: 13/04/2026 - 23/05/2026 (weeks 10-15)
+    - Window 2: 13/04/2026 - 30/05/2026 (weeks 10-16)
     """
 
     # Inizio anno scolastico
@@ -32,7 +32,7 @@ class DateMapper:
     EASTER_END = datetime(2026, 4, 12)
 
     WINDOW2_START = datetime(2026, 4, 13)
-    WINDOW2_END = datetime(2026, 5, 23)  # Esteso a W15 (settimana 18-24 maggio)
+    WINDOW2_END = datetime(2026, 5, 30)  # Esteso a W16 (settimana 25-30 maggio)
 
     # Mappings
     WEEKDAY_TO_NUM = {
@@ -59,7 +59,7 @@ class DateMapper:
         Compute start date of each week (always Monday).
 
         Returns:
-            List of 16 datetime objects (start of each week = Monday)
+            List of 17 datetime objects (start of each week = Monday)
         """
         weeks = []
 
@@ -73,11 +73,11 @@ class DateMapper:
             weeks.append(current)
             current += timedelta(weeks=1)
 
-        # Window 2: weeks 10-15 (6 settimane, dopo Pasqua)
+        # Window 2: weeks 10-16 (7 settimane, dopo Pasqua)
         # Find Monday of week containing WINDOW2_START
         window2_monday = self.WINDOW2_START - timedelta(days=self.WINDOW2_START.weekday())
         current = window2_monday
-        for i in range(6):
+        for i in range(7):
             weeks.append(current)
             current += timedelta(weeks=1)
 
@@ -92,7 +92,7 @@ class DateMapper:
 
         Returns:
             (week_num, day_num) where:
-                week_num: 0-15 (settimana dell'anno scolastico)
+                week_num: 0-16 (settimana dell'anno scolastico)
                 day_num: 0-5 (0=lun, 5=sab)
         """
         # Check if in valid windows
@@ -204,14 +204,14 @@ class DateMapper:
         Convert (week, day) back to date.
 
         Args:
-            week: Week number (0-15)
+            week: Week number (0-16)
             day: Day number (0-5)
 
         Returns:
             datetime object
         """
-        if not 0 <= week <= 15:
-            raise ValueError(f"Week {week} out of range (0-15)")
+        if not 0 <= week <= 16:
+            raise ValueError(f"Week {week} out of range (0-16)")
         if not 0 <= day <= 5:
             raise ValueError(f"Day {day} out of range (0-5)")
 

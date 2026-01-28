@@ -95,19 +95,23 @@ def parse_calendar(calendar_path: Path) -> List[Dict]:
                 if not cell or cell in ('X', '-') or ':' not in cell:
                     continue
 
-                # Parse cell: L{lab}-{meeting}/{col}-{school}-{class}:{trainer_id}-{trainer_name}
-                match = re.match(r'L(\d+)-(\d+)/(\d+)-(\d+)-([^:]+):(\d+)-(.+)', cell)
-                if match:
-                    records.append({
-                        'slot_id': slot_id,
-                        'lab_id': int(match.group(1)),
-                        'meeting_num': int(match.group(2)),
-                        'col_idx': int(match.group(3)),
-                        'school_id': int(match.group(4)),
-                        'class_name': match.group(5),
-                        'trainer_id': int(match.group(6)),
-                        'trainer_name': match.group(7)
-                    })
+                # Handle cells with multiple labs (joined by " + ")
+                labs = [lab.strip() for lab in cell.split(' + ')]
+
+                for lab_info in labs:
+                    # Parse cell: L{lab}-{meeting}/{col}-{school}-{class}:{trainer_id}-{trainer_name}
+                    match = re.match(r'L(\d+)-(\d+)/(\d+)-(\d+)-([^:]+):(\d+)-(.+)', lab_info)
+                    if match:
+                        records.append({
+                            'slot_id': slot_id,
+                            'lab_id': int(match.group(1)),
+                            'meeting_num': int(match.group(2)),
+                            'col_idx': int(match.group(3)),
+                            'school_id': int(match.group(4)),
+                            'class_name': match.group(5),
+                            'trainer_id': int(match.group(6)),
+                            'trainer_name': match.group(7)
+                        })
 
     return records
 

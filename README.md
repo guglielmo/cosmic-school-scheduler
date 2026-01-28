@@ -60,32 +60,101 @@ cosmic-school/
 
 ## Quick Start
 
+### Pipeline Veloce (Comandi Sequenziali)
+
+```bash
+# Availability (solo prima volta)
+python src/generators/build_slots_calendar.py && \
+python src/generators/build_class_availability.py && \
+python src/generators/generate_formatrici_availability.py
+
+# Lab 4, 5, 7 → Unifica → Lab 9 → Unifica → Lab 8 → Unifica
+python src/optimizers/lab4_citizen_science.py && \
+python src/optimizers/lab5_orientamento.py && \
+python src/optimizers/lab7_sensibilizzazione.py && \
+python src/generators/generate_unified_calendar.py && \
+python src/optimizers/lab8_lab9.py --lab 9 && \
+python src/generators/generate_unified_calendar.py && \
+python src/optimizers/lab8_lab9.py --lab 8 && \
+python src/generators/generate_unified_calendar.py
+
+# Formatrici, viste, verifica
+python src/optimizers/trainer_assignment.py -v && \
+python src/generators/generate_views.py && \
+python src/verify_constraints.py
+```
+
 ### Pipeline Completa
 
 ```bash
-# 1. Genera matrici disponibilità (solo prima volta)
+# ============================================================================
+# STEP 1: Genera matrici disponibilità (eseguire solo una volta)
+# ============================================================================
 python src/generators/build_slots_calendar.py
 python src/generators/build_class_availability.py
 python src/generators/generate_formatrici_availability.py
 
-# 2. Esegui optimizer lab (in ordine)
+# ============================================================================
+# STEP 2: Esegui optimizer Lab 4, 5, 7 (in ordine di dipendenza)
+# ============================================================================
 python src/optimizers/lab4_citizen_science.py
 python src/optimizers/lab5_orientamento.py
 python src/optimizers/lab7_sensibilizzazione.py
-python src/optimizers/lab8_lab9.py
 
-# 3. Genera calendario unificato
+# ============================================================================
+# STEP 3: Genera calendario unificato (Lab 4+5+7)
+# ============================================================================
 python src/generators/generate_unified_calendar.py
 
-# 4. Assegna formatrici
+# ============================================================================
+# STEP 4: Esegui optimizer Lab 9 (evita settimane occupate da Lab 4+5+7)
+# ============================================================================
+python src/optimizers/lab8_lab9.py --lab 9
+
+# ============================================================================
+# STEP 5: Rigenera calendario unificato (Lab 4+5+7+9)
+# ============================================================================
+python src/generators/generate_unified_calendar.py
+
+# ============================================================================
+# STEP 6: Esegui optimizer Lab 8 (evita settimane occupate da Lab 4+5+7+9)
+# ============================================================================
+python src/optimizers/lab8_lab9.py --lab 8
+
+# ============================================================================
+# STEP 7: Rigenera calendario unificato finale (tutti i lab: 4+5+7+9+8)
+# ============================================================================
+python src/generators/generate_unified_calendar.py
+
+# ============================================================================
+# STEP 8: Assegna formatrici al calendario completo
+# ============================================================================
 python src/optimizers/trainer_assignment.py -v
 
-# 5. Genera viste
+# ============================================================================
+# STEP 9: Genera viste calendario (per formatrice, classe, lab, giornaliere)
+# ============================================================================
 python src/generators/generate_views.py
 
-# 6. Verifica vincoli
+# ============================================================================
+# STEP 10: Verifica vincoli (ore formatrici, completamento classi, integrità)
+# ============================================================================
 python src/verify_constraints.py
 ```
+
+### Perché Rigenerare il Calendario Unificato?
+
+Il calendario unificato (`calendario_laboratori.csv`) deve essere rigenerato **tre volte**:
+
+1. **Dopo Lab 4+5+7**: Fornisce a Lab 9 le informazioni sulle formatrici già occupate
+2. **Dopo Lab 9**: Fornisce a Lab 8 le informazioni su Lab 4+5+7+9
+3. **Dopo Lab 8**: Crea il calendario finale completo per l'assegnazione formatrici
+
+Lab 9 e Lab 8 usano il calendario unificato per:
+- Conoscere quante formatrici sono già occupate in ogni slot
+- Evitare settimane già occupate da altri lab (vincolo "1 incontro/settimana")
+
+**Nota**: Lab 9 e Lab 8 devono essere eseguiti separatamente (`--lab 9` poi `--lab 8`) perché hanno requisiti e dipendenze diverse.
 
 ## Architettura Pipeline
 
@@ -98,8 +167,8 @@ Ogni lab ha vincoli specifici:
 | 4 | Citizen Science | 5 | Gap tra incontro 2 e 4 |
 | 5 | Orientamento | 2 | Dopo Lab 4 |
 | 7 | Sensibilizzazione | 2 | Settimane consecutive, dopo Lab 4+5 |
-| 8 | Presentazione manuali | 1 | Deve essere l'ultimo |
-| 9 | Sensibilizzazione pt.2 | 1 | Prima di Lab 5 |
+| 9 | Sensibilizzazione pt.2 | 1 | Evita Lab 4+5+7 |
+| 8 | Presentazione manuali | 1 | Evita Lab 4+5+7+9, ultimo lab |
 
 ### 2. Accorpamenti
 
@@ -141,8 +210,9 @@ Nel file `laboratori_classi.csv`, la colonna `dettagli` può contenere:
 - `data/output/calendario_lab4_ortools.csv` - Calendario Lab 4
 - `data/output/calendario_lab5_ortools.csv` - Calendario Lab 5
 - `data/output/calendario_lab7_ortools.csv` - Calendario Lab 7
-- `data/output/calendario_lab8_lab9_ortools.csv` - Calendario Lab 8/9
-- `data/output/calendario_laboratori.csv` - Calendario unificato
+- `data/output/calendario_lab9_ortools.csv` - Calendario Lab 9
+- `data/output/calendario_lab8_ortools.csv` - Calendario Lab 8
+- `data/output/calendario_laboratori.csv` - Calendario unificato (tutti i lab)
 - `data/output/calendario_con_formatrici.csv` - Con assegnazione formatrici
 
 ### Viste
@@ -178,19 +248,45 @@ Verifica:
 
 **Possibili cause**:
 1. Overbooking slot (troppi lab nello stesso momento)
-2. Disponibilità formatrici insufficiente
+2. Disponibilità formatrici insufficiente (vincolo H7 troppo restrittivo)
 3. Vincoli di consecutività non soddisfacibili
+4. Calendario non rigenerato dopo lab precedenti
 
-**Debug**:
+**Soluzioni**:
 ```bash
-# Verifica stato attuale
+# 1. Verifica stato attuale
 python src/verify_constraints.py
 
-# Controlla overbooking nel calendario unificato
+# 2. Controlla overbooking nel calendario unificato
 python src/generators/generate_unified_calendar.py
+
+# 3. Assicurati di rigenerare il calendario unificato dopo ogni lab
+# Lab 8/9 richiedono il calendario unificato aggiornato!
 ```
 
-### Classi Incomplete
+**Nota**: Lab 8 e Lab 9 hanno un vincolo rilassato sulle formatrici (buffer +1) per trovare soluzioni fattibili.
+
+### Classi Incomplete (verify_constraints.py)
+
+**Problema**: `verify_constraints.py` mostra "presentazione manuali: 0/1 meetings" per molte classi.
+
+**Causa**: Calendario unificato non rigenerato dopo Lab 8/9.
+
+**Soluzione**:
+```bash
+# Rigenera calendario unificato
+python src/generators/generate_unified_calendar.py
+
+# Verifica che Lab 8/9 siano inclusi
+grep -c "L8-\|L9-" data/output/calendario_laboratori.csv
+# Deve mostrare un numero > 0
+
+# Poi rigenera viste e verifica
+python src/generators/generate_views.py
+python src/verify_constraints.py
+```
+
+### Note "solo X incontri"
 
 Verifica che le note "solo X incontri" in `laboratori_classi.csv` siano corrette.
 

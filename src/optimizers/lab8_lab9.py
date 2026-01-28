@@ -7,15 +7,25 @@ Vincoli speciali:
 - Lab 8 DEVE essere l'ultimo lab per ogni classe
 - Le classi quinte hanno priorità (finiscono prima)
 - Entrambi hanno 1 incontro
+
+Usage:
+    python lab8_lab9.py --lab 9  # Schedula solo Lab 9
+    python lab8_lab9.py --lab 8  # Schedula solo Lab 8
 """
 
 import csv
+import argparse
 from typing import Dict, List, Set, Tuple
 from ortools.sat.python import cp_model
 
 
-def read_previous_labs_schedule() -> Dict[int, List[Tuple[str, str]]]:
-    """Legge i calendari Lab 4, 5, 7."""
+def read_previous_labs_schedule(include_lab9: bool = False) -> Dict[int, List[Tuple[str, str]]]:
+    """
+    Legge i calendari Lab 4, 5, 7 (e opzionalmente Lab 9).
+
+    Args:
+        include_lab9: Se True, include anche Lab 9 (usato quando si schedula Lab 8)
+    """
     schedule = {}
 
     # Lab 4
@@ -73,6 +83,29 @@ def read_previous_labs_schedule() -> Dict[int, List[Tuple[str, str]]]:
                     if classe_id not in schedule:
                         schedule[classe_id] = []
                     schedule[classe_id].append((slot_id, 'L7'))
+
+    # Lab 9 (opzionale, solo quando si schedula Lab 8)
+    if include_lab9:
+        try:
+            with open('data/output/calendario_lab9_ortools.csv', 'r') as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    slot_id = row['slot_id']
+                    if slot_id == 'Totale':
+                        continue
+
+                    for col, val in row.items():
+                        if col in ['slot_id', 'num_formatrici_lab9', 'num_formatrici_prev',
+                                  'num_formatrici_totali', 'num_formatrici_disponibili']:
+                            continue
+
+                        if val and val.startswith('L9-'):
+                            classe_id = int(col.split('-')[0])
+                            if classe_id not in schedule:
+                                schedule[classe_id] = []
+                            schedule[classe_id].append((slot_id, 'L9'))
+        except FileNotFoundError:
+            pass  # Lab 9 non ancora schedulato
 
     return schedule
 
@@ -166,8 +199,8 @@ def build_lab8_lab9_model(
 
     model = cp_model.CpModel()
 
-    # Trova ultima settimana di lab precedenti per ogni classe
-    last_previous_lab_week = {}
+    # Trova TUTTE le settimane occupate dai lab precedenti per ogni classe
+    occupied_weeks = {}  # classe_id -> set di settimane occupate
     slot_to_week = {}
 
     all_slots = sorted(set(
@@ -180,8 +213,8 @@ def build_lab8_lab9_model(
 
     for classe_id, prev_meetings in previous_schedule.items():
         if prev_meetings:
-            max_week = max(slot_to_week.get(slot_id, -1) for slot_id, _ in prev_meetings)
-            last_previous_lab_week[classe_id] = max_week
+            weeks_set = set(slot_to_week.get(slot_id, -1) for slot_id, _ in prev_meetings)
+            occupied_weeks[classe_id] = weeks_set
 
     relevant_slots = all_slots
 
@@ -200,9 +233,9 @@ def build_lab8_lab9_model(
             if slot_id in class_availability.get(classe_id, set()):
                 slot_week = slot_to_week[slot_id]
 
-                # Lab 9 deve iniziare DOPO tutti i lab precedenti
-                if classe_id in last_previous_lab_week:
-                    if slot_week <= last_previous_lab_week[classe_id]:
+                # Lab 9 non deve essere in una settimana già occupata da altri lab
+                if classe_id in occupied_weeks:
+                    if slot_week in occupied_weeks[classe_id]:
                         continue
 
                 var_name = f"meeting_c{classe_id}_L9_s{slot_id}"
@@ -214,9 +247,9 @@ def build_lab8_lab9_model(
             if slot_id in class_availability.get(classe_id, set()):
                 slot_week = slot_to_week[slot_id]
 
-                # Lab 8 deve iniziare DOPO tutti i lab precedenti
-                if classe_id in last_previous_lab_week:
-                    if slot_week <= last_previous_lab_week[classe_id]:
+                # Lab 8 non deve essere in una settimana già occupata da altri lab
+                if classe_id in occupied_weeks:
+                    if slot_week in occupied_weeks[classe_id]:
                         continue
 
                 var_name = f"meeting_c{classe_id}_L8_s{slot_id}"
@@ -247,12 +280,12 @@ def build_lab8_lab9_model(
                     valid_for_c1 = True
                     valid_for_c2 = True
 
-                    if c1 in last_previous_lab_week:
-                        if slot_week <= last_previous_lab_week[c1]:
+                    if c1 in occupied_weeks:
+                        if slot_week in occupied_weeks[c1]:
                             valid_for_c1 = False
 
-                    if c2 in last_previous_lab_week:
-                        if slot_week <= last_previous_lab_week[c2]:
+                    if c2 in occupied_weeks:
+                        if slot_week in occupied_weeks[c2]:
                             valid_for_c2 = False
 
                     if valid_for_c1 and valid_for_c2:
@@ -297,8 +330,8 @@ def build_lab8_lab9_model(
     both_labs = lab8_classes & lab9_classes
     for classe_id in both_labs:
         # Crea variabili intere per la settimana di Lab 9 e Lab 8
-        week_lab9 = model.NewIntVar(0, 15, f"week_L9_c{classe_id}")
-        week_lab8 = model.NewIntVar(0, 15, f"week_L8_c{classe_id}")
+        week_lab9 = model.NewIntVar(0, 16, f"week_L9_c{classe_id}")
+        week_lab8 = model.NewIntVar(0, 16, f"week_L8_c{classe_id}")
 
         # Collega week_lab9 alle variabili booleane
         for slot_id in relevant_slots:
@@ -319,7 +352,7 @@ def build_lab8_lab9_model(
     # Crea variabile per settimana di Lab 8
     week_lab8_vars = {}
     for classe_id in lab8_classes:
-        week_lab8_vars[classe_id] = model.NewIntVar(0, 15, f"week_L8_c{classe_id}")
+        week_lab8_vars[classe_id] = model.NewIntVar(0, 16, f"week_L8_c{classe_id}")
 
         for slot_id in relevant_slots:
             if (classe_id, 8, slot_id) in meeting:
@@ -370,7 +403,12 @@ def build_lab8_lab9_model(
                 except ValueError:
                     prev_formatrici[slot_id] = 0
 
+    # Permetti leggero overbooking formatrici per trovare soluzioni fattibili
+    allow_overbooking = True
+    overbooking_penalties = {}  # slot_id -> IntVar per overbooking
+
     for slot_id in relevant_slots:
+
         num_available = formatrici_availability.get(slot_id, 0)
 
         # Formatrici già usate
@@ -401,7 +439,14 @@ def build_lab8_lab9_model(
                         trainer_units.append(2 * meet_var)
 
         if trainer_units:
-            model.Add(prev_units + sum(trainer_units) <= 2 * num_available)
+            # Vincolo SOFT: penalizza overbooking ma non lo blocca
+            # Crea variabile di slack per misurare l'overbooking
+            overbooking_var = model.NewIntVar(0, 10, f"overbooking_{slot_id}")
+            model.Add(prev_units + sum(trainer_units) <= 2 * num_available + overbooking_var)
+
+            # Penalizza fortemente l'overbooking nell'obiettivo (verrà aggiunto dopo)
+            if slot_id not in overbooking_penalties:
+                overbooking_penalties[slot_id] = overbooking_var
 
     # === OBIETTIVO ===
 
@@ -436,6 +481,10 @@ def build_lab8_lab9_model(
 
     for slot_used_var in slots_used:
         objective_terms.append(-1 * slot_used_var)
+
+    # Penalizza FORTEMENTE l'overbooking formatrici (peso molto alto)
+    for slot_id, overbooking_var in overbooking_penalties.items():
+        objective_terms.append(-1000 * overbooking_var)  # Peso 1000x vs altri obiettivi
 
     if objective_terms:
         model.Maximize(sum(objective_terms))
@@ -515,9 +564,16 @@ def write_calendars(
     lab9_classes: Set[int],
     class_availability: Dict[int, Set[str]],
     formatrici_availability: Dict[str, int],
-    class_info: Dict
+    class_info: Dict,
+    target_lab: int = None
 ):
-    """Scrive i calendari Lab 8 e Lab 9."""
+    """
+    Scrive i calendari Lab 8 e/o Lab 9.
+
+    Args:
+        target_lab: Se specificato (8 o 9), scrive solo quel lab nel file calendario_labX_ortools.csv
+                   Se None, scrive entrambi in calendario_lab8_lab9_ortools.csv
+    """
 
     # Leggi struttura base
     with open('data/output/class_availability.csv', 'r') as f:
@@ -548,19 +604,45 @@ def write_calendars(
         classe_id = int(col.split('-')[0])
         cid_to_col[classe_id] = col
 
-    # Scrivi calendario combinato Lab 8 + Lab 9
-    with open('data/output/calendario_lab8_lab9_ortools.csv', 'w', newline='') as f:
+    # Determina nome file output
+    if target_lab == 9:
+        output_file = 'data/output/calendario_lab9_ortools.csv'
+    elif target_lab == 8:
+        output_file = 'data/output/calendario_lab8_ortools.csv'
+    else:
+        output_file = 'data/output/calendario_lab8_lab9_ortools.csv'
+
+    # Scrivi calendario
+    with open(output_file, 'w', newline='') as f:
         writer = csv.writer(f)
 
-        # Header
-        writer.writerow(['slot_id'] + class_columns + [
-            'num_formatrici_lab8',
-            'num_formatrici_lab9',
-            'num_formatrici_lab8_lab9',
-            'num_formatrici_prev',
-            'num_formatrici_totali',
-            'num_formatrici_disponibili'
-        ])
+        # Header - adatta in base al target_lab
+        if target_lab == 9:
+            header = ['slot_id'] + class_columns + [
+                'num_formatrici_lab9',
+                'num_formatrici_prev',
+                'num_formatrici_totali',
+                'num_formatrici_disponibili'
+            ]
+        elif target_lab == 8:
+            header = ['slot_id'] + class_columns + [
+                'num_formatrici_lab8',
+                'num_formatrici_prev',
+                'num_formatrici_totali',
+                'num_formatrici_disponibili'
+            ]
+        else:
+            # Formato combinato (legacy)
+            header = ['slot_id'] + class_columns + [
+                'num_formatrici_lab8',
+                'num_formatrici_lab9',
+                'num_formatrici_lab8_lab9',
+                'num_formatrici_prev',
+                'num_formatrici_totali',
+                'num_formatrici_disponibili'
+            ]
+
+        writer.writerow(header)
 
         total_l8 = 0.0
         total_l9 = 0.0
@@ -624,47 +706,82 @@ def write_calendars(
             total_l8 += num_l8
             total_l9 += num_l9
 
-            # Formatta come intero se possibile
-            for val in [num_l8, num_l9, num_combined, num_prev, num_total]:
+            # Formatta come intero se possibile - adatta in base al target_lab
+            if target_lab == 9:
+                values = [num_l9, num_prev, num_total]
+            elif target_lab == 8:
+                values = [num_l8, num_prev, num_total]
+            else:
+                values = [num_l8, num_l9, num_combined, num_prev, num_total]
+
+            for val in values:
                 if val == int(val):
                     row.append(int(val))
                 else:
                     row.append(val)
-            
+
             row.append(num_avail)
 
             writer.writerow(row)
 
-        # Riga totale
+        # Riga totale - adatta in base al target_lab
         total_row = ['Totale'] + [''] * len(class_columns)
-        
-        for val in [total_l8, total_l9, total_l8 + total_l9]:
+
+        if target_lab == 9:
+            total_values = [total_l9]
+        elif target_lab == 8:
+            total_values = [total_l8]
+        else:
+            total_values = [total_l8, total_l9, total_l8 + total_l9]
+
+        for val in total_values:
             if val == int(val):
                 total_row.append(int(val))
             else:
                 total_row.append(val)
-        
+
         total_row.extend(['', '', ''])  # prev, totali, disponibili
         writer.writerow(total_row)
 
-    print(f"✅ Calendario Lab 8+9 scritto in data/output/calendario_lab8_lab9_ortools.csv")
+    print(f"✅ Calendario scritto in {output_file}")
 
 
 def main():
-    print("=== Scheduler Lab 8 + Lab 9 ===\n")
+    # Parse arguments
+    parser = argparse.ArgumentParser(description='Schedula Lab 8 o Lab 9')
+    parser.add_argument('--lab', type=int, choices=[8, 9], required=True,
+                        help='Laboratorio da schedulare (8 o 9)')
+    args = parser.parse_args()
+
+    target_lab = args.lab
+
+    if target_lab == 9:
+        print("=== Scheduler Lab 9 ===\n")
+    else:
+        print("=== Scheduler Lab 8 ===\n")
 
     # Leggi dati
     print("Caricamento dati...")
-    previous_schedule = read_previous_labs_schedule()
+    # Include Lab 9 solo quando si schedula Lab 8
+    previous_schedule = read_previous_labs_schedule(include_lab9=(target_lab == 8))
     lab8_classes, lab9_classes = read_lab_classes()
     class_info = read_class_info()
     class_availability = read_class_availability()
     formatrici_availability = read_formatrici_availability()
 
-    print(f"  - {len(lab8_classes)} classi devono fare Lab 8")
-    print(f"  - {len(lab9_classes)} classi devono fare Lab 9")
-    print(f"  - {sum(1 for c in lab8_classes if class_info[c]['is_quinta'])} classi quinte con Lab 8")
-    print(f"  - {sum(1 for c in lab9_classes if class_info[c]['is_quinta'])} classi quinte con Lab 9")
+    # Conta classi originali prima del filtro
+    num_lab8_orig = len(lab8_classes)
+    num_lab9_orig = len(lab9_classes)
+
+    # Filtra classi in base al lab target
+    if target_lab == 9:
+        lab8_classes = set()  # Non schedulare Lab 8
+        print(f"  - {num_lab9_orig} classi devono fare Lab 9")
+        print(f"  - {sum(1 for c in lab9_classes if class_info[c]['is_quinta'])} classi quinte con Lab 9")
+    else:
+        lab9_classes = set()  # Non schedulare Lab 9
+        print(f"  - {num_lab8_orig} classi devono fare Lab 8")
+        print(f"  - {sum(1 for c in lab8_classes if class_info[c]['is_quinta'])} classi quinte con Lab 8")
 
     # Costruisci e risolvi modello
     lab8_schedule, lab9_schedule, new_groupings = build_lab8_lab9_model(
@@ -678,8 +795,13 @@ def main():
 
     if lab8_schedule is not None:
         print("\n=== Schedulazione ===")
-        print(f"Lab 8 complete: {len(lab8_schedule)}/{len(lab8_classes)}")
-        print(f"Lab 9 complete: {len(lab9_schedule)}/{len(lab9_classes)}")
+        if target_lab == 9:
+            print(f"Lab 9 complete: {len(lab9_schedule)}/{num_lab9_orig}")
+        elif target_lab == 8:
+            print(f"Lab 8 complete: {len(lab8_schedule)}/{num_lab8_orig}")
+        else:
+            print(f"Lab 8 complete: {len(lab8_schedule)}/{num_lab8_orig}")
+            print(f"Lab 9 complete: {len(lab9_schedule)}/{num_lab9_orig}")
 
         # Scrivi calendario
         write_calendars(
@@ -690,7 +812,8 @@ def main():
             lab9_classes,
             class_availability,
             formatrici_availability,
-            class_info
+            class_info,
+            target_lab
         )
 
         print("\n=== Verifica vincoli ===")

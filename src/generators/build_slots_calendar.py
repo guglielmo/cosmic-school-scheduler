@@ -13,8 +13,8 @@ import csv
 import sys
 from pathlib import Path
 
-# Add src to path
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+# Add utils to path
+sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
 
 from date_utils import DateMapper
 
@@ -38,7 +38,7 @@ def generate_all_slots():
         List of dicts with slot information:
         - slot_id: formatted as "mm-dd-wd-slot" (e.g., "02-02-lun-M1")
         - date: datetime object
-        - week_num: week number (0-15)
+        - week_num: week number (0-16)
         - day_num: day number (0-5, Mon-Sat)
         - weekday: weekday name (lun, mar, ...)
         - slot_num: slot number (1-3)
@@ -48,8 +48,8 @@ def generate_all_slots():
     mapper = DateMapper()
     slots = []
 
-    # Iterate over all 16 weeks
-    for week in range(16):
+    # Iterate over all 17 weeks (extended for Lab 8/9)
+    for week in range(17):
         # Iterate over all days (0=Mon, 5=Sat)
         for day in range(6):  # Mon-Sat only (no Sunday)
             # Get the actual date
@@ -160,7 +160,7 @@ def main():
     print_summary(slots)
 
     # Save to CSV
-    output_dir = Path(__file__).parent.parent / "data" / "output"
+    output_dir = Path(__file__).parent.parent.parent / "data" / "output"  # Project root
     output_dir.mkdir(parents=True, exist_ok=True)
     output_path = output_dir / "slots_calendar.csv"
 

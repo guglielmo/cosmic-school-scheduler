@@ -42,7 +42,13 @@ def read_lab_schedule(filename: str, lab_prefix: str, formatrici_col: str):
     schedule = {}
     formatrici_count = {}
 
-    with open(filename, 'r') as f:
+    try:
+        f = open(filename, 'r')
+    except FileNotFoundError:
+        # File non esiste, ritorna dizionari vuoti
+        return schedule, formatrici_count
+
+    with f:
         reader = csv.DictReader(f)
 
         for row in reader:
@@ -111,8 +117,8 @@ def generate_unified_calendar():
     lab4_schedule, lab4_formatrici = read_lab_schedule('data/output/calendario_lab4_ortools.csv', 'L4-', 'num_formatrici')
     lab5_schedule, lab5_formatrici = read_lab_schedule('data/output/calendario_lab5_ortools.csv', 'L5-', 'num_formatrici_lab5')
     lab7_schedule, lab7_formatrici = read_lab_schedule('data/output/calendario_lab7_ortools.csv', 'L7-', 'num_formatrici_lab7')
-    lab8_schedule, lab8_formatrici = read_lab_schedule('data/output/calendario_lab8_lab9_ortools.csv', 'L8-', 'num_formatrici_lab8')
-    lab9_schedule, lab9_formatrici = read_lab_schedule('data/output/calendario_lab8_lab9_ortools.csv', 'L9-', 'num_formatrici_lab9')
+    lab8_schedule, lab8_formatrici = read_lab_schedule('data/output/calendario_lab8_ortools.csv', 'L8-', 'num_formatrici_lab8')
+    lab9_schedule, lab9_formatrici = read_lab_schedule('data/output/calendario_lab9_ortools.csv', 'L9-', 'num_formatrici_lab9')
     formatrici_availability = read_formatrici_availability()
     formatrici_budget_incontri = read_formatrici_budget()
 
